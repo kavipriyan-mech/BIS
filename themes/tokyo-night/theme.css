@@ -1,0 +1,58 @@
+/* ============================================================
+   BIS Club — Tokyo Night Theme
+   Tokyo Indigo (#7aa2f7) · Purple (#bb9af7) · Warm Sun (#e0af68)
+   Tokyo Dark (#16161e)
+   ============================================================ */
+
+:root {
+  --theme-id: "tokyo-night";
+  --theme-name: "Tokyo Night";
+
+  /* Palette */
+  --primary: #7aa2f7;
+  --primary-light: #9dbbfa;
+  --primary-dark: #4b78e6;
+  --accent: #bb9af7;
+  --accent-light: #d3bcfb;
+  --gold: #e0af68;
+  --gold-light: #ebd09c;
+  --green: #9ece6a;
+  --silver: #565f89;
+  --bronze: #ff9e64;
+
+  /* Surfaces */
+  --bg: #16161e;
+  --surface: #1a1b26;
+  --surface-2: #24283b;
+  --surface-3: #2f354f;
+  --header-bg: rgba(22, 22, 30, 0.90);
+
+  /* Typography */
+  --text: #a9b1d6;
+  --text-muted: #787c99;
+  --text-dim: #565f89;
+
+  /* Floating Orbs */
+  --orb-1-color: #7aa2f7;
+  --orb-2-color: #bb9af7;
+  --orb-3-color: #e0af68;
+  --orb-opacity: 0.18;
+
+  /* Geometry */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --border-width: 1px;
+  --border-style: solid;
+  --border: rgba(122, 162, 247, 0.30);
+  --border-accent: rgba(187, 154, 247, 0.30);
+  
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 16px 48px rgba(122, 162, 247, 0.35);
+  --shadow-glow: 0 0 40px rgba(122, 162, 247, 0.3);
+  --shadow-red: 0 0 30px rgba(187, 154, 247, 0.25);
+  --glass-blur: blur(24px);
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0);
+}

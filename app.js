@@ -487,6 +487,9 @@ function initAnimations() {
 //  INIT
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.ThemeProvider) {
+    window.ThemeProvider.init();
+  }
   startCountdown();
   initScrollSpy();
   initAnimations();

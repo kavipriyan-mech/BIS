@@ -1,0 +1,58 @@
+/* ============================================================
+   BIS Club — Glassmorphism Theme (BIS Official Navy)
+   Deep Navy (#003478) · Crimson Red (#C8102E) · BIS Gold (#F4A900)
+   ============================================================ */
+
+:root {
+  --theme-id: "glassmorphism";
+  --theme-name: "BIS Official (Glass)";
+
+  /* Primary Palette */
+  --primary: #003478;
+  --primary-light: #0055c4;
+  --primary-dark: #001f4d;
+  --accent: #C8102E;
+  --accent-light: #e8203e;
+  --gold: #F4A900;
+  --gold-light: #ffc53a;
+  --green: #16a34a;
+  --silver: #94a3b8;
+  --bronze: #c97b3f;
+
+  /* Surfaces & Background */
+  --bg: #05080f;
+  --surface: #090f1e;
+  --surface-2: #0d1528;
+  --surface-3: #0f1b35;
+  --header-bg: rgba(5, 8, 15, 0.88);
+
+  /* Typography */
+  --text: #e8eef8;
+  --text-muted: #7a8eb4;
+  --text-dim: #3d4f6b;
+
+  /* Floating Orbs */
+  --orb-1-color: #003478;
+  --orb-2-color: #C8102E;
+  --orb-3-color: #F4A900;
+  --orb-opacity: 0.14;
+
+  /* Geometry & Physics */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --border-width: 1px;
+  --border-style: solid;
+  --border: rgba(0, 52, 120, 0.30);
+  --border-accent: rgba(200, 16, 46, 0.25);
+  
+  /* Shadows & Backdrops */
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 16px 48px rgba(0, 52, 120, 0.35);
+  --shadow-glow: 0 0 40px rgba(0, 52, 120, 0.25);
+  --shadow-red: 0 0 30px rgba(200, 16, 46, 0.15);
+  --glass-blur: blur(24px);
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0);
+}

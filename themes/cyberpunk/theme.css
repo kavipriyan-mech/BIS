@@ -1,0 +1,58 @@
+/* ============================================================
+   BIS Club — Cyberpunk Neon Theme
+   Cyan Neon (#00f3ff) · Hot Pink (#ff007f) · Electric Violet (#9d00ff)
+   Pitch Dark (#070614) · Sharp Tech Lines · Box Glows
+   ============================================================ */
+
+:root {
+  --theme-id: "cyberpunk";
+  --theme-name: "Cyberpunk Neon";
+
+  /* Palette */
+  --primary: #00f3ff;
+  --primary-light: #66f7ff;
+  --primary-dark: #0099a1;
+  --accent: #ff007f;
+  --accent-light: #ff4da6;
+  --gold: #9d00ff;
+  --gold-light: #c266ff;
+  --green: #00ff66;
+  --silver: #8fa0c4;
+  --bronze: #ff8800;
+
+  /* Surfaces */
+  --bg: #070614;
+  --surface: #0e0c24;
+  --surface-2: #151236;
+  --surface-3: #1d194a;
+  --header-bg: rgba(7, 6, 20, 0.92);
+
+  /* Typography */
+  --text: #e0f7ff;
+  --text-muted: #80b5cc;
+  --text-dim: #406d80;
+
+  /* Floating Orbs */
+  --orb-1-color: #00f3ff;
+  --orb-2-color: #ff007f;
+  --orb-3-color: #9d00ff;
+  --orb-opacity: 0.22;
+
+  /* Geometry & Glows */
+  --radius: 3px;
+  --radius-sm: 2px;
+  --radius-xs: 1px;
+  --border-width: 1.5px;
+  --border-style: solid;
+  --border: rgba(0, 243, 255, 0.45);
+  --border-accent: rgba(255, 0, 127, 0.45);
+  
+  --shadow: 0 0 20px rgba(0, 243, 255, 0.25), 0 0 40px rgba(255, 0, 127, 0.15);
+  --shadow-hover: 0 0 30px rgba(0, 243, 255, 0.5), 0 0 50px rgba(255, 0, 127, 0.3);
+  --shadow-glow: 0 0 35px rgba(0, 243, 255, 0.6);
+  --shadow-red: 0 0 35px rgba(255, 0, 127, 0.6);
+  --glass-blur: blur(16px);
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0);
+}

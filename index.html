@@ -8,6 +8,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link id="theme-stylesheet" rel="stylesheet" href="themes/glassmorphism/theme.css" />
+  <script>
+    (function() {
+      var saved = localStorage.getItem('bis_theme_id') || 'glassmorphism';
+      var link = document.getElementById('theme-stylesheet');
+      if (link) {
+        link.href = 'themes/' + saved + '/theme.css';
+      }
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -38,6 +49,13 @@
         <a href="#schedule" class="nav-link">Schedule</a>
         <a href="#prizes" class="nav-link">Prizes</a>
         <a href="#register" class="nav-link">Register</a>
+        <div class="theme-switcher-wrapper">
+          <button class="theme-switcher-btn" id="themePickerBtn" title="Select Theme System">
+            <span class="theme-btn-icon">🎨</span>
+            <span class="theme-btn-name">Theme</span>
+            <span class="theme-caret">▾</span>
+          </button>
+        </div>
         <a href="#register" class="nav-btn">Register Now</a>
       </nav>
       <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()">☰</button>
@@ -47,6 +65,7 @@
       <a href="#schedule" class="nav-link" onclick="toggleMobileNav()">Schedule</a>
       <a href="#prizes" class="nav-link" onclick="toggleMobileNav()">Prizes</a>
       <a href="#register" class="nav-link" onclick="toggleMobileNav()">Register</a>
+      <a href="#" class="nav-link theme-picker-trigger" onclick="toggleMobileNav(); event.preventDefault();">🎨 Theme Studio</a>
     </div>
   </header>
 
@@ -1231,6 +1250,7 @@
     </div>
   </footer>
 
+  <script src="theme-provider.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

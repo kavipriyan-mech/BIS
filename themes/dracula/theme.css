@@ -1,0 +1,58 @@
+/* ============================================================
+   BIS Club — Dracula Theme
+   Dracula Purple (#bd93f9) · Pink (#ff79c6) · Cyan (#8be9fd)
+   Charcoal (#1e1e2e)
+   ============================================================ */
+
+:root {
+  --theme-id: "dracula";
+  --theme-name: "Dracula Violet";
+
+  /* Palette */
+  --primary: #bd93f9;
+  --primary-light: #d6b4fe;
+  --primary-dark: #985bf8;
+  --accent: #ff79c6;
+  --accent-light: #ffa3d7;
+  --gold: #8be9fd;
+  --gold-light: #b6f2ff;
+  --green: #50fa7b;
+  --silver: #6272a4;
+  --bronze: #ffb86c;
+
+  /* Surfaces */
+  --bg: #181825;
+  --surface: #1e1e2e;
+  --surface-2: #282a36;
+  --surface-3: #313244;
+  --header-bg: rgba(24, 24, 37, 0.90);
+
+  /* Typography */
+  --text: #f8f8f2;
+  --text-muted: #a9b1d6;
+  --text-dim: #6272a4;
+
+  /* Floating Orbs */
+  --orb-1-color: #bd93f9;
+  --orb-2-color: #ff79c6;
+  --orb-3-color: #8be9fd;
+  --orb-opacity: 0.18;
+
+  /* Geometry */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --border-width: 1px;
+  --border-style: solid;
+  --border: rgba(189, 147, 249, 0.30);
+  --border-accent: rgba(255, 121, 198, 0.30);
+  
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 16px 48px rgba(189, 147, 249, 0.35);
+  --shadow-glow: 0 0 40px rgba(189, 147, 249, 0.3);
+  --shadow-red: 0 0 30px rgba(255, 121, 198, 0.25);
+  --glass-blur: blur(24px);
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0);
+}
