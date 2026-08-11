@@ -59,6 +59,15 @@
       path: 'themes/skeumorphism/theme.css'
     },
     {
+      id: 'neumorphism',
+      name: 'Neumorphism',
+      category: 'Neumorphism',
+      designTag: 'EXTRUDE',
+      badgeText: 'SOFT',
+      swatches: ['#006666', '#E7E5E4', '#1E2938'],
+      path: 'themes/neumorphism/theme.css'
+    },
+    {
       id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',

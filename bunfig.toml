@@ -1,0 +1,3 @@
+[build]
+entrypoints = ["./app.js", "./theme-provider.js"]
+outdir = "./dist"

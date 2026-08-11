@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "build": "bun build app.js theme-provider.js --outdir dist && node server.js"
   },
   "keywords": ["node", "proxy", "bis-club"],
   "author": "",
