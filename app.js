@@ -3,8 +3,14 @@
    Direct Google Sheets Integration via Apps Script
    ============================================================ */
 
-// ── 🔗 GOOGLE APPS SCRIPT WEB APP URL ─────────────────────────────────
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6nMkLMFpzGvAcGUL7uh5d5x0AbmIGxzB2YUFxDXrSp22oKJl7YiHUl6SsfRQ5k3MX/exec";
+// ── 🔗 BACKEND PROXY & GOOGLE APPS SCRIPT ENDPOINTS ───────────────────
+// Proxy Server URL (Node.js backend)
+const PROXY_API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3000/api/register'
+  : '/api/register';
+
+// Direct Google Apps Script URL (Fallback if proxy is offline)
+const DIRECT_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6nMkLMFpzGvAcGUL7uh5d5x0AbmIGxzB2YUFxDXrSp22oKJl7YiHUl6SsfRQ5k3MX/exec";
 // ──────────────────────────────────────────────────────────────────────
 
 // ══════════════════════════════════════════════════════════════
@@ -390,21 +396,35 @@ async function submitForm(e) {
   const formData = collectFormData();
 
   try {
-    // Send request to Google Apps Script Web App (Content-Type text/plain avoids CORS preflight issues)
-    const response = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(formData),
-    });
+    let response;
+    let result;
 
-    const result = await response.json();
+    try {
+      // 1. Try Proxy Server first
+      console.log('Attempting submission via Proxy Server...');
+      response = await fetch(PROXY_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      result = await response.json();
+    } catch (proxyErr) {
+      console.warn('Proxy server unavailable, falling back to direct Apps Script submission:', proxyErr);
+      // 2. Fallback to direct Apps Script submission
+      response = await fetch(DIRECT_APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(formData),
+      });
+      result = await response.json();
+    }
 
     if (result.success === true || result.status === 'success' || result.result === 'success') {
       const regId = result.registrationId || result.regId;
       const returnedEvents = result.events || formData.events;
       showSuccessModal(regId, formData.fullName, returnedEvents);
     } else {
-      console.error('Apps Script Error:', result);
+      console.error('Submission Error:', result);
       showErrorAlert(result.message || "Registration could not be completed. Please try again.");
     }
 

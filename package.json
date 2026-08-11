@@ -1,0 +1,13 @@
+{
+  "name": "bis-club-server",
+  "version": "1.0.0",
+  "description": "Ultra-lightweight proxy server for BIS Club Registration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["node", "proxy", "bis-club"],
+  "author": "",
+  "license": "ISC"
+}
