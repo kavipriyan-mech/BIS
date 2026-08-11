@@ -40,6 +40,24 @@ if (!APPS_SCRIPT_URL) {
 }
 
 // ── 2. HELPER FUNCTIONS ──────────────────────────────────────────────
+const MIME_TYPES = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
+  '.webp': 'image/webp',
+  '.md': 'text/markdown; charset=utf-8'
+};
+
 function sendJSON(res, statusCode, data) {
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
@@ -48,6 +66,40 @@ function sendJSON(res, statusCode, data) {
     'Access-Control-Allow-Headers': 'Content-Type, Accept'
   });
   res.end(JSON.stringify(data));
+}
+
+function serveStaticFile(req, res, pathname) {
+  let reqPath = pathname === '/' ? '/index.html' : pathname;
+  // Security check: prevent directory traversal
+  const safePath = path.normalize(reqPath).replace(/^(\.\.[\/\\])+/, '');
+  let filePath = path.join(__dirname, safePath);
+
+  // Ensure filePath stays inside __dirname
+  if (!filePath.startsWith(__dirname)) {
+    return sendJSON(res, 403, { status: 'error', message: 'Forbidden' });
+  }
+
+  // If path points to a directory, try serving index.html within it
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    filePath = path.join(filePath, 'index.html');
+  }
+
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const stat = fs.statSync(filePath);
+    res.writeHead(200, {
+      'Content-Type': contentType,
+      'Content-Length': stat.size,
+      'Access-Control-Allow-Origin': '*'
+    });
+    if (req.method === 'HEAD') {
+      return res.end();
+    }
+    fs.createReadStream(filePath).pipe(res);
+  } else {
+    sendJSON(res, 404, { status: 'error', message: 'File not found' });
+  }
 }
 
 // ── 3. HTTP SERVER ───────────────────────────────────────────────────
@@ -67,7 +119,16 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
   // Health Check Endpoint
-  if (req.method === 'GET' && (url.pathname === '/' || url.pathname === '/health')) {
+  if ((req.method === 'GET' || req.method === 'HEAD') && url.pathname === '/health') {
+    if (req.method === 'HEAD') {
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Accept'
+      });
+      return res.end();
+    }
     return sendJSON(res, 200, {
       status: 'online',
       message: 'BIS Club Proxy Server is running',
@@ -145,7 +206,12 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // 404 Fallback
+  // Serve index.html at root and other static files for GET/HEAD requests
+  if (req.method === 'GET' || req.method === 'HEAD') {
+    return serveStaticFile(req, res, url.pathname);
+  }
+
+  // 404 Fallback for unhandled methods/routes
   return sendJSON(res, 404, { status: 'error', message: 'Endpoint not found.' });
 });
 
