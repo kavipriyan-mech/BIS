@@ -4,6 +4,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.hidden { display: none !important; }
+
 :root {
   /* Default Palette */
   --primary: #003478;
@@ -1214,3 +1216,12 @@ svg.lucide, .lucide {
 .bis-logo-img:hover {
   transform: scale(1.04);
 }
+
+/* Force hidden utility state for modals and overlays */
+.hidden,
+.modal-overlay.hidden,
+.event-modal-overlay.hidden,
+.event-details.hidden {
+  display: none !important;
+}
+

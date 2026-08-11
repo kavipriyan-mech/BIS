@@ -75,6 +75,7 @@ const ALLOWED_ROOT_FILES = new Set([
   'app.js',
   'style.css',
   'theme-provider.js',
+  'lucide.min.js',
   'logo.svg',
   'favicon.ico'
 ]);
@@ -149,9 +150,9 @@ function serveStaticFile(req, res, pathname) {
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
   const isCompressible = /text|javascript|json|svg/.test(contentType);
 
-  // 6. Caching strategy
-  const cacheControl = (ext === '.html')
-    ? 'public, max-age=0, must-revalidate'
+  // 6. Caching strategy (no-cache for html, css, js during development)
+  const cacheControl = (ext === '.html' || ext === '.css' || ext === '.js')
+    ? 'no-cache, must-revalidate'
     : 'public, max-age=86400, stale-while-revalidate=604800';
 
   const headers = {

@@ -68,6 +68,15 @@
       path: 'themes/neumorphism/theme.css'
     },
     {
+      id: 'storytelling',
+      name: 'Storytelling',
+      category: 'Storytelling',
+      designTag: 'NARRATIVE',
+      badgeText: 'STORY',
+      swatches: ['#3B82F6', '#8B5CF6', '#FAFAF7'],
+      path: 'themes/storytelling/theme.css'
+    },
+    {
       id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',
