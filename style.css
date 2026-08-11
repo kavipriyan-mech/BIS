@@ -235,16 +235,19 @@ body {
 
 /* Hero Visual — BIS Triangle Logo */
 .hero-visual {
-  flex: 0 0 auto; width: 480px;
+  flex: 0 0 auto; width: 540px;
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; position: relative;
+  min-height: 440px;
+  perspective: 1000px;
 }
 .bis-logo-big {
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
   position: relative;
+  z-index: 5;
 }
 .bis-triangle-big {
-  width: 240px; height: 210px;
+  width: 320px; height: 280px;
   background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   display: flex; flex-direction: column; align-items: center;
@@ -254,22 +257,22 @@ body {
 }
 @keyframes floatBis {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-14px); }
 }
 .bis-label {
-  font-size: 2.8rem; font-weight: 900; color: #fff;
-  letter-spacing: 4px;
-  margin-top: 60px;
+  font-size: 3.6rem; font-weight: 900; color: #fff;
+  letter-spacing: 5px;
+  margin-top: 80px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 .bis-red-dot {
   position: absolute;
-  width: 36px; height: 36px;
+  width: 48px; height: 48px;
   background: var(--accent);
   border-radius: 50%;
   top: 50%; left: 50%;
   transform: translate(-50%, 20%);
-  box-shadow: 0 0 20px rgba(200,16,46,0.7);
+  box-shadow: 0 0 24px rgba(200,16,46,0.7);
   animation: dotPulse 2s ease-in-out infinite;
 }
 @keyframes dotPulse {
@@ -277,31 +280,85 @@ body {
   50% { box-shadow: 0 0 40px rgba(200,16,46,1); }
 }
 .isi-tagline {
-  font-size: 0.85rem; color: var(--text-muted);
-  letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+  font-size: 0.92rem; color: var(--text-muted);
+  letter-spacing: 4px; text-transform: uppercase; font-weight: 700;
 }
 
-/* Floating event badges */
+/* Saturn Ring Track Line */
+.saturn-ring-line {
+  position: absolute;
+  top: 42%; left: 50%;
+  width: 520px; height: 160px;
+  margin-left: -260px; margin-top: -80px;
+  border: 1.5px dashed var(--border-accent, rgba(200,16,46,0.4));
+  border-radius: 50%;
+  transform: rotate(0deg);
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 25px var(--shadow-glow, rgba(0,52,120,0.2));
+  opacity: 0.45;
+}
+
+/* Floating event badges — 3D Saturn Ring Orbit */
 .float-badge {
   position: absolute;
-  background: rgba(0,52,120,0.25);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,52,120,0.4);
+  top: 42%; left: 50%;
+  margin-left: -70px; margin-top: -18px;
+  background: var(--surface-2, rgba(9,15,30,0.92));
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: var(--border-width, 1px) var(--border-style, solid) var(--border, rgba(0,52,120,0.4));
   color: var(--text); border-radius: 100px;
-  padding: 7px 16px; font-size: 0.78rem; font-weight: 600;
+  padding: 9px 20px; font-size: 0.88rem; font-weight: 700;
   white-space: nowrap;
-  animation: floatBadge var(--dur, 5s) ease-in-out infinite;
+  box-shadow: var(--shadow, 0 4px 20px rgba(0,0,0,0.2));
+  animation: saturnOrbit 60s linear infinite;
   animation-delay: var(--delay, 0s);
+  cursor: pointer;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.fb-1 { top: 10%; left: -20px; --dur: 5.5s; --delay: 0s; }
-.fb-2 { top: 25%; right: -10px; --dur: 6.5s; --delay: -2s; }
-.fb-3 { top: 60%; left: -30px; --dur: 5s; --delay: -1s; }
-.fb-4 { top: 72%; right: -20px; --dur: 6s; --delay: -3s; }
-.fb-5 { bottom: 20%; left: 5%; --dur: 5.5s; --delay: -4s; }
-.fb-6 { bottom: 10%; right: 0%; --dur: 7s; --delay: -1.5s; }
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+.float-badge:hover {
+  animation-play-state: paused;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover, 0 8px 30px rgba(0,0,0,0.3));
+}
+
+.fb-1 { --delay: 0s; }
+.fb-2 { --delay: -10s; }
+.fb-3 { --delay: -20s; }
+.fb-4 { --delay: -30s; }
+.fb-5 { --delay: -40s; }
+.fb-6 { --delay: -50s; }
+
+@keyframes saturnOrbit {
+  0% {
+    transform: translate(260px, 0px) rotate(0deg) scale(1);
+    z-index: 6;
+    opacity: 1;
+  }
+  25% {
+    transform: translate(0px, -75px) rotate(0deg) scale(0.92);
+    z-index: 2;
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-260px, 0px) rotate(0deg) scale(1);
+    z-index: 6;
+    opacity: 1;
+  }
+  75% {
+    transform: translate(0px, 60px) rotate(0deg) scale(1.20);
+    z-index: 12;
+    opacity: 1;
+  }
+  100% {
+    transform: translate(260px, 0px) rotate(0deg) scale(1);
+    z-index: 6;
+    opacity: 1;
+  }
 }
 
 /* ============================================================
