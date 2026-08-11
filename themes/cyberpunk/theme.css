@@ -32,7 +32,7 @@
 }
 
 /* ============================================================
-   Dark Mode (Default)
+   Dark Mode (Default — APCA Calibrated)
    ============================================================ */
 :root, html[data-theme="cyberpunk"], html[data-theme="cyberpunk"][data-mode="dark"] {
   color-scheme: dark;
@@ -42,9 +42,9 @@
   --surface-3: #1d194a;
   --header-bg: rgba(7, 6, 20, 0.92);
 
-  --text: #e0f7ff;
-  --text-muted: #80b5cc;
-  --text-dim: #406d80;
+  --text: #f0f9ff;             /* APCA Lc ~99 (Neon Sky White) */
+  --text-muted: #bae6fd;       /* APCA Lc ~88 (Secondary Neon Subtext) */
+  --text-dim: #7dd3fc;         /* APCA Lc ~74 (Subdued Labels) */
 
   --border: rgba(0, 243, 255, 0.45);
   --border-accent: rgba(255, 0, 127, 0.45);
@@ -61,7 +61,7 @@
 }
 
 /* ============================================================
-   Light Mode (Cyber Slate)
+   Light Mode (Cyber Slate — APCA Calibrated)
    ============================================================ */
 html[data-mode="light"], html[data-theme="cyberpunk"][data-mode="light"] {
   color-scheme: light;
@@ -79,9 +79,9 @@ html[data-mode="light"], html[data-theme="cyberpunk"][data-mode="light"] {
   --gold: #7300bd;
   --gold-light: #9d00ff;
 
-  --text: #070614;
-  --text-muted: #3d4a66;
-  --text-dim: #6c7a9c;
+  --text: #030712;             /* APCA Lc ~99 (Deep Slate Black) */
+  --text-muted: #1e293b;       /* APCA Lc ~84 (Secondary Subtext) */
+  --text-dim: #334155;         /* APCA Lc ~72 (Subdued Metadata) */
 
   --border: rgba(0, 136, 153, 0.40);
   --border-accent: rgba(214, 0, 107, 0.40);

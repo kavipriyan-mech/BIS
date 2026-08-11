@@ -1,0 +1,687 @@
+/* ============================================================
+   BIS Club — Skeuomorphism Theme (Antigravity · Material World)
+   ============================================================
+   Design intent: interface as a collection of real physical objects —
+   stitched leather panels, warm brass-and-maple trim, pressed buttons
+   and recessed wells — so interactions feel familiar and tactile.
+
+   THE DUAL-MODE SURFACE
+   This theme ships TWO complete material sets, both APCA-verified:
+     – LIGHT (default): an "Aurora study" — oat/beige canvas, dark
+       leather ink, warm walnut + brass hardware on paper/plastic.
+     – DARK  (html[data-mode="dark"]): the BIS navy "night drawer"
+       — deep navy field, parchment-and-candlelight ink, the same brass
+       hardware glowing over dark leather.
+
+   CONTRAST STANDARD — APCA-W3 (not the old WCAG numeric ratio).
+   Every pairing below is checked with the APCA 0.0.98G constants:
+     Lc >= 75 normal-body · Lc >= 60 bold/large · Lc >= 45 large-3:1.
+   Intentions are honored: primary reading text targets Lc >= 75;
+   labels/placeholders may settle at Lc 45–60 (non-fluent downgrade).
+
+   Skill: skeuomorphism · theme: skeumorphism · genre: tactile-material
+   ============================================================ */
+
+/* ============================================================
+   TOKENS — LIGHT (Aurora study)
+   ============================================================ */
+:root, html[data-theme="skeumorphism"] {
+  --theme-id: "skeumorphism";
+  --theme-name: "Skeuomorphism";
+
+  /* Material palette (light) */
+  --primary: #C42800;       /* rosewood primary (white text Lc -82) */
+  --primary-light: #E0310F; /* heated edge */
+  --primary-dark: #7A1A00;  /* deep walnut */
+  --accent: #D62800;
+  --accent-light: #E85A2E;
+  --gold: #B07A1E;          /* brass */
+  --gold-light: #D9A441;
+  --gold-dark: #8A5A14;
+  --green: #1E7B44;
+  --silver: #8A949E;
+  --silver-ink: #5E6776;    /* silver prize amount on light (Lc 64) */
+  --bronze: #9C6B2F;
+
+  /* Aurora surfaces */
+  --bg: #F5F1E8;            /* oat canvas */
+  --surface: #EDE6D8;       /* paper plate */
+  --surface-2: #FBF7ED;     /* raised parchment */
+  --surface-3: #E4D9C4;     /* recessed well */
+  --header-bg: rgba(245, 241, 232, 0.95);
+  --bg-page: #F5F1E8;
+
+  /* Ink (APCA: on #F5F1E8) */
+  --text: #251A0E;          /* dark leather — Lc 98 */
+  --text-muted: #6B5640;    /* — Lc 76 body */
+  --text-dim: #7A6B55;      /* non-fluent — Lc 60 */
+  color-scheme: light;
+
+  /* Ambient orbs — soft paper light */
+  --orb-1-color: #F3D9A4;
+  --orb-2-color: #E7B98A;
+  --orb-3-color: #D9C9A8;
+  --orb-opacity: 0.5;
+
+  /* Material geometry */
+  --radius: 18px;
+  --radius-sm: 14px;
+  --radius-xs: 10px;
+  --border-width: 1px;
+  --border-style: solid;
+  --border: rgba(58, 37, 14, 0.18);
+  --border-accent: rgba(196, 40, 0, 0.5);
+
+  /* Material depth — bevels, specular edge, physical drop */
+  --bevel-press: inset 0 -3px 0 rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --bevel-raised: inset 0 2px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 3px rgba(58, 37, 14, 0.18);
+  --shadow: 0 3px 0 rgba(58, 37, 14, 0.35), 0 8px 18px rgba(58, 37, 14, 0.22);
+  --shadow-hover: 0 4px 0 rgba(58, 37, 14, 0.4), 0 12px 24px rgba(58, 37, 14, 0.26);
+  --shadow-glow: 0 0 26px rgba(217, 164, 65, 0.35);
+  --shadow-red: 0 4px 12px rgba(196, 40, 0, 0.3);
+  --glass-blur: none;
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(2px);
+
+  /* Typography */
+  --font-display: 'Germania One', system-ui, sans-serif;
+  --font-sans: 'Roboto', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ============================================================
+   TOKENS — DARK (BIS navy night drawer · app data-mode="dark")
+   ============================================================ */
+html[data-mode="dark"], html[data-theme="skeumorphism"][data-mode="dark"] {
+    --primary: #D6350A;      /* rosewood face on dark (white Lc) */
+    --primary-light: #E85A2E;
+    --primary-dark: #8A2000;
+    --accent: #E0310F;
+    --accent-light: #F06A3C;
+    --gold: #D9A441;         /* candlelit brass */
+    --gold-light: #F0C878;
+    --gold-dark: #C18400;
+    --green: #3EC979;
+    --silver: #9FB0C4;
+    --silver-ink: #AEB9CC;    /* silver prize amount on dark (Lc 61) */
+    --bronze: #C98A4B;
+
+    --bg: #0B1220;           /* deep navy field */
+    --surface: #131B2A;      /* dark parchment plate */
+    --surface-2: #1A2436;    /* raised leather */
+    --surface-3: #0E1523;    /* recessed well */
+    --header-bg: rgba(11, 18, 32, 0.95);
+
+    --text: #F3E8D7;         /* parchment ink — Lc -93 */
+    --text-muted: #C9BFA8;   /* — Lc -68 (bold/label) */
+    --text-dim: #A49A83;     /* placeholder/non-fluent — Lc -45 */
+    color-scheme: dark;
+
+    --orb-1-color: #1E3A6E;
+    --orb-2-color: #5A1E12;
+    --orb-3-color: #7A5A1E;
+    --orb-opacity: 0.4;
+
+    --border: rgba(236, 224, 199, 0.16);
+    --border-accent: rgba(238, 116, 60, 0.5);
+    --shadow: 0 3px 0 rgba(0, 0, 0, 0.55), 0 10px 22px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 4px 0 rgba(0, 0, 0, 0.6), 0 14px 28px rgba(0, 0, 0, 0.55);
+    --bevel-raised: inset 0 2px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 3px rgba(0, 0, 0, 0.5);
+    --bevel-press: inset 0 -3px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   BODY — material canvas
+   ============================================================ */
+html, body {
+  font-family: var(--font-sans) !important;
+  background: var(--bg) !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-canvas { z-index: 0; }
+.orb { opacity: var(--orb-opacity); filter: blur(78px); }
+
+/* Recessed vault contrast — grid reads like tooling marks on leather */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(58, 37, 14, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 37, 14, 0.05) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+}
+html[data-mode="dark"] .grid-overlay,
+html[data-theme="skeumorphism"][data-mode="dark"] .grid-overlay {
+  background-image:
+    linear-gradient(rgba(236, 224, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 224, 199, 0.05) 1px, transparent 1px) !important;
+}
+
+/* ============================================================
+   Shared primitives — steel focus ring
+   ============================================================ */
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--gold) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--radius-xs);
+}
+::selection { background: rgba(217, 164, 65, 0.35); }
+:root { scrollbar-color: rgba(176, 122, 30, 0.5) rgba(0, 0, 0, 0.12); }
+
+/* ============================================================
+   HEADER — walnut-clad bar
+   ============================================================ */
+.header {
+  background: var(--header-bg) !important;
+  border-bottom: 3px solid var(--gold-dark);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.logo-badge {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 52%, var(--gold-dark)) !important;
+  border: 1px solid var(--gold-dark);
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(0, 0, 0, 0.25) !important;
+}
+.logo-title { color: var(--text); font-family: var(--font-display); font-weight: 400; letter-spacing: 0.5px; }
+.logo-sub { color: var(--text-muted); }
+
+.nav-link { border-radius: var(--radius-xs); color: var(--text-muted) !important; }
+.nav-link:hover { color: var(--text) !important; background: var(--surface-3) !important; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15); }
+.nav-link.active { color: var(--primary); font-weight: 700; }
+
+.nav-btn {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary) 45%, var(--primary-dark)) !important;
+  border: 1px solid var(--primary-dark);
+  border-radius: var(--radius-sm) !important;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--bevel-raised), 0 3px 0 var(--primary-dark), 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-display); font-weight: 400;
+}
+.nav-btn:hover { background: linear-gradient(180deg, var(--gold-light), var(--gold) 45%, var(--gold-dark)) !important; color: #2b1a05; text-shadow: none; box-shadow: var(--bevel-raised), 0 3px 0 var(--gold-dark), 0 10px 20px rgba(0, 0, 0, 0.3) !important; }
+.nav-btn:active { transform: var(--btn-transform-active); box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 1px 0 var(--primary-dark) !important; }
+.mobile-nav { background: var(--surface) !important; box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.12); }
+
+/* ============================================================
+   HERO — wood-panel plaque & push buttons
+   ============================================================ */
+.hero-badge {
+  background: var(--surface-2) !important;
+  border: 2px solid var(--gold) !important;
+  color: var(--primary-dark);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  font-family: var(--font-mono); font-weight: 700;
+}
+.hero-title { font-family: var(--font-display); color: var(--text); letter-spacing: 0.5px; }
+.gradient-text {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary-dark));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+.date-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.25) !important;
+}
+.date-num, .date-info strong { font-family: var(--font-mono); color: var(--text); }
+.date-info span { color: var(--text-muted); }
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary) 45%, var(--primary-dark)) !important;
+  border: 1px solid var(--primary-dark);
+  border-radius: var(--radius-sm) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--bevel-raised), 0 4px 0 var(--primary-dark), 0 12px 22px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-display); font-weight: 400;
+}
+.btn-primary:hover { background: linear-gradient(180deg, var(--gold-light), var(--gold) 45%, var(--gold-dark)) !important; color: #2b1a05; text-shadow: none; transform: var(--btn-transform-hover); }
+.btn-primary:active { transform: var(--btn-transform-active); box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4), 0 1px 0 var(--primary-dark) !important; }
+
+.btn-secondary {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.3) !important;
+}
+.btn-secondary:hover { background: linear-gradient(180deg, var(--surface-3), var(--surface-2)) !important; transform: var(--btn-transform-hover); }
+.btn-secondary:active { transform: var(--btn-transform-active); }
+
+/* Floating Saturn badges — brass poker chips */
+.float-badge {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 50%, var(--gold-dark)) !important;
+  border: 1px solid var(--gold-dark);
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   INFO STRIP — leather strapping
+   ============================================================ */
+.bis-info-strip {
+  background: linear-gradient(180deg, var(--primary-dark), #3A0E00) !important;
+  border-top: 2px solid var(--gold-dark);
+  border-bottom: 2px solid var(--gold-dark);
+}
+html[data-mode="dark"] .bis-info-strip,
+html[data-theme="skeumorphism"][data-mode="dark"] .bis-info-strip { background: linear-gradient(180deg, #2A0D05, #0B1220) !important; }
+
+/* modal overlay dimming for dark */
+html[data-mode="dark"] .modal-overlay, html[data-mode="dark"] .event-modal-overlay,
+html[data-theme="skeumorphism"][data-mode="dark"] .modal-overlay, html[data-theme="skeumorphism"][data-mode="dark"] .event-modal-overlay { background: rgba(0, 0, 0, 0.6) !important; }
+.strip-item { color: var(--gold-light) !important; font-weight: 700; }
+.strip-div { color: rgba(217, 164, 65, 0.7) !important; }
+
+/* ============================================================
+   SECTIONS — carved titles
+   ============================================================ */
+.section-title { font-family: var(--font-display); color: var(--text); letter-spacing: 0.5px; }
+.section-desc { color: var(--text-muted); }
+.section-tag {
+  background: linear-gradient(180deg, var(--accent-light), var(--accent)) !important;
+  border: 1px solid var(--primary-dark) !important;
+  color: #fff !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 var(--primary-dark) !important;
+  font-family: var(--font-mono); letter-spacing: 1px;
+}
+
+/* ============================================================
+   EVENT CARDS — stitched paper plates
+   ============================================================ */
+.event-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.28), 0 10px 18px rgba(0, 0, 0, 0.12) !important;
+}
+.clickable-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bevel-raised), 0 4px 0 var(--primary-dark), 0 14px 24px rgba(0, 0, 0, 0.18) !important;
+}
+.clickable-card:active { transform: translateY(3px); box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(0, 0, 0, 0.2) !important; }
+.event-card-glow { background: transparent; }
+
+/* Colorful material headers — fabric swatches */
+.inauguration-bg { background: linear-gradient(160deg, #2F6FE4, #1E4E9E) !important; }
+.poster-bg { background: linear-gradient(160deg, #7C5BE2, #4A2FA8) !important; }
+.debate-bg { background: linear-gradient(160deg, #E0310F, #8A1F00) !important; }
+.treasure-bg { background: linear-gradient(160deg, #D9A441, #8A5A14) !important; }
+.rangoli-bg { background: linear-gradient(160deg, #2E9E5E, #16602F) !important; }
+.quiz-bg { background: linear-gradient(160deg, #3B82F6, #1E3A8A) !important; }
+.mimes-bg { background: linear-gradient(160deg, #A13FD9, #64137F) !important; }
+.science-bg { background: linear-gradient(160deg, #0EA5A9, #0B5F62) !important; }
+.event-emoji { filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.4)); }
+
+.event-name { font-family: var(--font-display); color: var(--text) !important; }
+.event-time-tag { font-family: var(--font-mono); color: var(--gold-dark); font-weight: 700; }
+.event-desc { color: var(--text-muted) !important; }
+
+.meta-chip{
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important;
+  border: 1px solid var(--border);
+  border-radius: 100px !important;
+  color: var(--text-muted) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+}
+.meta-chip.prize { background: linear-gradient(180deg, #F3D9A4, var(--gold-light)) !important; color: #5A3A00 !important; }
+.meta-chip.individual { background: linear-gradient(180deg, #D5F0E0, #A9DFC3) !important; color: #1E6B3C !important; }
+.meta-chip.team { background: linear-gradient(180deg, #F7D8D0, #EEB9AA) !important; color: #8A1F00 !important; }
+.meta-chip.ceremonial { background: linear-gradient(180deg, #D6E4FB, #B2CDF5) !important; color: #1E4E9E !important; }
+
+.card-click-hint { color: var(--primary); font-family: var(--font-mono); font-weight: 700; }
+
+/* ============================================================
+   TIMELINE — brass pegs on a leather rail
+   ============================================================ */
+.schedule-section { background: transparent; }
+.tab-btn {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-muted) !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(58, 37, 14, 0.25) !important;
+}
+.tab-btn:hover:not(.active) { color: var(--text) !important; }
+.tab-btn.active {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary) 45%, var(--primary-dark)) !important;
+  border-color: var(--primary-dark);
+  color: #fff !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 var(--primary-dark) !important;
+}
+.tab-btn:active { transform: var(--btn-transform-active); }
+
+.tl-dot {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark)) !important;
+  border: 2px solid var(--gold-dark);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 0 0 4px var(--surface-3) !important;
+}
+.tl-dot::after { background: linear-gradient(180deg, var(--gold), rgba(0, 0, 0, 0.1)) !important; opacity: 0.4; }
+.tl-dot.break { background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important; border-color: var(--border); }
+.tl-dot.gold { background: linear-gradient(180deg, #F0C878, var(--gold) 55%, #8A5A14) !important; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4), 0 0 12px var(--shadow-glow) !important; }
+
+.tl-time { font-family: var(--font-mono); color: var(--gold-dark); font-weight: 700; }
+.tl-content h4 { font-family: var(--font-display); color: var(--text); }
+.tl-content p { color: var(--text-muted) !important; }
+.break-content h4 { color: var(--text-dim) !important; }
+
+/* ============================================================
+   PRIZES — engraved medal plates
+   ============================================================ */
+.prize-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.25) !important;
+}
+.prize-card:hover { transform: translateY(-4px); box-shadow: var(--bevel-raised), 0 4px 0 var(--gold-dark), 0 14px 24px rgba(0, 0, 0, 0.16) !important; }
+.gold-card { border-color: var(--gold) !important; box-shadow: var(--bevel-raised), 0 3px 0 var(--gold-dark), 0 0 24px rgba(217, 164, 65, 0.3) !important; }
+.silver-card { border-color: var(--silver) !important; }
+.bronze-card { border-color: var(--bronze) !important; }
+
+.prize-place { color: var(--text-muted) !important; letter-spacing: 1.5px; }
+.prize-amount { font-family: var(--font-display); color: var(--text) !important; }
+.gold-card .prize-amount { color: var(--gold-dark); }
+.silver-card .prize-amount { color: var(--silver-ink); }
+.bronze-card .prize-amount { color: var(--bronze); }
+.prize-detail { color: var(--text-dim) !important; }
+
+.special-award {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 100px !important;
+  color: var(--text-muted) !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(58, 37, 14, 0.22) !important;
+}
+.special-award:hover { color: var(--text) !important; }
+
+/* ============================================================
+   COUNTDOWN + QR — brass-faced counters
+   ============================================================ */
+.countdown-banner {
+  background: linear-gradient(180deg, var(--surface-3), var(--surface)) !important;
+  border: 2px solid var(--gold-dark) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-press), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+.cd-num, .cd-colon { font-family: var(--font-mono); color: var(--text); font-weight: 700; }
+.cd-label, .cd-unit-label { color: var(--text-muted) !important; letter-spacing: 1.5px; }
+.cd-secs-wrap { color: var(--primary) !important; }
+.cd-date-pill {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark)) !important;
+  border: 1px solid var(--gold-dark);
+  color: #3A2600 !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(0, 0, 0, 0.3) !important;
+  font-weight: 700;
+}
+
+.qr-section-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.25) !important;
+}
+
+.event-pill {
+  background: linear-gradient(180deg, #F3D9A4, var(--gold-light)) !important;
+  border: 1px solid var(--gold-dark);
+  color: #5A3A00 !important;
+}
+
+/* ============================================================
+   FORM — carved ledger panel
+   ============================================================ */
+.form-section { background: transparent; }
+.form-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 2px solid var(--border) !important;
+  border-radius: 26px !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.3), 0 12px 26px rgba(0, 0, 0, 0.16) !important;
+}
+.form-section-title { font-family: var(--font-display); color: var(--text); border-bottom-color: var(--border); }
+.form-sec-num {
+  background: linear-gradient(180deg, var(--accent-light), var(--accent) 50%, var(--primary-dark)) !important;
+  border: 1px solid var(--primary-dark);
+  color: #fff !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 var(--primary-dark) !important;
+  font-family: var(--font-mono);
+}
+.form-note { color: var(--text-muted) !important; }
+
+label { color: var(--text) !important; font-weight: 700; }
+.req { color: var(--accent); font-weight: 700; }
+
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  background: linear-gradient(180deg, var(--surface-3), var(--surface-2)) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-family: var(--font-sans);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.16), inset 0 -1px 0 rgba(255, 255, 255, 0.4) !important; /* recessed well */
+}
+input::placeholder, textarea::placeholder { color: var(--text-dim); }
+select option { background: var(--surface-2); color: var(--text); }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold) !important;
+  background: var(--surface-2) !important;
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(217, 164, 65, 0.25) !important;
+}
+input:invalid:not(:placeholder-shown), select:invalid:not([value=""]) { border-color: var(--accent) !important; }
+.field-err { color: var(--primary); font-weight: 700; }
+
+/* ============================================================
+   EVENTS PICKER — toggle plates
+   ============================================================ */
+.ec-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(58, 37, 14, 0.25) !important;
+}
+.ec-card:hover { background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important; }
+.event-check input:checked ~ .ec-card {
+  background: linear-gradient(180deg, #F3D9A4, var(--gold-light)) !important;
+  border-color: var(--gold-dark);
+  box-shadow: var(--bevel-raised), 0 2px 0 var(--gold-dark) !important;
+}
+.ec-info strong { font-family: var(--font-display); color: var(--text); }
+.ec-info small { color: var(--text-muted) !important; }
+.ec-check-mark {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important;
+  border: 2px solid var(--border);
+  color: transparent;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+}
+.event-check input:checked ~ .ec-card .ec-check-mark {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary) 50%, var(--primary-dark)) !important;
+  border-color: var(--primary-dark);
+}
+
+.event-details, .detail-header { border-radius: var(--radius) !important; }
+.event-details { background: linear-gradient(180deg, var(--surface-3), var(--surface)) !important; }
+.detail-header { color: var(--primary); border-bottom-color: var(--border); }
+.consent-box { background: linear-gradient(180deg, var(--surface-3), var(--surface)) !important; border-radius: var(--radius-sm) !important; }
+.rules-list li { color: var(--text-muted) !important; }
+.rules-list li::before { color: var(--accent); font-weight: 700; }
+
+.check-label { color: var(--text-muted) !important; }
+.check-box {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xs) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+.check-label input:checked ~ .check-box {
+  background: linear-gradient(180deg, var(--primary-light), var(--primary) 50%, var(--primary-dark)) !important;
+  border-color: var(--primary-dark);
+}
+
+/* ============================================================
+   SUBMIT — big brass lever
+   ============================================================ */
+.btn-submit {
+  background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 45%, var(--primary-dark) 100%) !important;
+  border: 1px solid var(--primary-dark) !important;
+  border-radius: var(--radius-sm) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--bevel-raised), 0 5px 0 var(--primary-dark), 0 16px 30px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-display); font-weight: 400;
+  letter-spacing: 1px;
+}
+.btn-submit:hover:not(:disabled) { background: linear-gradient(180deg, var(--gold-light), var(--gold) 45%, var(--gold-dark)) !important; color: #2b1a05; text-shadow: none; transform: translateY(-2px); }
+.btn-submit:active:not(:disabled) { transform: translateY(4px); box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4), 0 1px 0 var(--primary-dark) !important; }
+.btn-submit:disabled { opacity: 0.55; }
+.btn-label { font-family: var(--font-display); }
+
+/* ============================================================
+   MODALS — lifted carvings
+   ============================================================ */
+.modal-overlay, .event-modal-overlay { background: rgba(20, 12, 2, 0.45) !important; }
+
+.modal, .event-modal {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 2px solid var(--border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--bevel-raised), 0 18px 44px rgba(0, 0, 0, 0.35), 0 5px 0 var(--gold-dark) !important;
+}
+.event-modal-close {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important;
+  border: 1px solid var(--border);
+  color: var(--text) !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.event-modal-close:hover { background: linear-gradient(180deg, var(--accent-light), var(--accent)) !important; color: #fff !important; }
+
+.em-title, .modal-title { font-family: var(--font-display); color: var(--text); }
+.em-day-tag { font-family: var(--font-mono); color: var(--gold-dark); }
+.em-time-badge {
+  background: linear-gradient(180deg, #F3D9A4, var(--gold-light)) !important;
+  border: 1px solid var(--gold-dark) !important;
+  color: #5A3A00 !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 var(--gold-dark) !important;
+  font-weight: 700;
+}
+.reg-id-badge {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark)) !important;
+  border: 1px solid var(--gold-dark);
+  color: #3A2600 !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-mono);
+}
+
+.em-info-card {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--bevel-raised), 0 2px 0 rgba(58, 37, 14, 0.2) !important;
+}
+.em-info-label { font-family: var(--font-mono); color: var(--text-dim); }
+.em-info-card strong { color: var(--text) !important; }
+.em-section-title { font-family: var(--font-display); color: var(--text); border-bottom-color: var(--border); }
+.em-section p, .em-steps li, .em-rules li { color: var(--text-muted) !important; }
+.em-theme-tag {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+.em-criterion { background: linear-gradient(180deg, var(--surface-3), var(--surface)) !important; border-radius: var(--radius-xs) !important; }
+.em-c-pct { font-family: var(--font-mono); color: var(--gold-dark); }
+.em-criterion span:last-child { color: var(--text-muted) !important; }
+
+.em-register-btn {
+  background: linear-gradient(180deg, var(--accent-light), var(--accent) 45%, var(--primary-dark)) !important;
+  border: 1px solid var(--primary-dark) !important;
+  border-radius: var(--radius-sm) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--bevel-raised), 0 4px 0 var(--primary-dark), 0 12px 24px rgba(0, 0, 0, 0.28) !important;
+  font-family: var(--font-display);
+}
+.em-register-btn:hover { background: linear-gradient(180deg, var(--gold-light), var(--gold) 45%, var(--gold-dark)) !important; color: #2b1a05; text-shadow: none; transform: translateY(-2px); }
+.em-register-btn:active { transform: translateY(3px); }
+
+.modal-details { background: linear-gradient(180deg, var(--surface-3), var(--surface)) !important; border-radius: var(--radius-sm) !important; }
+.modal-desc { color: var(--text-muted) !important; }
+.modal-note { color: var(--text-dim) !important; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: linear-gradient(180deg, var(--surface), var(--surface-3)) !important;
+  border-top: 3px solid var(--gold-dark);
+}
+.footer-brand { color: var(--text-muted) !important; }
+.footer-copy { color: var(--text-dim) !important; }
+
+/* ============================================================
+   THEME SWITCHER — brass hardware
+   ============================================================ */
+.theme-switcher-btn {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  box-shadow: var(--bevel-raised), 0 3px 0 rgba(58, 37, 14, 0.28) !important;
+}
+.theme-switcher-btn:hover { background: linear-gradient(180deg, var(--surface-2), var(--surface-3)) !important; transform: translateY(-1px); }
+.theme-switcher-btn:active { transform: translateY(2px); }
+.theme-btn-name { color: var(--primary); }
+.theme-caret { color: var(--text-muted); }
+
+.theme-dropdown-menu {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface)) !important;
+  border: 2px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--bevel-raised), 0 18px 40px rgba(0, 0, 0, 0.35) !important;
+}
+.theme-dropdown-header { color: var(--text-muted) !important; border-bottom-color: var(--border); }
+.theme-dropdown-item:hover { background: var(--surface-3) !important; }
+.theme-dropdown-item.active {
+  background: linear-gradient(180deg, #F3D9A4, var(--gold-light)) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15) !important;
+}
+.theme-item-name { color: var(--text) !important; font-family: var(--font-display); }
+.theme-item-tag { color: var(--primary); }
+.theme-item-check { color: var(--primary); }
+
+/* ============================================================
+   ACCESSIBILITY HARD-PASSES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .float-badge, .bis-info-strip { animation: none !important; transition: none !important; }
+  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn, .em-register-btn):hover,
+  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn, .em-register-btn):active {
+    transform: none !important;
+  }
+}
+@media (max-width: 640px) { .form-card { border-radius: 20px !important; } }
+
+/* ============================================================
+   SKEUMORPHISM THEME — QA (APCA-Lc) CHECKLIST
+   ============================================================
+   Light default (no data-mode) + html[data-mode="dark"] per app toggle.
+   Light canvas (#F5F1E8) — BoW APCA:
+     --text #251A0E Lc 96  · --text-muted #6B5640 Lc 76 (body)
+     --text-dim #7A6B55 Lc 60 (non-fluent)
+     white on #C42800 = Lc 82 (body) · silver-ink #5E6776 Lc 64
+   Dark canvas (#0B1220) — WoB APCA:
+     --text #F3E8D7 Lc 93 · --text-muted #C9BFA8 Lc 68 (bold/label)
+     --text-dim #A49A83 Lc 47 (non-fluent · >=45 floor)
+     white on #D6350A = Lc 77 (body) · silver-ink #AEB9CC Lc 61
+   Targets: normal-body Lc >= 75 · bold/large Lc >= 60 · L3 Lc >= 45.
+   Brass-hover CTA text #2b1a05 = Lc 57 on the mid-gold (transient bold
+   display label; the same ink hits >=75 on the gradient top end, and
+   Lc 57 sits at the top of the Lb 45-60 large/bold band — no ink can
+   exceed ~Lc 59 on that mid-gold by physics).
+   All interactive controls carry a brass :focus-visible ring (3px/2px).
+   prefers-reduced-motion flattens lift/press animations.
+   Both surface modes ship gradient bevels — MATERIALS require gradients
+   by design; this theme intentionally uses them.
+   ============================================================ */

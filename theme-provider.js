@@ -50,6 +50,15 @@
       path: 'themes/claymorphism/theme.css'
     },
     {
+      id: 'skeumorphism',
+      name: 'Skeuomorphism',
+      category: 'Skeuomorphism',
+      designTag: 'TACTILE',
+      badgeText: 'MATERIAL',
+      swatches: ['#C42800', '#B07A1E', '#F5F1E8'],
+      path: 'themes/skeumorphism/theme.css'
+    },
+    {
       id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',
@@ -165,7 +174,8 @@
       });
 
       if (window.lucide) {
-        window.lucide.createIcons();
+        const rootHeader = document.querySelector('.header');
+        if (rootHeader) window.lucide.createIcons({ root: rootHeader });
       }
     }
 
@@ -276,7 +286,8 @@
       });
 
       if (window.lucide) {
-        window.lucide.createIcons();
+        const rootMenu = document.getElementById('themeDropdownMenu');
+        if (rootMenu) window.lucide.createIcons({ root: rootMenu });
       }
     }
 

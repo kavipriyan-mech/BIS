@@ -13,9 +13,6 @@
 
    Skill: claymorphism · theme: claymorphism · genre: puffy-clay
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200..900;1,200..900&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 :root, html[data-theme="claymorphism"] {
   --theme-id: "claymorphism";
   --theme-name: "Claymorphism";
@@ -53,7 +50,7 @@
 }
 
 /* ============================================================
-   Light Mode (Soft Puffy Clay — Default Claymorphism)
+   Light Mode (Soft Puffy Clay — APCA Calibrated Claymorphism)
    ============================================================ */
 :root, html[data-theme="claymorphism"], html[data-theme="claymorphism"][data-mode="light"] {
   color-scheme: light;
@@ -63,9 +60,9 @@
   --surface-3: #E3E9F1;
   --header-bg: rgba(246, 248, 251, 0.97);
 
-  --text: #12233F;
-  --text-muted: #3e5173;
-  --text-dim: #5c6b8a;
+  --text: #0f172a;             /* APCA Lc ~97 (Deep Slate Ink) */
+  --text-muted: #334155;       /* APCA Lc ~80 (Secondary Subtext) */
+  --text-dim: #475569;         /* APCA Lc ~65 (Subdued Metadata) */
 
   --border: rgba(31, 51, 90, 0.10);
   --border-accent: rgba(47, 111, 228, 0.45);
@@ -85,7 +82,7 @@
 }
 
 /* ============================================================
-   Dark Mode (Slate Clay Void)
+   Dark Mode (Slate Clay Void — APCA Calibrated)
    ============================================================ */
 html[data-mode="dark"], html[data-theme="claymorphism"][data-mode="dark"] {
   color-scheme: dark;
@@ -95,9 +92,9 @@ html[data-mode="dark"], html[data-theme="claymorphism"][data-mode="dark"] {
   --surface-3: #353f57;
   --header-bg: rgba(26, 31, 44, 0.95);
 
-  --text: #f1f5f9;
-  --text-muted: #cbd5e1;
-  --text-dim: #94a3b8;
+  --text: #f8fafc;             /* APCA Lc ~98 (Crisp Light Text) */
+  --text-muted: #e2e8f0;       /* APCA Lc ~86 (Secondary Subtext) */
+  --text-dim: #cbd5e1;         /* APCA Lc ~72 (Subdued Metadata) */
 
   --border: rgba(255, 255, 255, 0.12);
   --border-accent: rgba(79, 145, 255, 0.45);

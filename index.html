@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BIS Club — 2-Day Standards Awareness Event | Registration</title>
   <meta name="description" content="Register for the BIS Club 2-Day Standards Awareness Event on 9th & 10th September. Participate in Poster Making, Debate, Treasure Hunt, Rangoli, Quiz, Mimes, and more!" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest" defer></script>
   <link rel="stylesheet" href="style.css" />
   <link id="theme-stylesheet" rel="stylesheet" href="themes/glassmorphism/theme.css" />
   <script>
@@ -411,18 +413,6 @@
         <span class="cd-date-pill"><i data-lucide="calendar"></i> 9 &amp; 10 September 2026</span>
       </div>
 
-      <!-- Scan to Register QR Section -->
-      <div class="qr-section-card" style="margin-bottom: 40px;">
-        <div class="qr-box">
-          <img src="qr.png" alt="Scan to Register" class="qr-img" />
-        </div>
-        <div class="qr-info">
-          <span class="qr-tag"><i data-lucide="qr-code"></i> Scan to Register</span>
-          <h3 class="qr-title">Instant Mobile Registration</h3>
-          <p class="qr-desc">Scan this QR code with your smartphone camera to quickly access the BIS Club Registration form directly on your mobile device.</p>
-        </div>
-      </div>
-
       <div class="section-header">
         <span class="section-tag">Direct Registration</span>
         <h2 class="section-title">Registration Form</h2>
@@ -768,11 +758,11 @@
 
   <!-- Error Modal -->
   <div class="modal-overlay hidden" id="errorModal">
-    <div class="modal" style="border-color: rgba(200,16,46,0.4);">
-      <div class="modal-icon"><i data-lucide="alert-triangle" class="modal-icon-svg"></i></div>
-      <h2 class="modal-title" style="color: #ff6680;">Registration Error</h2>
+    <div class="modal" style="border-color: var(--border-accent);">
+      <div class="modal-icon"><i data-lucide="alert-triangle"></i></div>
+      <h2 class="modal-title" style="color: var(--accent);">Registration Error</h2>
       <p class="modal-desc" id="errorModalMessage">Registration could not be completed. Please try again.</p>
-      <button class="btn-primary" onclick="closeErrorModal()" style="margin-top:24px; width:100%; justify-content:center; background: linear-gradient(135deg, #c8102e, #8b0000);">Close</button>
+      <button class="btn-primary" onclick="closeErrorModal()" style="margin-top:24px; width:100%; justify-content:center; background: var(--accent);">Close</button>
     </div>
   </div>
 

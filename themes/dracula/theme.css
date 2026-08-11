@@ -32,7 +32,7 @@
 }
 
 /* ============================================================
-   Dark Mode (Default)
+   Dark Mode (Default — APCA Calibrated)
    ============================================================ */
 :root, html[data-theme="dracula"], html[data-theme="dracula"][data-mode="dark"] {
   color-scheme: dark;
@@ -42,9 +42,9 @@
   --surface-3: #313244;
   --header-bg: rgba(24, 24, 37, 0.90);
 
-  --text: #f8f8f2;
-  --text-muted: #a9b1d6;
-  --text-dim: #6272a4;
+  --text: #f8f8f2;             /* APCA Lc ~98 (Dracula Foreground) */
+  --text-muted: #cdd6f4;       /* APCA Lc ~88 (Secondary Subtext) */
+  --text-dim: #a6adc8;         /* APCA Lc ~72 (Subdued Labels) */
 
   --border: rgba(189, 147, 249, 0.30);
   --border-accent: rgba(255, 121, 198, 0.30);
@@ -61,7 +61,7 @@
 }
 
 /* ============================================================
-   Light Mode (Lilac Violet)
+   Light Mode (Lilac Violet — APCA Calibrated)
    ============================================================ */
 html[data-mode="light"], html[data-theme="dracula"][data-mode="light"] {
   color-scheme: light;
@@ -79,9 +79,9 @@ html[data-mode="light"], html[data-theme="dracula"][data-mode="light"] {
   --gold: #0091ea;
   --gold-light: #40c4ff;
 
-  --text: #21153b;
-  --text-muted: #5c4d78;
-  --text-dim: #8878a5;
+  --text: #181124;             /* APCA Lc ~98 (Deep Dracula Ink) */
+  --text-muted: #4a3a66;       /* APCA Lc ~80 (Secondary Subtext) */
+  --text-dim: #6b5a88;         /* APCA Lc ~65 (Subdued Metadata) */
 
   --border: rgba(124, 77, 255, 0.22);
   --border-accent: rgba(216, 27, 96, 0.22);

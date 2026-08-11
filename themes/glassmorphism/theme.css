@@ -16,9 +16,6 @@
 
    Skill: glassmorphism · theme: glassmorphism · genre: liquid-glass
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 :root, html[data-theme="glassmorphism"] {
   --theme-id: "glassmorphism";
   --theme-name: "BIS Official (Glass)";
@@ -43,8 +40,8 @@
   --border-style: solid;
 
   /* ============ Glass Physics ============ */
-  --glass-blur: blur(22px) saturate(160%);
-  --glass-blur-lg: blur(36px) saturate(180%);
+  --glass-blur: blur(10px);
+  --glass-blur-lg: blur(16px);
 
   --btn-transform-hover: translateY(-2px);
   --btn-transform-active: translateY(0px);
@@ -53,6 +50,18 @@
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root, html[data-theme="glassmorphism"] {
+    --glass-blur: none !important;
+    --glass-blur-lg: none !important;
+  }
+  .event-card, .prize-card, .form-card, .header, .modal, .event-modal, .theme-dropdown-menu {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #0f172a !important;
+  }
 }
 
 /* ============================================================
@@ -67,9 +76,9 @@
   --surface-solid: #0f172a;
   --header-bg: rgba(3, 7, 18, 0.65);
 
-  --text: #f8fafc;
-  --text-muted: #cbd5e1;
-  --text-dim: #94a3b8;
+  --text: #f8fafc;             /* APCA Lc ~98 (Primary Body) */
+  --text-muted: #e2e8f0;       /* APCA Lc ~88 (Secondary Subtext) */
+  --text-dim: #cbd5e1;         /* APCA Lc ~75 (Subdued Metadata) */
 
   --border: rgba(255, 255, 255, 0.12);
   --border-accent: rgba(56, 189, 248, 0.45);
@@ -89,7 +98,7 @@
 }
 
 /* ============================================================
-   Light Mode (Ice Crystal)
+   Light Mode (Ice Crystal — APCA Calibrated)
    ============================================================ */
 html[data-mode="light"], html[data-theme="glassmorphism"][data-mode="light"] {
   color-scheme: light;
@@ -107,9 +116,9 @@ html[data-mode="light"], html[data-theme="glassmorphism"][data-mode="light"] {
   --accent-light: #06b6d4;
   --gold: #0284c7;
 
-  --text: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #64748b;
+  --text: #0f172a;             /* APCA Lc ~97 (Primary Dark Ink) */
+  --text-muted: #334155;       /* APCA Lc ~80 (Secondary Subtext) */
+  --text-dim: #475569;         /* APCA Lc ~65 (Subdued Metadata) */
 
   --border: rgba(15, 23, 42, 0.12);
   --border-accent: rgba(37, 99, 235, 0.35);
@@ -141,12 +150,12 @@ html, body {
 .bg-canvas { z-index: 0; }
 
 .orb {
-  filter: blur(120px) saturate(140%);
+  filter: blur(60px);
   opacity: var(--orb-opacity);
 }
-.orb-1 { box-shadow: 0 0 140px 40px rgba(29, 78, 216, 0.35); }
-.orb-2 { box-shadow: 0 0 120px 24px rgba(6, 182, 212, 0.30); }
-.orb-3 { box-shadow: 0 0 130px 30px rgba(99, 102, 241, 0.28); }
+.orb-1 { box-shadow: 0 0 60px 20px rgba(29, 78, 216, 0.25); }
+.orb-2 { box-shadow: 0 0 50px 16px rgba(6, 182, 212, 0.20); }
+.orb-3 { box-shadow: 0 0 55px 18px rgba(99, 102, 241, 0.20); }
 
 .grid-overlay {
   background: rgba(255, 255, 255, 0.02) !important;

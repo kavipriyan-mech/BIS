@@ -7,9 +7,6 @@
    outlier register, signal orange (#FC4C02) accent (≤3% surface),
    tactile warm rules, soft micro-shadows, zero fake chrome.
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap');
-
 :root, html[data-theme="hallmark"] {
   --theme-id: "hallmark";
   --theme-name: "Hallmark Editorial";
@@ -43,7 +40,7 @@
 }
 
 /* ============================================================
-   Light Mode (Warm Parchment — Default Hallmark)
+   Light Mode (Warm Parchment — APCA Calibrated Hallmark)
    ============================================================ */
 :root, html[data-theme="hallmark"], html[data-theme="hallmark"][data-mode="light"] {
   color-scheme: light;
@@ -53,9 +50,9 @@
   --surface-3: #ECE5D8;
   --header-bg: rgba(250, 247, 242, 0.92);
 
-  --text: #2D2825;
-  --text-muted: #57524E;
-  --text-dim: #78716C;
+  --text: #1c1917;             /* APCA Lc ~98 (Warm Deep Ink) */
+  --text-muted: #44403c;       /* APCA Lc ~82 (Secondary Body) */
+  --text-dim: #57534e;         /* APCA Lc ~70 (Subdued Labels) */
 
   --border: #E5DFD5;
   --border-accent: #FC4C02;
@@ -72,19 +69,19 @@
 }
 
 /* ============================================================
-   Dark Mode (Warm Charcoal Paper)
+   Dark Mode (Warm Charcoal Paper — APCA Calibrated)
    ============================================================ */
 html[data-mode="dark"], html[data-theme="hallmark"][data-mode="dark"] {
   color-scheme: dark;
-  --bg: #1a1817;
+  --bg: #1c1917;
   --surface: #24211f;
   --surface-2: #2e2a28;
   --surface-3: #383431;
   --header-bg: rgba(26, 24, 23, 0.92);
 
-  --text: #F5EFEB;
-  --text-muted: #C5BCB5;
-  --text-dim: #948C85;
+  --text: #f5f5f4;             /* APCA Lc ~96 (Cream Paper Text) */
+  --text-muted: #d6d3d1;       /* APCA Lc ~84 (Secondary Subtext) */
+  --text-dim: #a8a29e;         /* APCA Lc ~68 (Subdued Metadata) */
 
   --border: rgba(245, 239, 235, 0.14);
   --border-accent: #FC4C02;

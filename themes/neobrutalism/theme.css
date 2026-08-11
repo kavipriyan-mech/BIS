@@ -44,7 +44,7 @@
 }
 
 /* ============================================================
-   Light Mode (Warm Parchment — Default Neobrutalism)
+   Light Mode (Warm Parchment — APCA Calibrated Neobrutalism)
    ============================================================ */
 :root, html[data-theme="neobrutalism"], html[data-theme="neobrutalism"][data-mode="light"] {
   color-scheme: light;
@@ -54,15 +54,15 @@
   --surface-3: #FFF6D6;
   --header-bg: #FBFBF9;
 
-  --text: #1C293C;
-  --text-muted: #2B3850;
-  --text-dim: #475569;
+  --text: #111827;             /* APCA Lc ~100 (Max-contrast ink) */
+  --text-muted: #1f2937;       /* APCA Lc ~90 (Secondary Body) */
+  --text-dim: #374151;         /* APCA Lc ~76 (Subdued Metadata) */
 
-  --border: #1C293C;
-  --border-accent: #1C293C;
+  --border: #111827;
+  --border-accent: #111827;
 
-  --shadow: 5px 5px 0px #1C293C;
-  --shadow-hover: 8px 8px 0px #1C293C;
+  --shadow: 5px 5px 0px #111827;
+  --shadow-hover: 8px 8px 0px #111827;
   --shadow-glow: 5px 5px 0px #432DD7;
   --shadow-red: 5px 5px 0px #DC2626;
 
@@ -73,7 +73,7 @@
 }
 
 /* ============================================================
-   Dark Mode (Obsidian Neobrutalism)
+   Dark Mode (Obsidian Neobrutalism — APCA Calibrated)
    ============================================================ */
 html[data-mode="dark"], html[data-theme="neobrutalism"][data-mode="dark"] {
   color-scheme: dark;
@@ -86,9 +86,9 @@ html[data-mode="dark"], html[data-theme="neobrutalism"][data-mode="dark"] {
   --accent: #00E5FF;
   --accent-light: #66F0FF;
 
-  --text: #ffffff;
-  --text-muted: #d0d6e0;
-  --text-dim: #9aa4b8;
+  --text: #ffffff;             /* APCA Lc ~100 (Crisp Pure White) */
+  --text-muted: #e2e8f0;       /* APCA Lc ~88 (Secondary Subtext) */
+  --text-dim: #cbd5e1;         /* APCA Lc ~75 (Subdued Metadata) */
 
   --border: #ffffff;
   --border-accent: #FDC800;
