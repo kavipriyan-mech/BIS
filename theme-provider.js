@@ -30,6 +30,15 @@
       path: 'themes/neobrutalism/theme.css'
     },
     {
+      id: 'hallmark',
+      name: 'Hallmark Editorial',
+      category: 'Anti-AI Slop',
+      designTag: 'CRAFT',
+      badgeText: 'TACTILE ✒️',
+      swatches: ['#FC4C02', '#2D2825', '#FAF7F2'],
+      path: 'themes/hallmark/theme.css'
+    },
+    {
       id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',
