@@ -100,16 +100,20 @@ body {
 }
 .logo-group { display: flex; align-items: center; gap: 14px; }
 .logo-badge {
-  width: 48px; height: 48px;
+  width: 44px; height: 44px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 900; letter-spacing: 1px; color: #fff;
+  padding: 6px;
   position: relative; overflow: hidden;
 }
-.logo-badge .bis-triangle { font-size: 1.4rem; color: #fff; }
-.logo-badge .bis-dot-inner { position: absolute; bottom: 8px; right: 8px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
-.logo-badge.small { width: 34px; height: 34px; border-radius: 8px; font-size: 0.55rem; }
+.topbar-logo-img {
+  width: 100%; height: auto;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.logo-badge.small { width: 34px; height: 34px; border-radius: 8px; padding: 4px; }
 
 .logo-text { display: flex; flex-direction: column; gap: 1px; }
 .logo-title { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
@@ -246,38 +250,17 @@ body {
   position: relative;
   z-index: 5;
 }
-.bis-triangle-big {
-  width: 320px; height: 280px;
-  background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; position: relative;
-  filter: drop-shadow(0 8px 32px rgba(0,52,120,0.5));
+.bis-logo-img {
+  width: 330px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(0,52,120,0.4));
   animation: floatBis 6s ease-in-out infinite;
 }
 @keyframes floatBis {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
-}
-.bis-label {
-  font-size: 3.6rem; font-weight: 900; color: #fff;
-  letter-spacing: 5px;
-  margin-top: 80px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-.bis-red-dot {
-  position: absolute;
-  width: 48px; height: 48px;
-  background: var(--accent);
-  border-radius: 50%;
-  top: 50%; left: 50%;
-  transform: translate(-50%, 20%);
-  box-shadow: 0 0 24px rgba(200,16,46,0.7);
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(200,16,46,0.7); }
-  50% { box-shadow: 0 0 40px rgba(200,16,46,1); }
 }
 .isi-tagline {
   font-size: 0.92rem; color: var(--text-muted);

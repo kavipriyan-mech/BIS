@@ -108,11 +108,9 @@ html, body {
 .logo-badge {
   border: 1px solid #2D2825 !important;
   background: #2D2825 !important;
-  color: #FAF7F2 !important;
-  border-radius: 6px !important;
+  border-radius: 8px !important;
+  padding: 6px !important;
 }
-.logo-badge .bis-triangle { color: #FC4C02 !important; }
-.logo-badge .bis-dot-inner { background: #FAF7F2 !important; }
 
 .logo-title {
   font-family: var(--font-display) !important;
@@ -215,20 +213,9 @@ html, body {
 }
 .date-divider { color: #E5DFD5 !important; }
 
-/* Hero visual — BIS triangle */
-.bis-triangle-big {
-  background: #2D2825 !important;
+/* Hero visual — BIS logo SVG */
+.bis-logo-img {
   filter: drop-shadow(0 10px 25px rgba(45, 40, 37, 0.15)) !important;
-}
-.bis-label {
-  font-family: var(--font-display) !important;
-  color: #FAF7F2 !important;
-  text-shadow: none !important;
-}
-.bis-red-dot {
-  background: #FC4C02 !important;
-  border: 2px solid #FAF7F2 !important;
-  animation: none !important;
 }
 .isi-tagline {
   font-family: var(--font-mono) !important;
