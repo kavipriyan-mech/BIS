@@ -27,7 +27,7 @@
       name: 'Neobrutalism',
       category: 'Neobrutalism',
       designTag: 'BRUTAL',
-      badgeText: 'FEATURED ⚡',
+      badgeText: 'FEATURED',
       swatches: ['#FDC800', '#432DD7', '#1C293C'],
       path: 'themes/neobrutalism/theme.css'
     },
@@ -36,7 +36,7 @@
       name: 'Hallmark Editorial',
       category: 'Anti-AI Slop',
       designTag: 'CRAFT',
-      badgeText: 'TACTILE ✒️',
+      badgeText: 'TACTILE',
       swatches: ['#FC4C02', '#2D2825', '#FAF7F2'],
       path: 'themes/hallmark/theme.css'
     },
@@ -45,7 +45,7 @@
       name: 'Claymorphism',
       category: 'Claymorphism',
       designTag: 'PUFFY',
-      badgeText: 'CLAY 🧸',
+      badgeText: 'CLAY',
       swatches: ['#2F6FE4', '#B22A3D', '#EEF1F5'],
       path: 'themes/claymorphism/theme.css'
     },
@@ -63,7 +63,7 @@
       name: 'Dracula Violet',
       category: 'Dark Mode',
       designTag: 'DRACULA',
-      badgeText: 'POPULAR 🧛',
+      badgeText: 'POPULAR',
       swatches: ['#bd93f9', '#ff79c6', '#181825'],
       path: 'themes/dracula/theme.css'
     }
@@ -146,12 +146,12 @@
         const iconEl = btn.querySelector('.mode-icon');
         const labelEl = btn.querySelector('.mode-label');
         if (validMode === 'light') {
-          if (iconEl) iconEl.textContent = '☀️';
+          if (iconEl) iconEl.innerHTML = '<i data-lucide="sun"></i>';
           if (labelEl) labelEl.textContent = 'Light';
           btn.setAttribute('title', 'Switch to Dark Mode');
           btn.setAttribute('aria-label', 'Switch to Dark Mode');
         } else {
-          if (iconEl) iconEl.textContent = '🌙';
+          if (iconEl) iconEl.innerHTML = '<i data-lucide="moon"></i>';
           if (labelEl) labelEl.textContent = 'Dark';
           btn.setAttribute('title', 'Switch to Light Mode');
           btn.setAttribute('aria-label', 'Switch to Light Mode');
@@ -163,6 +163,10 @@
         const val = btn.getAttribute('data-mode-val');
         btn.classList.toggle('active', val === validMode);
       });
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     }
 
     setMode(mode) {
@@ -226,8 +230,8 @@
             <div class="theme-dropdown-header">
               <span>Theme System</span>
               <div class="theme-mode-segmented-control" role="radiogroup" aria-label="Appearance Mode">
-                <button type="button" class="mode-seg-btn ${this.currentMode === 'light' ? 'active' : ''}" data-mode-val="light" title="Light Mode">☀️ Light</button>
-                <button type="button" class="mode-seg-btn ${this.currentMode === 'dark' ? 'active' : ''}" data-mode-val="dark" title="Dark Mode">🌙 Dark</button>
+                <button type="button" class="mode-seg-btn ${this.currentMode === 'light' ? 'active' : ''}" data-mode-val="light" title="Light Mode"><i data-lucide="sun"></i> Light</button>
+                <button type="button" class="mode-seg-btn ${this.currentMode === 'dark' ? 'active' : ''}" data-mode-val="dark" title="Dark Mode"><i data-lucide="moon"></i> Dark</button>
               </div>
             </div>
             <div class="theme-dropdown-list" id="themeDropdownList">
@@ -257,7 +261,7 @@
             </div>
             <div class="theme-item-right">
               <div class="theme-drop-swatches">${swatchesHtml}</div>
-              <span class="theme-item-check">${isActive ? '✓' : ''}</span>
+              <span class="theme-item-check">${isActive ? '<i data-lucide="check"></i>' : ''}</span>
             </div>
           </button>
         `;
@@ -270,6 +274,10 @@
           this.setTheme(id);
         });
       });
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
     }
 
     bindEvents() {

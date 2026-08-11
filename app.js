@@ -327,7 +327,7 @@ function showSuccessModal(regId, name, events) {
   const detailsEl = document.getElementById('modalDetails');
   const eventsList = Array.isArray(events) ? events : [events];
   
-  const eventsPills = eventsList.map(ev => `<span class="event-pill">✓ ${ev}</span>`).join(' ');
+  const eventsPills = eventsList.map(ev => `<span class="event-pill"><i data-lucide="check"></i> ${ev}</span>`).join(' ');
 
   detailsEl.innerHTML = `
     <div style="margin-bottom:14px; text-align:center;">
@@ -336,7 +336,7 @@ function showSuccessModal(regId, name, events) {
     </div>
     <div style="margin-bottom:12px;">
       <span style="font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;font-weight:700;letter-spacing:1px;">Registered Name</span><br/>
-      <span style="color:#fff;font-weight:700;font-size:1.05rem;">${name}</span>
+      <span style="color:var(--text);font-weight:700;font-size:1.05rem;">${name}</span>
     </div>
     <div>
       <span style="font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;font-weight:700;letter-spacing:1px;">Registered Events</span><br/>
@@ -345,6 +345,9 @@ function showSuccessModal(regId, name, events) {
   `;
   document.getElementById('successModal').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 function showErrorAlert(message) {
