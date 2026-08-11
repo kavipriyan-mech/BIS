@@ -1,0 +1,474 @@
+/* ============================================================
+   BIS Club — Global Contrast Compliance Layer (WCAG AA 4.5:1)
+   Loaded AFTER the active theme stylesheet so these override it.
+   Guarantees every small colored text element across the site —
+   chips, tags, badges, pills, labels, hints, dates, prizegrams —
+   meets AA contrast in every theme, in both light and dark mode.
+   ============================================================ */
+
+/* ---- AA-safe ink tokens per theme + mode ---- */
+html[data-theme="glassmorphism"][data-mode="light"] {
+  --ink-gold: #0072b5;
+  --ink-accent: #0072b5;
+  --ink-primary-light: #236ade;
+  --ink-primary: #2563eb;
+  --ink-green: #007f45;
+  --ink-silver: #617085;
+  --ink-bronze: #5a65d1;
+  --ink-accent-light: #007795;
+}
+
+html[data-theme="glassmorphism"][data-mode="dark"] {
+  --ink-gold: #38bdf8;
+  --ink-accent: #06b6d4;
+  --ink-primary-light: #60a5fa;
+  --ink-primary: #3b82f6;
+  --ink-green: #34d399;
+  --ink-silver: #94a3b8;
+  --ink-bronze: #818cf8;
+  --ink-accent-light: #67e8f9;
+}
+
+html[data-theme="neobrutalism"][data-mode="light"] {
+  --ink-gold: #976200;
+  --ink-accent: #432DD7;
+  --ink-primary-light: #876800;
+  --ink-primary: #976200;
+  --ink-green: #127d3a;
+  --ink-silver: #475569;
+  --ink-bronze: #b15006;
+  --ink-accent-light: #6352E8;
+}
+
+html[data-theme="neobrutalism"][data-mode="dark"] {
+  --ink-gold: #FDC800;
+  --ink-accent: #00E5FF;
+  --ink-primary-light: #FFE066;
+  --ink-primary: #FDC800;
+  --ink-green: #3faa67;
+  --ink-silver: #8c9aae;
+  --ink-bronze: #e18036;
+  --ink-accent-light: #66F0FF;
+}
+
+html[data-theme="hallmark"][data-mode="light"] {
+  --ink-gold: #a94700;
+  --ink-accent: #c91900;
+  --ink-primary-light: #c02d00;
+  --ink-primary: #c91900;
+  --ink-green: #0c7734;
+  --ink-silver: #6c6560;
+  --ink-bronze: #ab4a00;
+  --ink-accent-light: #ba3600;
+}
+
+html[data-theme="hallmark"][data-mode="dark"] {
+  --ink-gold: #e88615;
+  --ink-accent: #ff7329;
+  --ink-primary-light: #ff7234;
+  --ink-primary: #ff7329;
+  --ink-green: #45b06d;
+  --ink-silver: #a59e99;
+  --ink-bronze: #e7863c;
+  --ink-accent-light: #FF7B42;
+}
+
+html[data-theme="claymorphism"][data-mode="light"] {
+  --ink-gold: #9c5500;
+  --ink-accent: #b22a3d;
+  --ink-primary-light: #2762d3;
+  --ink-primary: #2060d5;
+  --ink-green: #007920;
+  --ink-silver: #5d6976;
+  --ink-bronze: #a25418;
+  --ink-accent-light: #b92e41;
+}
+
+html[data-theme="claymorphism"][data-mode="dark"] {
+  --ink-gold: #e7a000;
+  --ink-accent: #ff879a;
+  --ink-primary-light: #72adff;
+  --ink-primary: #6eaeff;
+  --ink-green: #37c46b;
+  --ink-silver: #a2aebb;
+  --ink-bronze: #e7995d;
+  --ink-accent-light: #ff8598;
+}
+
+html[data-theme="skeumorphism"][data-mode="light"] {
+  --ink-gold: #895300;
+  --ink-accent: #be1000;
+  --ink-primary-light: #bf1000;
+  --ink-primary: #bb1f00;
+  --ink-green: #0f6c35;
+  --ink-silver: #57616b;
+  --ink-bronze: #845317;
+  --ink-accent-light: #b52700;
+}
+
+html[data-theme="skeumorphism"][data-mode="dark"] {
+  --ink-gold: #D9A441;
+  --ink-accent: #fb4c2a;
+  --ink-primary-light: #eb5d31;
+  --ink-primary: #f45328;
+  --ink-green: #3EC979;
+  --ink-silver: #9FB0C4;
+  --ink-bronze: #C98A4B;
+  --ink-accent-light: #F06A3C;
+}
+
+html[data-theme="neumorphism"][data-mode="light"] {
+  --ink-gold: #875700;
+  --ink-accent: #006666;
+  --ink-primary-light: #006b6b;
+  --ink-primary: #006666;
+  --ink-green: #007132;
+  --ink-silver: #59626e;
+  --ink-bronze: #81590b;
+  --ink-accent-light: #006b6b;
+}
+
+html[data-theme="neumorphism"][data-mode="dark"] {
+  --ink-gold: #D9A73C;
+  --ink-accent: #20d0c8;
+  --ink-primary-light: #34e0d6;
+  --ink-primary: #20d0c8;
+  --ink-green: #22c573;
+  --ink-silver: #AEB3BE;
+  --ink-bronze: #C98A4B;
+  --ink-accent-light: #34e0d6;
+}
+
+html[data-theme="storytelling"][data-mode="light"] {
+  --ink-gold: #B45309;
+  --ink-accent: #1D4ED8;
+  --ink-primary-light: #236ade;
+  --ink-primary: #1D4ED8;
+  --ink-green: #166534;
+  --ink-silver: #686f7d;
+  --ink-bronze: #92400E;
+  --ink-accent-light: #1D4ED8;
+}
+
+html[data-theme="storytelling"][data-mode="dark"] {
+  --ink-gold: #FBBF24;
+  --ink-accent: #7CB8FF;
+  --ink-primary-light: #9FC8FF;
+  --ink-primary: #7CB8FF;
+  --ink-green: #4ADE80;
+  --ink-silver: #C6CBD4;
+  --ink-bronze: #E0A96D;
+  --ink-accent-light: #7CB8FF;
+}
+
+html[data-theme="cyberpunk"][data-mode="light"] {
+  --ink-gold: #7300bd;
+  --ink-accent: #c7005c;
+  --ink-primary-light: #006d81;
+  --ink-primary: #006d7e;
+  --ink-green: #007500;
+  --ink-silver: #536488;
+  --ink-bronze: #b43d00;
+  --ink-accent-light: #c90056;
+}
+
+html[data-theme="cyberpunk"][data-mode="dark"] {
+  --ink-gold: #d639ff;
+  --ink-accent: #ff1897;
+  --ink-primary-light: #66f7ff;
+  --ink-primary: #00f3ff;
+  --ink-green: #00ff66;
+  --ink-silver: #8fa0c4;
+  --ink-bronze: #ff8800;
+  --ink-accent-light: #ff4da6;
+}
+
+html[data-theme="dracula"][data-mode="light"] {
+  --ink-gold: #0067c0;
+  --ink-accent: #cc0f54;
+  --ink-primary-light: #7746de;
+  --ink-primary: #7041f3;
+  --ink-green: #007900;
+  --ink-silver: #566698;
+  --ink-bronze: #9c5509;
+  --ink-accent-light: #cc0d4e;
+}
+
+html[data-theme="dracula"][data-mode="dark"] {
+  --ink-gold: #8be9fd;
+  --ink-accent: #ff79c6;
+  --ink-primary-light: #d6b4fe;
+  --ink-primary: #bd93f9;
+  --ink-green: #50fa7b;
+  --ink-silver: #8c9cce;
+  --ink-bronze: #ffb86c;
+  --ink-accent-light: #ffa3d7;
+}
+
+/* ---- Small colored text -> AA ink (only where the base fails) ---- */
+/* glassmorphism · light */
+html[data-theme="glassmorphism"][data-mode="light"] .meta-chip.prize { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .meta-chip.individual { color: var(--ink-green) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .meta-chip.team { color: var(--ink-silver) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .meta-chip.ceremonial { color: var(--ink-accent-light) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .section-tag { color: var(--ink-accent-light) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .event-time-tag { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .cd-date-pill { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .event-pill { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .em-time-badge { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .em-day-tag { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .theme-item-tag { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .theme-btn-name { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .card-click-hint { color: var(--ink-primary-light) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .date-num { color: var(--ink-gold) !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .date-divider { color: var(--ink-accent) !important; }
+
+/* neobrutalism · light */
+html[data-theme="neobrutalism"][data-mode="light"] .bronze-card .prize-amount { color: var(--ink-bronze) !important; }
+
+/* neobrutalism · dark */
+html[data-theme="neobrutalism"][data-mode="dark"] .date-divider { color: var(--ink-accent) !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .theme-item-tag { color: var(--ink-accent) !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .card-click-hint { color: var(--ink-accent) !important; }
+
+/* hallmark · light */
+html[data-theme="hallmark"][data-mode="light"] .section-tag { color: var(--ink-accent) !important; }
+html[data-theme="hallmark"][data-mode="light"] .event-time-tag { color: var(--ink-accent) !important; }
+html[data-theme="hallmark"][data-mode="light"] .card-click-hint { color: var(--ink-accent) !important; }
+html[data-theme="hallmark"][data-mode="light"] .em-day-tag { color: var(--ink-accent) !important; }
+html[data-theme="hallmark"][data-mode="light"] .theme-item-tag { color: var(--ink-accent) !important; }
+html[data-theme="hallmark"][data-mode="light"] .date-num { color: var(--ink-accent) !important; }
+
+/* claymorphism · light */
+html[data-theme="claymorphism"][data-mode="light"] .card-click-hint { color: var(--ink-primary) !important; }
+html[data-theme="claymorphism"][data-mode="light"] .theme-item-tag { color: var(--ink-primary) !important; }
+html[data-theme="claymorphism"][data-mode="light"] .theme-btn-name { color: var(--ink-primary) !important; }
+
+/* skeumorphism · light — .section-tag handled below with background fix; keep prize inks */
+html[data-theme="skeumorphism"][data-mode="light"] .silver-card .prize-amount { color: var(--ink-silver) !important; }
+html[data-theme="skeumorphism"][data-mode="light"] .bronze-card .prize-amount { color: var(--ink-bronze) !important; }
+
+/* neumorphism · light */
+html[data-theme="neumorphism"][data-mode="light"] .meta-chip.team { color: var(--ink-accent-light) !important; }
+html[data-theme="neumorphism"][data-mode="light"] .silver-card .prize-amount { color: var(--ink-silver) !important; }
+html[data-theme="neumorphism"][data-mode="light"] .bronze-card .prize-amount { color: var(--ink-bronze) !important; }
+
+/* storytelling · light */
+html[data-theme="storytelling"][data-mode="light"] .silver-card .prize-amount { color: var(--ink-silver) !important; }
+
+/* cyberpunk · light */
+html[data-theme="cyberpunk"][data-mode="light"] .meta-chip.ceremonial { color: var(--ink-primary) !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .card-click-hint { color: var(--ink-primary-light) !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .theme-btn-name { color: var(--ink-primary) !important; }
+
+/* dracula · light */
+html[data-theme="dracula"][data-mode="light"] .section-tag { color: var(--ink-accent) !important; }
+html[data-theme="dracula"][data-mode="light"] .theme-btn-name { color: var(--ink-primary) !important; }
+
+/* ---- text-dim floor: ensure small metadata >= 4.5 ---- */
+html[data-theme="neumorphism"][data-mode="light"] { --text-dim: #56606e; }
+html[data-theme="storytelling"][data-mode="light"] { --text-dim: #676e7c; }
+
+/* ---- skeumorphism · light .section-tag — burnt-orange, white text, AA-compliant ---- */
+html[data-theme="skeumorphism"][data-mode="light"] .section-tag {
+  background: linear-gradient(180deg, #c0561f, #a6401a) !important;
+  border-color: #7a2a00 !important;
+  color: #ffffff !important;
+}
+
+/* ---- skeumorphism · dark .section-tag — burnt-orange, white text, AA-compliant ---- */
+html[data-theme="skeumorphism"][data-mode="dark"] .section-tag {
+  background: linear-gradient(180deg, #c0561f, #a6401a) !important;
+  border-color: #7a2a00 !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   DARK-MODE COMPLIANCE (added) + remaining chip-ink fixes
+   Fixes small colored text that fails AA in dark mode across
+   themes, and tinted-chip inks in both modes.
+   ============================================================ */
+
+/* ---- dark-mode AA fixes ---- */
+html[data-theme="neobrutalism"][data-mode="dark"] .event-time-tag { color: #8b98ab !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .cd-date-pill { color: #8b98ab !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .event-pill { color: #8b98ab !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .em-time-badge { color: #8b98ab !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .em-day-tag { color: #738093 !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .theme-item-tag { color: #7c66ff !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .theme-btn-name { color: #738093 !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .date-num { color: #738093 !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .card-click-hint { color: #7c66ff !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .date-divider { color: #7c66ff !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .silver-card .prize-amount { color: #808ea2 !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .bronze-card .prize-amount { color: #d5742a !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .gold-card .prize-amount { color: #828fa2 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .event-time-tag { color: #ff7329 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .event-pill { color: #a29d9a !important; }
+html[data-theme="hallmark"][data-mode="dark"] .em-time-badge { color: #e88615 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .theme-btn-name { color: #87827f !important; }
+html[data-theme="hallmark"][data-mode="dark"] .section-tag { color: #ff7329 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .silver-card .prize-amount { color: #8694a8 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .bronze-card .prize-amount { color: #dc7654 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .gold-card .prize-amount { color: #db7a30 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .event-time-tag { color: #dc9f1b !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .cd-date-pill { color: #c9a475 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .event-pill { color: #dc9f1b !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .em-time-badge { color: #c9a475 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .theme-item-tag { color: #4484f9 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .theme-btn-name { color: #4484f9 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .card-click-hint { color: #4484f9 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .silver-card .prize-amount { color: #939fac !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .bronze-card .prize-amount { color: #d88a4e !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .gold-card .prize-amount { color: #d0930f !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .event-time-tag { color: #a5752f !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .cd-date-pill { color: #917d57 !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .event-pill { color: #9c7c42 !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .em-time-badge { color: #9c7c42 !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .em-day-tag { color: #a5752f !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .theme-item-tag { color: #e2461e !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .theme-btn-name { color: #e2461e !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .card-click-hint { color: #e2461e !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .date-divider { color: #eb3d15 !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .silver-card .prize-amount { color: #828b9a !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .bronze-card .prize-amount { color: #b48347 !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .gold-card .prize-amount { color: #b4843e !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .event-time-tag { color: #2a9090 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .cd-date-pill { color: #2a9090 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .event-pill { color: #ab7b21 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .em-time-badge { color: #2a9090 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .em-day-tag { color: #2d9393 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .theme-item-tag { color: #2d9393 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .theme-btn-name { color: #2d9393 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .date-num { color: #ae7e24 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .section-tag { color: #2a9090 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .card-click-hint { color: #2d9393 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .date-divider { color: #2d9393 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .silver-card .prize-amount { color: #838c98 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .bronze-card .prize-amount { color: #ae8638 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .gold-card .prize-amount { color: #b4842a !important; }
+html[data-theme="storytelling"][data-mode="dark"] .event-time-tag { color: #4475ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .cd-date-pill { color: #4475ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .event-pill { color: #c6651b !important; }
+html[data-theme="storytelling"][data-mode="dark"] .em-time-badge { color: #4475ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .em-day-tag { color: #4172fc !important; }
+html[data-theme="storytelling"][data-mode="dark"] .theme-item-tag { color: #4172fc !important; }
+html[data-theme="storytelling"][data-mode="dark"] .theme-btn-name { color: #4172fc !important; }
+html[data-theme="storytelling"][data-mode="dark"] .date-num { color: #c36218 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .section-tag { color: #4475ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .card-click-hint { color: #4172fc !important; }
+html[data-theme="storytelling"][data-mode="dark"] .date-divider { color: #4172fc !important; }
+html[data-theme="storytelling"][data-mode="dark"] .silver-card .prize-amount { color: #7a818f !important; }
+html[data-theme="storytelling"][data-mode="dark"] .bronze-card .prize-amount { color: #bf6d3b !important; }
+html[data-theme="storytelling"][data-mode="dark"] .gold-card .prize-amount { color: #c9681e !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .event-time-tag { color: #d639ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .cd-date-pill { color: #d639ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .event-pill { color: #d639ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .em-time-badge { color: #d639ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .em-day-tag { color: #bb1eff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .date-num { color: #bb1eff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .section-tag { color: #ff1897 !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .gold-card .prize-amount { color: #ca2dff !important; }
+html[data-theme="dracula"][data-mode="dark"] .silver-card .prize-amount { color: #8090c2 !important; }
+html[data-theme="neumorphism"][data-mode="light"] .meta-chip.individual { color: #06793a !important; }
+html[data-theme="neumorphism"][data-mode="light"] .meta-chip.team { color: #c61c48 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .meta-chip.prize { color: #9b5e00 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .meta-chip.prize { color: #9b5e00 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .meta-chip.prize { color: #8f5d00 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .meta-chip.individual { color: #007927 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .meta-chip.team { color: #c61c48 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.prize { color: #9b6a00 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.individual { color: #0b833a !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.team { color: #a75959 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.ceremonial { color: #4f72a5 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .meta-chip.individual { color: #007500 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .meta-chip.team { color: #c90049 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .meta-chip.ceremonial { color: #006f77 !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .meta-chip.prize { color: #d538ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .meta-chip.team { color: #ff1897 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.prize { color: #0067c0 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.individual { color: #007800 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.team { color: #cc0f54 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.ceremonial { color: #7645dd !important; }
+
+/* ---- COMPLETE AA overrides (light + dark) - missing fixes ---- */
+html[data-theme="glassmorphism"][data-mode="light"] .silver-card .prize-amount { color: #606f84 !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .bronze-card .prize-amount { color: #5964d0 !important; }
+html[data-theme="glassmorphism"][data-mode="light"] .gold-card .prize-amount { color: #0075b0 !important; }
+html[data-theme="hallmark"][data-mode="light"] .cd-date-pill { color: #686560 !important; }
+html[data-theme="hallmark"][data-mode="light"] .em-time-badge { color: #ab4900 !important; }
+html[data-theme="hallmark"][data-mode="light"] .date-divider { color: #777167 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .event-time-tag { color: #975a00 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .event-pill { color: #975a00 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .em-day-tag { color: #9d6000 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .date-num { color: #a35c00 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .date-divider { color: #636f7c !important; }
+html[data-theme="claymorphism"][data-mode="light"] .silver-card .prize-amount { color: #6b7784 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .bronze-card .prize-amount { color: #af6125 !important; }
+html[data-theme="claymorphism"][data-mode="light"] .gold-card .prize-amount { color: #a56800 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .date-divider { color: #7d8996 !important; }
+html[data-theme="skeumorphism"][data-mode="light"] .event-time-tag { color: #84540e !important; }
+html[data-theme="skeumorphism"][data-mode="light"] .date-num { color: #986206 !important; }
+html[data-theme="skeumorphism"][data-mode="light"] .date-divider { color: #d42600 !important; }
+html[data-theme="neumorphism"][data-mode="light"] .event-pill { color: #984d00 !important; }
+html[data-theme="neumorphism"][data-mode="light"] .date-num { color: #9e5300 !important; }
+html[data-theme="neumorphism"][data-mode="light"] .gold-card .prize-amount { color: #a05500 !important; }
+html[data-theme="storytelling"][data-mode="light"] .event-pill { color: #a65b00 !important; }
+html[data-theme="storytelling"][data-mode="light"] .date-num { color: #aa5f00 !important; }
+html[data-theme="storytelling"][data-mode="light"] .bronze-card .prize-amount { color: #af6125 !important; }
+html[data-theme="storytelling"][data-mode="light"] .gold-card .prize-amount { color: #ae6300 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .event-time-tag { color: #9500f7 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .cd-date-pill { color: #9500f7 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .event-pill { color: #9500f7 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .em-time-badge { color: #9500f7 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .date-divider { color: #d30053 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .silver-card .prize-amount { color: #5d6e92 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .bronze-card .prize-amount { color: #bf4800 !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .theme-item-tag { color: #bb1eff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .theme-btn-name { color: #bb1eff !important; }
+html[data-theme="dracula"][data-mode="light"] .event-time-tag { color: #137185 !important; }
+html[data-theme="dracula"][data-mode="light"] .cd-date-pill { color: #137185 !important; }
+html[data-theme="dracula"][data-mode="light"] .event-pill { color: #137185 !important; }
+html[data-theme="dracula"][data-mode="light"] .em-time-badge { color: #137185 !important; }
+html[data-theme="dracula"][data-mode="light"] .em-day-tag { color: #19778b !important; }
+html[data-theme="dracula"][data-mode="light"] .theme-item-tag { color: #19778b !important; }
+html[data-theme="dracula"][data-mode="light"] .date-num { color: #19778b !important; }
+html[data-theme="dracula"][data-mode="light"] .card-click-hint { color: #805ea8 !important; }
+html[data-theme="dracula"][data-mode="light"] .date-divider { color: #bd3784 !important; }
+html[data-theme="dracula"][data-mode="light"] .silver-card .prize-amount { color: #5e6ea0 !important; }
+html[data-theme="dracula"][data-mode="light"] .bronze-card .prize-amount { color: #a55e12 !important; }
+html[data-theme="dracula"][data-mode="light"] .gold-card .prize-amount { color: #1d7b8f !important; }
+html[data-theme="neumorphism"][data-mode="light"] .meta-chip.prize { color: #9e5300 !important; }
+html[data-theme="cyberpunk"][data-mode="light"] .meta-chip.prize { color: #9500f7 !important; }
+
+/* ---- card-surface (--surface-2) dark overrides ---- */
+html[data-theme="neobrutalism"][data-mode="dark"] .em-day-tag { color: #818ea1 !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .theme-btn-name { color: #818ea1 !important; }
+html[data-theme="hallmark"][data-mode="dark"] .em-day-tag { color: #ff580e !important; }
+html[data-theme="hallmark"][data-mode="dark"] .theme-item-tag { color: #ff580e !important; }
+html[data-theme="hallmark"][data-mode="dark"] .theme-btn-name { color: #95908d !important; }
+html[data-theme="hallmark"][data-mode="dark"] .card-click-hint { color: #ff580e !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .em-day-tag { color: #cf920e !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .theme-item-tag { color: #5c9cff !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .theme-btn-name { color: #5c9cff !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .card-click-hint { color: #5c9cff !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .event-time-tag { color: #b3833d !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .em-day-tag { color: #b3833d !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .theme-item-tag { color: #f2562e !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .theme-btn-name { color: #f2562e !important; }
+html[data-theme="skeumorphism"][data-mode="dark"] .card-click-hint { color: #f2562e !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .event-time-tag { color: #329898 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .em-day-tag { color: #339999 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .theme-item-tag { color: #339999 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .theme-btn-name { color: #339999 !important; }
+html[data-theme="neumorphism"][data-mode="dark"] .card-click-hint { color: #339999 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .event-time-tag { color: #4677ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .em-day-tag { color: #4576ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .theme-item-tag { color: #4576ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .theme-btn-name { color: #4576ff !important; }
+html[data-theme="storytelling"][data-mode="dark"] .card-click-hint { color: #4576ff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .em-day-tag { color: #c92cff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .theme-item-tag { color: #c92cff !important; }
+html[data-theme="cyberpunk"][data-mode="dark"] .theme-btn-name { color: #c92cff !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .theme-item-tag { color: #8e78ff !important; }
+html[data-theme="neobrutalism"][data-mode="dark"] .card-click-hint { color: #8e78ff !important; }

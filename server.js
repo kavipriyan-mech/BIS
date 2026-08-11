@@ -74,6 +74,7 @@ const ALLOWED_ROOT_FILES = new Set([
   'index.html',
   'app.js',
   'style.css',
+  'contrast.css',
   'theme-provider.js',
   'lucide.min.js',
   'logo.svg',
