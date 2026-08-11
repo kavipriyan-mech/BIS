@@ -29,31 +29,11 @@
   --primary-dark: #1d4ed8;     /* Deep Sapphire */
   --accent: #06b6d4;           /* Crystalline Cyan */
   --accent-light: #67e8f9;     /* Neon Cyan */
-  --gold: #38bdf8;             /* Sky Cyan (Replaced harsh yellow) */
+  --gold: #38bdf8;             /* Sky Cyan */
   --gold-light: #7dd3fc;       /* Crystalline Highlight */
   --green: #34d399;            /* Emerald Glow */
   --silver: #94a3b8;           /* Slate Frost */
   --bronze: #818cf8;           /* Violet Frost */
-
-  /* ============ Fluid Surfaces & Backdrop Panes ============ */
-  --bg: #030712;               /* Ultra-deep obsidian field */
-  --surface: rgba(255, 255, 255, 0.05);          /* base frosted pane */
-  --surface-2: rgba(255, 255, 255, 0.08);         /* elevated frosted pane */
-  --surface-3: rgba(15, 23, 42, 0.75);            /* solid-ish nav/menu pane */
-  --surface-solid: #0f172a;    /* fallback for unsupported backdrop-filter */
-  --header-bg: rgba(3, 7, 18, 0.65);
-
-  /* ============ Ink ============ */
-  --text: #f8fafc;
-  --text-muted: #cbd5e1;
-  --text-dim: #94a3b8;
-  color-scheme: dark;
-
-  /* ============ Floating Orbs — luminous color field ============ */
-  --orb-1-color: #1d4ed8;
-  --orb-2-color: #0284c7;
-  --orb-3-color: #4f46e5;
-  --orb-opacity: 0.35;
 
   /* ============ Geometry: soft, rounded, layered ============ */
   --radius: 20px;
@@ -61,19 +41,10 @@
   --radius-xs: 10px;
   --border-width: 1px;
   --border-style: solid;
-  --border: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(56, 189, 248, 0.45);
 
   /* ============ Glass Physics ============ */
   --glass-blur: blur(22px) saturate(160%);
   --glass-blur-lg: blur(36px) saturate(180%);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  --inner-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.4);
-  --shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 22px 56px rgba(14, 165, 233, 0.25), var(--glass-highlight);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.35);
-  --shadow-cyan: 0 0 34px rgba(6, 182, 212, 0.25);
-  --shadow-indigo: 0 0 26px rgba(99, 102, 241, 0.25);
 
   --btn-transform-hover: translateY(-2px);
   --btn-transform-active: translateY(0px);
@@ -85,11 +56,84 @@
 }
 
 /* ============================================================
+   Dark Mode (Default)
+   ============================================================ */
+:root, html[data-theme="glassmorphism"], html[data-theme="glassmorphism"][data-mode="dark"] {
+  color-scheme: dark;
+  --bg: #030712;               /* Ultra-deep obsidian field */
+  --surface: rgba(255, 255, 255, 0.05);          /* base frosted pane */
+  --surface-2: rgba(255, 255, 255, 0.08);         /* elevated frosted pane */
+  --surface-3: rgba(15, 23, 42, 0.75);            /* solid-ish nav/menu pane */
+  --surface-solid: #0f172a;
+  --header-bg: rgba(3, 7, 18, 0.65);
+
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+
+  --border: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(56, 189, 248, 0.45);
+
+  --orb-1-color: #1d4ed8;
+  --orb-2-color: #0284c7;
+  --orb-3-color: #4f46e5;
+  --orb-opacity: 0.35;
+
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --inner-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.4);
+  --shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 22px 56px rgba(14, 165, 233, 0.25), var(--glass-highlight);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  --shadow-cyan: 0 0 34px rgba(6, 182, 212, 0.25);
+  --shadow-indigo: 0 0 26px rgba(99, 102, 241, 0.25);
+}
+
+/* ============================================================
+   Light Mode (Ice Crystal)
+   ============================================================ */
+html[data-mode="light"], html[data-theme="glassmorphism"][data-mode="light"] {
+  color-scheme: light;
+  --bg: #f0f4f9;
+  --surface: rgba(255, 255, 255, 0.70);
+  --surface-2: rgba(255, 255, 255, 0.85);
+  --surface-3: rgba(240, 244, 249, 0.90);
+  --surface-solid: #ffffff;
+  --header-bg: rgba(240, 244, 249, 0.78);
+
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --accent: #0284c7;
+  --accent-light: #06b6d4;
+  --gold: #0284c7;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+
+  --border: rgba(15, 23, 42, 0.12);
+  --border-accent: rgba(37, 99, 235, 0.35);
+
+  --orb-1-color: #60a5fa;
+  --orb-2-color: #38bdf8;
+  --orb-3-color: #818cf8;
+  --orb-opacity: 0.18;
+
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --inner-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 20px 45px rgba(37, 99, 235, 0.15);
+  --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.2);
+  --shadow-cyan: 0 0 25px rgba(2, 132, 199, 0.2);
+  --shadow-indigo: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+/* ============================================================
    Body / Canvas — deep luminous field with frosted layer stack
    ============================================================ */
 html, body {
   font-family: var(--font-sans) !important;
-  background: #030712 !important;
+  background: var(--bg) !important;
   color: var(--text) !important;
   -webkit-font-smoothing: antialiased;
 }

@@ -11,9 +11,9 @@
    Typography: Inter system stack · mono accents via JetBrains Mono
    ============================================================ */
 
-:root {
+:root, html[data-theme="neobrutalism"] {
   --theme-id: "neobrutalism";
-  --theme-name: "Neobrutalism (High-Contrast)";
+  --theme-name: "Neobrutalism";
 
   /* ============ Neobrutalism Token Palette ============ */
   --primary: #FDC800;          /* Bold Canary Yellow */
@@ -23,31 +23,9 @@
   --accent-light: #6352E8;
   --gold: #FDC800;
   --gold-light: #FFEA85;
-  --green: #15803D;            /* readable green for light surfaces */
+  --green: #15803D;
   --silver: #475569;
   --bronze: #B45309;
-
-  /* ============ Surfaces — warm high-contrast light base ============ */
-  --bg: #F4F1E8;               /* warm parchment background */
-  --surface: #FBFBF9;          /* cream card surface */
-  --surface-2: #FFFFFF;        /* elevated white cards */
-  --surface-3: #FFF6D6;        /* yellow-tinted accent surface */
-  --header-bg: #FBFBF9;
-
-  /* ============ Ink Typography ============ */
-  --text: #1C293C;             /* near-black ink (14.6:1 on cream) */
-  --text-muted: #2B3850;       /* AA on cream */
-  --text-dim: #475569;         /* large-text / non-essential only */
-  color-scheme: light;
-
-  /* ============ Floating Orbs — hidden: flat neobrutalist backdrop ============ */
-  --orb-1-color: #FDC800;
-  --orb-2-color: #432DD7;
-  --orb-3-color: #DC2626;
-  --orb-opacity: 0.16;
-
-  /* Flat warm page background — neobrutalism rejects soft blurred gradients */
-  --bg-page: #F4F1E8;
 
   /* ============ Neobrutalist Geometry & Physics ============ */
   --radius: 6px;
@@ -55,18 +33,75 @@
   --radius-xs: 2px;
   --border-width: 3px;
   --border-style: solid;
-  --border: #1C293C;           /* hard ink borders */
-  --border-accent: #1C293C;
-
-  /* Hard Offset Box Shadows (zero blur!) */
-  --shadow: 5px 5px 0px #1C293C;
-  --shadow-hover: 8px 8px 0px #1C293C;
-  --shadow-glow: 5px 5px 0px #432DD7;
-  --shadow-red: 5px 5px 0px #DC2626;
   --glass-blur: none;
 
   --btn-transform-hover: translate(-3px, -3px);
   --btn-transform-active: translate(0px, 0px);
+
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   Light Mode (Warm Parchment — Default Neobrutalism)
+   ============================================================ */
+:root, html[data-theme="neobrutalism"], html[data-theme="neobrutalism"][data-mode="light"] {
+  color-scheme: light;
+  --bg: #F4F1E8;
+  --surface: #FBFBF9;
+  --surface-2: #FFFFFF;
+  --surface-3: #FFF6D6;
+  --header-bg: #FBFBF9;
+
+  --text: #1C293C;
+  --text-muted: #2B3850;
+  --text-dim: #475569;
+
+  --border: #1C293C;
+  --border-accent: #1C293C;
+
+  --shadow: 5px 5px 0px #1C293C;
+  --shadow-hover: 8px 8px 0px #1C293C;
+  --shadow-glow: 5px 5px 0px #432DD7;
+  --shadow-red: 5px 5px 0px #DC2626;
+
+  --orb-1-color: #FDC800;
+  --orb-2-color: #432DD7;
+  --orb-3-color: #DC2626;
+  --orb-opacity: 0.16;
+}
+
+/* ============================================================
+   Dark Mode (Obsidian Neobrutalism)
+   ============================================================ */
+html[data-mode="dark"], html[data-theme="neobrutalism"][data-mode="dark"] {
+  color-scheme: dark;
+  --bg: #121216;
+  --surface: #1a1a24;
+  --surface-2: #242434;
+  --surface-3: #2e2e42;
+  --header-bg: #1a1a24;
+
+  --accent: #00E5FF;
+  --accent-light: #66F0FF;
+
+  --text: #ffffff;
+  --text-muted: #d0d6e0;
+  --text-dim: #9aa4b8;
+
+  --border: #ffffff;
+  --border-accent: #FDC800;
+
+  --shadow: 5px 5px 0px #FDC800;
+  --shadow-hover: 8px 8px 0px #FDC800;
+  --shadow-glow: 5px 5px 0px #00E5FF;
+  --shadow-red: 5px 5px 0px #FF0055;
+
+  --orb-1-color: #FDC800;
+  --orb-2-color: #00E5FF;
+  --orb-3-color: #FF0055;
+  --orb-opacity: 0.15;
 
   /* ============ Typography (Inter stack) ============ */
   --font-sans: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;

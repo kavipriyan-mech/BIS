@@ -1,10 +1,9 @@
 /* ============================================================
-   BIS Club — Cyberpunk Neon Theme
+   BIS Club — Cyberpunk Neon Theme (Dual-Mode: Dark & Light)
    Cyan Neon (#00f3ff) · Hot Pink (#ff007f) · Electric Violet (#9d00ff)
-   Pitch Dark (#070614) · Sharp Tech Lines · Box Glows
    ============================================================ */
 
-:root {
+:root, html[data-theme="cyberpunk"] {
   --theme-id: "cyberpunk";
   --theme-name: "Cyberpunk Neon";
 
@@ -20,39 +19,80 @@
   --silver: #8fa0c4;
   --bronze: #ff8800;
 
-  /* Surfaces */
-  --bg: #070614;
-  --surface: #0e0c24;
-  --surface-2: #151236;
-  --surface-3: #1d194a;
-  --header-bg: rgba(7, 6, 20, 0.92);
-
-  /* Typography */
-  --text: #e0f7ff;
-  --text-muted: #80b5cc;
-  --text-dim: #406d80;
-
-  /* Floating Orbs */
-  --orb-1-color: #00f3ff;
-  --orb-2-color: #ff007f;
-  --orb-3-color: #9d00ff;
-  --orb-opacity: 0.22;
-
   /* Geometry & Glows */
   --radius: 3px;
   --radius-sm: 2px;
   --radius-xs: 1px;
   --border-width: 1.5px;
   --border-style: solid;
-  --border: rgba(0, 243, 255, 0.45);
-  --border-accent: rgba(255, 0, 127, 0.45);
-  
-  --shadow: 0 0 20px rgba(0, 243, 255, 0.25), 0 0 40px rgba(255, 0, 127, 0.15);
-  --shadow-hover: 0 0 30px rgba(0, 243, 255, 0.5), 0 0 50px rgba(255, 0, 127, 0.3);
-  --shadow-glow: 0 0 35px rgba(0, 243, 255, 0.6);
-  --shadow-red: 0 0 35px rgba(255, 0, 127, 0.6);
   --glass-blur: blur(16px);
 
   --btn-transform-hover: translateY(-2px);
   --btn-transform-active: translateY(0);
+}
+
+/* ============================================================
+   Dark Mode (Default)
+   ============================================================ */
+:root, html[data-theme="cyberpunk"], html[data-theme="cyberpunk"][data-mode="dark"] {
+  color-scheme: dark;
+  --bg: #070614;
+  --surface: #0e0c24;
+  --surface-2: #151236;
+  --surface-3: #1d194a;
+  --header-bg: rgba(7, 6, 20, 0.92);
+
+  --text: #e0f7ff;
+  --text-muted: #80b5cc;
+  --text-dim: #406d80;
+
+  --border: rgba(0, 243, 255, 0.45);
+  --border-accent: rgba(255, 0, 127, 0.45);
+
+  --orb-1-color: #00f3ff;
+  --orb-2-color: #ff007f;
+  --orb-3-color: #9d00ff;
+  --orb-opacity: 0.22;
+
+  --shadow: 0 0 20px rgba(0, 243, 255, 0.25), 0 0 40px rgba(255, 0, 127, 0.15);
+  --shadow-hover: 0 0 30px rgba(0, 243, 255, 0.5), 0 0 50px rgba(255, 0, 127, 0.3);
+  --shadow-glow: 0 0 35px rgba(0, 243, 255, 0.6);
+  --shadow-red: 0 0 35px rgba(255, 0, 127, 0.6);
+}
+
+/* ============================================================
+   Light Mode (Cyber Slate)
+   ============================================================ */
+html[data-mode="light"], html[data-theme="cyberpunk"][data-mode="light"] {
+  color-scheme: light;
+  --bg: #e8ecf4;
+  --surface: #ffffff;
+  --surface-2: #f0f4fa;
+  --surface-3: #dde3ee;
+  --header-bg: rgba(232, 236, 244, 0.92);
+
+  --primary: #008899;
+  --primary-light: #00b8cc;
+  --primary-dark: #005f6b;
+  --accent: #d6006b;
+  --accent-light: #ff1a8c;
+  --gold: #7300bd;
+  --gold-light: #9d00ff;
+
+  --text: #070614;
+  --text-muted: #3d4a66;
+  --text-dim: #6c7a9c;
+
+  --border: rgba(0, 136, 153, 0.40);
+  --border-accent: rgba(214, 0, 107, 0.40);
+
+  --orb-1-color: #00a3ad;
+  --orb-2-color: #e60073;
+  --orb-3-color: #8000d7;
+  --orb-opacity: 0.14;
+
+  --shadow: 0 0 15px rgba(0, 136, 153, 0.15), 0 0 30px rgba(214, 0, 107, 0.1);
+  --shadow-hover: 0 0 25px rgba(0, 136, 153, 0.3), 0 0 40px rgba(214, 0, 107, 0.2);
+  --shadow-glow: 0 0 25px rgba(0, 136, 153, 0.4);
+  --shadow-red: 0 0 25px rgba(214, 0, 107, 0.4);
 }

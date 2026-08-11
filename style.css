@@ -1103,10 +1103,26 @@ select:invalid:not([value=""]) { border-color: rgba(200,16,46,0.5); }
 .theme-btn-name { font-weight: 700; color: var(--gold, #F4A900); }
 .theme-caret { font-size: 0.7rem; opacity: 0.8; margin-left: 2px; }
 
+.mode-toggle-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: var(--radius-sm, 10px);
+  background: var(--surface-2, rgba(255,255,255,0.08));
+  border: var(--border-width, 1px) var(--border-style, solid) var(--border, rgba(255,255,255,0.15));
+  color: var(--text, #fff); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition, 0.2s ease);
+}
+.mode-toggle-btn:hover {
+  background: var(--surface-3, rgba(255,255,255,0.15));
+  border-color: var(--primary-light, #60a5fa);
+  transform: var(--btn-transform-hover, translateY(-1px));
+}
+.mode-icon { font-size: 1rem; line-height: 1; }
+.mode-label { font-weight: 700; color: var(--text); }
+
 /* Floating Dropdown Menu */
 .theme-dropdown-menu {
   position: absolute; top: calc(100% + 8px); right: 0; z-index: 2000;
-  min-width: 310px; max-height: 440px; overflow: hidden;
+  min-width: 320px; max-height: 460px; overflow: hidden;
   background: var(--surface, #090f1e);
   border: var(--border-width, 2px) var(--border-style, solid) var(--border, rgba(0,52,120,0.4));
   box-shadow: var(--shadow, 0 16px 40px rgba(0,0,0,0.6));
@@ -1121,10 +1137,31 @@ select:invalid:not([value=""]) { border-color: rgba(200,16,46,0.5); }
 }
 
 .theme-dropdown-header {
-  padding: 10px 16px; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px;
+  padding: 10px 14px; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px;
   text-transform: uppercase; color: var(--text-muted);
   border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
   background: var(--surface-2, #0d1528);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+
+.theme-mode-segmented-control {
+  display: inline-flex; align-items: center; gap: 2px;
+  background: var(--surface, rgba(0,0,0,0.2));
+  padding: 3px; border-radius: var(--radius-sm, 8px);
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+}
+
+.mode-seg-btn {
+  background: transparent; border: none; padding: 4px 8px;
+  border-radius: var(--radius-xs, 6px); font-size: 0.72rem; font-weight: 700;
+  color: var(--text-muted); cursor: pointer; transition: all 0.15s ease;
+}
+.mode-seg-btn:hover {
+  color: var(--text); background: var(--surface-2, rgba(255,255,255,0.1));
+}
+.mode-seg-btn.active {
+  background: var(--primary, #3b82f6); color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .theme-dropdown-list {

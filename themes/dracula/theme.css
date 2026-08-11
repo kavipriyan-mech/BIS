@@ -1,10 +1,9 @@
 /* ============================================================
-   BIS Club — Dracula Theme
-   Dracula Purple (#bd93f9) · Pink (#ff79c6) · Cyan (#8be9fd)
-   Charcoal (#1e1e2e)
+   BIS Club — Dracula Theme (Dual-Mode: Dark & Light)
+   Dracula Violet (#bd93f9) · Pink (#ff79c6) · Cyan (#8be9fd)
    ============================================================ */
 
-:root {
+:root, html[data-theme="dracula"] {
   --theme-id: "dracula";
   --theme-name: "Dracula Violet";
 
@@ -20,39 +19,80 @@
   --silver: #6272a4;
   --bronze: #ffb86c;
 
-  /* Surfaces */
+  /* Geometry & Effects */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --border-width: 1px;
+  --border-style: solid;
+  --glass-blur: blur(24px);
+
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0);
+}
+
+/* ============================================================
+   Dark Mode (Default)
+   ============================================================ */
+:root, html[data-theme="dracula"], html[data-theme="dracula"][data-mode="dark"] {
+  color-scheme: dark;
   --bg: #181825;
   --surface: #1e1e2e;
   --surface-2: #282a36;
   --surface-3: #313244;
   --header-bg: rgba(24, 24, 37, 0.90);
 
-  /* Typography */
   --text: #f8f8f2;
   --text-muted: #a9b1d6;
   --text-dim: #6272a4;
 
-  /* Floating Orbs */
+  --border: rgba(189, 147, 249, 0.30);
+  --border-accent: rgba(255, 121, 198, 0.30);
+
   --orb-1-color: #bd93f9;
   --orb-2-color: #ff79c6;
   --orb-3-color: #8be9fd;
   --orb-opacity: 0.18;
 
-  /* Geometry */
-  --radius: 16px;
-  --radius-sm: 10px;
-  --radius-xs: 6px;
-  --border-width: 1px;
-  --border-style: solid;
-  --border: rgba(189, 147, 249, 0.30);
-  --border-accent: rgba(255, 121, 198, 0.30);
-  
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   --shadow-hover: 0 16px 48px rgba(189, 147, 249, 0.35);
   --shadow-glow: 0 0 40px rgba(189, 147, 249, 0.3);
   --shadow-red: 0 0 30px rgba(255, 121, 198, 0.25);
-  --glass-blur: blur(24px);
+}
 
-  --btn-transform-hover: translateY(-2px);
-  --btn-transform-active: translateY(0);
+/* ============================================================
+   Light Mode (Lilac Violet)
+   ============================================================ */
+html[data-mode="light"], html[data-theme="dracula"][data-mode="light"] {
+  color-scheme: light;
+  --bg: #f2effa;
+  --surface: #ffffff;
+  --surface-2: #f7f4fd;
+  --surface-3: #eae4f7;
+  --header-bg: rgba(242, 239, 250, 0.92);
+
+  --primary: #7c4dff;
+  --primary-light: #9867ff;
+  --primary-dark: #5c26db;
+  --accent: #d81b60;
+  --accent-light: #ff4081;
+  --gold: #0091ea;
+  --gold-light: #40c4ff;
+
+  --text: #21153b;
+  --text-muted: #5c4d78;
+  --text-dim: #8878a5;
+
+  --border: rgba(124, 77, 255, 0.22);
+  --border-accent: rgba(216, 27, 96, 0.22);
+
+  --orb-1-color: #7c4dff;
+  --orb-2-color: #ff4081;
+  --orb-3-color: #00b0ff;
+  --orb-opacity: 0.12;
+
+  --shadow: 0 8px 30px rgba(124, 77, 255, 0.08);
+  --shadow-hover: 0 16px 40px rgba(124, 77, 255, 0.18);
+  --shadow-glow: 0 0 30px rgba(124, 77, 255, 0.2);
+  --shadow-red: 0 0 25px rgba(216, 27, 96, 0.15);
 }

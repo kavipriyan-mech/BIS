@@ -13,11 +13,13 @@
   <script>
     (function() {
       var saved = localStorage.getItem('bis_theme_id') || 'glassmorphism';
+      var savedMode = localStorage.getItem('bis_theme_mode') || 'dark';
       var link = document.getElementById('theme-stylesheet');
       if (link) {
         link.href = 'themes/' + saved + '/theme.css';
       }
       document.documentElement.setAttribute('data-theme', saved);
+      document.documentElement.setAttribute('data-mode', savedMode);
     })();
   </script>
 </head>
@@ -54,6 +56,10 @@
             <span class="theme-caret">▾</span>
           </button>
         </div>
+        <button class="mode-toggle-btn" id="modeToggleBtn" title="Switch Theme Mode" aria-label="Switch Theme Mode">
+          <span class="mode-icon">🌙</span>
+          <span class="mode-label">Dark</span>
+        </button>
         <a href="#register" class="nav-btn">Register Now</a>
       </nav>
       <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()">☰</button>
@@ -64,6 +70,7 @@
       <a href="#prizes" class="nav-link" onclick="toggleMobileNav()">Prizes</a>
       <a href="#register" class="nav-link" onclick="toggleMobileNav()">Register</a>
       <a href="#" class="nav-link theme-picker-trigger" onclick="toggleMobileNav(); event.preventDefault();">🎨 Theme Studio</a>
+      <a href="#" class="nav-link mobile-mode-toggle" onclick="toggleMobileNav(); event.preventDefault();">🌓 Mode Switcher</a>
     </div>
   </header>
 

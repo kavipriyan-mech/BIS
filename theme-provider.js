@@ -7,7 +7,9 @@
   'use strict';
 
   const STORAGE_KEY = 'bis_theme_id';
+  const MODE_STORAGE_KEY = 'bis_theme_mode';
   const DEFAULT_THEME_ID = 'glassmorphism';
+  const DEFAULT_MODE = 'dark';
 
   // Built-in Theme Folder Registry
   const THEME_REGISTRY = [
@@ -49,7 +51,6 @@
     },
     {
       id: 'cyberpunk',
-      id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',
       designTag: 'CYBER',
@@ -72,6 +73,7 @@
     constructor() {
       this.registry = [...THEME_REGISTRY];
       this.currentThemeId = localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME_ID;
+      this.currentMode = localStorage.getItem(MODE_STORAGE_KEY) || DEFAULT_MODE;
       this.isOpen = false;
     }
 
@@ -88,6 +90,7 @@
 
     init() {
       this.applyThemeStylesheet(this.currentThemeId);
+      this.applyMode(this.currentMode);
       this.setupDropdownDOM();
       this.bindEvents();
     }
@@ -112,6 +115,10 @@
       return this.registry.find(t => t.id === this.currentThemeId) || this.registry[0];
     }
 
+    getCurrentMode() {
+      return this.currentMode;
+    }
+
     applyThemeStylesheet(themeId) {
       const theme = this.registry.find(t => t.id === themeId) || this.registry[0];
       const link = this.getLinkElement();
@@ -126,6 +133,54 @@
       localStorage.setItem(STORAGE_KEY, theme.id);
       this.updateHeaderButtonText();
       this.renderDropdownItems();
+    }
+
+    applyMode(mode) {
+      const validMode = (mode === 'light' || mode === 'dark') ? mode : DEFAULT_MODE;
+      document.documentElement.setAttribute('data-mode', validMode);
+      this.currentMode = validMode;
+      localStorage.setItem(MODE_STORAGE_KEY, validMode);
+
+      // Update Quick Mode Toggle buttons across DOM
+      document.querySelectorAll('.mode-toggle-btn, .mobile-mode-toggle').forEach(btn => {
+        const iconEl = btn.querySelector('.mode-icon');
+        const labelEl = btn.querySelector('.mode-label');
+        if (validMode === 'light') {
+          if (iconEl) iconEl.textContent = '☀️';
+          if (labelEl) labelEl.textContent = 'Light';
+          btn.setAttribute('title', 'Switch to Dark Mode');
+          btn.setAttribute('aria-label', 'Switch to Dark Mode');
+        } else {
+          if (iconEl) iconEl.textContent = '🌙';
+          if (labelEl) labelEl.textContent = 'Dark';
+          btn.setAttribute('title', 'Switch to Light Mode');
+          btn.setAttribute('aria-label', 'Switch to Light Mode');
+        }
+      });
+
+      // Update segment control buttons inside theme dropdown menu
+      document.querySelectorAll('.mode-seg-btn').forEach(btn => {
+        const val = btn.getAttribute('data-mode-val');
+        btn.classList.toggle('active', val === validMode);
+      });
+    }
+
+    setMode(mode) {
+      if (this.currentMode === mode) return;
+
+      const performSwitch = () => {
+        this.applyMode(mode);
+      };
+
+      if (document.startViewTransition) {
+        document.startViewTransition(() => performSwitch());
+      } else {
+        performSwitch();
+      }
+    }
+
+    toggleMode() {
+      this.setMode(this.currentMode === 'dark' ? 'light' : 'dark');
     }
 
     setTheme(themeId) {
@@ -169,7 +224,11 @@
         const dropdownHtml = `
           <div id="themeDropdownMenu" class="theme-dropdown-menu hidden" role="menu" aria-orientation="vertical">
             <div class="theme-dropdown-header">
-              <span>Select Theme System</span>
+              <span>Theme System</span>
+              <div class="theme-mode-segmented-control" role="radiogroup" aria-label="Appearance Mode">
+                <button type="button" class="mode-seg-btn ${this.currentMode === 'light' ? 'active' : ''}" data-mode-val="light" title="Light Mode">☀️ Light</button>
+                <button type="button" class="mode-seg-btn ${this.currentMode === 'dark' ? 'active' : ''}" data-mode-val="dark" title="Dark Mode">🌙 Dark</button>
+              </div>
             </div>
             <div class="theme-dropdown-list" id="themeDropdownList">
               <!-- Dynamically populated -->
@@ -215,6 +274,25 @@
 
     bindEvents() {
       document.addEventListener('click', (e) => {
+        // Mode toggle clicks
+        const modeToggle = e.target.closest('#modeToggleBtn, .mode-toggle-btn, .mobile-mode-toggle');
+        if (modeToggle) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggleMode();
+          return;
+        }
+
+        const modeSeg = e.target.closest('.mode-seg-btn');
+        if (modeSeg) {
+          e.preventDefault();
+          e.stopPropagation();
+          const selectedMode = modeSeg.getAttribute('data-mode-val');
+          if (selectedMode) this.setMode(selectedMode);
+          return;
+        }
+
+        // Theme dropdown clicks
         const trigger = e.target.closest('#themePickerBtn, .theme-picker-trigger');
         if (trigger) {
           e.preventDefault();
