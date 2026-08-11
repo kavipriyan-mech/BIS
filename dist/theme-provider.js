@@ -87,6 +87,37 @@
       path: "themes/dracula/theme.css"
     }
   ];
+  const FONT_REGISTRY = {
+    glassmorphism: "family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600",
+    neobrutalism: "family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900",
+    hallmark: "family=Fraunces:opsz,wght@9..144,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500",
+    claymorphism: "family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600",
+    skeumorphism: "family=Germania+One&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600",
+    neumorphism: "family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;600",
+    storytelling: "family=Abril+Fatface&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600",
+    cyberpunk: "family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600",
+    dracula: "family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600"
+  };
+  function getFontLink() {
+    let link = document.getElementById("theme-fonts");
+    if (!link) {
+      link = document.createElement("link");
+      link.id = "theme-fonts";
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+    }
+    return link;
+  }
+  function loadFontsForTheme(themeId) {
+    const q = FONT_REGISTRY[themeId];
+    if (!q)
+      return;
+    const href = "https://fonts.googleapis.com/css2?" + q + "&display=swap";
+    const link = getFontLink();
+    if (link.getAttribute("href") !== href) {
+      link.setAttribute("href", href);
+    }
+  }
 
   class ThemeProvider {
     constructor() {
@@ -106,10 +137,34 @@
       return link;
     }
     init() {
+      this.ensureLucide();
       this.applyThemeStylesheet(this.currentThemeId);
       this.applyMode(this.currentMode);
       this.setupDropdownDOM();
       this.bindEvents();
+    }
+    ensureLucide() {
+      const load = () => {
+        if (window.lucide || document.getElementById("lucide-script"))
+          return;
+        const s = document.createElement("script");
+        s.id = "lucide-script";
+        s.src = "lucide.min.js";
+        s.async = true;
+        s.onload = () => {
+          if (window.lucide) {
+            try {
+              window.lucide.createIcons();
+            } catch (e) {}
+          }
+        };
+        document.head.appendChild(s);
+      };
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+        window.setTimeout(load, 0);
+      } else {
+        window.addEventListener("load", () => window.setTimeout(load, 0));
+      }
     }
     registerTheme(themeObj) {
       if (!themeObj || !themeObj.id || !themeObj.path)
@@ -142,6 +197,7 @@
       document.documentElement.setAttribute("data-theme", theme.id);
       this.currentThemeId = theme.id;
       localStorage.setItem(STORAGE_KEY, theme.id);
+      loadFontsForTheme(theme.id);
       this.updateHeaderButtonText();
       this.renderDropdownItems();
     }
