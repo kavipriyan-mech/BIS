@@ -380,15 +380,15 @@ body {
   z-index: 35 !important;
 }
 
-/* Orbit Path Assignments, Speeds & Multi-Directional Delays */
-.fb-1.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: 0s; }
-.fb-4.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -12s; }
+/* Orbit Path Assignments, Speeds & Staggered Fractional Delays */
+.fb-1.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -3.5s; }
+.fb-4.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -15.8s; }
 
-.fb-2.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: 0s; }
-.fb-5.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -10s; }
+.fb-2.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -7.2s; }
+.fb-5.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -17.4s; }
 
-.fb-3.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: 0s; }
-.fb-6.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: -14s; }
+.fb-3.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: -11.6s; }
+.fb-6.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: -25.1s; }
 
 /* Keyframes for Orbit 1 (Horizontal Ellipse: Ring 1)
    Front Arc (0%-50%): z-index 25 (IN FRONT of logo z-index 10), larger scale
