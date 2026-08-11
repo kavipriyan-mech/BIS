@@ -267,93 +267,177 @@ body {
   color: var(--text); background: var(--surface-3);
 }
 
-/* Hero Visual — BIS Triangle Logo */
+/* Hero Visual — BIS Triangle Logo (Atomic Nucleus) */
 .hero-visual {
-  flex: 0 0 auto; width: 540px;
+  flex: 0 0 auto; width: 560px;
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; position: relative;
-  min-height: 440px;
-  perspective: 1000px;
+  min-height: 480px;
 }
+
+/* BIS Logo Nucleus — Elevated in front of Orbiting Elements */
 .bis-logo-big {
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   position: relative;
-  z-index: 5;
+  z-index: 20; /* High z-index keeps central nucleus crisp and forward */
+  pointer-events: auto;
 }
+
+/* Radiant Nucleus Glow behind BIS Logo */
+.nucleus-glow {
+  position: absolute;
+  top: 45%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 270px; height: 270px;
+  background: radial-gradient(circle, var(--accent, rgba(200, 16, 46, 0.25)) 0%, var(--primary-light, rgba(0, 82, 204, 0.15)) 45%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: nucleusPulse 4s ease-in-out infinite alternate;
+  filter: blur(12px);
+}
+
+@keyframes nucleusPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
+}
+
 .bis-logo-img {
-  width: 330px;
+  width: 320px;
   max-width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
-  will-change: transform;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)) drop-shadow(0 0 15px var(--shadow-glow, rgba(0,52,120,0.3)));
   animation: floatBis 6s ease-in-out infinite;
 }
 @keyframes floatBis {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+  50% { transform: translateY(-12px); }
 }
 .isi-tagline {
   font-size: 0.92rem; color: var(--text-muted);
   letter-spacing: 4px; text-transform: uppercase; font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* Saturn Ring Track Line */
-.saturn-ring-line {
+/* 3D Atomic Orbit Track Rings (Visual Background Lines) */
+.atomic-orbit-ring {
   position: absolute;
-  top: 42%; left: 50%;
-  width: 520px; height: 160px;
-  margin-left: -260px; margin-top: -80px;
-  border: 1.5px dashed var(--border-accent, rgba(200,16,46,0.4));
+  top: 45%; left: 50%;
+  width: 480px; height: 160px;
+  margin-left: -240px; margin-top: -80px;
+  border: 1.5px dashed var(--border-accent, rgba(200, 16, 46, 0.4));
   border-radius: 50%;
-  transform: rotate(0deg);
   pointer-events: none;
-  z-index: 3;
-  box-shadow: 0 0 25px var(--shadow-glow, rgba(0,52,120,0.2));
+  z-index: 2;
+  box-shadow: 0 0 25px var(--shadow-glow, rgba(0, 52, 120, 0.2));
   opacity: 0.45;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
 }
 
-/* Floating event badges — 3D Saturn Ring Orbit */
+.hero-visual:hover .atomic-orbit-ring {
+  opacity: 0.8;
+}
+
+.ring-1 {
+  transform: rotate(0deg);
+  border-color: rgba(200, 16, 46, 0.6);
+}
+
+.ring-2 {
+  transform: rotate(60deg);
+  border-color: rgba(0, 114, 206, 0.6);
+}
+
+.ring-3 {
+  transform: rotate(-60deg);
+  border-color: rgba(245, 166, 35, 0.65);
+}
+
+/* Floating Event Badges — Always Flat 2D, Crisp, Upright Horizontal Text */
 .float-badge {
   position: absolute;
-  top: 42%; left: 50%;
-  margin-left: -70px; margin-top: -18px;
+  top: 45%; left: 50%;
+  margin-left: -65px; margin-top: -18px;
   background: var(--surface-2);
   border: var(--border-width, 1px) var(--border-style, solid) var(--border);
   color: var(--text); border-radius: 100px;
   padding: 9px 20px; font-size: 0.88rem; font-weight: 700;
   white-space: nowrap;
   box-shadow: var(--shadow);
-  /* Only animate transform+opacity — compositor-thread only, no main-thread repaints */
-  animation: saturnOrbit 60s linear infinite;
-  animation-delay: var(--delay, 0s);
   cursor: pointer;
   isolation: isolate;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  z-index: 5;
+  will-change: transform;
 }
 
 .float-badge:hover {
-  animation-play-state: paused;
+  animation-play-state: paused !important;
   border-color: var(--accent);
-  box-shadow: var(--shadow-hover);
+  box-shadow: var(--shadow-hover), 0 0 24px var(--accent);
+  z-index: 30 !important;
 }
 
-.fb-1 { --delay: 0s; }
-.fb-2 { --delay: -10s; }
-.fb-3 { --delay: -20s; }
-.fb-4 { --delay: -30s; }
-.fb-5 { --delay: -40s; }
-.fb-6 { --delay: -50s; }
+/* Orbit Path Assignments, Speeds & Multi-Directional Delays */
+.fb-1.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: 0s; }
+.fb-4.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -12s; }
 
-/* z-index REMOVED from keyframes — animating z-index forces stacking context
-   recalculation on the main thread every frame, causing tab freeze.
-   Only transform and opacity are GPU-composited; everything else blocks the main thread. */
-@keyframes saturnOrbit {
-  0%   { transform: translate(260px, 0px) scale(1);    opacity: 1; }
-  25%  { transform: translate(0px, -75px) scale(0.92); opacity: 0.9; }
-  50%  { transform: translate(-260px, 0px) scale(1);   opacity: 1; }
-  75%  { transform: translate(0px, 60px) scale(1.20);  opacity: 1; }
-  100% { transform: translate(260px, 0px) scale(1);    opacity: 1; }
+.fb-2.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: 0s; }
+.fb-5.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -10s; }
+
+.fb-3.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: 0s; }
+.fb-6.orbit-3 { animation: atomicOrbit3 28s linear infinite; animation-delay: -14s; }
+
+/* Keyframes for Orbit 1 (Horizontal Ellipse: Ring 1) */
+@keyframes atomicOrbit1 {
+  0%     { transform: translate(230px, 0px); }
+  8.33%  { transform: translate(199px, 38px); }
+  16.66% { transform: translate(115px, 65px); }
+  25%    { transform: translate(0px, 75px); }
+  33.33% { transform: translate(-115px, 65px); }
+  41.66% { transform: translate(-199px, 38px); }
+  50%    { transform: translate(-230px, 0px); }
+  58.33% { transform: translate(-199px, -38px); }
+  66.66% { transform: translate(-115px, -65px); }
+  75%    { transform: translate(0px, -75px); }
+  83.33% { transform: translate(115px, -65px); }
+  91.66% { transform: translate(199px, -38px); }
+  100%   { transform: translate(230px, 0px); }
+}
+
+/* Keyframes for Orbit 2 (Tilted +60° Ellipse: Ring 2) */
+@keyframes atomicOrbit2 {
+  0%     { transform: translate(115px, 199px); }
+  8.33%  { transform: translate(67px, 191px); }
+  16.66% { transform: translate(1px, 132px); }
+  25%    { transform: translate(-65px, 38px); }
+  33.33% { transform: translate(-114px, -67px); }
+  41.66% { transform: translate(-132px, -154px); }
+  50%    { transform: translate(-115px, -199px); }
+  58.33% { transform: translate(-67px, -191px); }
+  66.66% { transform: translate(-1px, -132px); }
+  75%    { transform: translate(65px, -38px); }
+  83.33% { transform: translate(114px, 67px); }
+  91.66% { transform: translate(132px, 154px); }
+  100%   { transform: translate(115px, 199px); }
+}
+
+/* Keyframes for Orbit 3 (Tilted -60° Ellipse: Ring 3) */
+@keyframes atomicOrbit3 {
+  0%     { transform: translate(115px, -199px); }
+  8.33%  { transform: translate(132px, -154px); }
+  16.66% { transform: translate(114px, -67px); }
+  25%    { transform: translate(65px, 38px); }
+  33.33% { transform: translate(1px, 132px); }
+  41.66% { transform: translate(-67px, 191px); }
+  50%    { transform: translate(-115px, 199px); }
+  58.33% { transform: translate(-132px, 154px); }
+  66.66% { transform: translate(-114px, 67px); }
+  75%    { transform: translate(-65px, -38px); }
+  83.33% { transform: translate(-1px, -132px); }
+  91.66% { transform: translate(67px, -191px); }
+  100%   { transform: translate(115px, -199px); }
 }
 
 /* ============================================================
