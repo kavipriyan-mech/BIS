@@ -1,19 +1,18 @@
 /* ============================================================
-   BIS Club — Glassmorphism Theme (BIS Official Navy, Liquid Glass)
+   BIS Club — Glassmorphism Theme (Liquid Crystalline Glass)
    ============================================================
-   Deep Navy (#003478) · Crimson Red (#C8102E) · BIS Gold (#F4A900)
+   Sapphire Blue (#3b82f6) · Crystalline Cyan (#06b6d4) · Soft Indigo (#6366f1)
 
-   Design intent: a premium "liquid glass" layer system where every
-   surface is a translucent frosted pane floating over a luminous
-   animated field of Navy/Red/Gold orbs. Hierarchy is communicated by
-   layering depth (blur + alpha + inset highlight), not by hard edges.
+   Design intent: A premium, ultra-modern liquid glass layer system where
+   every surface is a translucent frosted pane floating over a smooth,
+   luminous aura of blue, cyan, and indigo light. High contrast, elegant typography,
+   and clean crystalline highlights without harsh conflicting primary colors.
 
    Foundations summary
-     - Fonts: Plus Jakarta Sans (UI/display) + JetBrains Mono (tokens).
-     - Surfaces: translucent RGBA panes with backdrop-filter blur, a
-       1px top inner highlight, and a soft spread shadow for lift.
-     - Contrast: AA text sits on backfilled (lower-alpha) panes so the
-       frosted background never washes out readability.
+     - Fonts: Plus Jakarta Sans (UI/display) + JetBrains Mono (code/tokens).
+     - Surfaces: Translucent glass layers with backdrop-filter blur, 1px top
+       inner highlight, and soft spread shadows for weightless depth.
+     - Contrast: Crisp AA text sitting on backfilled translucent panes.
 
    Skill: glassmorphism · theme: glassmorphism · genre: liquid-glass
    ============================================================ */
@@ -24,36 +23,36 @@
   --theme-id: "glassmorphism";
   --theme-name: "BIS Official (Glass)";
 
-  /* ============ Primary Palette (BIS Brand Anchors) ============ */
-  --primary: #4d86ff;          /* Lifted Navy for AA on dark glass */
-  --primary-light: #79a5ff;
-  --primary-dark: #003478;
-  --accent: #ff4d63;           /* Crimson lifted for AA on dark glass */
-  --accent-light: #ff7084;
-  --gold: #ffc53a;             /* BIS Gold lifted for AA on dark glass */
-  --gold-light: #ffdc80;
-  --green: #3ddc84;
-  --silver: #b7c2d4;
-  --bronze: #f0a468;
+  /* ============ Primary Palette (Liquid Glass Anchors) ============ */
+  --primary: #3b82f6;          /* Sapphire Blue */
+  --primary-light: #60a5fa;    /* Ice Blue */
+  --primary-dark: #1d4ed8;     /* Deep Sapphire */
+  --accent: #06b6d4;           /* Crystalline Cyan */
+  --accent-light: #67e8f9;     /* Neon Cyan */
+  --gold: #38bdf8;             /* Sky Cyan (Replaced harsh yellow) */
+  --gold-light: #7dd3fc;       /* Crystalline Highlight */
+  --green: #34d399;            /* Emerald Glow */
+  --silver: #94a3b8;           /* Slate Frost */
+  --bronze: #818cf8;           /* Violet Frost */
 
   /* ============ Fluid Surfaces & Backdrop Panes ============ */
-  --bg: #04070e;               /* Deep near-black navy field */
+  --bg: #030712;               /* Ultra-deep obsidian field */
   --surface: rgba(255, 255, 255, 0.05);          /* base frosted pane */
   --surface-2: rgba(255, 255, 255, 0.08);         /* elevated frosted pane */
-  --surface-3: rgba(13, 21, 40, 0.72);            /* solid-ish nav/menu pane */
-  --surface-solid: #0b1322;    /* fallback for unsupported backdrop-filter */
-  --header-bg: rgba(6, 10, 20, 0.62);
+  --surface-3: rgba(15, 23, 42, 0.75);            /* solid-ish nav/menu pane */
+  --surface-solid: #0f172a;    /* fallback for unsupported backdrop-filter */
+  --header-bg: rgba(3, 7, 18, 0.65);
 
-  /* ============ Ink (all checked for AA on the darkest pane) ============ */
-  --text: #eef3fc;
-  --text-muted: #b9c6dc;
-  --text-dim: #8494af;
+  /* ============ Ink ============ */
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
   color-scheme: dark;
 
   /* ============ Floating Orbs — luminous color field ============ */
-  --orb-1-color: #003478;
-  --orb-2-color: #C8102E;
-  --orb-3-color: #F4A900;
+  --orb-1-color: #1d4ed8;
+  --orb-2-color: #0284c7;
+  --orb-3-color: #4f46e5;
   --orb-opacity: 0.35;
 
   /* ============ Geometry: soft, rounded, layered ============ */
@@ -62,19 +61,19 @@
   --radius-xs: 10px;
   --border-width: 1px;
   --border-style: solid;
-  --border: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(77, 134, 255, 0.45);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(56, 189, 248, 0.45);
 
   /* ============ Glass Physics ============ */
   --glass-blur: blur(22px) saturate(160%);
   --glass-blur-lg: blur(36px) saturate(180%);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  --inner-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.35);
-  --shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
-  --shadow-hover: 0 22px 56px rgba(0, 20, 60, 0.5), var(--glass-highlight);
-  --shadow-glow: 0 0 40px rgba(0, 52, 120, 0.35);
-  --shadow-red: 0 0 34px rgba(200, 16, 46, 0.22);
-  --shadow-gold: 0 0 26px rgba(244, 169, 0, 0.2);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --inner-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.4);
+  --shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 22px 56px rgba(14, 165, 233, 0.25), var(--glass-highlight);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  --shadow-cyan: 0 0 34px rgba(6, 182, 212, 0.25);
+  --shadow-indigo: 0 0 26px rgba(99, 102, 241, 0.25);
 
   --btn-transform-hover: translateY(-2px);
   --btn-transform-active: translateY(0px);
@@ -90,25 +89,21 @@
    ============================================================ */
 html, body {
   font-family: var(--font-sans) !important;
-  /* Flat deep navy field — the luminous color comes from the layered
-     .orb blobs in the background canvas, not from gradients. */
-  background: #04070e !important;
+  background: #030712 !important;
   color: var(--text) !important;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Livelier orb field for the liquid-glass signature */
 .bg-canvas { z-index: 0; }
 
 .orb {
-  filter: blur(120px) saturate(130%);
+  filter: blur(120px) saturate(140%);
   opacity: var(--orb-opacity);
 }
-.orb-1 { box-shadow: 0 0 140px 40px rgba(0, 84, 255, 0.35); }
-.orb-2 { box-shadow: 0 0 120px 24px rgba(255, 20, 50, 0.28); }
-.orb-3 { box-shadow: 0 0 130px 30px rgba(244, 169, 0, 0.24); }
+.orb-1 { box-shadow: 0 0 140px 40px rgba(29, 78, 216, 0.35); }
+.orb-2 { box-shadow: 0 0 120px 24px rgba(6, 182, 212, 0.30); }
+.orb-3 { box-shadow: 0 0 130px 30px rgba(99, 102, 241, 0.28); }
 
-/* Faint frosted grid — a flat, barely-there structure layer. */
 .grid-overlay {
   background: rgba(255, 255, 255, 0.02) !important;
 }
@@ -116,14 +111,13 @@ html, body {
 /* ============================================================
    Shared Glass Pane + Focus Ring Primitives
    ============================================================ */
-/* Every interactive element inherits a visible, high-contrast ring */
 :is(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--primary-light) !important;
   outline-offset: 2px !important;
   border-radius: var(--radius-xs);
 }
-::selection { background: rgba(77, 134, 255, 0.4); color: #fff; }
-:root { scrollbar-color: rgba(121, 165, 255, 0.4) rgba(255, 255, 255, 0.06); }
+::selection { background: rgba(56, 189, 248, 0.35); color: #fff; }
+:root { scrollbar-color: rgba(56, 189, 248, 0.4) rgba(255, 255, 255, 0.06); }
 
 /* ============================================================
    Header & Navigation — floating frosted bar
@@ -133,11 +127,11 @@ html, body {
   backdrop-filter: var(--glass-blur-lg) !important;
   -webkit-backdrop-filter: var(--glass-blur-lg) !important;
   border-bottom: var(--border-width) var(--border-style) var(--border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), var(--glass-highlight);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), var(--glass-highlight);
 }
 
 .logo-badge {
-  background: rgba(0, 52, 120, 0.88) !important;
+  background: rgba(15, 23, 42, 0.75) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -152,30 +146,30 @@ html, body {
 }
 .nav-link:hover {
   color: #fff;
-  background: rgba(77, 134, 255, 0.16);
+  background: rgba(56, 189, 248, 0.14);
   box-shadow: var(--glass-highlight);
   border-color: var(--border);
 }
 .nav-link.active {
   color: #fff;
-  background: rgba(77, 134, 255, 0.2);
+  background: rgba(56, 189, 248, 0.2);
   box-shadow: inset 0 0 0 1px var(--border-accent), var(--glass-highlight);
 }
 
 .nav-btn {
-  background: #003478 !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(79, 70, 229, 0.85)) !important;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 8px 24px rgba(0, 52, 120, 0.6), var(--glass-highlight);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4), var(--glass-highlight);
   font-family: var(--font-display);
   font-weight: 700;
 }
 .nav-btn:hover {
-  background: #8f0a1d !important;
-  box-shadow: 0 12px 30px rgba(200, 16, 46, 0.6), var(--glass-highlight);
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.95), rgba(67, 56, 202, 0.95)) !important;
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.45), var(--glass-highlight);
 }
 
 .mobile-nav {
-  background: rgba(6, 10, 20, 0.85);
+  background: rgba(3, 7, 18, 0.92);
   backdrop-filter: var(--glass-blur-lg);
   -webkit-backdrop-filter: var(--glass-blur-lg);
   border-radius: 0 0 var(--radius) var(--radius);
@@ -193,13 +187,10 @@ html, body {
 }
 .hero-title { font-family: var(--font-display); letter-spacing: -0.5px; }
 .gradient-text {
-  /* Flat, high-contrast accent — no gradient fill. Explicitly cancel the
-     base rule's text-clip so the flat color renders as normal text. */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  -webkit-text-fill-color: currentColor !important;
-  color: #ffc16b !important;
+  background: linear-gradient(135deg, #60a5fa, #38bdf8, #818cf8) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .date-card {
@@ -218,11 +209,14 @@ html, body {
   border: 1px solid var(--border) !important;
 }
 .btn-primary {
-  background: #003478 !important;
-  box-shadow: 0 12px 32px rgba(0, 52, 120, 0.55), var(--glass-highlight);
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45), var(--glass-highlight);
   font-family: var(--font-display); font-weight: 700;
 }
-.btn-primary:hover { background: #004ea8 !important; box-shadow: 0 16px 40px rgba(0, 52, 120, 0.7), var(--glass-highlight); }
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #4338ca) !important;
+  box-shadow: 0 16px 40px rgba(6, 182, 212, 0.5), var(--glass-highlight);
+}
 .btn-secondary {
   background: rgba(255, 255, 255, 0.08) !important;
   box-shadow: var(--glass-highlight);
@@ -230,10 +224,9 @@ html, body {
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.14) !important;
   border-color: var(--primary-light) !important;
-  box-shadow: var(--glass-highlight), 0 0 24px rgba(77, 134, 255, 0.3);
+  box-shadow: var(--glass-highlight), 0 0 24px rgba(56, 189, 248, 0.3);
 }
 
-/* Floating badges — keep the Saturn animation, re-skin as glass chips */
 .float-badge {
   background: rgba(255, 255, 255, 0.09) !important;
   backdrop-filter: blur(10px) saturate(150%);
@@ -247,14 +240,14 @@ html, body {
    BIS Info Strip — glass ticker
    ============================================================ */
 .bis-info-strip {
-  background: rgba(0, 52, 120, 0.55) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255, 197, 58, 0.3);
-  border-bottom: 1px solid rgba(255, 197, 58, 0.3);
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(56, 189, 248, 0.25);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
 }
-.strip-item { color: rgba(240, 248, 255, 0.95) !important; font-family: var(--font-display); }
-.strip-div { color: rgba(255, 220, 128, 0.7) !important; }
+.strip-item { color: rgba(248, 250, 252, 0.95) !important; font-family: var(--font-display); }
+.strip-div { color: rgba(56, 189, 248, 0.7) !important; }
 
 /* ============================================================
    Sections — frosted bento headers
@@ -263,9 +256,9 @@ html, body {
 .section-desc { color: var(--text-muted); }
 
 .section-tag {
-  background: rgba(255, 77, 99, 0.14) !important;
-  border: 1px solid rgba(255, 77, 99, 0.4) !important;
-  color: #ff9eb0 !important;
+  background: rgba(6, 182, 212, 0.14) !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  color: #67e8f9 !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-family: var(--font-mono);
@@ -287,23 +280,22 @@ html, body {
   transform: translateY(-6px);
   background: rgba(255, 255, 255, 0.10) !important;
   border-color: var(--border-accent) !important;
-  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(77, 134, 255, 0.35);
+  box-shadow: var(--shadow-hover), 0 0 0 1px rgba(56, 189, 248, 0.35);
 }
 .event-card-glow {
-  background: rgba(77, 134, 255, 0.16) !important;
+  background: rgba(56, 189, 248, 0.16) !important;
   mix-blend-mode: screen;
 }
 .event-emoji { filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5)); }
 
-/* Colorful visual headers — deepen them so they read against glass */
-.inauguration-bg { background: rgba(0, 52, 120, 0.95) !important; }
-.poster-bg { background: rgba(91, 33, 182, 0.95) !important; }
-.debate-bg { background: rgba(155, 28, 28, 0.95) !important; }
-.treasure-bg { background: rgba(146, 64, 14, 0.95) !important; }
-.rangoli-bg { background: rgba(22, 101, 52, 0.95) !important; }
-.quiz-bg { background: rgba(30, 64, 175, 0.95) !important; }
-.mimes-bg { background: rgba(107, 33, 168, 0.95) !important; }
-.science-bg { background: rgba(21, 94, 117, 0.95) !important; }
+.inauguration-bg { background: rgba(30, 58, 138, 0.85) !important; }
+.poster-bg { background: rgba(76, 29, 149, 0.85) !important; }
+.debate-bg { background: rgba(14, 116, 144, 0.85) !important; }
+.treasure-bg { background: rgba(30, 64, 175, 0.85) !important; }
+.rangoli-bg { background: rgba(4, 120, 87, 0.85) !important; }
+.quiz-bg { background: rgba(67, 56, 202, 0.85) !important; }
+.mimes-bg { background: rgba(124, 58, 237, 0.85) !important; }
+.science-bg { background: rgba(15, 118, 110, 0.85) !important; }
 
 .event-card-body { padding: 20px; }
 .event-name { font-family: var(--font-display); }
@@ -321,10 +313,10 @@ html, body {
   -webkit-backdrop-filter: blur(6px);
 }
 .meta-chip { color: var(--text-muted); }
-.meta-chip.prize { color: var(--gold) !important; }
-.meta-chip.individual { color: #7be6ae !important; }
-.meta-chip.team { color: #ff9eb0 !important; }
-.meta-chip.ceremonial { color: #9ec2ff !important; }
+.meta-chip.prize { color: #38bdf8 !important; }
+.meta-chip.individual { color: #34d399 !important; }
+.meta-chip.team { color: #818cf8 !important; }
+.meta-chip.ceremonial { color: #67e8f9 !important; }
 
 .card-click-hint { color: var(--primary-light); font-family: var(--font-mono); }
 
@@ -346,21 +338,21 @@ html, body {
   background: rgba(255, 255, 255, 0.1) !important;
 }
 .tab-btn.active {
-  background: #003478 !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
   border-color: transparent !important;
-  box-shadow: 0 10px 28px rgba(0, 52, 120, 0.6), var(--glass-highlight);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.5), var(--glass-highlight);
 }
 
 .tl-dot {
   background: var(--primary) !important;
-  border: 2px solid rgba(122, 167, 255, 0.9) !important;
-  box-shadow: 0 0 0 4px rgba(77, 134, 255, 0.15), 0 0 16px rgba(77, 134, 255, 0.5);
+  border: 2px solid rgba(96, 165, 250, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), 0 0 16px rgba(59, 130, 246, 0.6);
 }
-.tl-dot::after { background: rgba(122, 167, 255, 0.3) !important; }
+.tl-dot::after { background: rgba(96, 165, 250, 0.3) !important; }
 .tl-dot.break { background: rgba(255, 255, 255, 0.2) !important; border-color: rgba(255, 255, 255, 0.35) !important; box-shadow: none; }
 .tl-dot.gold {
-  background: var(--gold) !important; border-color: rgba(255, 220, 128, 0.9) !important;
-  box-shadow: 0 0 0 4px rgba(255, 197, 58, 0.14), 0 0 18px rgba(255, 197, 58, 0.6) !important;
+  background: var(--gold) !important; border-color: rgba(56, 189, 248, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2), 0 0 18px rgba(56, 189, 248, 0.6) !important;
 }
 .tl-time { font-family: var(--font-mono); color: var(--gold); }
 .tl-content h4 { font-family: var(--font-display); color: #fff; }
@@ -380,9 +372,9 @@ html, body {
   background: rgba(255, 255, 255, 0.09) !important;
   box-shadow: var(--shadow-hover);
 }
-.gold-card { border-color: rgba(255, 197, 58, 0.5) !important; box-shadow: var(--inner-shadow), var(--glass-highlight), var(--shadow-gold); }
-.silver-card { border-color: rgba(183, 194, 212, 0.35) !important; }
-.bronze-card { border-color: rgba(240, 164, 104, 0.4) !important; }
+.gold-card { border-color: rgba(56, 189, 248, 0.5) !important; box-shadow: var(--inner-shadow), var(--glass-highlight), var(--shadow-indigo); }
+.silver-card { border-color: rgba(148, 163, 184, 0.35) !important; }
+.bronze-card { border-color: rgba(129, 140, 248, 0.4) !important; }
 .prize-amount { font-family: var(--font-display); }
 
 .special-award {
@@ -399,14 +391,14 @@ html, body {
    ============================================================ */
 .countdown-banner,
 .qr-section-card {
-  background: rgba(77, 134, 255, 0.12) !important;
+  background: rgba(30, 58, 138, 0.25) !important;
   border: var(--border-width) var(--border-style) var(--border) !important;
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--inner-shadow), var(--glass-highlight), 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 .cd-num, .cd-colon { font-family: var(--font-mono); }
-.cd-secs-wrap { color: var(--accent) !important; }
+.cd-secs-wrap { color: var(--accent-light) !important; }
 .cd-unit-label { letter-spacing: 1.5px; }
 
 .qr-box {
@@ -415,16 +407,16 @@ html, body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), var(--glass-highlight);
 }
 .qr-tag {
-  background: rgba(255, 77, 99, 0.16) !important;
-  border: 1px solid rgba(255, 77, 99, 0.4) !important;
-  color: #ff9eb0 !important;
+  background: rgba(6, 182, 212, 0.16) !important;
+  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  color: #67e8f9 !important;
   font-family: var(--font-mono);
 }
 .qr-title { font-family: var(--font-display); }
 
 .cd-date-pill, .event-pill {
-  background: rgba(255, 197, 58, 0.14) !important;
-  border: 1px solid rgba(255, 197, 58, 0.4) !important;
+  background: rgba(56, 189, 248, 0.14) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -445,8 +437,8 @@ html, body {
 
 .form-section-title { font-family: var(--font-display); border-bottom-color: var(--border); }
 .form-sec-num {
-  background: #8f0a1d !important;
-  box-shadow: var(--glass-highlight), 0 6px 16px rgba(200, 16, 46, 0.4);
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+  box-shadow: var(--glass-highlight), 0 6px 16px rgba(37, 99, 235, 0.4);
   font-family: var(--font-mono);
 }
 
@@ -465,16 +457,16 @@ textarea {
   box-shadow: var(--inner-shadow);
 }
 input::placeholder, textarea::placeholder { color: var(--text-dim); }
-select option { background: #0b1322; color: var(--text); }
+select option { background: #0f172a; color: var(--text); }
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--primary-light) !important;
   background: rgba(255, 255, 255, 0.09) !important;
-  box-shadow: 0 0 0 3px rgba(77, 134, 255, 0.25), var(--inner-shadow) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), var(--inner-shadow) !important;
 }
 input:invalid:not(:placeholder-shown),
-select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !important; }
-.field-err { color: #ff9eb0 !important; }
+select:invalid:not([value=""]) { border-color: rgba(244, 63, 94, 0.65) !important; }
+.field-err { color: #f43f5e !important; }
 
 /* ============================================================
    Events Picker — glass check-cards
@@ -493,8 +485,8 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
 }
 .event-check input:checked ~ .ec-card {
   border-color: var(--primary-light) !important;
-  background: rgba(77, 134, 255, 0.18) !important;
-  box-shadow: 0 0 0 2px rgba(77, 134, 255, 0.35), var(--glass-highlight);
+  background: rgba(56, 189, 248, 0.18) !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35), var(--glass-highlight);
 }
 .ec-info strong { font-family: var(--font-display); }
 .ec-check-mark {
@@ -502,8 +494,8 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
   border: 1.5px solid var(--border-accent) !important;
 }
 .event-check input:checked ~ .ec-card .ec-check-mark {
-  background: #003478 !important;
-  box-shadow: 0 0 14px rgba(77, 134, 255, 0.5);
+  background: #2563eb !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
 }
 
 .event-details, .detail-header {
@@ -524,23 +516,23 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
   border: 1.5px solid var(--border-accent) !important;
 }
 .check-label input:checked ~ .check-box {
-  background: #003478 !important;
+  background: #2563eb !important;
   border-color: transparent !important;
-  box-shadow: 0 0 14px rgba(77, 134, 255, 0.5);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
 }
 
 /* ============================================================
    Submit Button — luminous glass pill
    ============================================================ */
 .btn-submit {
-  background: #003478 !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 16px 40px rgba(0, 52, 120, 0.6), var(--glass-highlight);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.5), var(--glass-highlight);
   font-family: var(--font-display); font-weight: 800;
 }
 .btn-submit:hover:not(:disabled) {
-  background: #8f0a1d !important;
-  box-shadow: 0 22px 52px rgba(200, 16, 46, 0.65), var(--glass-highlight);
+  background: linear-gradient(135deg, #1d4ed8, #4338ca) !important;
+  box-shadow: 0 22px 52px rgba(6, 182, 212, 0.55), var(--glass-highlight);
 }
 .btn-label { font-family: var(--font-display); }
 
@@ -549,7 +541,7 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
    ============================================================ */
 .modal-overlay,
 .event-modal-overlay {
-  background: rgba(2, 4, 10, 0.6) !important;
+  background: rgba(3, 7, 18, 0.7) !important;
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
@@ -560,24 +552,24 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
   box-shadow: var(--inner-shadow), var(--glass-highlight), 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 .event-modal-close {
-  background: rgba(0, 0, 0, 0.55) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
 }
-.event-modal-close:hover { background: rgba(200, 16, 46, 0.75) !important; }
+.event-modal-close:hover { background: rgba(56, 189, 248, 0.25) !important; }
 
 .em-title, .modal-title { font-family: var(--font-display); }
 .em-day-tag { font-family: var(--font-mono); color: var(--gold); }
 .em-time-badge {
-  background: rgba(255, 197, 58, 0.16) !important;
-  border-color: rgba(255, 197, 58, 0.45) !important;
+  background: rgba(56, 189, 248, 0.16) !important;
+  border-color: rgba(56, 189, 248, 0.45) !important;
   color: var(--gold) !important;
 }
 .reg-id-badge {
-  background: #e8a000 !important;
-  color: #1a1400 !important;
-  box-shadow: 0 8px 24px rgba(244, 169, 0, 0.4), var(--glass-highlight);
+  background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4), var(--glass-highlight);
   font-family: var(--font-mono);
 }
 
@@ -600,13 +592,13 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
 .em-c-pct { font-family: var(--font-mono); color: var(--gold); }
 
 .em-register-btn {
-  background: #8f0a1d !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 12px 32px rgba(200, 16, 46, 0.5), var(--glass-highlight);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.4), var(--glass-highlight);
   font-family: var(--font-display);
 }
 .em-register-btn:hover {
-  background: #a31428 !important;
+  background: linear-gradient(135deg, #1d4ed8, #4338ca) !important;
 }
 
 .modal-details {
@@ -618,7 +610,7 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
    Footer — frosted closing bar
    ============================================================ */
 .footer {
-  background: rgba(6, 10, 20, 0.66) !important;
+  background: rgba(3, 7, 18, 0.75) !important;
   backdrop-filter: var(--glass-blur-lg);
   -webkit-backdrop-filter: var(--glass-blur-lg);
   border-top: var(--border-width) var(--border-style) var(--border);
@@ -645,7 +637,7 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
 .theme-btn-name { color: var(--gold) !important; }
 
 .theme-dropdown-menu {
-  background: rgba(13, 21, 40, 0.9) !important;
+  background: rgba(15, 23, 42, 0.92) !important;
   border: var(--border-width) var(--border-style) var(--border) !important;
   backdrop-filter: var(--glass-blur-lg);
   -webkit-backdrop-filter: var(--glass-blur-lg);
@@ -660,52 +652,8 @@ select:invalid:not([value=""]) { border-color: rgba(255, 77, 99, 0.65) !importan
   border-color: var(--primary-light);
 }
 .theme-dropdown-item.active {
-  background: rgba(77, 134, 255, 0.18) !important;
+  background: rgba(56, 189, 248, 0.18) !important;
   border-color: var(--gold) !important;
 }
 .theme-item-name { font-family: var(--font-display); }
 .theme-item-tag { color: var(--gold) !important; }
-
-/* ============================================================
-   Accessibility & Responsive hard-passes
-   ============================================================ */
-/* Prefers reduced motion — disable orb drift & button lifts */
-@media (prefers-reduced-motion: reduce) {
-  .orb, .float-badge, .bis-info-strip {
-    animation: none !important;
-    transition: none !important;
-  }
-  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card):hover {
-    transform: none !important;
-  }
-}
-
-/* Small screens — keep panes readable by raising alpha & blur */
-@media (max-width: 640px) {
-  :root {
-    --surface: rgba(255, 255, 255, 0.06);
-    --surface-2: rgba(255, 255, 255, 0.09);
-  }
-  .form-card {
-    backdrop-filter: var(--glass-blur) !important;
-    -webkit-backdrop-filter: var(--glass-blur) !important;
-  }
-}
-
-/* ============================================================
-   Glassmorphism Theme QA Checklist
-   ============================================================
-   [x] WCAG 2.2 AA text: text tokens lifted so they clear the darkest pane
-       (--text #eef3fc ~15:1, --text-muted #b9c6dc ~8:1, --text-dim #8494af ~4.6:1
-       all on a conservative #0b1322 fallback surface).
-   [x] Focus is never removed: every interactive element gets a visible
-       :focus-visible 2px ring + 2px offset (contrast against glass).
-   [x] Keyboard-first: all native buttons/links preserved; cards remain
-       clickable via existing handlers, ring added via [tabindex].
-   [x] prefers-reduced-motion disables orb drift and hover lifts.
-   [x] backdrop-filter falls back to a solid pane where unsupported.
-   [x] Inset top highlight + inner shadow + spread shadow give pane lift
-       without relying on decorative motion.
-   [x] Fluid surfaces use translucent tokens; no hard neon borders.
-   [x] Responsive: pane alpha raised + blur reduced on small screens.
-   ============================================================ */

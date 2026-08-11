@@ -17,7 +17,7 @@
       category: 'Glassmorphism',
       designTag: 'GLASS',
       badgeText: 'DEFAULT',
-      swatches: ['#003478', '#C8102E', '#F4A900'],
+      swatches: ['#3b82f6', '#06b6d4', '#6366f1'],
       path: 'themes/glassmorphism/theme.css'
     },
     {
@@ -39,6 +39,16 @@
       path: 'themes/hallmark/theme.css'
     },
     {
+      id: 'claymorphism',
+      name: 'Claymorphism',
+      category: 'Claymorphism',
+      designTag: 'PUFFY',
+      badgeText: 'CLAY 🧸',
+      swatches: ['#2F6FE4', '#B22A3D', '#EEF1F5'],
+      path: 'themes/claymorphism/theme.css'
+    },
+    {
+      id: 'cyberpunk',
       id: 'cyberpunk',
       name: 'Cyberpunk Neon',
       category: 'Retro Sci-Fi',
@@ -48,42 +58,6 @@
       path: 'themes/cyberpunk/theme.css'
     },
     {
-      id: 'nordic-light',
-      name: 'Nordic Clean (Light)',
-      category: 'Light Mode',
-      designTag: 'LIGHT',
-      badgeText: 'LIGHT ☀️',
-      swatches: ['#0284c7', '#e11d48', '#f8fafc'],
-      path: 'themes/nordic-light/theme.css'
-    },
-    {
-      id: 'emerald-aurora',
-      name: 'Emerald Aurora',
-      category: 'Nature Dark',
-      designTag: 'AURORA',
-      badgeText: 'DARK 🌲',
-      swatches: ['#059669', '#10b981', '#03140e'],
-      path: 'themes/emerald-aurora/theme.css'
-    },
-    {
-      id: 'sunset-synth',
-      name: 'Sunset Synthwave',
-      category: 'Synthwave',
-      designTag: 'SYNTH',
-      badgeText: 'WARM 🌅',
-      swatches: ['#ff455b', '#f97316', '#0f0a1c'],
-      path: 'themes/sunset-synth/theme.css'
-    },
-    {
-      id: 'royal-gold',
-      name: 'Royal Gold & Onyx',
-      category: 'Luxury',
-      designTag: 'LUXURY',
-      badgeText: 'GOLD 👑',
-      swatches: ['#eab308', '#fef08a', '#0c0a09'],
-      path: 'themes/royal-gold/theme.css'
-    },
-    {
       id: 'dracula',
       name: 'Dracula Violet',
       category: 'Dark Mode',
@@ -91,15 +65,6 @@
       badgeText: 'POPULAR 🧛',
       swatches: ['#bd93f9', '#ff79c6', '#181825'],
       path: 'themes/dracula/theme.css'
-    },
-    {
-      id: 'tokyo-night',
-      name: 'Tokyo Night',
-      category: 'Dark Mode',
-      designTag: 'TOKYO',
-      badgeText: 'SLEEK 🌙',
-      swatches: ['#7aa2f7', '#bb9af7', '#16161e'],
-      path: 'themes/tokyo-night/theme.css'
     }
   ];
 
