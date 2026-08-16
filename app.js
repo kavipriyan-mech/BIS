@@ -396,10 +396,14 @@ function showSuccessModal(regId, name, rollNo, events) {
       <div><strong>Events:</strong> ${eventsStr}</div>
     </div>
   `;
-  document.getElementById('successModal').classList.remove('hidden');
+  const modalOverlay = document.getElementById('successModal');
+  if (modalOverlay) {
+    modalOverlay.scrollTop = 0;
+    modalOverlay.classList.remove('hidden');
+  }
   document.body.style.overflow = 'hidden';
   if (window.lucide) {
-    window.lucide.createIcons({ root: document.getElementById('successModal') });
+    window.lucide.createIcons({ root: modalOverlay });
   }
 }
 
@@ -410,6 +414,7 @@ function showErrorAlert(message) {
     return;
   }
   document.getElementById('errorModalMessage').textContent = message;
+  errModal.scrollTop = 0;
   errModal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
@@ -429,7 +434,8 @@ function closeModalFormReset() {
 }
 
 function closeModal() {
-  document.getElementById('successModal').classList.add('hidden');
+  const modalOverlay = document.getElementById('successModal');
+  if (modalOverlay) modalOverlay.classList.add('hidden');
   document.body.style.overflow = '';
 }
 
@@ -448,7 +454,7 @@ async function submitForm(e) {
   const btnLabel  = submitBtn.querySelector('.btn-label');
   const btnLoader = document.getElementById('btnLoader');
 
-  // Disable submit button & show loading state
+  // Disable submit button & show loading state immediately
   submitBtn.disabled = true;
   if (btnLabel)  btnLabel.style.display = 'none';
   if (btnLoader) btnLoader.classList.remove('hidden');

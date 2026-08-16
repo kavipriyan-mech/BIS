@@ -1094,26 +1094,46 @@ input:focus, select:focus, textarea:focus {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ============================================================
-   Success Modal
+   Success / Error Registration Modal Pop-up (Fixed Viewport Center)
    ============================================================ */
 .modal-overlay {
-  position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 8, 18, 0.84);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
 }
 .modal {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 24px; padding: 48px 40px;
-  max-width: 480px; width: 100%; text-align: center;
-  animation: slideUp 0.35s ease;
-  box-shadow: var(--shadow);
+  background: var(--surface-2, #0d1528);
+  border: 1.5px solid var(--border, rgba(255,255,255,0.18));
+  border-radius: 20px;
+  padding: 36px 28px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   color: var(--text);
+  animation: modalCenterPop 0.15s cubic-bezier(0, 0, 0.2, 1) forwards;
+  transform-origin: center center;
 }
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes modalCenterPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 .modal-icon { font-size: 3.5rem; margin-bottom: 20px; color: var(--gold); }
 .modal-title { font-size: 1.6rem; font-weight: 900; color: var(--text); margin-bottom: 12px; }
