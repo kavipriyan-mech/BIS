@@ -130,7 +130,8 @@
       <div class="float-badge fb-3 orbit-3">Rangoli</div>
       <div class="float-badge fb-4 orbit-1">Quiz</div>
       <div class="float-badge fb-5 orbit-2">Mimes</div>
-      <div class="float-badge fb-6 orbit-3">Treasure Hunt</div>
+      <div class="float-badge fb-6 orbit-3" style="cursor:pointer;" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'}); setTimeout(()=>openEventModal('science'),600);" title="Click to explore">🔬 Science</div>
+      <div class="float-badge fb-7 orbit-1">Treasure Hunt</div>
     </div>
   </section>
 
@@ -149,7 +150,7 @@
       <div class="strip-div">|</div>
       <div class="strip-item">
         <span class="strip-icon"><i data-lucide="target"></i></span>
-        <span>8 Events · 2 Days · ₹3000+ in Prizes</span>
+        <span>8 Events · 2 Days · ₹20,000+ in Prizes</span>
       </div>
     </div>
   </div>
@@ -281,19 +282,25 @@
           <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Science via Standards -->
-        <div class="event-card clickable-card" onclick="openEventModal('science')">
+        <!-- Science via Standards — FEATURED FLAGSHIP EVENT -->
+        <div class="event-card clickable-card" onclick="openEventModal('science')" style="position:relative; border: 1.5px solid var(--accent, #7c6af7); box-shadow: 0 0 32px 4px rgba(124,106,247,0.18);">
           <div class="event-card-glow"></div>
+          <!-- Featured badges -->
+          <div style="position:absolute; top:12px; right:12px; z-index:5; display:flex; flex-direction:column; gap:5px; align-items:flex-end;">
+            <span style="background:linear-gradient(90deg,#f7b731,#f39c12); color:#000; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:20px; letter-spacing:0.04em;">FEATURED PROTOTYPE</span>
+            <span style="background:linear-gradient(90deg,#6c5ce7,#a29bfe); color:#fff; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:20px; letter-spacing:0.04em;">₹20,000+ PRIZE POOL</span>
+          </div>
           <div class="event-visual science-bg">
             <span class="event-emoji"><i data-lucide="flask-conical"></i></span>
           </div>
           <div class="event-card-body">
             <div class="event-time-tag">10:45 AM – 12:30 PM</div>
             <h3 class="event-name">Learning Science via Standards</h3>
-            <p class="event-desc">Interactive session with live demos in Auditorium. Build models and explain the science behind quality standards.</p>
+            <p class="event-desc" style="font-size:0.83rem;"><strong>Pressure Cooker — Science Behind Everyday Safety.</strong> Build an interactive educational prototype based on a BIS Learning Science via Standards topic and explain the scientific principles, engineering design, safety features, and relevant BIS standard behind it.</p>
             <div class="event-meta">
               <span class="meta-chip team">Team of 2–4</span>
-              <span class="meta-chip">Best Learner Award</span>
+              <span class="meta-chip">Prototype + Explanation</span>
+              <span class="meta-chip prize" style="background:linear-gradient(90deg,#6c5ce7,#a29bfe); color:#fff;">₹20,000+ Total Prize Pool</span>
             </div>
           </div>
           <div class="card-click-hint">Click to explore →</div>
@@ -345,7 +352,7 @@
         <div class="tl-item"><div class="tl-time">7:00 – 9:00 AM</div><div class="tl-dot"></div><div class="tl-content"><h4>Rangoli Competition</h4><p>Auditorium side — Teams of max 4, traditional rangoli art</p></div></div>
         <div class="tl-item"><div class="tl-time">9:00 – 10:30 AM</div><div class="tl-dot"></div><div class="tl-content"><h4>Quiz</h4><p>Forge Lab — Round 1 (Quizizz), Round 2 (Buzzinlive + PPT)</p></div></div>
         <div class="tl-item"><div class="tl-time">10:30 – 10:45 AM</div><div class="tl-dot break"></div><div class="tl-content break-content"><h4>Break (15 min)</h4></div></div>
-        <div class="tl-item"><div class="tl-time">10:45 AM – 12:30 PM</div><div class="tl-dot"></div><div class="tl-content"><h4>Learning Science via Standards</h4><p>Auditorium — Interactive session with live demonstrations</p></div></div>
+        <div class="tl-item"><div class="tl-time">10:45 AM – 12:30 PM</div><div class="tl-dot"></div><div class="tl-content"><h4>Learning Science via Standards ⭐</h4><p>Main Auditorium — Pressure Cooker prototype demonstrations, science explanation, BIS standard IS 2347 connection and judging</p></div></div>
         <div class="tl-item"><div class="tl-time">12:30 – 1:30 PM</div><div class="tl-dot break"></div><div class="tl-content break-content"><h4>Lunch (1 hr)</h4></div></div>
         <div class="tl-item"><div class="tl-time">1:30 – 3:00 PM</div><div class="tl-dot"></div><div class="tl-content"><h4>Mimes</h4><p>Seminar Hall / Forge Lab — Teams of 4–6, silent performance</p></div></div>
         <div class="tl-item"><div class="tl-time">3:00 – 3:15 PM</div><div class="tl-dot break"></div><div class="tl-content break-content"><h4>Break (15 min)</h4></div></div>
@@ -360,7 +367,7 @@
       <div class="section-header">
         <span class="section-tag">Awards</span>
         <h2 class="section-title">Prize Structure</h2>
-        <p class="section-desc">Winners take home exciting cash prizes and recognition</p>
+        <p class="section-desc">₹20,000+ Total Prize Pool — Winners take home exciting cash prizes and recognition</p>
       </div>
       <div class="prizes-grid">
         <div class="prize-card gold-card">
@@ -557,8 +564,8 @@
               <div class="ec-card">
                 <span class="ec-icon"><i data-lucide="flask-conical"></i></span>
                 <div class="ec-info">
-                  <strong>Learning Science via Standards</strong>
-                  <small>Team of 2–4 · Day 2, 10:45 AM</small>
+                  <strong>Learning Science via Standards ⭐</strong>
+                  <small>Team of 2–4 · Day 2, 10:45 AM · Prototype + Science Explanation</small>
                 </div>
                 <div class="ec-check-mark">✓</div>
               </div>
@@ -691,7 +698,7 @@
           <!-- Science Details -->
           <div class="event-details hidden" id="detail-science">
             <div class="detail-header"><i data-lucide="flask-conical"></i> Learning Science via Standards — Additional Details</div>
-            <p class="form-note">Teams of 2–4. Describe your team and model/topic idea.</p>
+            <p class="form-note">Teams of 2–4 · Day 2, 10:45 AM · <strong>Topic: Pressure Cooker — Science Behind Everyday Safety</strong></p>
             <div class="form-grid">
               <div class="form-group">
                 <label for="sci-team">Team Name <span class="req">*</span></label>
@@ -699,14 +706,29 @@
                 <div class="field-err" id="sci-team-err"></div>
               </div>
               <div class="form-group">
-                <label for="sci-members">Team Members (comma separated, 2 to 4 members)</label>
-                <input type="text" id="sci-members" placeholder="Member 1, Member 2" />
+                <label for="sci-members">Team Members (comma separated, 2 to 4 members) <span class="req">*</span></label>
+                <input type="text" id="sci-members" placeholder="Member 1, Member 2, Member 3, Member 4" />
                 <div class="field-err" id="sci-members-err"></div>
               </div>
               <div class="form-group full-width">
-                <label for="sci-topic">Model / Topic Idea</label>
-                <input type="text" id="sci-topic" placeholder="e.g. Water purity testing using BIS standards" />
+                <label for="sci-topic">Prototype Topic</label>
+                <input type="text" id="sci-topic" value="Pressure Cooker — Science Behind Everyday Safety" readonly style="opacity:0.7; cursor:not-allowed;" />
                 <div class="field-err" id="sci-topic-err"></div>
+              </div>
+              <div class="form-group">
+                <label for="sci-prototype-type">Prototype Type <span class="req">*</span></label>
+                <select id="sci-prototype-type" name="sci-prototype-type">
+                  <option value="">Select prototype type</option>
+                  <option value="Physical Cutaway Model">Physical Cutaway Model</option>
+                  <option value="Interactive Demonstration Model">Interactive Demonstration Model</option>
+                  <option value="Hybrid Physical + Digital Model">Hybrid Physical + Digital Model</option>
+                </select>
+                <div class="field-err" id="sci-prototype-type-err"></div>
+              </div>
+              <div class="form-group full-width">
+                <label for="sci-description">Short Description <span class="req">*</span></label>
+                <textarea id="sci-description" name="sci-description" placeholder="Briefly describe your prototype and the science principle you will demonstrate (e.g. cutaway pressure cooker showing pressure-temperature relationship, safety valve mechanism, BIS IS 2347 connection)..." rows="3" style="width:100%; resize:vertical; padding:10px 14px; border-radius:8px; border: 1px solid var(--border,rgba(255,255,255,0.12)); background:var(--input-bg,rgba(255,255,255,0.05)); color:inherit; font-family:inherit; font-size:0.92rem;"></textarea>
+                <div class="field-err" id="sci-description-err"></div>
               </div>
             </div>
           </div>
@@ -1127,55 +1149,240 @@
     </div>
   </div>
 
-  <!-- Learning Science via Standards Modal -->
+  <!-- Learning Science via Standards Modal — FLAGSHIP EVENT -->
   <div class="event-modal-overlay hidden" id="modal-science">
-    <div class="event-modal">
+    <div class="event-modal" style="max-width:760px;">
       <button class="event-modal-close" onclick="closeEventModal('science')">✕</button>
-      <div class="em-hero science-hero">
+      <div class="em-hero science-hero" style="position:relative;">
         <span class="em-emoji"><i data-lucide="flask-conical"></i></span>
+        <div style="position:absolute;top:14px;left:14px;display:flex;gap:6px;z-index:5;">
+          <span style="background:linear-gradient(90deg,#f7b731,#f39c12);color:#000;font-size:0.6rem;font-weight:800;padding:3px 10px;border-radius:20px;">FEATURED PROTOTYPE EVENT</span>
+          <span style="background:linear-gradient(90deg,#6c5ce7,#a29bfe);color:#fff;font-size:0.6rem;font-weight:800;padding:3px 10px;border-radius:20px;">₹20,000+ PRIZE POOL</span>
+        </div>
         <div class="em-overlay">
           <span class="em-day-tag">Day 2 · 10 September</span>
           <h2 class="em-title">Learning Science via Standards</h2>
+          <div style="font-size:0.85rem;opacity:0.9;margin-top:4px;font-weight:600;">Pressure Cooker — Science Behind Everyday Safety</div>
           <span class="em-time-badge"><i data-lucide="clock"></i> 10:45 AM – 12:30 PM</span>
         </div>
       </div>
       <div class="em-body">
         <div class="em-info-row">
           <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 2–4</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Auditorium</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.75 Hours</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="award"></i></span><span class="em-info-label">Prize</span><strong>Best Learner</strong></div>
+          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Main Auditorium</strong></div>
+          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1 hr 45 min</strong></div>
+          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong style="color:#a29bfe;">₹20,000+ Total</strong></div>
         </div>
+
+        <!-- Callout banners -->
+        <div style="background:linear-gradient(135deg,rgba(108,92,231,0.18),rgba(162,155,254,0.08));border:1px solid rgba(162,155,254,0.3);border-radius:12px;padding:16px 20px;margin:18px 0;text-align:center;">
+          <div style="font-size:1rem;font-weight:700;letter-spacing:0.02em;margin-bottom:4px;">&ldquo;Don't just display a product. Explain the science that makes it work.&rdquo;</div>
+          <div style="font-size:0.82rem;opacity:0.75;">Build it. Demonstrate it. Explain the science. Connect it to Standards.</div>
+        </div>
+
+        <!-- About -->
         <div class="em-section">
           <h3 class="em-section-title">About the Event</h3>
-          <p>An interactive session where participants build models based on specific topics and explain the underlying science behind them. Features live demonstrations and hands-on activities related to quality standards.</p>
+          <p>Participants will build and demonstrate an educational prototype inspired by the official <a href="https://www.bis.gov.in/learning-science-via-standards/?lang=en" target="_blank" rel="noopener" style="color:var(--accent,#a29bfe);">BIS Learning Science via Standards</a> initiative.</p>
+          <p style="margin-top:10px;">For this edition, the selected topic is the <strong>Pressure Cooker</strong>. The objective is not simply to display a pressure cooker — participants must demonstrate how scientific principles influence the <strong>design, operation, efficiency and safety</strong> of the product, and explain how standardisation ensures quality.</p>
+          <p style="margin-top:10px;">The project must connect: <strong>Science → Engineering → Product → Safety → BIS Standard</strong></p>
         </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Resource person / senior student leads a short interactive talk (15–20 min).</li>
-            <li>Live demonstration of 1–2 simple tests (e.g., checking quality, ISI authenticity).</li>
-            <li>Participants split into small groups for hands-on activity or model explanation.</li>
-            <li>Quick recap / Q&A to close the session, reinforcing key takeaways.</li>
-          </ol>
+
+        <!-- Safety notice -->
+        <div style="background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.4);border-radius:10px;padding:14px 18px;margin:4px 0 16px;">
+          <div style="font-weight:700;color:#e74c3c;margin-bottom:6px;"><i data-lucide="shield-alert" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i> Safety Requirement</div>
+          <p style="font-size:0.85rem;line-height:1.55;"><strong>For safety, participants must not pressurize a homemade prototype.</strong> The prototype is intended for educational demonstration only. If demonstrating pressure/temperature experimentally, use commercially manufactured laboratory-safe equipment, a low-pressure demonstration setup, simulation, LEDs, gauges, transparent non-pressurized models, or prerecorded/controlled demonstrations.</p>
         </div>
+
+        <!-- Required Prototype -->
         <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Topics</h3>
-          <div class="em-themes">
-            <span class="em-theme-tag">How products get tested before certification</span>
-            <span class="em-theme-tag">Basic quality control experiments</span>
-            <span class="em-theme-tag">Reading a standard mark/label</span>
-            <span class="em-theme-tag">Science behind everyday safety standards</span>
+          <h3 class="em-section-title"><i data-lucide="cpu"></i> Required Prototype — Cutaway Pressure Cooker</h3>
+          <p style="margin-bottom:10px;">Build a visually impressive <strong>cutaway pressure cooker model</strong> that clearly shows its internal mechanism. Use transparent/acrylic sections or a cutaway design so judges can see inside.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">① Cooker body &amp; Lid</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">② Sealing gasket &amp; Locking mechanism</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">③ Steam outlet &amp; Steam path</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">④ Pressure regulator / Weight</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">⑤ Safety valve mechanism</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">⑥ Water/food chamber &amp; Heat source</div>
           </div>
         </div>
+
+        <!-- Interactive Demo Simulation -->
         <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Evaluation</h3>
-          <p>Not competitively judged — participation-based. Optional short quiz/worksheet to award a <strong>'Best Learner'</strong> recognition. All participants receive participation certificates.</p>
+          <h3 class="em-section-title"><i data-lucide="play-circle"></i> Interactive Demonstration — Visual Simulation</h3>
+          <p style="font-size:0.84rem;margin-bottom:14px;">The prototype must feature an interactive demonstration. Participants show each stage using LEDs, gauges, or controlled displays. Click below to see a simulation:</p>
+          <div id="sci-demo-area" style="background:rgba(0,0,0,0.25);border:1px solid rgba(162,155,254,0.25);border-radius:12px;padding:20px;">
+            <div id="sci-demo-status" style="font-size:0.88rem;font-weight:600;margin-bottom:12px;text-align:center;color:var(--accent,#a29bfe);">Press START to run the demonstration</div>
+            <!-- Stage indicators -->
+            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+              <div class="sci-stage" id="stage-heat" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
+                <span style="font-size:1.1rem;">🔥</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 1 — Heating:</strong> Heat → Water gains energy → Steam generation</span><span id="ind-heat" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
+              </div>
+              <div class="sci-stage" id="stage-steam" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
+                <span style="font-size:1.1rem;">💨</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 2 — Steam Trapping:</strong> Steam trapped → Pressure increases</span><span id="ind-steam" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
+              </div>
+              <div class="sci-stage" id="stage-bp" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
+                <span style="font-size:1.1rem;">📈</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 3 — Higher Boiling Point:</strong> Pressure ↑ → Boiling Temperature ↑</span><span id="ind-bp" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
+              </div>
+              <div class="sci-stage" id="stage-cook" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
+                <span style="font-size:1.1rem;">🍲</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 4 — Cooking:</strong> Higher temperature + steam + pressure → Faster cooking</span><span id="ind-cook" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
+              </div>
+              <div class="sci-stage" id="stage-safety" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
+                <span style="font-size:1.1rem;">🛡️</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 5 — Safety Valve:</strong> Pressure regulator releases excess steam safely</span><span id="ind-safety" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
+              </div>
+            </div>
+            <!-- Pressure gauge -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:0.78rem;margin-bottom:4px;font-weight:600;">Pressure Gauge</div>
+              <div style="background:rgba(255,255,255,0.08);border-radius:20px;height:12px;overflow:hidden;">
+                <div id="sci-pressure-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#6c5ce7,#a29bfe);border-radius:20px;transition:width 1.5s ease;"></div>
+              </div>
+              <div id="sci-pressure-label" style="font-size:0.72rem;margin-top:4px;opacity:0.7;">0 kPa — Atmospheric</div>
+            </div>
+            <button id="sci-demo-btn" onclick="runScienceDemo()" style="width:100%;padding:10px;border:none;border-radius:8px;background:linear-gradient(90deg,#6c5ce7,#a29bfe);color:#fff;font-weight:700;font-size:0.88rem;cursor:pointer;letter-spacing:0.04em;">▶ START DEMONSTRATION</button>
+          </div>
         </div>
+
+        <!-- Science Explanation -->
+        <div class="em-section">
+          <h3 class="em-section-title"><i data-lucide="atom"></i> The Science Behind the Pressure Cooker</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
+              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Pressure &amp; Boiling Point</div>
+              <p style="font-size:0.8rem;line-height:1.55;">Water boils when its vapour pressure equals the surrounding pressure. Inside the cooker, trapped steam raises internal pressure — which raises the boiling point, allowing cooking above 100°C.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
+              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Ideal Gas Law</div>
+              <div style="font-size:1.1rem;font-weight:800;text-align:center;padding:8px 0;color:var(--accent,#a29bfe);">PV = nRT</div>
+              <p style="font-size:0.78rem;line-height:1.5;">P = Pressure · V = Volume · n = Amount of gas · R = Gas constant · T = Temperature (Kelvin)</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
+              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Gay-Lussac's Law</div>
+              <div style="font-size:1rem;font-weight:800;text-align:center;padding:6px 0;color:var(--accent,#a29bfe);">P / T = constant</div>
+              <p style="font-size:0.8rem;line-height:1.55;">At constant volume, as temperature increases, pressure increases proportionally — directly explaining what happens inside a sealed pressure cooker.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
+              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Why Cooking is Faster</div>
+              <p style="font-size:0.8rem;line-height:1.55;">Heating → Steam generation → Pressure rise → Higher boiling temperature → Faster cooking. The elevated temperature dramatically accelerates heat transfer to food.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIS Connection -->
+        <div class="em-section">
+          <h3 class="em-section-title"><i data-lucide="shield-check"></i> Where BIS Standards Come In</h3>
+          <div style="background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(0,0,0,0.1));border:1px solid rgba(162,155,254,0.3);border-radius:12px;padding:16px 20px;margin-bottom:14px;">
+            <div style="font-size:1rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.02em;">IS 2347 — Domestic Pressure Cookers</div>
+            <div style="font-size:0.8rem;margin-top:4px;opacity:0.75;">Bureau of Indian Standards — the standard governing safety and quality of domestic pressure cookers in India</div>
+          </div>
+          <p style="font-size:0.83rem;margin-bottom:12px;">Participants must explain how standards relate to product quality and safety, connecting each component of the cooker to its engineering purpose and safety requirement.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;align-items:center;">
+            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Scientific Principle</div>
+            <div style="opacity:0.5;font-size:1rem;">↓</div>
+            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Engineering Design</div>
+            <div style="opacity:0.5;font-size:1rem;">↓</div>
+            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Safety Requirement</div>
+            <div style="opacity:0.5;font-size:1rem;">↓</div>
+            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Testing &amp; Certification</div>
+            <div style="opacity:0.5;font-size:1rem;">↓</div>
+            <div style="background:rgba(108,92,231,0.25);border:1px solid rgba(162,155,254,0.4);border-radius:8px;padding:8px 20px;font-size:0.85rem;font-weight:800;color:var(--accent,#a29bfe);">IS 2347 Standard → Quality Product</div>
+          </div>
+          <a href="https://www.bis.gov.in/learning-science-via-standards/?lang=en" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 18px;border-radius:8px;border:1px solid var(--accent,#a29bfe);color:var(--accent,#a29bfe);font-size:0.82rem;font-weight:600;text-decoration:none;">View BIS Learning Resource ↗</a>
+        </div>
+
+        <!-- Required Output -->
+        <div class="em-section">
+          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Required Participant Output</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">A. PHYSICAL PROTOTYPE</div>
+              <div style="font-size:0.8rem;">Working/interactive educational cutaway model of a pressure cooker</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">B. SCIENCE EXPLANATION</div>
+              <div style="font-size:0.8rem;">Explain pressure, boiling point, gas laws and heat transfer principles</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">C. ENGINEERING EXPLANATION</div>
+              <div style="font-size:0.8rem;">Explain why each major component (gasket, valve, regulator) exists</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">D. BIS CONNECTION</div>
+              <div style="font-size:0.8rem;">Identify IS 2347 and explain how it ensures quality &amp; safety</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">E. SAFE DEMONSTRATION</div>
+              <div style="font-size:0.8rem;">Demonstrate the principle safely (non-pressurized educational model)</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">F. PRESENTATION</div>
+              <div style="font-size:0.8rem;">Explain the complete system to judges within allotted time</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Judging Criteria -->
+        <div class="em-section">
+          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+          <div class="em-criteria">
+            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Scientific Understanding — Correct explanation of pressure, boiling point, gas laws &amp; heat transfer</span></div>
+            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Prototype Quality — Construction, clarity, completeness &amp; visual demonstration</span></div>
+            <div class="em-criterion"><span class="em-c-pct">20%</span><span>BIS Standard Connection — Connecting IS 2347 to product quality &amp; safety</span></div>
+            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Innovation — Creative approach to demonstrating the science</span></div>
+            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Presentation — Clarity, teamwork, confidence &amp; ability to answer questions</span></div>
+          </div>
+        </div>
+
         <a href="#register" class="em-register-btn" onclick="closeEventModal('science'); document.getElementById('ev-science').checked=true; toggleEventDetails('science', document.getElementById('ev-science'));">Register for this Event</a>
       </div>
     </div>
   </div>
+
+  <script>
+  function runScienceDemo() {
+    var btn = document.getElementById('sci-demo-btn');
+    var status = document.getElementById('sci-demo-status');
+    btn.disabled = true;
+    btn.textContent = 'Running Demonstration...';
+    var stages = ['heat','steam','bp','cook','safety'];
+    var labels = [
+      '🔥 Heating — Steam generation in progress...',
+      '💨 Steam trapped — Internal pressure rising!',
+      '📈 Boiling point increasing due to higher pressure!',
+      '🍲 Cooking at elevated temperature — faster and efficient!',
+      '🛡️ Safety valve active — Excess pressure released safely!'
+    ];
+    var pressures = ['25%','50%','70%','85%','40%'];
+    var pressureTexts = ['~120 kPa','~150 kPa','~175 kPa','~200 kPa — Safety Valve Threshold','~120 kPa — Pressure Released'];
+    var colours = ['#e17055','#6c5ce7','#a29bfe','#00b894','#00cec9'];
+    stages.forEach(function(s,i) {
+      var el = document.getElementById('stage-'+s);
+      el.style.opacity='0.4';
+      el.style.borderColor='rgba(255,255,255,0.08)';
+      document.getElementById('ind-'+s).textContent='IDLE';
+      document.getElementById('ind-'+s).style.background='rgba(255,255,255,0.08)';
+    });
+    document.getElementById('sci-pressure-bar').style.width='0%';
+    document.getElementById('sci-pressure-label').textContent='0 kPa — Atmospheric';
+    var i = 0;
+    function step() {
+      if(i>=stages.length){status.textContent='✅ Demonstration complete — Pressure cooker operated safely!';btn.disabled=false;btn.textContent='▶ RESTART DEMONSTRATION';return;}
+      status.textContent=labels[i];
+      var el=document.getElementById('stage-'+stages[i]);
+      el.style.opacity='1';
+      el.style.borderColor=colours[i];
+      var ind=document.getElementById('ind-'+stages[i]);
+      ind.textContent='ACTIVE';
+      ind.style.background=colours[i];
+      document.getElementById('sci-pressure-bar').style.width=pressures[i];
+      document.getElementById('sci-pressure-bar').style.background='linear-gradient(90deg,'+colours[i]+','+colours[Math.min(i+1,colours.length-1)]+')';
+      document.getElementById('sci-pressure-label').textContent=pressureTexts[i];
+      i++; setTimeout(step,2000);
+    }
+    setTimeout(step,300);
+  }
+  </script>
 
   <!-- Mimes Modal -->
   <div class="event-modal-overlay hidden" id="modal-mimes">
