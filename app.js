@@ -64,76 +64,150 @@ function switchTab(day, btn) {
 // ══════════════════════════════════════════════════════════════
 
 /**
+ * Helper to update card hint pill label and icon.
+ */
+function updateCardHint(card, isOpen) {
+  var hintText = card.querySelector('.hint-text');
+  var hintChevron = card.querySelector('.hint-chevron');
+  if (hintText) {
+    hintText.textContent = isOpen ? 'Click to collapse' : 'Click to explore';
+  }
+  if (hintChevron) {
+    hintChevron.textContent = isOpen ? '▴' : '▾';
+  }
+}
+
+/**
+ * Open an accordion card smoothly without CSS transition glitches.
+ */
+function openCardSmoothly(card) {
+  if (card.classList.contains('is-open')) return;
+
+  card.classList.add('is-open');
+  var trigger = card.querySelector('.clickable-card-inner');
+  if (trigger) { trigger.setAttribute('aria-expanded', 'true'); }
+  updateCardHint(card, true);
+
+  var panel = card.querySelector('.event-card-details');
+  if (panel) {
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+
+    var handleOpenEnd = function(e) {
+      if (e && e.target !== panel) return;
+      if (card.classList.contains('is-open')) {
+        panel.style.maxHeight = 'none';
+      }
+      panel.removeEventListener('transitionend', handleOpenEnd);
+    };
+    panel.addEventListener('transitionend', handleOpenEnd);
+  }
+
+  // Re-run lucide icons so any SVGs inside are rendered
+  if (window.lucide) {
+    window.lucide.createIcons({ root: card });
+  }
+
+  // Scroll card into view smoothly after layout settles
+  setTimeout(function() {
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+}
+
+/**
+ * Close an accordion card smoothly with proper max-height measurement.
+ */
+function closeCardSmoothly(card) {
+  if (!card.classList.contains('is-open')) return;
+
+  var panel = card.querySelector('.event-card-details');
+  if (panel) {
+    // If maxHeight is 'none', lock it to exact scrollHeight first so transition can run
+    if (panel.style.maxHeight === 'none' || !panel.style.maxHeight) {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      // Force browser layout reflow
+      void panel.offsetHeight;
+    }
+    panel.style.maxHeight = '0px';
+  }
+
+  card.classList.remove('is-open');
+  var trigger = card.querySelector('.clickable-card-inner');
+  if (trigger) { trigger.setAttribute('aria-expanded', 'false'); }
+  updateCardHint(card, false);
+}
+
+/**
  * toggleEventAccordion — collapses any open accordion card,
  * then opens the target card (single-open behaviour site-wide).
- * Also scrolls the card into view and re-runs lucide icons.
+ * If forceOpen is true, calling it on an already open card keeps it open cleanly.
  */
-function toggleEventAccordion(id) {
+function toggleEventAccordion(id, forceOpen, event) {
+  if (event) {
+    if (event.stopPropagation) event.stopPropagation();
+  }
+
   const card = document.getElementById('acc-' + id);
   if (!card) return;
 
   const isOpen = card.classList.contains('is-open');
 
-  // Collapse all open cards
+  // Idempotent: If forceOpen is requested and card is ALREADY open, just scroll & return
+  if (forceOpen && isOpen) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
+  // Collapse any other open card
   document.querySelectorAll('.event-card.is-open').forEach(function(c) {
-    c.classList.remove('is-open');
-    var panel = c.querySelector('.event-card-details');
-    if (panel) { panel.style.maxHeight = '0'; }
-    var trigger = c.querySelector('.clickable-card-inner');
-    if (trigger) { trigger.setAttribute('aria-expanded', 'false'); }
+    if (c !== card) {
+      closeCardSmoothly(c);
+    }
   });
 
   if (!isOpen) {
-    // Open this card
-    card.classList.add('is-open');
-    var panel = card.querySelector('.event-card-details');
-    if (panel) {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
-      // After transition, allow natural growth for dynamic content
-      panel.addEventListener('transitionend', function handler() {
-        if (card.classList.contains('is-open')) panel.style.maxHeight = 'none';
-        panel.removeEventListener('transitionend', handler);
-      });
-    }
-    var trigger = card.querySelector('.clickable-card-inner');
-    if (trigger) { trigger.setAttribute('aria-expanded', 'true'); }
-
-    // Re-run lucide icons so any SVGs inside are rendered
-    if (window.lucide) {
-      window.lucide.createIcons({ nodes: card.querySelectorAll('[data-lucide]') });
-    }
-
-    // Scroll card into view after a brief delay for layout settle
-    setTimeout(function() {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 80);
+    openCardSmoothly(card);
+  } else if (!forceOpen) {
+    closeCardSmoothly(card);
   }
 }
 
 /**
  * openFromHero — called by hero floating badges.
- * Scrolls to #events section then opens the accordion.
+ * Cleans up focus/hover state, scrolls to #events section then opens the accordion idempotently.
  */
-function openFromHero(id) {
+function openFromHero(id, event) {
+  if (event) {
+    if (event.stopPropagation) event.stopPropagation();
+  }
+
+  // Immediately remove DOM keyboard focus so hover/focus animations don't freeze in space
+  if (document.activeElement && document.activeElement.blur) {
+    document.activeElement.blur();
+  }
+
+  // Remove focus/active states from all hero badges
+  document.querySelectorAll('.float-badge').forEach(function(badge) {
+    badge.blur();
+    badge.classList.remove('focused', 'active');
+  });
+
   var eventsSection = document.getElementById('events');
   if (eventsSection) {
     eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  // Open accordion after scroll settles
-  setTimeout(function() { toggleEventAccordion(id); }, 500);
+
+  // Open accordion idempotently after scroll starts
+  setTimeout(function() {
+    toggleEventAccordion(id, true);
+  }, 350);
 }
 
 // Legacy stubs — kept because success/error flows reference closeModal() /
-// closeErrorModal() which set body.overflow = '' (those use .modal-overlay,
-// not .event-modal-overlay). These stubs do nothing but prevent JS errors
-// if any stale reference remains.
-function openEventModal(id) { toggleEventAccordion(id); }
+// closeErrorModal() which set body.overflow = ''
+function openEventModal(id) { toggleEventAccordion(id, true); }
 function closeEventModal(id) {
   var card = document.getElementById('acc-' + id);
-  if (!card) return;
-  card.classList.remove('is-open');
-  var panel = card.querySelector('.event-card-details');
-  if (panel) { panel.style.maxHeight = '0'; }
+  if (card) closeCardSmoothly(card);
 }
 
 // Close on Escape key — collapses all open accordion cards

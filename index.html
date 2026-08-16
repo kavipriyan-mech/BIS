@@ -127,38 +127,38 @@
       <!-- Floating Event Badges — clickable, keyboard-accessible deep-links -->
       <div class="float-badge fb-1 orbit-1" role="button" tabindex="0"
            aria-label="Poster Making event — click to explore"
-           onclick="openFromHero('poster')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('poster');}"
+           onclick="openFromHero('poster', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('poster', event);}"
       >Poster Making</div>
       <div class="float-badge fb-2 orbit-2" role="button" tabindex="0"
            aria-label="Debate event — click to explore"
-           onclick="openFromHero('debate')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('debate');}"
+           onclick="openFromHero('debate', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('debate', event);}"
       >Debate</div>
       <div class="float-badge fb-3 orbit-3" role="button" tabindex="0"
            aria-label="Rangoli event — click to explore"
-           onclick="openFromHero('rangoli')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('rangoli');}"
+           onclick="openFromHero('rangoli', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('rangoli', event);}"
       >Rangoli</div>
       <div class="float-badge fb-4 orbit-1" role="button" tabindex="0"
            aria-label="Quiz event — click to explore"
-           onclick="openFromHero('quiz')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('quiz');}"
+           onclick="openFromHero('quiz', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('quiz', event);}"
       >Quiz</div>
       <div class="float-badge fb-5 orbit-2" role="button" tabindex="0"
            aria-label="Mimes event — click to explore"
-           onclick="openFromHero('mimes')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('mimes');}"
+           onclick="openFromHero('mimes', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('mimes', event);}"
       >Mimes</div>
       <div class="float-badge fb-6 orbit-3" role="button" tabindex="0"
            aria-label="Learning Science via Standards — click to explore"
-           onclick="openFromHero('science')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('science');}"
+           onclick="openFromHero('science', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('science', event);}"
       >&#x1F52C; Science</div>
       <div class="float-badge fb-7 orbit-1" role="button" tabindex="0"
            aria-label="Treasure Hunt event — click to explore"
-           onclick="openFromHero('treasure')"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('treasure');}"
+           onclick="openFromHero('treasure', event)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('treasure', event);}"
       >Treasure Hunt</div>
     </div>
   </section>
@@ -210,7 +210,7 @@
                 <span class="meta-chip">All Participants</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero inauguration-hero">
@@ -274,7 +274,7 @@
                 <span class="meta-chip prize">₹2,000 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero poster-hero">
@@ -359,7 +359,7 @@
                 <span class="meta-chip prize">₹2,000 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero debate-hero">
@@ -441,7 +441,7 @@
                 <span class="meta-chip prize">₹2,000 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero treasure-hero">
@@ -521,7 +521,7 @@
                 <span class="meta-chip prize">₹2,000 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero rangoli-hero">
@@ -595,7 +595,7 @@
                 <span class="meta-chip prize">₹2,000 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero quiz-hero">
@@ -675,7 +675,7 @@
                 <span class="meta-chip prize">Best Prototype Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero science-hero">
@@ -819,7 +819,7 @@
                 <span class="meta-chip prize">₹1,500 Prize</span>
               </div>
             </div>
-            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
+            <div class="card-click-hint"><span class="hint-chevron">▾</span> <span class="hint-text">Click to explore</span></div>
           </div>
           <div class="event-card-details">
             <div class="em-hero mimes-hero">
