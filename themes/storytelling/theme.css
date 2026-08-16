@@ -1,671 +1,481 @@
 /* ============================================================
-   BIS Club — Storytelling Theme (Narrative Editorial)
+   BIS Club — Storytelling Theme (Narrative Celestial Journey)
    ============================================================
-   Design intent: turn the registration page into a story. The hero is
-   the *opening catch*, each event is a *scene*, and the sections flow
-   like chapters of one remembered night. A playful, editorial feel
-   driven by a high-contrast display serif (Abril Fatface) narrating
-   every heading, warm paper behind a "read this" body, and a confident
-   story-blue for the emotional through-line.
-
-   NARRATIVE DEVICES (all flat — NO gradients):
-     – Display serif (Abril Fatface) for every title = "the narrator's voice"
-     – Quoted section kickers (", —text) that open each chapter like a pull-quote
-     – Event cards read as scene vignettes with a place-stamp (time + room)
-     – Prize plinths arranged as a podium story (gold→silver→bronze)
-     – CTA advances the story ("Write your next chapter …")
-   The emotionally-resonant feel comes from typography, hierarchy and
-   the journey — not from color fades.
-
-   DUAL-MODE (app data-mode="light"|"dark")
-     – LIGHT (default): warm editorial paper #FAFAF7, ink #111827.
-     – DARK  (html[data-mode="dark"]): rich ink-narrative night #111018
-       with a luminous story-blue glow.
-
-   CONTRAST: Story blue #3B82F6 cannot carry white body text (Lc 69 on
-   dark, ~55 on light) so it is re-anchored per mode. All reading text
-   verified with real APCA-W3 (targets in the QA footer).
-
-   Skill: storytelling · theme: storytelling · genre: narrative-editorial
+   Celestial ivory & cosmic twilight night, illuminated borders,
+   expressive Fraunces serif display headings, starlight gold accents.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-/* ============================================================
-   TOKENS — geometry & fonts (shared)
-   ============================================================ */
 :root, html[data-theme="storytelling"] {
   --theme-id: "storytelling";
   --theme-name: "Storytelling";
 
-  --font-display: 'Abril Fatface', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-
+  /* Geometry & Physics */
   --radius: 18px;
   --radius-sm: 12px;
-  --radius-xs: 9px;
+  --radius-xs: 8px;
+  --border-width: 1px;
+  --border-style: solid;
+  --glass-blur: none;
+  --glass-blur-lg: none;
 
-  --btn-transform-hover: translateY(-3px);
-  --btn-transform-active: translateY(1px);
+  --btn-transform-hover: translateY(-2px);
+  --btn-transform-active: translateY(0px);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ============================================================
-   TOKENS — LIGHT editorial paper (default)
+   Light Mode (Celestial Ivory & Royal Twilight)
    ============================================================ */
 :root, html[data-theme="storytelling"], html[data-theme="storytelling"][data-mode="light"] {
   color-scheme: light;
-
-  --bg: #FAFAF7;
+  --bg: #FAF8F5;
   --surface: #FFFFFF;
-  --surface-2: #FFFFFF;
-  --surface-3: #F3F3EE;
-  --header-bg: rgba(250, 250, 247, 0.92);
+  --surface-2: #F6F4EF;
+  --surface-3: #ECE7DF;
+  --header-bg: rgba(250, 248, 245, 0.95);
+
+  --primary: #4338CA;
+  --primary-light: #6366F1;
+  --primary-dark: #312E81;
+  --accent: #D97706;
+  --accent-light: #F59E0B;
+  --gold: #D97706;
+  --gold-light: #F59E0B;
+  --green: #15803D;
+  --silver: #6B7280;
+  --bronze: #B45309;
 
   --text: #111827;
-  --text-muted: #4B5563;
+  --text-muted: #374151;
   --text-dim: #6B7280;
-  --silver: #6B7280;
 
-  --primary: #1D4ED8;        /* story-blue text on paper Lc 79 */
-  --primary-light: #3B82F6;
-  --primary-dark: #1E40AF;
-  --accent: #1D4ED8;
-  --accent-soft: #DBEAFE;
+  --border: rgba(67, 56, 202, 0.12);
+  --border-accent: #D97706;
 
-  --violet: #6D28D9;         /* text Lc 80 */
-  --green: #166534;          /* text Lc 81 */
-  --amber: #92400E;          /* text Lc 81 */
-  --red: #991B1B;            /* text Lc 84 */
+  --shadow: 0 8px 24px rgba(67, 56, 202, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 16px 36px rgba(67, 56, 202, 0.15), 0 0 20px rgba(217, 119, 6, 0.15);
+  --shadow-glow: 0 0 25px rgba(67, 56, 202, 0.2);
+  --shadow-red: 0 0 25px rgba(220, 38, 38, 0.15);
 
-  /* Flat button-fill accents (white text >= Lc 75) */
-  --fill-blue: #2563EB;      --fill-blue-dark: #1D4ED8;
-  --fill-violet: #7C3AED;
-  --fill-green: #15803D;
-  --fill-amber: #B45309;
-  --fill-red: #B91C1C;
-
-  --gold: #B45309;
-  --gold-light: #92400E;
-  --bronze: #92400E;
-
-  --border: #E5E7EB;
-  --border-accent: var(--primary);
-
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px -12px rgba(16, 24, 40, 0.18);
-  --shadow-hover: 0 2px 4px rgba(16, 24, 40, 0.08), 0 16px 32px -16px rgba(29, 78, 216, 0.28);
-  --inset-shadow: inset 0 2px 4px rgba(16, 24, 40, 0.06);
-  --shadow-red: 0 10px 28px -12px rgba(185, 28, 28, 0.3);
-  --shadow-gold: 0 10px 28px -12px rgba(180, 83, 9, 0.32);
-
-  /* Chip tints (flat, dark ink) */
-  --chip-blue-bg: #EFF6FF;   --chip-blue-ink: #1E40AF;
-  --chip-green-bg: #ECFDF5;  --chip-green-ink: #166534;
-  --chip-red-bg: #FEF2F2;    --chip-red-ink: #B91C1C;
-  --chip-gold-bg: #FFFBEB;   --chip-gold-ink: #92400E;
+  --orb-1-color: #C7D2FE;
+  --orb-2-color: #FDE68A;
+  --orb-3-color: #E0E7FF;
+  --orb-opacity: 0.45;
 }
 
 /* ============================================================
-   TOKENS — DARK ink-narrative night (html[data-mode="dark"])
+   Dark Mode (Cosmic Twilight & Starlight Gold)
    ============================================================ */
-html[data-mode="dark"], html[data-theme="storytelling"][data-mode="dark"] {
+html[data-theme="storytelling"][data-mode="dark"] {
   color-scheme: dark;
+  --bg: #0B0E1E;
+  --surface: #131833;
+  --surface-2: #1C2348;
+  --surface-3: #252E5E;
+  --header-bg: rgba(11, 14, 30, 0.95);
 
-  --bg: #111018;
-  --surface: #191824;
-  --surface-2: #171622;
-  --surface-3: #14131D;
-  --header-bg: rgba(17, 16, 24, 0.92);
-
-  --text: #F5F5FA;           /* text Lc 101 on #111018 */
-  --text-muted: #B4BAC3;
-  --text-dim: #9CA3AF;
-  --silver: #C6CBD4;
-
-  --primary: #7CB8FF;        /* luminous story-blue text Lc 62 */
-  --primary-light: #9FC8FF;
-  --primary-dark: #3B82F6;
-  --accent: #7CB8FF;
-  --accent-soft: rgba(124, 184, 255, 0.12);
-
-  --violet: #C4B5FD;         /* text Lc 67 */
-  --green: #4ADE80;          /* text Lc 71 */
-  --amber: #FBBF24;          /* text Lc 73 */
-  --red: #FCA5A5;            /* text Lc 66 */
-
-  --fill-blue: #3B82F6;      --fill-blue-dark: #2563EB;
-  --fill-violet: #8B5CF6;
-  --fill-green: #22C55E;
-  --fill-amber: #F59E0B;
-  --fill-red: #EF4444;
-
+  --primary: #A78BFA;
+  --primary-light: #C4B5FD;
+  --primary-dark: #8B5CF6;
+  --accent: #FBBF24;
+  --accent-light: #FDE68A;
   --gold: #FBBF24;
   --gold-light: #FDE68A;
-  --bronze: #E0A96D;
+  --green: #34D399;
+  --silver: #94A3B8;
+  --bronze: #FB923C;
 
-  --border: #2A2836;
-  --border-accent: var(--primary);
+  --text: #F8FAFC;
+  --text-muted: #E2E8F0;
+  --text-dim: #94A3B8;
 
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px -12px rgba(0, 0, 0, 0.7);
-  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.5), 0 18px 40px -16px rgba(124, 184, 255, 0.35);
-  --inset-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
-  --shadow-red: 0 12px 30px -12px rgba(239, 68, 68, 0.4);
-  --shadow-gold: 0 12px 30px -12px rgba(251, 191, 36, 0.35);
+  --border: rgba(167, 139, 250, 0.25);
+  --border-accent: #FBBF24;
 
-  --chip-blue-bg: rgba(124, 184, 255, 0.14);  --chip-blue-ink: #A9CCFF;
-  --chip-green-bg: rgba(74, 222, 128, 0.14);  --chip-green-ink: #6FE79E;
-  --chip-red-bg: rgba(252, 165, 165, 0.14);   --chip-red-ink: #FFB1B1;
-  --chip-gold-bg: rgba(251, 191, 36, 0.16);   --chip-gold-ink: #FFCE57;
+  --shadow: 0 10px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(167, 139, 250, 0.15);
+  --shadow-hover: 0 18px 44px rgba(0, 0, 0, 0.7), 0 0 35px rgba(167, 139, 250, 0.3);
+  --shadow-glow: 0 0 30px rgba(167, 139, 250, 0.35);
+  --shadow-red: 0 0 25px rgba(244, 63, 94, 0.25);
+
+  --orb-1-color: #312E81;
+  --orb-2-color: #78350F;
+  --orb-3-color: #4C1D95;
+  --orb-opacity: 0.35;
 }
 
 /* ============================================================
-   BODY — the page reads like a book
+   Body & Layout
    ============================================================ */
-html, body {
+body {
   font-family: var(--font-sans) !important;
-  background: var(--bg) !important;
   background-color: var(--bg) !important;
   color: var(--text) !important;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
 }
-.bg-canvas { display: none !important; }
 
-:is(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid var(--primary) !important;
-  outline-offset: 3px !important;
-  border-radius: var(--radius-xs) !important;
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(67, 56, 202, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(67, 56, 202, 0.04) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
 }
-::selection { background: var(--accent-soft); color: var(--text); }
-:root { scrollbar-color: var(--primary) rgba(0, 0, 0, 0.15); }
+html[data-theme="storytelling"][data-mode="dark"] .grid-overlay {
+  background-image:
+    linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px) !important;
+}
 
 /* ============================================================
-   HEADER — story masthead
+   Header & Navigation
    ============================================================ */
 .header {
   background: var(--header-bg) !important;
   border-bottom: 1px solid var(--border) !important;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02), 0 8px 24px -16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
-.logo-badge { background: transparent !important; }
-.logo-title {
-  color: var(--text); font-family: var(--font-display); font-weight: 400;
-  letter-spacing: 0.5px; font-size: 1.5rem;
-}
-.logo-sub { color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 2px; }
 
-.nav-link { border-radius: var(--radius-xs); color: var(--text-muted) !important; padding: 8px 16px; font-weight: 500; }
-.nav-link:hover { color: var(--text) !important; background: var(--surface-3) !important; }
-.nav-link.active { color: var(--primary); font-weight: 700; }
-.nav-btn {
-  background: var(--fill-blue) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: var(--shadow), var(--shadow-hover) !important;
-  font-family: var(--font-mono); font-weight: 700;
+.logo-badge {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
 }
-.nav-btn:hover { background: var(--fill-blue-dark) !important; transform: var(--btn-transform-hover); }
-.nav-btn:active { transform: var(--btn-transform-active); }
-.mobile-nav { background: var(--surface-2) !important; box-shadow: var(--shadow); }
+
+.logo-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+}
+.logo-sub { color: var(--text-dim) !important; font-weight: 600 !important; }
+
+.nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-xs) !important;
+  transition: all 0.15s ease !important;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--text) !important;
+  background: var(--surface-2) !important;
+}
+
+.nav-btn {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--primary) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: 0 4px 14px rgba(67, 56, 202, 0.3) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-theme="storytelling"][data-mode="dark"] .nav-btn {
+  color: #0B0E1E !important;
+}
+.nav-btn:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: 0 8px 22px rgba(67, 56, 202, 0.4) !important;
+}
+
+.mode-toggle-btn, .theme-switcher-btn {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+  font-weight: 600 !important;
+}
+
+.theme-dropdown-menu {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25) !important;
+  border-radius: var(--radius) !important;
+}
+.theme-item { color: var(--text) !important; border-radius: var(--radius-xs) !important; }
+.theme-item:hover, .theme-item.active { background: var(--surface-2) !important; color: var(--primary) !important; }
 
 /* ============================================================
-   HERO — the opening catch
+   Hero Section
    ============================================================ */
 .hero-badge {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
+  color: var(--accent) !important;
+  font-weight: 700 !important;
   border-radius: 100px !important;
-  box-shadow: var(--inset-shadow) !important;
-  color: var(--primary); font-family: var(--font-mono); font-weight: 700; letter-spacing: 2px;
-}
-.hero-title {
-  font-family: var(--font-display); font-weight: 400; color: var(--text);
-  line-height: 1.1; letter-spacing: -0.5px;
-}
-.gradient-text {
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  -webkit-text-fill-color: currentColor !important;
-  color: var(--primary) !important;
-}
-
-.date-card {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
 }
-.date-num, .date-info strong { font-family: var(--font-mono); color: var(--text); }
-.date-info span { color: var(--text-muted); }
+.badge-dot { background: var(--accent) !important; }
+
+.hero-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-desc { color: var(--text-muted) !important; font-size: 1.15rem !important; }
+
+.hero-dates {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.date-num {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+}
+.date-info { color: var(--text) !important; font-weight: 600 !important; }
+.date-info small { color: var(--text-dim) !important; font-family: var(--font-mono) !important; }
+.date-divider { color: var(--accent) !important; font-weight: 700 !important; }
 
 .btn-primary {
-  background: var(--fill-blue) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: var(--shadow), var(--shadow-hover) !important;
-  font-family: var(--font-display); font-weight: 400;
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--primary) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-xs) !important;
+  font-weight: 700 !important;
 }
-.btn-primary:hover { background: var(--fill-blue-dark) !important; transform: var(--btn-transform-hover); }
-.btn-primary:active { transform: var(--btn-transform-active); }
+html[data-theme="storytelling"][data-mode="dark"] .btn-primary { color: #0B0E1E !important; }
+.btn-primary:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
 
 .btn-secondary {
   background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
   color: var(--text) !important;
+  border: 1px solid var(--border) !important;
   box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-xs) !important;
+  font-weight: 700 !important;
 }
-.btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: var(--btn-transform-hover); }
-.btn-secondary:active { transform: var(--btn-transform-active); }
+.btn-secondary:hover {
+  background: var(--surface-2) !important;
+  border-color: var(--accent) !important;
+}
 
 .float-badge {
   background: var(--surface) !important;
-  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
   box-shadow: var(--shadow) !important;
-  color: var(--text);
+  border-radius: 100px !important;
+  font-weight: 700 !important;
+  backdrop-filter: none !important;
+}
+.float-badge:hover {
+  background: var(--surface-2) !important;
+  border-color: var(--accent) !important;
+  color: var(--primary) !important;
 }
 
 /* ============================================================
-   INFO STRIP — story dateline
+   Sections & Cards
    ============================================================ */
 .bis-info-strip {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--inset-shadow) !important;
+  background: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
 }
-.strip-item { color: var(--text) !important; font-family: var(--font-mono); font-weight: 700; }
-.strip-div { color: var(--primary) !important; }
+.strip-icon { color: var(--accent) !important; }
 
-/* ============================================================
-   SECTIONS — chapters
-   ============================================================ */
-.section-title {
-  font-family: var(--font-display); font-weight: 400; color: var(--text);
-  letter-spacing: 0.5px; line-height: 1.15;
-}
-.section-desc { color: var(--text-muted); }
 .section-tag {
-  background: var(--surface) !important;
+  background: var(--surface-2) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
   color: var(--primary) !important;
-  box-shadow: var(--inset-shadow) !important;
-  font-family: var(--font-mono); letter-spacing: 2px;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
 }
 
-/* ============================================================
-   EVENT CARDS — scene vignettes
-   ============================================================ */
+.section-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+}
+.section-desc { color: var(--text-muted) !important; }
+
 .event-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
-  overflow: hidden;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
 }
-.clickable-card:hover {
-  transform: var(--btn-transform-hover);
-  border-color: var(--primary);
+.event-card:hover {
+  transform: var(--btn-transform-hover) !important;
   box-shadow: var(--shadow-hover) !important;
+  border-color: var(--border-accent) !important;
 }
-.clickable-card:active { transform: var(--btn-transform-active); }
-.event-card-glow { background: transparent; }
+.event-card-glow { display: none !important; }
 
-/* Flat material accents for visual headers (emoji sits on top) */
-.inauguration-bg { background: #2563EB !important; }
-.poster-bg { background: #6D28D9 !important; }
-.debate-bg { background: #B91C1C !important; }
-.treasure-bg { background: #B45309 !important; }
-.rangoli-bg { background: #15803D !important; }
-.quiz-bg { background: #1D4ED8 !important; }
-.mimes-bg { background: #7C3AED !important; }
-.science-bg { background: #0E7490 !important; }
-.event-emoji { filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); }
+.event-time-tag {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-xs) !important;
+}
 
-.event-name { font-family: var(--font-display); font-weight: 400; color: var(--text); line-height: 1.2; }
-.event-time-tag { font-family: var(--font-mono); color: var(--primary); font-weight: 700; }
-.event-desc { color: var(--text-muted); }
+.event-name {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+}
+.event-desc { color: var(--text-muted) !important; }
 
 .meta-chip {
-  background: var(--chip-blue-bg) !important;
   border: 1px solid var(--border) !important;
+  font-weight: 700 !important;
   border-radius: 100px !important;
-  color: var(--chip-blue-ink) !important;
-  font-weight: 600;
 }
-.meta-chip.prize { background: var(--chip-gold-bg) !important; color: var(--chip-gold-ink) !important; }
-.meta-chip.individual { background: var(--chip-green-bg) !important; color: var(--chip-green-ink) !important; }
-.meta-chip.team { background: var(--chip-red-bg) !important; color: var(--chip-red-ink) !important; }
-.meta-chip.ceremonial { background: var(--chip-blue-bg) !important; color: var(--chip-blue-ink) !important; }
+.meta-chip.prize { background: #FEF3C7 !important; color: #92400E !important; }
+.meta-chip.individual { background: #DCFCE7 !important; color: #166534 !important; }
+.meta-chip.team { background: #EDE9FE !important; color: #5B21B6 !important; }
+.meta-chip.ceremonial { background: #FCE7F3 !important; color: #9D174D !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.prize { background: #78350F !important; color: #FDE68A !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.individual { background: #064E3B !important; color: #A7F3D0 !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.team { background: #4C1D95 !important; color: #DDD6FE !important; }
+html[data-theme="storytelling"][data-mode="dark"] .meta-chip.ceremonial { background: #831843 !important; color: #FBCFE8 !important; }
 
-.card-click-hint { color: var(--primary); font-family: var(--font-mono); font-weight: 700; letter-spacing: 1px; }
+.card-click-hint { color: var(--primary) !important; font-weight: 700 !important; }
 
 /* ============================================================
-   TIMELINE — the night unfolds
+   Schedule & Prizes
    ============================================================ */
-.schedule-section { background: transparent; }
-.tab-btn {
+.countdown-bar {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
-  color: var(--text-muted) !important;
   box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
 }
-.tab-btn:hover:not(.active) { color: var(--text) !important; }
-.tab-btn.active {
-  background: var(--fill-blue) !important;
-  border-color: var(--fill-blue) !important;
-  color: #fff !important;
+.cd-num { font-family: var(--font-display) !important; font-weight: 700 !important; color: var(--primary) !important; }
+.cd-label { color: var(--text-dim) !important; font-weight: 600 !important; }
+
+.tl-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
   box-shadow: var(--shadow) !important;
-  font-weight: 700;
+  border-radius: var(--radius-sm) !important;
 }
-.tab-btn:active { transform: var(--btn-transform-active); }
+.tl-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.tl-desc { color: var(--text-muted) !important; }
+.tl-time { color: var(--primary) !important; font-family: var(--font-mono) !important; font-weight: 700 !important; }
 
-.tl-dot { background: var(--surface) !important; border: 2px solid var(--primary); box-shadow: 0 0 0 4px var(--accent-soft); }
-.tl-dot::after { background: var(--primary); opacity: 0.3; }
-.tl-dot.break { border-color: var(--silver); }
-.tl-dot.gold { border-color: var(--gold); box-shadow: 0 0 0 4px var(--accent-soft), 0 0 14px rgba(251, 191, 36, 0.35); }
-
-.tl-time { font-family: var(--font-mono); color: var(--primary); font-weight: 700; }
-.tl-content h4 { font-family: var(--font-display); font-weight: 400; color: var(--text); line-height: 1.2; }
-.tl-content p { color: var(--text-muted); }
-.break-content h4 { color: var(--text-dim); }
-
-/* ============================================================
-   PRIZES — the podium story
-   ============================================================ */
 .prize-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
-}
-.prize-card:hover { transform: var(--btn-transform-hover); border-color: var(--primary); box-shadow: var(--shadow-hover) !important; }
-.gold-card { border-top: 4px solid var(--gold) !important; box-shadow: var(--shadow), var(--shadow-gold) !important; }
-.silver-card { border-top: 4px solid var(--silver) !important; }
-.bronze-card { border-top: 4px solid var(--bronze) !important; }
-
-.prize-place { color: var(--text-muted) !important; letter-spacing: 2px; font-family: var(--font-mono); }
-.prize-amount { font-family: var(--font-display); font-weight: 400; color: var(--text); font-size: 1.9rem; }
-.gold-card .prize-amount { color: var(--gold); }
-.silver-card .prize-amount { color: var(--silver); }
-.bronze-card .prize-amount { color: var(--bronze); }
-.prize-detail { color: var(--text-dim) !important; }
-
-.special-award {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
-  color: var(--text-muted) !important;
-  box-shadow: var(--shadow) !important;
-}
-.special-award:hover { color: var(--text) !important; }
-
-/* ============================================================
-   COUNTDOWN + QR — the "hurry, the story nears"
-   ============================================================ */
-.countdown-banner {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--inset-shadow) !important;
+  backdrop-filter: none !important;
 }
-.cd-num, .cd-colon { font-family: var(--font-mono); color: var(--text); font-weight: 700; }
-.cd-label, .cd-unit-label { color: var(--text-muted) !important; letter-spacing: 2px; }
-.cd-secs-wrap { color: var(--primary) !important; }
-.cd-date-pill {
-  background: var(--surface) !important;
+.prize-rank { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.prize-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+}
+.gold-card .prize-amount { color: var(--gold) !important; }
+.silver-card .prize-amount { color: var(--silver) !important; }
+.bronze-card .prize-amount { color: var(--bronze) !important; }
+
+.grand-pool-card {
+  background: var(--surface-2) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.pool-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.pool-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
   color: var(--primary) !important;
-  font-weight: 700;
-}
-
-.qr-section-card {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: var(--shadow) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--primary) !important;
 }
 
 /* ============================================================
-   FORM — the registration ledger
+   Registration Form & Modal
    ============================================================ */
-.form-section { background: transparent; }
 .form-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 22px !important;
   box-shadow: var(--shadow) !important;
-}
-.form-section-title { font-family: var(--font-display); font-weight: 400; color: var(--text); }
-.form-section-title { border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
-.form-sec-num {
-  background: var(--fill-blue) !important;
-  border-radius: var(--radius-xs) !important;
-  color: #fff !important;
-  font-family: var(--font-mono);
-}
-.form-note { color: var(--text-muted) !important; }
-
-label { color: var(--text) !important; font-weight: 600; }
-.req { color: var(--red); }
-
-input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text) !important;
-  font-family: var(--font-mono);
-  box-shadow: var(--inset-shadow) !important;
-}
-input::placeholder, textarea::placeholder { color: var(--text-dim); }
-select option { background: var(--surface-2); color: var(--text); }
-input:focus, select:focus, textarea:focus {
-  background: var(--surface) !important;
-  border-color: var(--primary) !important;
-  box-shadow: 0 0 0 3px var(--accent-soft) !important;
-}
-input:invalid:not(:placeholder-shown), select:invalid:not([value=""]) { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important; }
-.field-err { color: var(--red); font-weight: 700; }
-
-/* ============================================================
-   EVENTS PICKER — choose your adventure
-   ============================================================ */
-.ec-card {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: var(--shadow) !important;
-}
-.ec-card:hover { border-color: var(--primary); box-shadow: var(--shadow-hover) !important; }
-.event-check input:checked ~ .ec-card {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px var(--primary), var(--shadow) !important;
-}
-.ec-info strong { font-family: var(--font-display); font-weight: 400; color: var(--text); }
-.ec-info small { color: var(--text-muted) !important; }
-.ec-check-mark {
-  background: var(--surface-3) !important;
-  border: 2px solid var(--border) !important;
-  color: transparent;
-}
-.event-check input:checked ~ .ec-card .ec-check-mark {
-  background: var(--fill-blue) !important;
-  border-color: var(--fill-blue) !important;
-  color: #fff !important;
-}
-
-.event-details { background: var(--surface-3) !important; border-radius: var(--radius) !important; }
-.detail-header { color: var(--primary) !important; border-bottom: 2px solid var(--primary); }
-.consent-box { background: var(--surface-3) !important; border-radius: var(--radius-sm) !important; }
-.rules-list li { color: var(--text-muted) !important; }
-.rules-list li::before { color: var(--primary); }
-.check-label { color: var(--text-muted) !important; }
-.check-box {
-  background: var(--surface-3) !important;
-  border: 2px solid var(--border) !important;
-  border-radius: var(--radius-xs) !important;
-}
-.check-label input:checked ~ .check-box { background: var(--fill-blue) !important; border-color: var(--fill-blue) !important; }
-
-/* ============================================================
-   SUBMIT — the climax
-   ============================================================ */
-.btn-submit {
-  background: var(--fill-blue) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: var(--shadow), var(--shadow-hover) !important;
-  font-family: var(--font-display); font-weight: 400;
-}
-.btn-submit:hover:not(:disabled) { background: var(--fill-blue-dark) !important; transform: var(--btn-transform-hover); }
-.btn-submit:active:not(:disabled) { transform: var(--btn-transform-active); }
-.btn-submit:disabled { opacity: 0.5; color: #fff !important; background: var(--fill-blue) !important; }
-.btn-label { font-family: var(--font-display); }
-
-/* ============================================================
-   MODALS — a page out of the story
-   ============================================================ */
-.modal-overlay, .event-modal-overlay { background: rgba(15, 16, 24, 0.45) !important; }
-html[data-mode="dark"] .modal-overlay, html[data-mode="dark"] .event-modal-overlay,
-html[data-theme="storytelling"][data-mode="dark"] .modal-overlay, html[data-theme="storytelling"][data-mode="dark"] .event-modal-overlay { background: rgba(0, 0, 0, 0.62) !important; }
-
-.modal, .event-modal {
-  background: var(--surface-2) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 22px !important;
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.45) !important;
-}
-.event-modal-close {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-}
-.event-modal-close:hover { border-color: var(--red); color: var(--red); }
-
-.em-title, .modal-title { font-family: var(--font-display); font-weight: 400; color: var(--text); line-height: 1.2; }
-.em-day-tag { font-family: var(--font-mono); color: var(--primary); }
-.em-time-badge {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
-  color: var(--primary) !important;
-  font-weight: 700;
-}
-.reg-id-badge {
-  background: var(--fill-blue) !important;
-  border-radius: var(--radius-xs) !important;
-  color: #fff !important;
-  font-family: var(--font-mono); font-weight: 700;
-}
-
-.em-info-card { background: var(--surface-3) !important; border-radius: var(--radius-sm) !important; }
-.em-info-label { font-family: var(--font-mono); color: var(--text-dim); }
-.em-info-card strong { color: var(--text) !important; }
-.em-section-title { font-family: var(--font-display); font-weight: 400; color: var(--text); border-bottom: 2px solid var(--primary); }
-.em-section p, .em-steps li, .em-rules li { color: var(--text-muted) !important; }
-.em-theme-tag {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
-  color: var(--text-muted) !important;
-}
-.em-criterion { background: var(--surface-3) !important; border-radius: var(--radius-xs) !important; }
-.em-c-pct { font-family: var(--font-mono); color: var(--primary); }
-.em-criterion span:last-child { color: var(--text-muted) !important; }
-
-.em-register-btn {
-  background: var(--fill-blue) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: var(--shadow), var(--shadow-hover) !important;
-  font-family: var(--font-display); font-weight: 400;
-}
-.em-register-btn:hover { background: var(--fill-blue-dark) !important; transform: var(--btn-transform-hover); }
-.em-register-btn:active { transform: var(--btn-transform-active); }
-
-.modal-details { background: var(--surface-3) !important; border-radius: var(--radius-sm) !important; }
-.modal-desc { color: var(--text-muted) !important; }
-.modal-note { color: var(--text-dim) !important; }
-
-/* ============================================================
-   FOOTER — the closing line
-   ============================================================ */
-.footer {
-  background: var(--surface-3) !important;
-  border-top: 1px solid var(--border) !important;
-}
-.footer-brand { color: var(--text-muted) !important; }
-.footer-copy { color: var(--text-dim) !important; }
-
-/* ============================================================
-   THEME SWITCHER — choose your next chapter
-   ============================================================ */
-.theme-switcher-btn {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 100px !important;
-  color: var(--text) !important;
-  box-shadow: var(--shadow) !important;
-}
-.theme-switcher-btn:hover { border-color: var(--primary); transform: var(--btn-transform-hover); }
-.theme-switcher-btn:active { transform: var(--btn-transform-active); }
-.theme-btn-name { color: var(--primary); }
-.theme-caret { color: var(--text-muted); }
-
-.theme-dropdown-menu {
-  background: var(--surface-2) !important;
-  border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.form-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.form-label { color: var(--text) !important; font-weight: 700 !important; }
+
+.form-input, .form-select, .form-textarea {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  color: var(--text) !important;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.2) !important;
+}
+
+.event-checkbox-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
   box-shadow: var(--shadow) !important;
 }
-.theme-dropdown-header { color: var(--text-muted) !important; }
-.theme-dropdown-item:hover { background: var(--surface-3) !important; }
-.theme-dropdown-item.active { background: var(--surface-3) !important; box-shadow: var(--inset-shadow) !important; }
-.theme-item-name { color: var(--text) !important; font-family: var(--font-display); font-weight: 400; }
-.theme-item-tag { color: var(--primary); }
-.theme-item-check { color: var(--primary); }
-
-/* ============================================================
-   ACCESSIBILITY HARD-PASSES
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  .float-badge, .bis-info-strip, .orb { animation: none !important; transition: none !important; }
-  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn, .em-register-btn, .theme-switcher-btn):hover,
-  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn, .em-register-btn, .theme-switcher-btn):active {
-    transform: none !important;
-  }
+.event-checkbox-card.selected {
+  background: var(--surface-2) !important;
+  border-color: var(--primary) !important;
 }
 
-/* ============================================================
-   STORYTELLING THEME — ACCESSIBILITY & QA CHECKLIST
-   ============================================================
-   Narrative feel comes from Abril Fatface display serif (all headings),
-   pull-quote kickers and scene-like card vignettes — never from color
-   fades (0 gradients). Real APCA-W3 verified:
+.register-submit-btn {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--primary) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+  font-weight: 700 !important;
+}
+html[data-theme="storytelling"][data-mode="dark"] .register-submit-btn { color: #0B0E1E !important; }
 
-   LIGHT (#FAFAF7 paper):
-     --text #111827 Lc 101 · --text-muted #4B5563 Lc 76
-     primary text #1D4ED8 Lc 79 · violet #6D28D9 Lc 80 ·
-     all button fills carry white text >= Lc 75 (blue #2563EB=80,
-     violet #7C3AED=83, green #15803D=80, amber #B45309=79, red #B91C1C=85)
+.modal-content, .event-modal .modal-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.em-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.em-info-card {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+}
 
-   DARK (#111018 ink-night):
-     --text #F5F5FA Lc 101 · muted #B4BAC3 Lc 56
-     primary text #7CB8FF Lc 62 · violet #C4B5FD Lc 67 · green #4ADE80
-     Lc 71 · amber #FBBF24 Lc 73 · red #FCA5A5 Lc 66
-     primary button fill #3B82F6 white text Lc 69 (bold/large); dark
-     #2563EB = Lc 80 (body) — the iconic story-blue reserved for large CTAs.
-
-   The brand story-blue #3B82F6 cannot carry white body text in either
-   mode, so it is re-anchored per mode (darkened to #2563EB for small
-   fills, brightened to #7CB8FF for dark text accents) — same discipline
-   as every theme. Keyboard-first, 3px focus ring, prefers-reduced-motion.
-   Dual-mode follows the app data-mode="light|dark" attribute.
-   ============================================================ */
+.footer {
+  background: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+.footer-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.footer-links a { color: var(--text-muted) !important; }
+.footer-links a:hover { color: var(--primary) !important; }

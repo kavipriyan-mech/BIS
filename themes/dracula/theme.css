@@ -1,98 +1,474 @@
 /* ============================================================
-   BIS Club — Dracula Theme (Dual-Mode: Dark & Light)
-   Dracula Violet (#bd93f9) · Pink (#ff79c6) · Cyan (#8be9fd)
+   BIS Club — Dracula Theme (Official Dracula Pro Palette)
+   ============================================================
+   Iconic vampire slate canvas, luminous purple (#BD93F9),
+   pink (#FF79C6), cyan (#8BE9FD), green (#50FA7B) accents.
    ============================================================ */
 
 :root, html[data-theme="dracula"] {
   --theme-id: "dracula";
   --theme-name: "Dracula Violet";
 
-  /* Palette */
-  --primary: #bd93f9;
-  --primary-light: #d6b4fe;
-  --primary-dark: #985bf8;
-  --accent: #ff79c6;
-  --accent-light: #ffa3d7;
-  --gold: #8be9fd;
-  --gold-light: #b6f2ff;
-  --green: #50fa7b;
-  --silver: #6272a4;
-  --bronze: #ffb86c;
-
-  /* Geometry & Effects */
+  /* Geometry & Physics */
   --radius: 16px;
   --radius-sm: 10px;
   --radius-xs: 6px;
   --border-width: 1px;
   --border-style: solid;
-  --glass-blur: blur(24px);
+  --glass-blur: blur(16px);
+  --glass-blur-lg: blur(24px);
 
   --btn-transform-hover: translateY(-2px);
-  --btn-transform-active: translateY(0);
+  --btn-transform-active: translateY(0px);
+
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ============================================================
-   Dark Mode (Default — APCA Calibrated)
+   Dark Mode (Default Dracula Night)
    ============================================================ */
 :root, html[data-theme="dracula"], html[data-theme="dracula"][data-mode="dark"] {
   color-scheme: dark;
-  --bg: #181825;
-  --surface: #1e1e2e;
-  --surface-2: #282a36;
-  --surface-3: #313244;
-  --header-bg: rgba(24, 24, 37, 0.90);
+  --bg: #1E1F29;
+  --surface: #282A36;
+  --surface-2: #343746;
+  --surface-3: #44475A;
+  --header-bg: rgba(30, 31, 41, 0.94);
 
-  --text: #f8f8f2;             /* APCA Lc ~98 (Dracula Foreground) */
-  --text-muted: #cdd6f4;       /* APCA Lc ~88 (Secondary Subtext) */
-  --text-dim: #a6adc8;         /* APCA Lc ~72 (Subdued Labels) */
+  --primary: #BD93F9;
+  --primary-light: #D6B4FE;
+  --primary-dark: #985BF8;
+  --accent: #FF79C6;
+  --accent-light: #FFA3D7;
+  --gold: #8BE9FD;
+  --gold-light: #B6F2FF;
+  --green: #50FA7B;
+  --silver: #6272A4;
+  --bronze: #FFB86C;
 
-  --border: rgba(189, 147, 249, 0.30);
-  --border-accent: rgba(255, 121, 198, 0.30);
+  --text: #F8F8F2;
+  --text-muted: #E2E2F0;
+  --text-dim: #929CC0;
 
-  --orb-1-color: #bd93f9;
-  --orb-2-color: #ff79c6;
-  --orb-3-color: #8be9fd;
-  --orb-opacity: 0.18;
+  --border: rgba(189, 147, 249, 0.25);
+  --border-accent: #FF79C6;
 
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --shadow-hover: 0 16px 48px rgba(189, 147, 249, 0.35);
-  --shadow-glow: 0 0 40px rgba(189, 147, 249, 0.3);
-  --shadow-red: 0 0 30px rgba(255, 121, 198, 0.25);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(189, 147, 249, 0.15);
+  --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(189, 147, 249, 0.3);
+  --shadow-glow: 0 0 35px rgba(189, 147, 249, 0.35);
+  --shadow-red: 0 0 30px rgba(255, 121, 198, 0.3);
+
+  --orb-1-color: #BD93F9;
+  --orb-2-color: #FF79C6;
+  --orb-3-color: #8BE9FD;
+  --orb-opacity: 0.2;
 }
 
 /* ============================================================
-   Light Mode (Lilac Violet — APCA Calibrated)
+   Light Mode (Dracula Alucard / Lilac Day)
    ============================================================ */
-html[data-mode="light"], html[data-theme="dracula"][data-mode="light"] {
+html[data-theme="dracula"][data-mode="light"] {
   color-scheme: light;
-  --bg: #f2effa;
-  --surface: #ffffff;
-  --surface-2: #f7f4fd;
-  --surface-3: #eae4f7;
-  --header-bg: rgba(242, 239, 250, 0.92);
+  --bg: #F5F3FA;
+  --surface: #FFFFFF;
+  --surface-2: #F9F7FD;
+  --surface-3: #ECE6F8;
+  --header-bg: rgba(245, 243, 250, 0.94);
 
-  --primary: #7c4dff;
-  --primary-light: #9867ff;
-  --primary-dark: #5c26db;
-  --accent: #d81b60;
-  --accent-light: #ff4081;
-  --gold: #0091ea;
-  --gold-light: #40c4ff;
+  --primary: #7C3AED;
+  --primary-light: #9867FF;
+  --primary-dark: #5C26DB;
+  --accent: #E11D48;
+  --accent-light: #FF4081;
+  --gold: #0284C7;
+  --gold-light: #38BDF8;
+  --green: #059669;
+  --silver: #64748B;
+  --bronze: #D97706;
 
-  --text: #181124;             /* APCA Lc ~98 (Deep Dracula Ink) */
-  --text-muted: #4a3a66;       /* APCA Lc ~80 (Secondary Subtext) */
-  --text-dim: #6b5a88;         /* APCA Lc ~65 (Subdued Metadata) */
+  --text: #1E1F29;
+  --text-muted: #334155;
+  --text-dim: #64748B;
 
-  --border: rgba(124, 77, 255, 0.22);
-  --border-accent: rgba(216, 27, 96, 0.22);
+  --border: rgba(124, 58, 237, 0.18);
+  --border-accent: #E11D48;
 
-  --orb-1-color: #7c4dff;
-  --orb-2-color: #ff4081;
-  --orb-3-color: #00b0ff;
-  --orb-opacity: 0.12;
+  --shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
+  --shadow-hover: 0 16px 36px rgba(124, 58, 237, 0.18);
+  --shadow-glow: 0 0 25px rgba(124, 58, 237, 0.2);
+  --shadow-red: 0 0 25px rgba(225, 29, 72, 0.15);
 
-  --shadow: 0 8px 30px rgba(124, 77, 255, 0.08);
-  --shadow-hover: 0 16px 40px rgba(124, 77, 255, 0.18);
-  --shadow-glow: 0 0 30px rgba(124, 77, 255, 0.2);
-  --shadow-red: 0 0 25px rgba(216, 27, 96, 0.15);
+  --orb-1-color: #DDD6FE;
+  --orb-2-color: #FECDD3;
+  --orb-3-color: #BAE6FD;
+  --orb-opacity: 0.35;
 }
+
+/* ============================================================
+   Body & Layout
+   ============================================================ */
+body {
+  font-family: var(--font-sans) !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(189, 147, 249, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(189, 147, 249, 0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+}
+
+/* ============================================================
+   Header & Navigation
+   ============================================================ */
+.header {
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+}
+
+.logo-badge {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 12px rgba(189, 147, 249, 0.25) !important;
+}
+
+.logo-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+.logo-sub { color: var(--text-dim) !important; font-weight: 600 !important; }
+
+.nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-xs) !important;
+  transition: all 0.15s ease !important;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--text) !important;
+  background: var(--surface-2) !important;
+}
+
+.nav-btn {
+  background: var(--primary) !important;
+  color: #1E1F29 !important;
+  border: 1px solid var(--primary) !important;
+  font-weight: 800 !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: 0 4px 14px rgba(189, 147, 249, 0.35) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-theme="dracula"][data-mode="light"] .nav-btn { color: #FFFFFF !important; }
+.nav-btn:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: 0 8px 24px rgba(189, 147, 249, 0.45) !important;
+}
+
+.mode-toggle-btn, .theme-switcher-btn {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+  font-weight: 600 !important;
+}
+
+.theme-dropdown-menu {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius) !important;
+}
+.theme-item { color: var(--text) !important; border-radius: var(--radius-xs) !important; }
+.theme-item:hover, .theme-item.active { background: var(--surface-2) !important; color: var(--primary) !important; }
+
+/* ============================================================
+   Hero Section
+   ============================================================ */
+.hero-badge {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--gold) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  box-shadow: var(--shadow) !important;
+}
+.badge-dot { background: var(--accent) !important; box-shadow: 0 0 8px var(--accent) !important; }
+
+.hero-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent), var(--gold)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-desc { color: var(--text-muted) !important; font-size: 1.1rem !important; }
+
+.hero-dates {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.date-num {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+}
+.date-info { color: var(--text) !important; font-weight: 600 !important; }
+.date-info small { color: var(--text-dim) !important; font-family: var(--font-mono) !important; }
+.date-divider { color: var(--accent) !important; font-weight: 700 !important; }
+
+.btn-primary {
+  background: var(--primary) !important;
+  color: #1E1F29 !important;
+  border: 1px solid var(--primary) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-xs) !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dracula"][data-mode="light"] .btn-primary { color: #FFFFFF !important; }
+.btn-primary:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.btn-secondary {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-xs) !important;
+  font-weight: 700 !important;
+}
+.btn-secondary:hover {
+  background: var(--surface-2) !important;
+  border-color: var(--primary) !important;
+}
+
+.float-badge {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 100px !important;
+  font-weight: 700 !important;
+  backdrop-filter: none !important;
+}
+.float-badge:hover {
+  background: var(--surface-2) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+/* ============================================================
+   Sections & Cards
+   ============================================================ */
+.bis-info-strip {
+  background: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+.strip-icon { color: var(--gold) !important; }
+
+.section-tag {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+}
+
+.section-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+.section-desc { color: var(--text-muted) !important; }
+
+.event-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.event-card:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-color: var(--border-accent) !important;
+}
+.event-card-glow { display: none !important; }
+
+.event-time-tag {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--gold) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-xs) !important;
+}
+
+.event-name {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+.event-desc { color: var(--text-muted) !important; }
+
+.meta-chip {
+  border: 1px solid var(--border) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+}
+.meta-chip.prize { background: rgba(139, 233, 253, 0.15) !important; color: #8BE9FD !important; }
+.meta-chip.individual { background: rgba(80, 250, 123, 0.15) !important; color: #50FA7B !important; }
+.meta-chip.team { background: rgba(189, 147, 249, 0.15) !important; color: #BD93F9 !important; }
+.meta-chip.ceremonial { background: rgba(255, 121, 198, 0.15) !important; color: #FF79C6 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.prize { background: #E0F2FE !important; color: #0369A1 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.individual { background: #ECFDF5 !important; color: #047857 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.team { background: #EDE9FE !important; color: #5B21B6 !important; }
+html[data-theme="dracula"][data-mode="light"] .meta-chip.ceremonial { background: #FCE7F3 !important; color: #9D174D !important; }
+
+.card-click-hint { color: var(--primary) !important; font-weight: 700 !important; }
+
+/* ============================================================
+   Schedule & Prizes
+   ============================================================ */
+.countdown-bar {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.cd-num { font-family: var(--font-display) !important; font-weight: 800 !important; color: var(--primary) !important; }
+.cd-label { color: var(--text-dim) !important; font-weight: 600 !important; }
+
+.tl-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius-sm) !important;
+}
+.tl-title { color: var(--text) !important; font-weight: 800 !important; }
+.tl-desc { color: var(--text-muted) !important; }
+.tl-time { color: var(--gold) !important; font-family: var(--font-mono) !important; font-weight: 700 !important; }
+
+.prize-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.prize-rank { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.prize-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+.gold-card .prize-amount { color: var(--gold) !important; }
+.silver-card .prize-amount { color: var(--silver) !important; }
+.bronze-card .prize-amount { color: var(--bronze) !important; }
+
+.grand-pool-card {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.pool-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.pool-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--accent) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+/* ============================================================
+   Registration Form & Modal
+   ============================================================ */
+.form-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.form-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.form-label { color: var(--text) !important; font-weight: 700 !important; }
+
+.form-input, .form-select, .form-textarea {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  color: var(--text) !important;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(189, 147, 249, 0.25) !important;
+}
+
+.event-checkbox-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+}
+.event-checkbox-card.selected {
+  background: var(--surface-2) !important;
+  border-color: var(--primary) !important;
+}
+
+.register-submit-btn {
+  background: var(--primary) !important;
+  color: #1E1F29 !important;
+  border: 1px solid var(--primary) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dracula"][data-mode="light"] .register-submit-btn { color: #FFFFFF !important; }
+
+.modal-content, .event-modal .modal-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.em-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.em-info-card {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xs) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.footer {
+  background: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+.footer-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.footer-links a { color: var(--text-muted) !important; }
+.footer-links a:hover { color: var(--primary) !important; }

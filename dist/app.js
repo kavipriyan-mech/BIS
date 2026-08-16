@@ -22,6 +22,64 @@ function startCountdown() {
   update();
   setInterval(update, 1000);
 }
+function openEventModal(id, event) {
+  if (event && event.stopPropagation)
+    event.stopPropagation();
+  var modal = document.getElementById("modal-" + id);
+  if (!modal)
+    return;
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  if (window.lucide) {
+    window.lucide.createIcons({ root: modal });
+  }
+}
+var heroNavigationBusy = false;
+function handleHeroEventNavigation(eventId) {
+  if (heroNavigationBusy)
+    return;
+  heroNavigationBusy = true;
+  const clickedBadge = document.querySelector(`[data-hero-event="${eventId}"]`);
+  if (clickedBadge) {
+    clickedBadge.classList.add("hero-clicked");
+  }
+  const eventsSection = document.getElementById("events");
+  if (!eventsSection) {
+    heroNavigationBusy = false;
+    if (clickedBadge)
+      clickedBadge.classList.remove("hero-clicked");
+    return;
+  }
+  if (document.activeElement && document.activeElement.blur) {
+    document.activeElement.blur();
+  }
+  eventsSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+  setTimeout(() => {
+    if (typeof openEventModal === "function") {
+      openEventModal(eventId);
+    } else {
+      console.error("openEventModal() is not available");
+    }
+    if (clickedBadge) {
+      clickedBadge.classList.remove("hero-clicked");
+    }
+    heroNavigationBusy = false;
+  }, 700);
+}
+document.addEventListener("click", function(event) {
+  const badge = event.target.closest("[data-hero-event]");
+  if (!badge)
+    return;
+  event.preventDefault();
+  event.stopPropagation();
+  const eventId = badge.dataset.heroEvent;
+  if (!eventId)
+    return;
+  handleHeroEventNavigation(eventId);
+});
 document.addEventListener("click", function(e) {
   if (e.target.classList.contains("event-modal-overlay")) {
     e.target.classList.add("hidden");
@@ -30,11 +88,8 @@ document.addEventListener("click", function(e) {
 });
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
-    document.querySelectorAll(".event-modal-overlay:not(.hidden)").forEach((el) => {
-      el.classList.add("hidden");
-    });
-    document.querySelectorAll(".modal-overlay:not(.hidden)").forEach((el) => {
-      el.classList.add("hidden");
+    document.querySelectorAll(".event-modal-overlay, .modal-overlay").forEach(function(m) {
+      m.classList.add("hidden");
     });
     document.body.style.overflow = "";
   }
@@ -76,6 +131,9 @@ function initAnimations() {
 document.addEventListener("DOMContentLoaded", () => {
   if (window.ThemeProvider) {
     window.ThemeProvider.init();
+  }
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
   startCountdown();
   initScrollSpy();

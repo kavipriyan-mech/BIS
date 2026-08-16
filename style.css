@@ -184,10 +184,13 @@ body {
 .hero-section {
   width: 100%;
   position: relative;
-  background-image: linear-gradient(rgba(10, 15, 30, 0.75), rgba(10, 15, 30, 0.85)), url('hero-bg.png');
+  background-image: linear-gradient(rgba(10, 15, 30, 0.70), rgba(10, 15, 30, 0.85)), url('hero-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+html[data-mode="light"] .hero-section {
+  background-image: linear-gradient(rgba(240, 244, 250, 0.82), rgba(240, 244, 250, 0.90)), url('hero-bg.png');
 }
 
 .hero {
@@ -544,10 +547,13 @@ body {
 
 .events-section {
   position: relative;
-  background-image: linear-gradient(rgba(10, 20, 25, 0.82), rgba(10, 20, 25, 0.88)), url('events-bg.png');
+  background-image: linear-gradient(rgba(10, 20, 25, 0.75), rgba(10, 20, 25, 0.85)), url('events-bg.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+html[data-mode="light"] .events-section {
+  background-image: linear-gradient(rgba(240, 244, 250, 0.85), rgba(240, 244, 250, 0.92)), url('events-bg.png');
 }
 
 .event-card {
@@ -678,14 +684,18 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(180deg, rgba(10, 15, 30, 0.70) 0%, rgba(10, 15, 30, 0.82) 100%), url('schedule.png');
+  background-image: linear-gradient(180deg, rgba(10, 15, 30, 0.60) 0%, rgba(10, 15, 30, 0.80) 100%), url('schedule-bg.png');
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
-  opacity: 0.28;
+  opacity: 0.65;
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.3s ease;
+}
+html[data-mode="light"] .schedule-section::before {
+  background-image: linear-gradient(180deg, rgba(240, 244, 250, 0.75) 0%, rgba(240, 244, 250, 0.88) 100%), url('schedule-bg.png');
+  opacity: 0.7;
 }
 
 .schedule-section .container {
@@ -754,10 +764,13 @@ body {
    ============================================================ */
 .prizes-section {
   position: relative;
-  background-image: linear-gradient(rgba(20, 14, 32, 0.82), rgba(20, 14, 32, 0.88)), url('prize-bg.png');
+  background-image: linear-gradient(rgba(20, 14, 32, 0.75), rgba(20, 14, 32, 0.85)), url('prize-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+html[data-mode="light"] .prizes-section {
+  background-image: linear-gradient(rgba(240, 244, 250, 0.85), rgba(240, 244, 250, 0.92)), url('prize-bg.png');
 }
 
 .prizes-grid {
@@ -852,7 +865,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(135deg, rgba(8, 28, 21, 0.72) 0%, rgba(8, 28, 21, 0.84) 100%), url('register-bg.png');
+  background-image: linear-gradient(135deg, rgba(8, 28, 21, 0.65) 0%, rgba(8, 28, 21, 0.80) 100%), url('register-bg.png');
   background-size: cover;
   background-position: right 10% center;
   background-repeat: no-repeat;
@@ -860,6 +873,10 @@ body {
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.3s ease;
+}
+html[data-mode="light"] .form-section::before {
+  background-image: linear-gradient(135deg, rgba(240, 244, 250, 0.78) 0%, rgba(240, 244, 250, 0.88) 100%), url('register-bg.png');
+  opacity: 0.85;
 }
 
 .form-section .container {

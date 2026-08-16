@@ -78,7 +78,13 @@ const ALLOWED_ROOT_FILES = new Set([
   'theme-provider.js',
   'lucide.min.js',
   'logo.svg',
-  'favicon.ico'
+  'favicon.ico',
+  'hero-bg.png',
+  'events-bg.png',
+  'schedule-bg.png',
+  'schedule.png',
+  'prize-bg.png',
+  'register-bg.png'
 ]);
 
 function sendJSON(res, statusCode, data) {
@@ -121,11 +127,11 @@ function serveStaticFile(req, res, pathname) {
     return sendJSON(res, 403, { status: 'error', message: 'Forbidden' });
   }
 
-  // Only permit serving files from the 'themes/' directory OR explicitly allowed root frontend assets
-  const isThemeAsset = pathParts.length >= 2 && pathParts[0] === 'themes';
-  const isAllowedRootAsset = pathParts.length === 1 && ALLOWED_ROOT_FILES.has(baseName);
+  // Permit serving files from the 'themes/' or 'dist/' directory OR allowed root frontend assets
+  const isAllowedSubdir = pathParts.length >= 2 && (pathParts[0] === 'themes' || pathParts[0] === 'dist');
+  const isAllowedRootAsset = pathParts.length === 1 && (ALLOWED_ROOT_FILES.has(baseName) || (MIME_TYPES[ext] && !FORBIDDEN_FILES.has(baseName)));
 
-  if (!isThemeAsset && !isAllowedRootAsset) {
+  if (!isAllowedSubdir && !isAllowedRootAsset) {
     return sendJSON(res, 403, { status: 'error', message: 'Forbidden file request' });
   }
 

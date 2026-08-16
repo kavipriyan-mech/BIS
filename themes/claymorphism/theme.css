@@ -1,48 +1,26 @@
 /* ============================================================
-   BIS Club — Claymorphism Theme (Soft Puffy Clay)
+   BIS Club — Claymorphism Theme (Soft Puffy 3D Clay)
    ============================================================
-   Design intent: puffy, tactile, malleable-clay shapes that pop off a
-   flat, soft light-pastel canvas. Every control reads as a soft 3D
-   lump raised off the page — depth is built from layered box-shadows
-   (a shaded "clay edge" + an inset top-light highlight), never from
-   gradients or glass frosted panes.
-
-   Palette anchors (BIS identity remapped to clay-friendly light field):
-     Navy   #1C398E / clay face #2F6FE4 · Crimson #B22A3D · Gold #E7A000
-   Base canvas: #EEF1F5  ·  Ink: #12233F (max-contrast on the light field)
-
-   Skill: claymorphism · theme: claymorphism · genre: puffy-clay
+   Puffy pillowy clay surfaces with multi-layer extruded shadows
+   and top glossy highlights, friendly rounded geometry,
+   vibrant royal blue and coral rose accents.
    ============================================================ */
+
 :root, html[data-theme="claymorphism"] {
   --theme-id: "claymorphism";
   --theme-name: "Claymorphism";
 
-  /* ============ Clay Palette ============ */
-  --primary: #2f6fe4;
-  --primary-light: #2a65d6;
-  --primary-dark: #1e50b8;
-  --accent: #b22a3d;
-  --accent-light: #b92e41;
-  --accent-dark: #80181f;
-  --gold: #e7a000;
-  --gold-light: #ffc94d;
-  --gold-dark: #c18400;
-  --green: #16a34a;
-  --silver: #7b8794;
-  --silver-light: #e2e8f0;
-  --bronze: #c97b3f;
-
-  /* ============ Clay Geometry ============ */
-  --radius: 22px;
+  /* Geometry & Physics */
+  --radius: 24px;
   --radius-sm: 16px;
   --radius-xs: 12px;
   --border-width: 1px;
   --border-style: solid;
   --glass-blur: none;
+  --glass-blur-lg: none;
 
-  --clay-edge-height: 6px;
-  --btn-transform-hover: translateY(-2px);
-  --btn-transform-active: translateY(0px);
+  --btn-transform-hover: translateY(-3px) scale(1.01);
+  --btn-transform-active: translateY(1px) scale(0.99);
 
   --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
@@ -50,684 +28,448 @@
 }
 
 /* ============================================================
-   Light Mode (Soft Puffy Clay — APCA Calibrated Claymorphism)
+   Light Mode (Soft Pastel Slate & Pillowy Clay)
    ============================================================ */
 :root, html[data-theme="claymorphism"], html[data-theme="claymorphism"][data-mode="light"] {
   color-scheme: light;
-  --bg: #EEF1F5;
-  --surface: #F6F8FB;
-  --surface-2: #FFFFFF;
-  --surface-3: #E3E9F1;
-  --header-bg: rgba(246, 248, 251, 0.97);
+  --bg: #EEF2F7;
+  --surface: #FFFFFF;
+  --surface-2: #F8FAFC;
+  --surface-3: #E2E8F0;
+  --header-bg: rgba(238, 242, 247, 0.95);
 
-  --text: #0f172a;             /* APCA Lc ~97 (Deep Slate Ink) */
-  --text-muted: #334155;       /* APCA Lc ~80 (Secondary Subtext) */
-  --text-dim: #475569;         /* APCA Lc ~65 (Subdued Metadata) */
+  --primary: #3B82F6;
+  --primary-light: #60A5FA;
+  --primary-dark: #2563EB;
+  --accent: #F43F5E;
+  --accent-light: #FB7185;
+  --gold: #F59E0B;
+  --gold-light: #FBBF24;
+  --green: #10B981;
+  --silver: #64748B;
+  --bronze: #D97706;
 
-  --border: rgba(31, 51, 90, 0.10);
-  --border-accent: rgba(47, 111, 228, 0.45);
+  --text: #0F172A;
+  --text-muted: #334155;
+  --text-dim: #64748B;
 
-  --clay-shadow: 0 var(--clay-edge-height) 0 rgba(28, 57, 142, 0.22);
-  --clay-highlight: inset 0 3px 7px rgba(255, 255, 255, 0.65);
-  --clay-ambient: 0 14px 26px rgba(28, 57, 142, 0.14);
-  --shadow: 0 8px 22px rgba(28, 57, 142, 0.12);
-  --shadow-hover: 0 16px 30px rgba(28, 57, 142, 0.18);
-  --shadow-glow: 0 0 30px rgba(47, 111, 228, 0.22);
-  --shadow-red: 0 0 24px rgba(178, 42, 61, 0.18);
+  --border: rgba(59, 130, 246, 0.12);
+  --border-accent: #3B82F6;
 
-  --orb-1-color: #cfe0fb;
-  --orb-2-color: #f9d9dd;
-  --orb-3-color: #fdeec7;
-  --orb-opacity: 0.75;
+  --shadow: 0 12px 28px rgba(71, 85, 105, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -3px 6px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 18px 36px rgba(59, 130, 246, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -3px 6px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.25);
+  --shadow-red: 0 0 24px rgba(244, 63, 94, 0.2);
+
+  --orb-1-color: #BFDBFE;
+  --orb-2-color: #FECDD3;
+  --orb-3-color: #FEF08A;
+  --orb-opacity: 0.5;
 }
 
 /* ============================================================
-   Dark Mode (Slate Clay Void — APCA Calibrated)
+   Dark Mode (Deep Blueberry Slate & Luminous Clay)
    ============================================================ */
-html[data-mode="dark"], html[data-theme="claymorphism"][data-mode="dark"] {
+html[data-theme="claymorphism"][data-mode="dark"] {
   color-scheme: dark;
-  --bg: #1a1f2c;
-  --surface: #222838;
-  --surface-2: #2c3448;
-  --surface-3: #353f57;
-  --header-bg: rgba(26, 31, 44, 0.95);
+  --bg: #0F172A;
+  --surface: #1E293B;
+  --surface-2: #293548;
+  --surface-3: #334155;
+  --header-bg: rgba(15, 23, 42, 0.95);
 
-  --text: #f8fafc;             /* APCA Lc ~98 (Crisp Light Text) */
-  --text-muted: #e2e8f0;       /* APCA Lc ~86 (Secondary Subtext) */
-  --text-dim: #cbd5e1;         /* APCA Lc ~72 (Subdued Metadata) */
+  --primary: #60A5FA;
+  --primary-light: #93C5FD;
+  --primary-dark: #3B82F6;
+  --accent: #FB7185;
+  --accent-light: #FDA4AF;
+  --gold: #FBBF24;
+  --gold-light: #FDE68A;
+  --green: #34D399;
+  --silver: #94A3B8;
+  --bronze: #FB923C;
+
+  --text: #F8FAFC;
+  --text-muted: #E2E8F0;
+  --text-dim: #94A3B8;
 
   --border: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(79, 145, 255, 0.45);
+  --border-accent: #60A5FA;
 
-  --clay-shadow: 0 var(--clay-edge-height) 0 rgba(0, 0, 0, 0.5);
-  --clay-highlight: inset 0 2px 5px rgba(255, 255, 255, 0.18);
-  --clay-ambient: 0 14px 26px rgba(0, 0, 0, 0.45);
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.65);
-  --shadow-glow: 0 0 30px rgba(79, 145, 255, 0.3);
-  --shadow-red: 0 0 24px rgba(239, 68, 68, 0.3);
+  --shadow: 0 14px 32px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.15), inset 0 -4px 8px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 20px 42px rgba(96, 165, 250, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 30px rgba(96, 165, 250, 0.3);
+  --shadow-red: 0 0 24px rgba(251, 113, 133, 0.3);
 
-  --orb-1-color: #2b4578;
-  --orb-2-color: #5c202d;
-  --orb-3-color: #59441a;
-  --orb-opacity: 0.35;
+  --orb-1-color: #1E3A8A;
+  --orb-2-color: #881337;
+  --orb-3-color: #713F12;
+  --orb-opacity: 0.3;
 }
 
 /* ============================================================
-   Body / Canvas — flat soft light field
+   Body & Layout
    ============================================================ */
-html, body {
+body {
   font-family: var(--font-sans) !important;
-  background: var(--bg) !important;
   background-color: var(--bg) !important;
   color: var(--text) !important;
-  -webkit-font-smoothing: antialiased;
 }
 
-.bg-canvas { z-index: 0; }
-.orb { opacity: var(--orb-opacity); filter: blur(70px); }
-
-/* Flat neutral tint — no grid lines, keeps the canvas calm & gradient-free */
 .grid-overlay {
-  background: rgba(31, 51, 90, 0.02) !important;
+  background-image:
+    radial-gradient(rgba(59, 130, 246, 0.1) 1.5px, transparent 1.5px) !important;
+  background-size: 28px 28px !important;
 }
 
 /* ============================================================
-   Shared Clay Primitives
-   ============================================================ */
-/* Visible focus on every interactive element — dark ring on light clay */
-:is(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid #12233F !important;
-  outline-offset: 3px !important;
-  border-radius: var(--radius-xs);
-}
-::selection { background: rgba(47, 111, 228, 0.30); }
-:root { scrollbar-color: rgba(28, 57, 142, 0.35) rgba(227, 233, 241, 0.6); }
-
-/* ============================================================
-   Header & Navigation — puffy top bar
+   Header & Navigation
    ============================================================ */
 .header {
   background: var(--header-bg) !important;
-  border-bottom: 2px solid rgba(31, 51, 90, 0.06);
-  box-shadow: 0 10px 26px rgba(28, 57, 142, 0.10);
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
 }
 
 .logo-badge {
   background: var(--primary) !important;
-  border-radius: 14px !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
 }
-.logo-title { color: var(--primary-dark); font-family: var(--font-display); font-weight: 800; }
-.logo-sub { color: var(--text-muted); }
+
+.logo-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+.logo-sub { color: var(--text-dim) !important; font-weight: 600 !important; }
 
 .nav-link {
-  border-radius: var(--radius-xs);
   color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  border-radius: 100px !important;
+  transition: all 0.2s ease !important;
 }
-.nav-link:hover {
-  color: var(--primary-dark) !important;
-  background: var(--surface-3) !important;
+.nav-link:hover, .nav-link.active {
+  color: var(--primary) !important;
+  background: var(--surface-2) !important;
+  box-shadow: var(--shadow) !important;
 }
-.nav-link.active { color: var(--primary-dark); font-weight: 700; }
 
 .nav-btn {
   background: var(--primary) !important;
+  color: #FFFFFF !important;
   border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: #fff;
-  box-shadow: var(--clay-highlight), var(--clay-shadow) !important;
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 .nav-btn:hover {
-  background: var(--primary-light) !important;
-  transform: var(--btn-transform-hover);
-}
-.nav-btn:active {
-  transform: var(--btn-transform-active);
-  box-shadow: var(--clay-highlight), 0 calc(var(--clay-edge-height) / 2) 0 rgba(28, 57, 142, 0.2) !important;
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: 0 10px 22px rgba(59, 130, 246, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
 }
 
-.mobile-nav { background: var(--surface) !important; }
-
-/* ============================================================
-   Hero — clay headline & puffy date chips
-   ============================================================ */
-.hero-badge {
-  background: var(--surface-2) !important;
-  border: none !important;
+.mode-toggle-btn, .theme-switcher-btn {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
   border-radius: 100px !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
-  color: var(--accent-dark);
-  font-family: var(--font-mono);
-  font-weight: 700;
+  box-shadow: var(--shadow) !important;
+  font-weight: 600 !important;
 }
-.hero-title { font-family: var(--font-display); letter-spacing: -0.5px; }
-.gradient-text {
-  /* Flat clay accent — cancel base text-clip styles. */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  -webkit-text-fill-color: currentColor !important;
+.mode-toggle-btn:hover, .theme-switcher-btn:hover {
+  transform: var(--btn-transform-hover) !important;
   color: var(--primary) !important;
 }
 
-.date-card {
-  background: var(--surface-2) !important;
-  border: none !important;
+.theme-dropdown-menu {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
 }
-.date-num, .date-info strong { font-family: var(--font-mono); color: var(--primary-dark); }
-.date-info span { color: var(--text-muted); }
-.date-divider { color: var(--silver); }
+.theme-item { color: var(--text) !important; border-radius: var(--radius-sm) !important; }
+.theme-item:hover, .theme-item.active { background: var(--surface-2) !important; color: var(--primary) !important; }
+
+/* ============================================================
+   Hero Section
+   ============================================================ */
+.hero-badge {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  box-shadow: var(--shadow) !important;
+}
+.badge-dot { background: var(--accent) !important; }
+
+.hero-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-desc { color: var(--text-muted) !important; font-size: 1.1rem !important; }
+
+.hero-dates {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.date-num {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+}
+.date-info { color: var(--text) !important; font-weight: 600 !important; }
+.date-info small { color: var(--text-dim) !important; }
+.date-divider { color: var(--accent) !important; font-weight: 800 !important; }
 
 .btn-primary {
   background: var(--primary) !important;
+  color: #FFFFFF !important;
   border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
-  font-family: var(--font-display); font-weight: 700;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
+  border-radius: 100px !important;
+  font-weight: 700 !important;
 }
-.btn-primary:hover { background: var(--primary-light) !important; transform: var(--btn-transform-hover); }
-.btn-primary:active { transform: var(--btn-transform-active); box-shadow: var(--clay-highlight), 0 3px 0 rgba(28, 57, 142, 0.2) !important; }
+.btn-primary:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.45), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
+}
 
 .btn-secondary {
-  background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--primary-dark) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 100px !important;
+  font-weight: 700 !important;
 }
-.btn-secondary:hover { background: var(--surface-3) !important; transform: var(--btn-transform-hover); }
-.btn-secondary:active { transform: var(--btn-transform-active); }
+.btn-secondary:hover {
+  transform: var(--btn-transform-hover) !important;
+  color: var(--primary) !important;
+}
 
-/* Floating Saturn badges — re-skin as puffy clay chips */
 .float-badge {
-  background: var(--surface-2) !important;
-  border-radius: 16px !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
-  color: var(--text);
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 100px !important;
+  font-weight: 700 !important;
+  backdrop-filter: none !important;
+}
+.float-badge:hover {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  transform: scale(1.08) !important;
 }
 
 /* ============================================================
-   BIS Info Strip — recessed clay ticker
+   Sections & Cards
    ============================================================ */
 .bis-info-strip {
-  background: var(--surface-3) !important;
-  border-top: 2px solid rgba(31, 51, 90, 0.05);
-  border-bottom: 2px solid rgba(31, 51, 90, 0.05);
+  background: var(--surface) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
 }
-.strip-item { color: var(--text) !important; font-weight: 700; }
-.strip-div { color: var(--primary) !important; }
-
-/* ============================================================
-   Sections — puffy headers
-   ============================================================ */
-.section-title { font-family: var(--font-display); color: var(--primary-dark); letter-spacing: -0.5px; }
-.section-desc { color: var(--text-muted); }
+.strip-icon { color: var(--primary) !important; }
 
 .section-tag {
-  background: var(--accent-light) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 rgba(128, 24, 31, 0.3) !important;
-  font-family: var(--font-mono);
-  letter-spacing: 1px;
-}
-
-/* ============================================================
-   Events Grid & Cards — puffy clay lumps
-   ============================================================ */
-.event-card {
   background: var(--surface-2) !important;
-  border: none !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.section-title {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
+.section-desc { color: var(--text-muted) !important; }
+
+.event-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
+  backdrop-filter: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
-.clickable-card:hover {
-  transform: translateY(-5px);
-  background: #ffffff !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), 0 20px 32px rgba(28, 57, 142, 0.18) !important;
+.event-card:hover {
+  transform: var(--btn-transform-hover) !important;
+  box-shadow: var(--shadow-hover) !important;
 }
-.clickable-card:active {
-  transform: translateY(var(--clay-edge-height));
-  box-shadow: var(--clay-highlight), 0 3px 0 rgba(28, 57, 142, 0.16) !important;
-}
-.event-card-glow { background: transparent; }
+.event-card-glow { display: none !important; }
 
-/* Clay visual header — flat colored lumps, kept vivid */
-.inauguration-bg { background: #2f6fe4 !important; }
-.poster-bg { background: #7c5be2 !important; }
-.debate-bg { background: #e03a4e !important; }
-.treasure-bg { background: #e7a000 !important; }
-.rangoli-bg { background: #3fbb73 !important; }
-.quiz-bg { background: #3b82f6 !important; }
-.mimes-bg { background: #a13fd9 !important; }
-.science-bg { background: #0ea5a9 !important; }
-.event-emoji { filter: drop-shadow(0 6px 8px rgba(28, 57, 142, 0.25)); }
+.event-time-tag {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+}
 
-.event-name { color: var(--primary-dark) !important; font-family: var(--font-display); }
-.event-time-tag { color: var(--gold-dark) !important; font-family: var(--font-mono); font-weight: 700; }
+.event-name {
+  color: var(--text) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+}
 .event-desc { color: var(--text-muted) !important; }
 
-/* Meta chips — recessed clay wells with colored text */
 .meta-chip {
-  background: var(--silver-light) !important;
-  border: none !important;
+  border: 1px solid var(--border) !important;
+  font-weight: 700 !important;
   border-radius: 100px !important;
-  color: var(--text-muted) !important;
-  box-shadow: var(--clay-highlight), 0 3px 0 rgba(28, 57, 142, 0.10) !important;
 }
-.meta-chip.prize { background: #fdeec7 !important; color: var(--gold-dark) !important; }
-.meta-chip.individual { background: #d9f3e4 !important; color: #137a3d !important; }
-.meta-chip.team { background: #f9d9dd !important; color: var(--accent-dark) !important; }
-.meta-chip.ceremonial { background: #cfe0fb !important; color: var(--primary-dark) !important; }
+.meta-chip.prize { background: #FEF3C7 !important; color: #92400E !important; }
+.meta-chip.individual { background: #DCFCE7 !important; color: #166534 !important; }
+.meta-chip.team { background: #DBEAFE !important; color: #1E40AF !important; }
+.meta-chip.ceremonial { background: #FCE7F3 !important; color: #9D174D !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .meta-chip.prize { background: #78350F !important; color: #FDE68A !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .meta-chip.individual { background: #064E3B !important; color: #A7F3D0 !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .meta-chip.team { background: #1E3A8A !important; color: #BFDBFE !important; }
+html[data-theme="claymorphism"][data-mode="dark"] .meta-chip.ceremonial { background: #831843 !important; color: #FBCFE8 !important; }
 
-.card-click-hint { color: var(--primary) !important; font-family: var(--font-mono); font-weight: 700; }
+.card-click-hint { color: var(--primary) !important; font-weight: 700 !important; }
 
 /* ============================================================
-   Timeline / Schedule — clay tabs + puffy dots
+   Schedule & Prizes
    ============================================================ */
-.schedule-section { background: transparent; }
-
-.tab-btn {
+.countdown-bar {
   background: var(--surface) !important;
-  border: none !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: var(--radius) !important;
+}
+.cd-num { font-family: var(--font-display) !important; font-weight: 800 !important; color: var(--primary) !important; }
+.cd-label { color: var(--text-dim) !important; font-weight: 600 !important; }
+
+.tl-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: var(--radius-sm) !important;
-  color: var(--text-muted) !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 rgba(28, 57, 142, 0.12) !important;
 }
-.tab-btn:hover:not(.active) { color: var(--primary-dark) !important; transform: translateY(-1px); }
-.tab-btn.active {
-  background: var(--primary) !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow) !important;
-}
-.tab-btn:active { transform: translateY(2px); }
+.tl-title { color: var(--text) !important; font-weight: 800 !important; }
+.tl-desc { color: var(--text-muted) !important; }
+.tl-time { color: var(--primary) !important; font-weight: 700 !important; }
 
-.tl-dot {
-  background: var(--primary) !important;
-  border: 3px solid #fff !important;
-  box-shadow: 0 3px 0 rgba(28, 57, 142, 0.25), 0 0 0 4px var(--silver-light) !important;
-}
-.tl-dot::after { background: rgba(47, 111, 228, 0.25) !important; }
-.tl-dot.break { background: var(--silver) !important; border-color: #e2e8f0 !important; }
-.tl-dot.gold {
-  background: var(--gold) !important;
-  border-color: #fff !important;
-  box-shadow: 0 3px 0 rgba(193, 132, 0, 0.3), 0 0 0 4px #fdeec7 !important;
-}
-.tl-time { font-family: var(--font-mono); color: var(--gold-dark); font-weight: 700; }
-.tl-content h4 { color: var(--primary-dark); font-family: var(--font-display); }
-.tl-content p { color: var(--text-muted) !important; }
-.break-content h4 { color: var(--text-dim) !important; }
-
-/* ============================================================
-   Prizes — clay trophy plinths
-   ============================================================ */
 .prize-card {
-  background: var(--surface-2) !important;
-  border: none !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
+  backdrop-filter: none !important;
 }
-.prize-card:hover { transform: translateY(-5px); box-shadow: var(--clay-highlight), var(--clay-shadow), 0 20px 32px rgba(28, 57, 142, 0.18) !important; }
-.gold-card { background: #fdf3db !important; box-shadow: var(--clay-highlight), var(--clay-shadow), 0 14px 26px rgba(193, 132, 0, 0.18) !important; }
-.silver-card { background: #f0f3f7 !important; }
-.bronze-card { background: #f8ead9 !important; }
+.prize-rank { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.prize-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+.gold-card .prize-amount { color: var(--gold) !important; }
+.silver-card .prize-amount { color: var(--silver) !important; }
+.bronze-card .prize-amount { color: var(--bronze) !important; }
 
-.prize-place { color: var(--text-muted) !important; letter-spacing: 1px; }
-.prize-amount { font-family: var(--font-display); color: var(--text) !important; }
-.gold-card .prize-amount { color: var(--gold-dark); }
-.silver-card .prize-amount { color: var(--silver); }
-.bronze-card .prize-amount { color: var(--bronze); }
-.prize-detail { color: var(--text-dim) !important; }
-
-.special-award {
+.grand-pool-card {
   background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: var(--text-muted) !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 rgba(28, 57, 142, 0.12) !important;
-}
-.special-award:hover { color: var(--primary-dark) !important; background: #fff !important; }
-
-/* ============================================================
-   Countdown Banner + QR — bright clay panels
-   ============================================================ */
-.countdown-banner {
-  background: var(--primary) !important;
-  border: none !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
 }
-.cd-label { color: rgba(255, 255, 255, 0.92) !important; }
-.cd-num, .cd-colon { font-family: var(--font-mono); color: #fff !important; }
-.cd-unit-label { color: rgba(255, 255, 255, 0.85) !important; letter-spacing: 1.5px; }
-.cd-secs-wrap { color: #ffd9de !important; }
-
-.cd-date-pill {
-  background: var(--gold) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #542f00 !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 var(--gold-dark) !important;
-  font-weight: 700;
-}
-
-.qr-section-card {
-  background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
-}
-.qr-box {
-  background: #fff !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: 0 6px 0 rgba(28, 57, 142, 0.12), inset 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-}
-.qr-tag {
-  background: var(--accent-light) !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #fff !important;
-  box-shadow: 0 3px 0 rgba(128, 24, 31, 0.3) !important;
-  font-family: var(--font-mono);
-}
-.qr-title { color: var(--primary-dark); font-family: var(--font-display); }
-.qr-desc { color: var(--text-muted) !important; }
-
-.event-pill {
-  background: #fdeec7 !important;
-  border: none !important;
-  border-radius: var(--radius-xs) !important;
-  color: var(--gold-dark) !important;
-  font-weight: 700;
+.pool-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.pool-amount {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  color: var(--primary) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--primary) !important;
 }
 
 /* ============================================================
-   Registration Form — the big puffy clay panel
+   Registration Form & Modal
    ============================================================ */
-.form-section { background: transparent; }
-
 .form-card {
-  background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: 30px !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), var(--clay-ambient) !important;
-}
-
-.form-section-title { color: var(--primary-dark) !important; font-family: var(--font-display); border-bottom-color: rgba(31, 51, 90, 0.12); }
-.form-sec-num {
-  background: var(--accent) !important;
-  border-radius: var(--radius-xs) !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 rgba(128, 24, 31, 0.35) !important;
-  font-family: var(--font-mono);
-}
-.form-note { color: var(--text-muted) !important; }
-
-label { color: var(--text) !important; font-weight: 700; }
-.req { color: var(--accent-dark); font-weight: 700; }
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-select,
-textarea {
   background: var(--surface) !important;
-  border: 2px solid transparent !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text) !important;
-  font-family: var(--font-sans);
-  box-shadow: inset 0 3px 8px rgba(28, 57, 142, 0.10) !important; /* recessed clay well */
-}
-input::placeholder, textarea::placeholder { color: var(--text-dim); }
-select option { background: #fff; color: var(--text); }
-
-input:focus, select:focus, textarea:focus {
-  border-color: var(--primary) !important;
-  background: #ffffff !important;
-  box-shadow: inset 0 3px 8px rgba(28, 57, 142, 0.06), 0 0 0 3px rgba(47, 111, 228, 0.20) !important;
-}
-input:invalid:not(:placeholder-shown),
-select:invalid:not([value=""]) { border-color: var(--accent) !important; }
-.field-err { color: var(--accent-dark) !important; font-weight: 700; }
-
-/* ============================================================
-   Events Picker — puffy clay check-cards
-   ============================================================ */
-.ec-card {
-  background: var(--surface) !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 rgba(28, 57, 142, 0.12) !important;
-}
-.ec-card:hover { background: #fff !important; }
-.event-check input:checked ~ .ec-card {
-  background: #cfe0fb !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 var(--primary-dark) !important;
-}
-.ec-info strong { color: var(--primary-dark) !important; font-family: var(--font-display); }
-.ec-info small { color: var(--text-muted) !important; }
-.ec-check-mark {
-  background: var(--silver-light) !important;
-  border: 2px solid #fff !important;
-  color: transparent;
-  box-shadow: 0 3px 0 rgba(28, 57, 142, 0.15) !important;
-}
-.event-check input:checked ~ .ec-card .ec-check-mark {
-  background: var(--primary) !important;
-  box-shadow: 0 3px 0 var(--primary-dark) !important;
-}
-
-.event-details, .detail-header { border-radius: var(--radius) !important; }
-.event-details { background: var(--surface) !important; }
-.detail-header { color: var(--primary-dark) !important; border-bottom-color: rgba(31, 51, 90, 0.12); }
-
-.consent-box {
-  background: var(--surface) !important;
-  border-radius: var(--radius-sm) !important;
-}
-.rules-list li { color: var(--text-muted) !important; }
-.rules-list li::before { color: var(--accent); font-weight: 700; }
-
-.check-label { color: var(--text-muted) !important; }
-.check-box {
-  background: var(--silver-light) !important;
-  border: 2px solid #fff !important;
-  border-radius: var(--radius-xs) !important;
-  box-shadow: 0 3px 0 rgba(28, 57, 142, 0.12) !important;
-}
-.check-label input:checked ~ .check-box {
-  background: var(--primary) !important;
-  box-shadow: 0 3px 0 var(--primary-dark) !important;
-}
-
-/* ============================================================
-   Submit Button — the biggest clay lump
-   ============================================================ */
-.btn-submit {
-  background: var(--primary) !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), 0 16px 30px rgba(28, 57, 142, 0.22) !important;
-  font-family: var(--font-display); font-weight: 800;
-  letter-spacing: 0.5px;
-}
-.btn-submit:hover:not(:disabled) {
-  background: var(--primary-light) !important;
-  transform: translateY(-2px);
-}
-.btn-submit:active:not(:disabled) {
-  transform: translateY(var(--clay-edge-height));
-  box-shadow: var(--clay-highlight), 0 3px 0 rgba(28, 57, 142, 0.2) !important;
-}
-.btn-submit:disabled { opacity: 0.6; }
-.btn-label { font-family: var(--font-display); }
-
-/* ============================================================
-   Modals — chunky clay sheets with deep drop
-   ============================================================ */
-.modal-overlay,
-.event-modal-overlay {
-  background: rgba(18, 26, 45, 0.35) !important;
-}
-.modal,
-.event-modal {
-  background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: 28px !important;
-  box-shadow: var(--clay-highlight), 0 24px 60px rgba(18, 26, 45, 0.28) !important;
-}
-.event-modal-close {
-  background: var(--silver-light) !important;
-  border: none !important;
-  color: var(--text) !important;
-  box-shadow: 0 3px 0 rgba(28, 57, 142, 0.2) !important;
-}
-.event-modal-close:hover { background: var(--accent-light) !important; color: #fff !important; }
-
-.em-title, .modal-title { color: var(--primary-dark) !important; font-family: var(--font-display); }
-.em-day-tag { font-family: var(--font-mono); color: var(--gold-dark); }
-.em-time-badge {
-  background: #fdeec7 !important;
-  border: none !important;
-  border-radius: 100px !important;
-  color: #542f00 !important;
-  box-shadow: 0 3px 0 var(--gold-dark) !important;
-}
-.reg-id-badge {
-  background: var(--gold) !important;
-  border-radius: var(--radius-xs) !important;
-  color: #542f00 !important;
-  box-shadow: var(--clay-highlight), 0 4px 0 var(--gold-dark) !important;
-  font-family: var(--font-mono);
-}
-
-.em-info-card {
-  background: var(--surface) !important;
-  border-radius: var(--radius-sm) !important;
-}
-.em-info-label { font-family: var(--font-mono); color: var(--text-dim); }
-.em-info-card strong { color: var(--primary-dark) !important; }
-.em-section-title { color: var(--primary-dark) !important; font-family: var(--font-display); border-bottom-color: rgba(31, 51, 90, 0.12); }
-.em-section p, .em-steps li, .em-rules li { color: var(--text-muted) !important; }
-.em-theme-tag {
-  background: var(--surface) !important;
-  border-radius: 100px !important;
-  color: var(--text-muted) !important;
-  box-shadow: 0 3px 0 rgba(28, 57, 142, 0.10) !important;
-}
-.em-criterion { background: var(--surface) !important; border-radius: var(--radius-xs) !important; }
-.em-c-pct { font-family: var(--font-mono); color: var(--gold-dark); }
-.em-criterion span:last-child { color: var(--text-muted) !important; }
-
-.em-register-btn {
-  background: var(--accent) !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: #fff !important;
-  box-shadow: var(--clay-highlight), var(--clay-shadow), 0 12px 26px rgba(128, 24, 31, 0.25) !important;
-  font-family: var(--font-display);
-}
-.em-register-btn:hover { background: var(--accent-light) !important; transform: translateY(-2px); }
-.em-register-btn:active { transform: translateY(var(--clay-edge-height)); box-shadow: var(--clay-highlight), 0 3px 0 rgba(128, 24, 31, 0.2) !important; }
-
-.modal-details { background: var(--surface) !important; border-radius: var(--radius-sm) !important; }
-.modal-desc { color: var(--text-muted) !important; }
-.modal-note { color: var(--text-dim) !important; }
-
-/* ============================================================
-   Footer — puffy closing bar
-   ============================================================ */
-.footer {
-  background: var(--surface) !important;
-  border-top: 2px solid rgba(31, 51, 90, 0.06);
-}
-.footer-brand { color: var(--text-muted) !important; }
-.footer-copy { color: var(--text-dim) !important; }
-
-/* ============================================================
-   Theme Switcher — clay dropdown
-   ============================================================ */
-.theme-switcher-btn {
-  background: var(--surface-2) !important;
-  border: none !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text) !important;
-  box-shadow: var(--clay-highlight), 0 5px 0 rgba(28, 57, 142, 0.14) !important;
-}
-.theme-switcher-btn:hover { background: #fff !important; transform: translateY(-2px); }
-.theme-switcher-btn:active { transform: translateY(4px); box-shadow: var(--clay-highlight), 0 2px 0 rgba(28, 57, 142, 0.12) !important; }
-.theme-btn-name { color: var(--primary) !important; }
-.theme-caret { color: var(--text-muted); }
-
-.theme-dropdown-menu {
-  background: var(--surface-2) !important;
-  border: none !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
   border-radius: var(--radius) !important;
-  box-shadow: var(--clay-highlight), 0 20px 40px rgba(18, 26, 45, 0.22) !important;
+  backdrop-filter: none !important;
 }
-.theme-dropdown-header {
-  color: var(--text-muted) !important;
-  border-bottom-color: rgba(31, 51, 90, 0.10);
+.form-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.form-label { color: var(--text) !important; font-weight: 700 !important; }
+
+.form-input, .form-select, .form-textarea {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+}
+
+.event-checkbox-card {
   background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
 }
-.theme-dropdown-item:hover { background: var(--surface) !important; }
-.theme-dropdown-item.active {
-  background: #cfe0fb !important;
-  box-shadow: inset 0 2px 6px rgba(47, 111, 228, 0.25) !important;
-}
-.theme-item-name { color: var(--text) !important; font-family: var(--font-display); font-weight: 700; }
-.theme-item-tag { color: var(--primary) !important; }
-.theme-item-check { color: var(--primary) !important; }
-
-/* ============================================================
-   Accessibility & Responsive hard-passes
-   ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  .orb, .float-badge, .bis-info-strip {
-    animation: none !important;
-    transition: none !important;
-  }
-  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn):hover,
-  :is(.btn-primary, .btn-secondary, .btn-submit, .nav-btn, .clickable-card, .tab-btn):active {
-    transform: none !important;
-  }
+.event-checkbox-card.selected {
+  background: var(--surface-2) !important;
+  border-color: var(--primary) !important;
 }
 
-/* Small screens — slightly smaller clay edges, keep puffy but compact */
-@media (max-width: 640px) {
-  :root {
-    --clay-edge-height: 5px;
-  }
-  .form-card { border-radius: 24px !important; }
+.register-submit-btn {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 100px !important;
+  box-shadow: 0 8px 22px rgba(59, 130, 246, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.5) !important;
+  font-weight: 800 !important;
 }
 
-/* ============================================================
-   Claymorphism Theme QA Checklist
-   ============================================================
-   [x] Zero gradient() calls — clay depth uses layered box-shadows only
-       (clay edge + inset top-light + soft lift ambient).
-   [x] Light cast canvas (#EEF1F5) — puffy colored shapes pop, dark ink
-       legible (--text #12233F = 13.8:1 on base).
-   [x] WCAG 2.2 AA text everywhere on clay fills:
-       white on primary #2F6FE4 = 4.6:1; white on crimson #B22A3D = 6.4:1;
-       gold carries DARK ink (#1C398E on #E7A000 = 4.65:1) — never white
-       text on gold clay.
-   [x] Focus-visible 3px dark ring + 3px offset on all interactive elements.
-   [x] Keyboard-first: native controls preserved; pressed state uses a real
-       translateY(edge) so the clay "squishes" on click.
-   [x] prefers-reduced-motion flattens orb drift and clay lifts/squishes.
-   [x] Recessed clay wells (inputs, pickers) use inset shadows, raised
-       clay lumps use outer + inset highlight — no ambiguous hybrids.
-   [x] Responsive: clay edge height reduced on small screens.
-   [x] Migrations: every dark-glass selector that assumed translucent
-       frosted panes is overridden to flat clay fills with `!important`.
-   ============================================================ */
+.modal-content, .event-modal .modal-content {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25) !important;
+  border-radius: var(--radius) !important;
+  backdrop-filter: none !important;
+}
+.em-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.em-info-card {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.footer {
+  background: var(--surface-2) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+.footer-title { color: var(--text) !important; font-family: var(--font-display) !important; font-weight: 800 !important; }
+.footer-links a { color: var(--text-muted) !important; }
+.footer-links a:hover { color: var(--primary) !important; }

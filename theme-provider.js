@@ -12,6 +12,7 @@
   const DEFAULT_MODE = 'dark';
 
   // Built-in Theme Folder Registry
+  // Built-in Theme Folder Registry
   const THEME_REGISTRY = [
     {
       id: 'glassmorphism',
@@ -28,7 +29,7 @@
       category: 'Neobrutalism',
       designTag: 'BRUTAL',
       badgeText: 'FEATURED',
-      swatches: ['#FDC800', '#432DD7', '#1C293C'],
+      swatches: ['#F59E0B', '#4F46E5', '#0F172A'],
       path: 'themes/neobrutalism/theme.css'
     },
     {
@@ -37,7 +38,7 @@
       category: 'Anti-AI Slop',
       designTag: 'CRAFT',
       badgeText: 'TACTILE',
-      swatches: ['#FC4C02', '#2D2825', '#FAF7F2'],
+      swatches: ['#EA580C', '#1C1917', '#FAF7F2'],
       path: 'themes/hallmark/theme.css'
     },
     {
@@ -46,7 +47,7 @@
       category: 'Claymorphism',
       designTag: 'PUFFY',
       badgeText: 'CLAY',
-      swatches: ['#2F6FE4', '#B22A3D', '#EEF1F5'],
+      swatches: ['#3B82F6', '#F43F5E', '#EEF2F7'],
       path: 'themes/claymorphism/theme.css'
     },
     {
@@ -55,7 +56,7 @@
       category: 'Skeuomorphism',
       designTag: 'TACTILE',
       badgeText: 'MATERIAL',
-      swatches: ['#C42800', '#B07A1E', '#F5F1E8'],
+      swatches: ['#1D4ED8', '#D97706', '#F1F3F7'],
       path: 'themes/skeumorphism/theme.css'
     },
     {
@@ -64,7 +65,7 @@
       category: 'Neumorphism',
       designTag: 'EXTRUDE',
       badgeText: 'SOFT',
-      swatches: ['#006666', '#E7E5E4', '#1E2938'],
+      swatches: ['#0284C7', '#4F46E5', '#E8ECF2'],
       path: 'themes/neumorphism/theme.css'
     },
     {
@@ -73,7 +74,7 @@
       category: 'Storytelling',
       designTag: 'NARRATIVE',
       badgeText: 'STORY',
-      swatches: ['#3B82F6', '#8B5CF6', '#FAFAF7'],
+      swatches: ['#4338CA', '#D97706', '#FAF8F5'],
       path: 'themes/storytelling/theme.css'
     },
     {
@@ -82,7 +83,7 @@
       category: 'Retro Sci-Fi',
       designTag: 'CYBER',
       badgeText: 'NEON',
-      swatches: ['#00f3ff', '#ff007f', '#070614'],
+      swatches: ['#00F0FF', '#FF007F', '#070712'],
       path: 'themes/cyberpunk/theme.css'
     },
     {
@@ -91,23 +92,22 @@
       category: 'Dark Mode',
       designTag: 'DRACULA',
       badgeText: 'POPULAR',
-      swatches: ['#bd93f9', '#ff79c6', '#181825'],
+      swatches: ['#BD93F9', '#FF79C6', '#282A36'],
       path: 'themes/dracula/theme.css'
     }
   ];
 
   // Per-theme Google Fonts mapping — only the ACTIVE theme's fonts are loaded.
-  // Cyberpunk & Dracula define no font vars and inherit style.css fallbacks (Outfit/Inter).
   const FONT_REGISTRY = {
     glassmorphism: 'family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600',
-    neobrutalism: 'family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800;900',
+    neobrutalism: 'family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600',
     hallmark: 'family=Fraunces:opsz,wght@9..144,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500',
     claymorphism: 'family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600',
-    skeumorphism: 'family=Germania+One&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600',
-    neumorphism: 'family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;600',
-    storytelling: 'family=Abril+Fatface&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600',
-    cyberpunk: 'family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600',
-    dracula: 'family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600'
+    skeumorphism: 'family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600',
+    neumorphism: 'family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600',
+    storytelling: 'family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600',
+    cyberpunk: 'family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600',
+    dracula: 'family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600'
   };
 
   // Single shared <link> that gets retargeted per theme (only one webfont request at a time).
