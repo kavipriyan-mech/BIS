@@ -582,39 +582,21 @@ body {
 .meta-chip.ceremonial { background: var(--surface-3); border-color: var(--primary-light); color: var(--primary-light); }
 
 .card-click-hint {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
   font-size: 0.76rem;
+  color: var(--primary-light);
   font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 100px;
-  background: var(--surface-3, rgba(255, 255, 255, 0.08));
-  border: 1px solid var(--border, rgba(255, 255, 255, 0.15));
-  color: var(--primary-light, #60a5fa);
-  transition: all 0.25s ease;
-  margin: 12px 20px 16px;
+  padding: 8px 20px 14px;
+  transition: color 0.2s ease, transform 0.2s ease;
   letter-spacing: 0.3px;
   user-select: none;
-  width: fit-content;
 }
-.clickable-card-inner:hover .card-click-hint {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: var(--primary-light, #60a5fa);
+.event-card:hover .card-click-hint {
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1px);
-}
-.card-click-hint .hint-chevron {
-  display: inline-block;
-  transition: transform 0.35s ease;
-  font-size: 0.8rem;
-  line-height: 1;
-}
-.event-card.is-open .card-click-hint {
-  background: rgba(232, 32, 62, 0.14);
-  border-color: rgba(232, 32, 62, 0.4);
-  color: var(--accent-light, #f87171);
+  transform: translateX(3px);
 }
 
 /* ── Accordion Panel ─────────────────────────────────────────── */
