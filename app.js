@@ -3,8 +3,8 @@
    Direct Google Sheets Integration via Apps Script
    ============================================================ */
 
-// ── 🔗 GOOGLE APPS SCRIPT ENDPOINT ───────────────────
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2oYUevJTsIgAYLyrXAQvZNjPGVzO4JQcHql63WAivl80Y279U07whWu3AFlWskQF6/exec";
+// ── 🔗 GOOGLE APPS SCRIPT WEB APP ENDPOINT ───────────────────
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNiX4nbnOzT8AjO_7hG9xcHjLTTIg10wz80iV8eKOP581bDF3fdLtavY7GNZOZBUe9/exec";
 // ──────────────────────────────────────────────────────────────────────
 
 // ══════════════════════════════════════════════════════════════
@@ -341,45 +341,41 @@ function validateForm() {
 //  COLLECT FORM DATA (Matches Apps Script Backend Keys)
 // ══════════════════════════════════════════════════════════════
 function collectFormData() {
-  const selectedEventsArr = [...document.querySelectorAll('input[name="events"]:checked')].map(cb => cb.value);
-  const eventsCommaStr = selectedEventsArr.join(', ');
+  const events = [...document.querySelectorAll('input[name="events"]:checked')].map(input => input.value);
 
   const data = {
-    registrationId: "",
-    fullName: document.getElementById('fullName').value.trim(),
-    rollNo: document.getElementById('rollNo').value.trim(),
-    department: document.getElementById('department').value,
-    year: document.getElementById('year').value,
-    phone: document.getElementById('phone').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    events: eventsCommaStr,
+    fullName: document.getElementById("fullName").value.trim(),
+    rollNo: document.getElementById("rollNo").value.trim(),
+    department: document.getElementById("department").value,
+    year: document.getElementById("year").value,
+    phone: document.getElementById("phone").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    events: events,
 
-    posterMedium: document.getElementById('poster-medium')?.value || "",
+    posterMedium: document.getElementById("poster-medium")?.value || "",
 
-    debateTeam: document.getElementById('debate-team')?.value.trim() || "",
-    debateCaptain: document.getElementById('debate-captain')?.value.trim() || "",
-    debateMembers: document.getElementById('debate-members')?.value.trim() || "",
+    debateTeam: document.getElementById("debate-team")?.value || "",
+    debateCaptain: document.getElementById("debate-captain")?.value || "",
+    debateMembers: document.getElementById("debate-members")?.value || "",
 
-    treasureTeam: document.getElementById('th-team')?.value.trim() || "",
-    treasureCaptain: document.getElementById('th-captain')?.value.trim() || "",
-    treasureMembers: document.getElementById('th-members')?.value.trim() || "",
+    treasureTeam: document.getElementById("th-team")?.value || "",
+    treasureCaptain: document.getElementById("th-captain")?.value || "",
+    treasureMembers: document.getElementById("th-members")?.value || "",
 
-    rangoliTeam: document.getElementById('rang-team')?.value.trim() || "",
-    rangoliMembers: document.getElementById('rang-members')?.value.trim() || "",
+    rangoliTeam: document.getElementById("rang-team")?.value || "",
+    rangoliMembers: document.getElementById("rang-members")?.value || "",
 
-    quiz: (document.getElementById('ev-quiz') && document.getElementById('ev-quiz').checked) ? "Selected" : "",
+    mimesTeam: document.getElementById("mime-team")?.value || "",
+    mimesTheme: document.getElementById("mime-theme")?.value || "",
+    mimesMembers: document.getElementById("mime-members")?.value || "",
 
-    scienceTeam: document.getElementById('sci-team')?.value.trim() || "",
-    scienceMembers: document.getElementById('sci-members')?.value.trim() || "",
-    scienceTopic: document.getElementById('sci-topic')?.value.trim() || "",
-    sciencePrototypeType: document.getElementById('sci-prototype-type')?.value || "",
-    scienceDescription: document.getElementById('sci-description')?.value.trim() || "",
+    scienceTeam: document.getElementById("sci-team")?.value || "",
+    scienceMembers: document.getElementById("sci-members")?.value || "",
+    scienceTopic: document.getElementById("sci-topic")?.value || "",
+    sciencePrototypeType: document.getElementById("sci-prototype-type")?.value || "",
+    scienceDescription: document.getElementById("sci-description")?.value || "",
 
-    mimesTeam: document.getElementById('mime-team')?.value.trim() || "",
-    mimesTheme: document.getElementById('mime-theme')?.value || "",
-    mimesMembers: document.getElementById('mime-members')?.value.trim() || "",
-
-    consent: document.getElementById('consent').checked
+    consent: document.getElementById("consent").checked
   };
 
   return data;
@@ -388,24 +384,16 @@ function collectFormData() {
 // ══════════════════════════════════════════════════════════════
 //  SUCCESS & ERROR MODALS
 // ══════════════════════════════════════════════════════════════
-function showSuccessModal(regId, name, events) {
+function showSuccessModal(regId, name, rollNo, events) {
   const detailsEl = document.getElementById('modalDetails');
-  const eventsList = Array.isArray(events) ? events : [events];
-  
-  const eventsPills = eventsList.map(ev => `<span class="event-pill"><i data-lucide="check"></i> ${ev}</span>`).join(' ');
+  const eventsStr = Array.isArray(events) ? events.join(', ') : (events || '');
 
   detailsEl.innerHTML = `
-    <div style="margin-bottom:14px; text-align:center;">
-      <span style="font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;font-weight:700;letter-spacing:1px;">Registration ID</span><br/>
-      <span class="reg-id-badge">${regId}</span>
-    </div>
-    <div style="margin-bottom:12px;">
-      <span style="font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;font-weight:700;letter-spacing:1px;">Registered Name</span><br/>
-      <span style="color:var(--text);font-weight:700;font-size:1.05rem;">${name}</span>
-    </div>
-    <div>
-      <span style="font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;font-weight:700;letter-spacing:1px;">Registered Events</span><br/>
-      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">${eventsPills}</div>
+    <div style="margin-bottom:12px; text-align:left; font-size:0.9rem; line-height:1.6;">
+      <div><strong>Registration ID:</strong> <span class="reg-id-badge" style="display:inline-block; font-size:0.95rem; padding:4px 10px; margin:4px 0;">${regId}</span></div>
+      <div><strong>Name:</strong> ${name}</div>
+      <div><strong>Register Number:</strong> ${rollNo}</div>
+      <div><strong>Events:</strong> ${eventsStr}</div>
     </div>
   `;
   document.getElementById('successModal').classList.remove('hidden');
@@ -432,13 +420,17 @@ function closeErrorModal() {
   document.body.style.overflow = '';
 }
 
+function closeModalFormReset() {
+  const form = document.getElementById('regForm');
+  if (form) form.reset();
+  document.querySelectorAll('.event-details').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('input[name="events"]').forEach(cb => cb.checked = false);
+  clearErrors();
+}
+
 function closeModal() {
   document.getElementById('successModal').classList.add('hidden');
   document.body.style.overflow = '';
-  // Reset form
-  document.getElementById('regForm').reset();
-  document.querySelectorAll('.event-details').forEach(el => el.classList.add('hidden'));
-  clearErrors();
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -456,7 +448,7 @@ async function submitForm(e) {
   const btnLabel  = submitBtn.querySelector('.btn-label');
   const btnLoader = document.getElementById('btnLoader');
 
-  // Double submission protection: disable button immediately
+  // Disable submit button & show loading state
   submitBtn.disabled = true;
   if (btnLabel)  btnLabel.style.display = 'none';
   if (btnLoader) btnLoader.classList.remove('hidden');
@@ -464,8 +456,9 @@ async function submitForm(e) {
   const formData = collectFormData();
 
   try {
-    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
+      mode: "cors",
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
       },
@@ -477,31 +470,22 @@ async function submitForm(e) {
     try {
       result = JSON.parse(responseText);
     } catch (parseErr) {
-      console.warn("Apps script response text is not raw JSON, attempting fallback parse:", responseText);
+      console.warn("Response parse warning, text:", responseText);
       result = { success: true };
     }
 
-    if (result.success === true || result.status === 'success' || result.registrationId) {
-      const regId = result.registrationId || result.regId || ('BIS-' + Math.floor(100000 + Math.random() * 900000));
-      
-      // Save offline backup log in localStorage
-      try {
-        const existingLogs = JSON.parse(localStorage.getItem('bis_registrations') || '[]');
-        existingLogs.push({ ...formData, registrationId: regId, timestamp: new Date().toISOString() });
-        localStorage.setItem('bis_registrations', JSON.stringify(existingLogs));
-      } catch (storageErr) {
-        console.warn('LocalStorage save skipped:', storageErr);
-      }
-
-      showSuccessModal(regId, formData.fullName, formData.events);
+    if (result.success === true) {
+      const regId = result.registrationId || ('BIS2026-' + Math.floor(1000 + Math.random() * 9000));
+      showSuccessModal(regId, formData.fullName, formData.rollNo, formData.events);
+      closeModalFormReset();
     } else {
-      const errorMsg = result.message || result.error || 'Registration failed. Please check your details and try again.';
+      const errorMsg = result.message || 'Registration failed. Please check your details and try again.';
       showErrorAlert(errorMsg);
     }
 
   } catch (err) {
-    console.error('Submission Error:', err);
-    showErrorAlert('Network error or server connection failed. Please check your internet connection and try again.');
+    console.error('Fetch / Network Error:', err);
+    showErrorAlert("Unable to connect to the registration server. Please check your internet connection and try again.");
   } finally {
     submitBtn.disabled = false;
     if (btnLabel)  btnLabel.style.display = '';
