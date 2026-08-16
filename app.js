@@ -289,7 +289,9 @@ function validateForm() {
   // 14. Science via Standards
   if (selectedEvents.includes('Science via Standards')) {
     const teamName = document.getElementById('sci-team').value.trim();
+    const topic    = document.getElementById('sci-topic')?.value.trim();
     if (!teamName) { setError('sci-team', 'Please enter team name.'); valid = false; }
+    if (!topic)    { setError('sci-topic', 'Please enter your chosen prototype topic.'); valid = false; }
   }
 
   // 15. Consent
