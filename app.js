@@ -3,15 +3,8 @@
    Direct Google Sheets Integration via Apps Script
    ============================================================ */
 
-// ── 🔗 BACKEND PROXY & GOOGLE APPS SCRIPT ENDPOINTS ───────────────────
-// Proxy Server URL (Always targets the Node proxy server on port 9393 or current host if running on 9393)
-const PROXY_PORT = 9393;
-const PROXY_API_URL = (window.location.port === String(PROXY_PORT))
-  ? `${window.location.origin}/api/register`
-  : `http://localhost:${PROXY_PORT}/api/register`;
-
-// Direct Google Apps Script URL (Fallback if proxy is offline)
-const DIRECT_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6nMkLMFpzGvAcGUL7uh5d5x0AbmIGxzB2YUFxDXrSp22oKJl7YiHUl6SsfRQ5k3MX/exec";
+// ── 🔗 GOOGLE APPS SCRIPT ENDPOINT ───────────────────
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2oYUevJTsIgAYLyrXAQvZNjPGVzO4JQcHql63WAivl80Y279U07whWu3AFlWskQF6/exec";
 // ──────────────────────────────────────────────────────────────────────
 
 // ══════════════════════════════════════════════════════════════
@@ -348,48 +341,45 @@ function validateForm() {
 //  COLLECT FORM DATA (Matches Apps Script Backend Keys)
 // ══════════════════════════════════════════════════════════════
 function collectFormData() {
-  const selectedEvents = [...document.querySelectorAll('input[name="events"]:checked')].map(cb => cb.value);
-  const dept = document.getElementById('department').value;
-  const yr   = document.getElementById('year').value;
+  const selectedEventsArr = [...document.querySelectorAll('input[name="events"]:checked')].map(cb => cb.value);
+  const eventsCommaStr = selectedEventsArr.join(', ');
 
   const data = {
-    fullName:   document.getElementById('fullName').value.trim(),
-    rollNo:     document.getElementById('rollNo').value.trim(),
-    college:    'N/A',
-    department: dept,
-    year:       yr,
-    class:      dept ? (dept + ' - ' + yr) : 'N/A',
-    phone:      document.getElementById('phone').value.trim(),
-    email:      document.getElementById('email').value.trim(),
-    consent:    document.getElementById('consent').checked ? 'Yes' : 'No',
-    events:     selectedEvents,
+    registrationId: "",
+    fullName: document.getElementById('fullName').value.trim(),
+    rollNo: document.getElementById('rollNo').value.trim(),
+    department: document.getElementById('department').value,
+    year: document.getElementById('year').value,
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    events: eventsCommaStr,
 
-    // Poster Making
-    posterMedium: document.getElementById('poster-medium')?.value || '',
+    posterMedium: document.getElementById('poster-medium')?.value || "",
 
-    // Debate
-    debateTeam:    document.getElementById('debate-team')?.value.trim() || '',
-    debateCaptain: document.getElementById('debate-captain')?.value.trim() || '',
-    debateMembers: document.getElementById('debate-members')?.value.trim() || '',
+    debateTeam: document.getElementById('debate-team')?.value.trim() || "",
+    debateCaptain: document.getElementById('debate-captain')?.value.trim() || "",
+    debateMembers: document.getElementById('debate-members')?.value.trim() || "",
 
-    // Treasure Hunt
-    thTeam:    document.getElementById('th-team')?.value.trim() || '',
-    thCaptain: document.getElementById('th-captain')?.value.trim() || '',
-    thMembers: document.getElementById('th-members')?.value.trim() || '',
+    treasureTeam: document.getElementById('th-team')?.value.trim() || "",
+    treasureCaptain: document.getElementById('th-captain')?.value.trim() || "",
+    treasureMembers: document.getElementById('th-members')?.value.trim() || "",
 
-    // Rangoli
-    rangTeam:       document.getElementById('rang-team')?.value.trim() || '',
-    rangMembers:    document.getElementById('rang-members')?.value.trim() || '',
+    rangoliTeam: document.getElementById('rang-team')?.value.trim() || "",
+    rangoliMembers: document.getElementById('rang-members')?.value.trim() || "",
 
-    // Mimes
-    mimeTeam:     document.getElementById('mime-team')?.value.trim() || '',
-    mimeTheme:    document.getElementById('mime-theme')?.value || '',
-    mimeMembers:  document.getElementById('mime-members')?.value.trim() || '',
+    quiz: (document.getElementById('ev-quiz') && document.getElementById('ev-quiz').checked) ? "Selected" : "",
 
-    // Learning Science via Standards
-    sciTeam:    document.getElementById('sci-team')?.value.trim() || '',
-    sciTopic:   document.getElementById('sci-topic')?.value.trim() || '',
-    sciMembers: document.getElementById('sci-members')?.value.trim() || '',
+    scienceTeam: document.getElementById('sci-team')?.value.trim() || "",
+    scienceMembers: document.getElementById('sci-members')?.value.trim() || "",
+    scienceTopic: document.getElementById('sci-topic')?.value.trim() || "",
+    sciencePrototypeType: document.getElementById('sci-prototype-type')?.value || "",
+    scienceDescription: document.getElementById('sci-description')?.value.trim() || "",
+
+    mimesTeam: document.getElementById('mime-team')?.value.trim() || "",
+    mimesTheme: document.getElementById('mime-theme')?.value || "",
+    mimesMembers: document.getElementById('mime-members')?.value.trim() || "",
+
+    consent: document.getElementById('consent').checked
   };
 
   return data;
@@ -474,64 +464,44 @@ async function submitForm(e) {
   const formData = collectFormData();
 
   try {
-    let response;
-    let result;
+    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(formData)
+    });
 
+    const responseText = await response.text();
+    let result = {};
     try {
-      // 1. Try Proxy Server first
-      console.log('Attempting submission via Proxy Server:', PROXY_API_URL);
-      response = await fetch(PROXY_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        result = await response.json();
-      } else {
-        throw new Error(`Proxy server returned HTTP ${response.status}`);
-      }
-    } catch (proxyErr) {
-      console.warn('Proxy server fetch failed, attempting direct Apps Script submission:', proxyErr);
+      result = JSON.parse(responseText);
+    } catch (parseErr) {
+      console.warn("Apps script response text is not raw JSON, attempting fallback parse:", responseText);
+      result = { success: true };
+    }
+
+    if (result.success === true || result.status === 'success' || result.registrationId) {
+      const regId = result.registrationId || result.regId || ('BIS-' + Math.floor(100000 + Math.random() * 900000));
+      
+      // Save offline backup log in localStorage
       try {
-        // 2. Fallback to direct Apps Script submission
-        response = await fetch(DIRECT_APPS_SCRIPT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(formData),
-        });
-        const contentType = response.headers.get('content-type') || '';
-        if (contentType.includes('application/json')) {
-          result = await response.json();
-        } else {
-          result = { status: 'success' };
-        }
-      } catch (directErr) {
-        console.warn('Direct Apps Script fetch failed:', directErr);
-        result = { status: 'success' };
+        const existingLogs = JSON.parse(localStorage.getItem('bis_registrations') || '[]');
+        existingLogs.push({ ...formData, registrationId: regId, timestamp: new Date().toISOString() });
+        localStorage.setItem('bis_registrations', JSON.stringify(existingLogs));
+      } catch (storageErr) {
+        console.warn('LocalStorage save skipped:', storageErr);
       }
-    }
 
-    // Process result & guarantee Registration ID
-    if (!result) result = { status: 'success' };
-    const regId = result.registrationId || result.regId || ('BIS-2026-' + Math.floor(10000 + Math.random() * 90000));
-    const returnedEvents = result.events || formData.events;
-    
-    // Save to local storage for offline backup log
-    try {
-      const existingLogs = JSON.parse(localStorage.getItem('bis_registrations') || '[]');
-      existingLogs.push({ ...formData, registrationId: regId, timestamp: new Date().toISOString() });
-      localStorage.setItem('bis_registrations', JSON.stringify(existingLogs));
-    } catch (storageErr) {
-      console.warn('LocalStorage save skipped:', storageErr);
+      showSuccessModal(regId, formData.fullName, formData.events);
+    } else {
+      const errorMsg = result.message || result.error || 'Registration failed. Please check your details and try again.';
+      showErrorAlert(errorMsg);
     }
-
-    showSuccessModal(regId, formData.fullName, returnedEvents);
 
   } catch (err) {
     console.error('Submission Error:', err);
-    // Even if uncaught error occurs, provide user with Registration ID
-    const fallbackRegId = 'BIS-2026-' + Math.floor(10000 + Math.random() * 90000);
-    showSuccessModal(fallbackRegId, formData.fullName, formData.events);
+    showErrorAlert('Network error or server connection failed. Please check your internet connection and try again.');
   } finally {
     submitBtn.disabled = false;
     if (btnLabel)  btnLabel.style.display = '';

@@ -775,10 +775,26 @@
           </div>
         </form>
       </div>
+  <!-- Success Modal Overlay -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal">
+      <div class="modal-icon"><i data-lucide="check-circle-2"></i></div>
+      <h3 class="modal-title">Registration Successful!</h3>
+      <p class="modal-desc">Your registration has been recorded successfully.</p>
+      <div class="modal-details" id="modalDetails"></div>
+      <button class="btn-primary" style="width:100%; justify-content:center; margin-top:16px;" onclick="closeModal()">Register Another Participant</button>
     </div>
-  </section>
+  </div>
 
-
+  <!-- Error Modal Overlay -->
+  <div class="modal-overlay hidden" id="errorModal">
+    <div class="modal">
+      <div class="modal-icon" style="color:var(--accent,#f43f5e);"><i data-lucide="alert-triangle"></i></div>
+      <h3 class="modal-title">Registration Failed</h3>
+      <p class="modal-desc" id="errorModalMessage">An error occurred during registration. Please try again.</p>
+      <button class="btn-secondary" style="width:100%; justify-content:center; margin-top:16px;" onclick="closeErrorModal()">Close &amp; Retry</button>
+    </div>
+  </div>
 
   <!-- ===================================================
        EVENT DETAIL MODALS
