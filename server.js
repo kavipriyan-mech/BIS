@@ -79,12 +79,11 @@ const ALLOWED_ROOT_FILES = new Set([
   'lucide.min.js',
   'logo.svg',
   'favicon.ico',
-  'hero-bg.png',
-  'events-bg.png',
-  'schedule-bg.png',
-  'schedule.png',
-  'prize-bg.png',
-  'register-bg.png'
+  'hero-bg.webp',
+  'events-bg.webp',
+  'schedule-bg.webp',
+  'prize-bg.webp',
+  'register-bg.webp'
 ]);
 
 function sendJSON(res, statusCode, data) {

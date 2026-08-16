@@ -3,3 +3,11 @@ node_modules/
 .DS_Store
 *.log
 .agents/
+
+# Uncompressed legacy background PNGs (replaced by .webp)
+hero-bg.png
+events-bg.png
+schedule-bg.png
+schedule.png
+prize-bg.png
+register-bg.png
