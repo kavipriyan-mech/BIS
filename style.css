@@ -664,7 +664,13 @@ body {
 /* ============================================================
    Timeline / Schedule
    ============================================================ */
-.schedule-section { background: var(--surface); }
+.schedule-section {
+  position: relative;
+  background-image: linear-gradient(rgba(12, 18, 34, 0.84), rgba(12, 18, 34, 0.90)), url('schedule-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 .schedule-tabs {
   display: flex; gap: 8px; justify-content: center;
@@ -716,6 +722,13 @@ body {
 /* ============================================================
    Prizes
    ============================================================ */
+.prizes-section {
+  position: relative;
+  background-image: linear-gradient(rgba(20, 14, 32, 0.82), rgba(20, 14, 32, 0.88)), url('prize-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .prizes-grid {
   display: flex; justify-content: center; gap: 24px;
   flex-wrap: wrap; margin-bottom: 40px;
@@ -727,6 +740,8 @@ body {
   border-radius: var(--radius);
   padding: 36px 24px;
   transition: var(--transition);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .prize-card:hover { transform: translateY(-6px); }
 .gold-card { border-color: var(--gold); box-shadow: var(--shadow-glow); }
