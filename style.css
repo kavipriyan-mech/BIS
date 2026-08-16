@@ -190,7 +190,7 @@ body {
   background-repeat: no-repeat;
 }
 html[data-mode="light"] .hero-section {
-  background-image: none !important;
+  background-image: linear-gradient(rgba(244, 247, 251, 0.35), rgba(244, 247, 251, 0.55)), url('hero-bg.webp');
 }
 
 .hero {
@@ -553,7 +553,7 @@ html[data-mode="light"] .hero-section {
   background-attachment: fixed;
 }
 html[data-mode="light"] .events-section {
-  background-image: none !important;
+  background-image: linear-gradient(rgba(244, 247, 251, 0.40), rgba(244, 247, 251, 0.60)), url('events-bg.webp');
 }
 
 .event-card {
@@ -694,7 +694,8 @@ html[data-mode="light"] .events-section {
   transition: opacity 0.3s ease;
 }
 html[data-mode="light"] .schedule-section::before {
-  display: none !important;
+  background-image: linear-gradient(180deg, rgba(244, 247, 251, 0.30) 0%, rgba(244, 247, 251, 0.50) 100%), url('schedule-bg.webp');
+  opacity: 0.65;
 }
 
 .schedule-section .container {
@@ -769,7 +770,7 @@ html[data-mode="light"] .schedule-section::before {
   background-repeat: no-repeat;
 }
 html[data-mode="light"] .prizes-section {
-  background-image: none !important;
+  background-image: linear-gradient(rgba(244, 247, 251, 0.40), rgba(244, 247, 251, 0.60)), url('prize-bg.webp');
 }
 
 .prizes-grid {
@@ -874,7 +875,8 @@ html[data-mode="light"] .prizes-section {
   transition: opacity 0.3s ease;
 }
 html[data-mode="light"] .form-section::before {
-  display: none !important;
+  background-image: linear-gradient(135deg, rgba(244, 247, 251, 0.30) 0%, rgba(244, 247, 251, 0.50) 100%), url('register-bg.webp');
+  opacity: 0.75;
 }
 
 .form-section .container {
