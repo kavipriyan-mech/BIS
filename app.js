@@ -83,34 +83,74 @@ function closeEventModal(id) {
   document.body.style.overflow = '';
 }
 
+let heroNavigationBusy = false;
+
 /**
- * openFromHero — called by hero floating badges.
- * Scrolls to #events section then opens the event modal popup overlay.
+ * Central navigation function for Hero event badges.
+ * Temporarily pauses animation on click, smoothly scrolls to #events,
+ * and opens the existing corresponding event modal.
  */
-function openFromHero(id, event) {
-  if (event) {
-    if (event.stopPropagation) event.stopPropagation();
+function handleHeroEventNavigation(eventId) {
+  if (heroNavigationBusy) return;
+  heroNavigationBusy = true;
+
+  const clickedBadge = document.querySelector(`[data-hero-event="${eventId}"]`);
+  if (clickedBadge) {
+    clickedBadge.classList.add('hero-clicked');
   }
 
-  // Remove focus so badge animation resumes without stuck state
+  const eventsSection = document.getElementById('events');
+  if (!eventsSection) {
+    heroNavigationBusy = false;
+    if (clickedBadge) clickedBadge.classList.remove('hero-clicked');
+    return;
+  }
+
   if (document.activeElement && document.activeElement.blur) {
     document.activeElement.blur();
   }
 
-  document.querySelectorAll('.float-badge').forEach(function(badge) {
-    badge.blur();
+  eventsSection.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
   });
 
-  var eventsSection = document.getElementById('events');
-  if (eventsSection) {
-    eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  setTimeout(() => {
+    if (typeof openEventModal === 'function') {
+      openEventModal(eventId);
+    } else {
+      console.error('openEventModal() is not available');
+    }
 
-  // Open event modal after scroll begins
-  setTimeout(function() {
-    openEventModal(id);
-  }, 400);
+    if (clickedBadge) {
+      clickedBadge.classList.remove('hero-clicked');
+    }
+
+    heroNavigationBusy = false;
+  }, 700);
 }
+
+function openFromHero(id, event) {
+  if (event) {
+    if (event.preventDefault) event.preventDefault();
+    if (event.stopPropagation) event.stopPropagation();
+  }
+  handleHeroEventNavigation(id);
+}
+
+// Delegated listener for hero event buttons
+document.addEventListener('click', function (event) {
+  const badge = event.target.closest('[data-hero-event]');
+  if (!badge) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const eventId = badge.dataset.heroEvent;
+  if (!eventId) return;
+
+  handleHeroEventNavigation(eventId);
+});
 
 // Close modal on overlay click or Escape key
 document.addEventListener('click', function(e) {

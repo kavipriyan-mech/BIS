@@ -124,42 +124,14 @@
         <span class="isi-tagline">Quality · Safety · Trust</span>
       </div>
 
-      <!-- Floating Event Badges — clickable, keyboard-accessible deep-links -->
-      <div class="float-badge fb-1 orbit-1" role="button" tabindex="0"
-           aria-label="Poster Making event — click to explore"
-           onclick="openFromHero('poster', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('poster', event);}"
-      >Poster Making</div>
-      <div class="float-badge fb-2 orbit-2" role="button" tabindex="0"
-           aria-label="Debate event — click to explore"
-           onclick="openFromHero('debate', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('debate', event);}"
-      >Debate</div>
-      <div class="float-badge fb-3 orbit-3" role="button" tabindex="0"
-           aria-label="Rangoli event — click to explore"
-           onclick="openFromHero('rangoli', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('rangoli', event);}"
-      >Rangoli</div>
-      <div class="float-badge fb-4 orbit-1" role="button" tabindex="0"
-           aria-label="Quiz event — click to explore"
-           onclick="openFromHero('quiz', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('quiz', event);}"
-      >Quiz</div>
-      <div class="float-badge fb-5 orbit-2" role="button" tabindex="0"
-           aria-label="Mimes event — click to explore"
-           onclick="openFromHero('mimes', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('mimes', event);}"
-      >Mimes</div>
-      <div class="float-badge fb-6 orbit-3" role="button" tabindex="0"
-           aria-label="Learning Science via Standards — click to explore"
-           onclick="openFromHero('science', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('science', event);}"
-      >&#x1F52C; Science</div>
-      <div class="float-badge fb-7 orbit-1" role="button" tabindex="0"
-           aria-label="Treasure Hunt event — click to explore"
-           onclick="openFromHero('treasure', event)"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('treasure', event);}"
-      >Treasure Hunt</div>
+      <!-- Floating Event Badges — Real button controls mapped via data-hero-event -->
+      <button type="button" class="float-badge fb-1 orbit-1" data-hero-event="poster" aria-label="Open Poster Making event details">Poster Making</button>
+      <button type="button" class="float-badge fb-2 orbit-2" data-hero-event="debate" aria-label="Open Debate event details">Debate</button>
+      <button type="button" class="float-badge fb-3 orbit-3" data-hero-event="rangoli" aria-label="Open Rangoli event details">Rangoli</button>
+      <button type="button" class="float-badge fb-4 orbit-1" data-hero-event="quiz" aria-label="Open Quiz event details">Quiz</button>
+      <button type="button" class="float-badge fb-5 orbit-2" data-hero-event="mimes" aria-label="Open Mimes event details">Mimes</button>
+      <button type="button" class="float-badge fb-6 orbit-3" data-hero-event="science" aria-label="Open Learning Science via Standards event details">&#x1F52C; Science</button>
+      <button type="button" class="float-badge fb-7 orbit-1" data-hero-event="treasure" aria-label="Open Treasure Hunt event details">Treasure Hunt</button>
     </div>
   </section>
 
