@@ -378,11 +378,21 @@ body {
   border-color: var(--accent);
   box-shadow: var(--shadow-hover), 0 0 24px var(--accent);
   z-index: 35 !important;
+  transform: scale(1.08) !important;
+}
+.float-badge:focus-visible {
+  outline: 2px solid var(--accent, #C8102E);
+  outline-offset: 3px;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover), 0 0 24px var(--accent);
+  z-index: 35 !important;
+  animation-play-state: paused !important;
 }
 
 /* Orbit Path Assignments, Speeds & Staggered Fractional Delays */
 .fb-1.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -3.5s; }
 .fb-4.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -15.8s; }
+.fb-7.orbit-1 { animation: atomicOrbit1 24s linear infinite; animation-delay: -20.1s; }
 
 .fb-2.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -7.2s; }
 .fb-5.orbit-2 { animation: atomicOrbit2 20s linear infinite; animation-delay: -17.4s; }
@@ -572,14 +582,50 @@ body {
 .meta-chip.ceremonial { background: var(--surface-3); border-color: var(--primary-light); color: var(--primary-light); }
 
 .card-click-hint {
-  text-align: right; font-size: 0.72rem;
+  display: flex; align-items: center; justify-content: flex-end; gap: 6px;
+  font-size: 0.72rem;
   color: var(--primary-light); font-weight: 700;
   padding: 8px 20px 14px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
   letter-spacing: 0.3px;
+  user-select: none;
 }
-.event-card:hover .card-click-hint { opacity: 1; }
+.card-click-hint .hint-chevron {
+  display: inline-block;
+  transition: transform 0.35s ease;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.event-card.is-open .card-click-hint .hint-chevron { transform: rotate(180deg); }
+.event-card.is-open .card-click-hint { color: var(--accent-light, #e8203e); }
+
+/* ── Accordion Panel ─────────────────────────────────────────── */
+.event-card-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  /* border-top drawn when open */
+}
+.event-card.is-open .event-card-details {
+  border-top: 1px solid var(--border);
+}
+/* Prevent hover lift while card is expanded */
+.event-card.is-open {
+  transform: none !important;
+  cursor: default;
+}
+.event-card.is-open .clickable-card-inner { cursor: pointer; }
+
+/* The inner clickable region (header area only) */
+.clickable-card-inner {
+  cursor: pointer;
+  outline: none;
+}
+.clickable-card-inner:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: -2px;
+  border-radius: calc(var(--radius) - 2px);
+}
 
 /* ============================================================
    Timeline / Schedule
@@ -958,8 +1004,11 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ============================================================
-   EVENT DETAIL MODALS
+   EVENT DETAIL MODALS — Legacy overlay (used by success/error only)
    ============================================================ */
+/* NOTE: .event-modal-overlay is no longer used for event detail panels.
+   Event details are now inline accordion panels (.event-card-details).
+   The styles below remain for any theme CSS referencing these selectors. */
 .event-modal-overlay {
   position: fixed; inset: 0; z-index: 1500;
   background: rgba(0,0,0,0.75);

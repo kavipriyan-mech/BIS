@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIS Club Stall Guide — LED Prototype & Display (IS 16102)</title>
+  <style>
+    :root {
+      --primary: #003478;
+      --accent: #6d28d9;
+      --text: #1e293b;
+      --bg: #ffffff;
+      --card-bg: #f8fafc;
+      --border: #e2e8f0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #f8fafc;
+        --bg: #090f1e;
+        --card-bg: #1e293b;
+        --border: #334155;
+      }
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 32px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--accent);
+      margin-top: 24px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    ul, ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+    }
+    .qa-box {
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 0 8px 8px 0;
+    }
+    .qa-q {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .qa-a {
+      font-size: 0.9rem;
+    }
+    .print-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      margin-bottom: 16px;
+    }
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .print-btn { display: none; }
+      .card, .qa-box { border-color: #ccc; background: #fff; }
+      h1, h2, .qa-q { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+    <header>
+      <div>
+        <h1>BIS Club — Stall Display Guide</h1>
+        <div style="font-size:0.9rem; font-weight:600; color:var(--accent);">Learning Science via Standards: LED Bulbs (IS 16102)</div>
+      </div>
+      <span class="tag">Stall Team Sheet</span>
+    </header>
+
+    <h2>1. Physical Model Setup</h2>
+    <p style="font-size:0.92rem;">
+      Set up a side-by-side comparison board showing an <strong>Incandescent Bulb (60W)</strong> and an <strong>LED Bulb (9W)</strong> connected to identical AC power sources through individual switches and inline ammeters/multimeters.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3 style="margin-top:0; font-size:1rem;">🛒 Parts & Materials List</h3>
+        <ul>
+          <li><strong>Baseboard:</strong> 1.5 ft × 1 ft wooden/acrylic mounting board</li>
+          <li><strong>Bulb 1:</strong> 60W Incandescent bulb (Tungsten)</li>
+          <li><strong>Bulb 2:</strong> 9W B22 LED Bulb (BIS certified, IS 16102)</li>
+          <li><strong>Holders:</strong> 2 B22 batten lamp holders</li>
+          <li><strong>Measurement:</strong> Digital multimeter or dual AC ammeter modules</li>
+          <li><strong>Thermal Demo:</strong> Non-contact IR thermometer OR temperature indicator strips on each bulb dome</li>
+          <li><strong>Wiring:</strong> Insulated copper wire, 2 ON/OFF rocker switches, 3-pin plug top</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0; font-size:1rem;">⚡ What the Visitors See & Feel</h3>
+        <ol>
+          <li><strong>Brightness:</strong> Both bulbs emit similar luminous flux (~800 lumens).</li>
+          <li><strong>Power Draw:</strong> Incandescent draws ~0.26 A (~60 W), while LED draws ~0.04 A (~9 W) — <strong>~85% less energy!</strong></li>
+          <li><strong>Heat Generation:</strong> After 2 minutes, incandescent surface exceeds 100°C (waste heat); LED heat sink remains safe (~40°C).</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2>2. Visitor Q&amp;A Script (Tying to IS 16102)</h2>
+
+    <div class="qa-box">
+      <div class="qa-q">Q1: Why does the 9W LED produce as much light as a 60W Incandescent bulb?</div>
+      <div class="qa-a">
+        <strong>Answer:</strong> Incandescent bulbs create light via resistive heating of a tungsten wire — 95% of energy becomes heat, only 5% light. LEDs generate light directly through electroluminescence in a semiconductor (GaN), converting electricity directly into photons without heating up to thousands of degrees.
+      </div>
+    </div>
+
+    <div class="qa-box">
+      <div class="qa-q">Q2: What is IS 16102 and why should buyers look for the ISI mark on LED bulbs?</div>
+      <div class="qa-a">
+        <strong>Answer:</strong> <strong>IS 16102</strong> is the Indian Standard for self-ballasted LED lamps. BIS tests certified bulbs for:
+        <ul>
+          <li><em>Luminous Efficacy:</em> Ensures true lumen output per watt (prevents fake rating claims).</li>
+          <li><em>Lumen Maintenance:</em> Guarantees brightness won't drop dramatically after a few hundred hours.</li>
+          <li><em>Electrical Safety:</em> Prevents short circuits, insulation breakdown, or shock hazards.</li>
+          <li><em>Harmonics & Power Factor:</em> Prevents electrical noise on your home wiring grid.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qa-box">
+      <div class="qa-q">Q3: What happens if someone buys an uncertified, cheap non-ISI LED bulb?</div>
+      <div class="qa-a">
+        <strong>Answer:</strong> Cheap uncertified LEDs often use poor heat sinks and unrated driver capacitors. They flicker (causing eye strain), overheat quickly, lose brightness within weeks, or fail prematurely — creating e-waste and potential fire/shock hazards.
+      </div>
+    </div>
+
+    <h2>3. Stall Team Checklist</h2>
+    <div class="card">
+      <ul>
+        <li>✅ Test all wiring with a multimeter before connecting to power source.</li>
+        <li>✅ Ensure all open wire terminals are heat-shrink insulated or taped.</li>
+        <li>✅ Keep the IS 16102 standard summary sheet displayed prominently.</li>
+        <li>✅ Invite visitors to observe the multimeter readings live!</li>
+      </ul>
+    </div>
+
+    <footer style="margin-top: 32px; font-size: 0.8rem; text-align: center; color: #64748b; border-top: 1px solid var(--border); padding-top: 12px;">
+      Bureau of Indian Standards · BIS Club Awareness Event · Quality · Safety · Trust
+    </footer>
+  </div>
+</body>
+</html>

@@ -60,37 +60,92 @@ function switchTab(day, btn) {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  EVENT DETAIL MODALS
+//  EVENT DETAIL ACCORDIONS (replaces overlay modals for events)
 // ══════════════════════════════════════════════════════════════
-function openEventModal(id) {
-  const overlay = document.getElementById('modal-' + id);
-  if (!overlay) return;
-  overlay.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
 
-function closeEventModal(id) {
-  const overlay = document.getElementById('modal-' + id);
-  if (!overlay) return;
-  overlay.classList.add('hidden');
-  document.body.style.overflow = '';
-}
+/**
+ * toggleEventAccordion — collapses any open accordion card,
+ * then opens the target card (single-open behaviour site-wide).
+ * Also scrolls the card into view and re-runs lucide icons.
+ */
+function toggleEventAccordion(id) {
+  const card = document.getElementById('acc-' + id);
+  if (!card) return;
 
-// Close on overlay click
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('event-modal-overlay')) {
-    e.target.classList.add('hidden');
-    document.body.style.overflow = '';
+  const isOpen = card.classList.contains('is-open');
+
+  // Collapse all open cards
+  document.querySelectorAll('.event-card.is-open').forEach(function(c) {
+    c.classList.remove('is-open');
+    var panel = c.querySelector('.event-card-details');
+    if (panel) { panel.style.maxHeight = '0'; }
+    var trigger = c.querySelector('.clickable-card-inner');
+    if (trigger) { trigger.setAttribute('aria-expanded', 'false'); }
+  });
+
+  if (!isOpen) {
+    // Open this card
+    card.classList.add('is-open');
+    var panel = card.querySelector('.event-card-details');
+    if (panel) {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      // After transition, allow natural growth for dynamic content
+      panel.addEventListener('transitionend', function handler() {
+        if (card.classList.contains('is-open')) panel.style.maxHeight = 'none';
+        panel.removeEventListener('transitionend', handler);
+      });
+    }
+    var trigger = card.querySelector('.clickable-card-inner');
+    if (trigger) { trigger.setAttribute('aria-expanded', 'true'); }
+
+    // Re-run lucide icons so any SVGs inside are rendered
+    if (window.lucide) {
+      window.lucide.createIcons({ nodes: card.querySelectorAll('[data-lucide]') });
+    }
+
+    // Scroll card into view after a brief delay for layout settle
+    setTimeout(function() {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 80);
   }
-});
+}
 
-// Close on Escape key
+/**
+ * openFromHero — called by hero floating badges.
+ * Scrolls to #events section then opens the accordion.
+ */
+function openFromHero(id) {
+  var eventsSection = document.getElementById('events');
+  if (eventsSection) {
+    eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  // Open accordion after scroll settles
+  setTimeout(function() { toggleEventAccordion(id); }, 500);
+}
+
+// Legacy stubs — kept because success/error flows reference closeModal() /
+// closeErrorModal() which set body.overflow = '' (those use .modal-overlay,
+// not .event-modal-overlay). These stubs do nothing but prevent JS errors
+// if any stale reference remains.
+function openEventModal(id) { toggleEventAccordion(id); }
+function closeEventModal(id) {
+  var card = document.getElementById('acc-' + id);
+  if (!card) return;
+  card.classList.remove('is-open');
+  var panel = card.querySelector('.event-card-details');
+  if (panel) { panel.style.maxHeight = '0'; }
+}
+
+// Close on Escape key — collapses all open accordion cards
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.event-modal-overlay:not(.hidden)').forEach(el => {
-      el.classList.add('hidden');
+    document.querySelectorAll('.event-card.is-open').forEach(function(c) {
+      c.classList.remove('is-open');
+      var panel = c.querySelector('.event-card-details');
+      if (panel) { panel.style.maxHeight = '0'; }
     });
-    document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(el => {
+    // Also close any registration success/error modals
+    document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(function(el) {
       el.classList.add('hidden');
     });
     document.body.style.overflow = '';

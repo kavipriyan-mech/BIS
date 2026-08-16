@@ -124,14 +124,42 @@
         <span class="isi-tagline">Quality · Safety · Trust</span>
       </div>
 
-      <!-- Floating Event Badges — 2D Flat Elliptical Atomic Orbits -->
-      <div class="float-badge fb-1 orbit-1">Poster Making</div>
-      <div class="float-badge fb-2 orbit-2">Debate</div>
-      <div class="float-badge fb-3 orbit-3">Rangoli</div>
-      <div class="float-badge fb-4 orbit-1">Quiz</div>
-      <div class="float-badge fb-5 orbit-2">Mimes</div>
-      <div class="float-badge fb-6 orbit-3" style="cursor:pointer;" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'}); setTimeout(()=>openEventModal('science'),600);" title="Click to explore">🔬 Science</div>
-      <div class="float-badge fb-7 orbit-1">Treasure Hunt</div>
+      <!-- Floating Event Badges — clickable, keyboard-accessible deep-links -->
+      <div class="float-badge fb-1 orbit-1" role="button" tabindex="0"
+           aria-label="Poster Making event — click to explore"
+           onclick="openFromHero('poster')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('poster');}"
+      >Poster Making</div>
+      <div class="float-badge fb-2 orbit-2" role="button" tabindex="0"
+           aria-label="Debate event — click to explore"
+           onclick="openFromHero('debate')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('debate');}"
+      >Debate</div>
+      <div class="float-badge fb-3 orbit-3" role="button" tabindex="0"
+           aria-label="Rangoli event — click to explore"
+           onclick="openFromHero('rangoli')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('rangoli');}"
+      >Rangoli</div>
+      <div class="float-badge fb-4 orbit-1" role="button" tabindex="0"
+           aria-label="Quiz event — click to explore"
+           onclick="openFromHero('quiz')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('quiz');}"
+      >Quiz</div>
+      <div class="float-badge fb-5 orbit-2" role="button" tabindex="0"
+           aria-label="Mimes event — click to explore"
+           onclick="openFromHero('mimes')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('mimes');}"
+      >Mimes</div>
+      <div class="float-badge fb-6 orbit-3" role="button" tabindex="0"
+           aria-label="Learning Science via Standards — click to explore"
+           onclick="openFromHero('science')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('science');}"
+      >&#x1F52C; Science</div>
+      <div class="float-badge fb-7 orbit-1" role="button" tabindex="0"
+           aria-label="Treasure Hunt event — click to explore"
+           onclick="openFromHero('treasure')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFromHero('treasure');}"
+      >Treasure Hunt</div>
     </div>
   </section>
 
@@ -164,78 +192,308 @@
         <p class="section-desc">Click on any event card to explore full details, rules, and format</p>
       </div>
       <div class="events-grid">
-        <!-- Inauguration -->
-        <div class="event-card clickable-card" onclick="openEventModal('inauguration')">
+        <!-- ══ Inauguration ══════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-inauguration">
           <div class="event-card-glow"></div>
-          <div class="event-visual inauguration-bg">
-            <span class="event-emoji"><i data-lucide="flame"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('inauguration')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('inauguration');}">
+            <div class="event-visual inauguration-bg">
+              <span class="event-emoji"><i data-lucide="flame"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">9:00 – 10:00 AM</div>
+              <h3 class="event-name">Inauguration</h3>
+              <p class="event-desc">Formal opening ceremony with the chief guest, lamp lighting, and an overview of BIS Club activities.</p>
+              <div class="event-meta">
+                <span class="meta-chip ceremonial">Ceremonial</span>
+                <span class="meta-chip">All Participants</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">9:00 – 10:00 AM</div>
-            <h3 class="event-name">Inauguration</h3>
-            <p class="event-desc">Formal opening ceremony with the chief guest, lamp lighting, and an overview of BIS Club activities.</p>
-            <div class="event-meta">
-              <span class="meta-chip ceremonial">Ceremonial</span>
-              <span class="meta-chip">All Participants</span>
+          <div class="event-card-details">
+            <div class="em-hero inauguration-hero">
+              <span class="em-emoji"><i data-lucide="flame"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 1 · 9 September</span>
+                <h2 class="em-title">Inauguration</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 9:00 – 10:00 AM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Participants</span><strong>All Participants</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Main Auditorium</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1 Hour</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="award"></i></span><span class="em-info-label">Prize</span><strong>Ceremonial</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>To formally open the 2-day event, set the tone, and introduce the purpose of the BIS Club activities to all participants and guests. Includes lamp lighting, chief guest address, and a welcome ceremony.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>MC welcomes the gathering and introduces the chief guest / dignitaries on stage.</li>
+                  <li>Traditional lamp lighting / inaugural ceremony by chief guest and club coordinators.</li>
+                  <li>Welcome address by Club President/Teacher-in-charge (3–5 min).</li>
+                  <li>Chief Guest Address (10–15 min) — talk on standards/quality in daily life.</li>
+                  <li>Brief overview of Day 1 &amp; Day 2 events by the anchor.</li>
+                  <li>Vote of thanks by a student representative.</li>
+                  <li>Group photograph with all participants and guests.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>All participants must be seated 10 minutes before the scheduled start.</li>
+                  <li>Mobile phones on silent during the ceremony.</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Poster Making -->
-        <div class="event-card clickable-card" onclick="openEventModal('poster')">
+        <!-- ══ Poster Making ══════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-poster">
           <div class="event-card-glow"></div>
-          <div class="event-visual poster-bg">
-            <span class="event-emoji"><i data-lucide="palette"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('poster')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('poster');}">
+            <div class="event-visual poster-bg">
+              <span class="event-emoji"><i data-lucide="palette"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">10:30 AM – 12:30 PM</div>
+              <h3 class="event-name">Poster Making</h3>
+              <p class="event-desc">Communicate a standards-related message through digital or hand-drawn poster art. Original work only.</p>
+              <div class="event-meta">
+                <span class="meta-chip individual">Individual</span>
+                <span class="meta-chip">2 Hours</span>
+                <span class="meta-chip prize">₹2,000 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">10:30 AM – 12:30 PM</div>
-            <h3 class="event-name">Poster Making</h3>
-            <p class="event-desc">Communicate a standards-related message through digital or hand-drawn poster art. Original work only.</p>
-            <div class="event-meta">
-              <span class="meta-chip individual">Individual</span>
-              <span class="meta-chip">2 Hours</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero poster-hero">
+              <span class="em-emoji"><i data-lucide="palette"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 1 · 9 September</span>
+                <h2 class="em-title">Poster Making</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 10:30 AM – 12:30 PM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="user"></i></span><span class="em-info-label">Format</span><strong>Individual</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Auditorium (Hand) / Forge Lab (Digital)</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>2 Hours</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹2,000</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Creatively communicate a standards/quality-related message through visual art, in either traditional or digital medium. Create an original poster on a BIS-related theme within 2 hours.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Participants register at the venue and choose (or are allotted) a topic from the list.</li>
+                  <li>Hand-drawing participants collect an A3 sheet signed by the in-charge.</li>
+                  <li>Digital participants show blank canvas to in-charge before beginning.</li>
+                  <li>2 hours given to complete the poster; no mobile phones/internet for content copying.</li>
+                  <li>Completed posters are labelled with name &amp; topic and submitted to the collection desk.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Suggested Themes</h3>
+                <div class="em-themes">
+                  <span class="em-theme-tag">Why Standards Matter</span>
+                  <span class="em-theme-tag">ISI Mark &amp; Consumers</span>
+                  <span class="em-theme-tag">Quality &amp; Safety</span>
+                  <span class="em-theme-tag">Standards for Sustainability</span>
+                  <span class="em-theme-tag">No to Duplicate Products</span>
+                  <span class="em-theme-tag">Hallmarking &amp; Trust</span>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">30%</span><span>Relevance to Theme</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">30%</span><span>Creativity &amp; Originality</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Visual Appeal &amp; Technique</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Message Clarity</span></div>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>No pre-made/traced artwork; must be original, done on the spot.</li>
+                  <li>No obscene or political content.</li>
+                  <li>Only BIS/standards-related themes accepted.</li>
+                  <li>Strict 2-hour time limit; late submissions are disqualified.</li>
+                  <li>Posters copied or taken directly from Google searches will be identified using Google Lens and disqualified.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-poster').checked=true; toggleEventDetails('poster', document.getElementById('ev-poster'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Debate -->
-        <div class="event-card clickable-card" onclick="openEventModal('debate')">
+        <!-- ══ Debate ════════════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-debate">
           <div class="event-card-glow"></div>
-          <div class="event-visual debate-bg">
-            <span class="event-emoji"><i data-lucide="mic"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('debate')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('debate');}">
+            <div class="event-visual debate-bg">
+              <span class="event-emoji"><i data-lucide="mic"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">1:30 – 3:00 PM</div>
+              <h3 class="event-name">Debate</h3>
+              <p class="event-desc">Teams argue for or against topics related to standards, quality, and regulation. Fact-based, structured format.</p>
+              <div class="event-meta">
+                <span class="meta-chip team">Team of 4</span>
+                <span class="meta-chip prize">₹2,000 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">1:30 – 3:00 PM</div>
-            <h3 class="event-name">Debate</h3>
-            <p class="event-desc">Teams argue for or against topics related to standards, quality, and regulation. Fact-based, structured format.</p>
-            <div class="event-meta">
-              <span class="meta-chip team">Team of 4</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero debate-hero">
+              <span class="em-emoji"><i data-lucide="mic"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 1 · 9 September</span>
+                <h2 class="em-title">Debate</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 1:30 – 3:00 PM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 4</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Seminar Hall</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.5 Hours</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹2,000</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Develop critical thinking and public speaking skills while discussing real issues connected to standards, quality, and regulation. Teams argue for or against assigned topics in a structured debate format.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Teams register in advance; topics may be shared in advance or drawn on spot.</li>
+                  <li>For-team speaks first (3 min), followed by Against-team (3 min).</li>
+                  <li>1-minute rebuttal each, then open floor/cross questions (if time allows).</li>
+                  <li>Timekeeper signals at 30 seconds remaining (single bell) and time-up (double bell).</li>
+                  <li>Judges score each speaker independently, then tally to declare the winning side.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Sample Topics</h3>
+                <div class="em-themes">
+                  <span class="em-theme-tag">Mandatory quality certification for all products</span>
+                  <span class="em-theme-tag">Voluntary vs Mandatory Standards</span>
+                  <span class="em-theme-tag">Self-regulation vs Third-party certification</span>
+                  <span class="em-theme-tag">Standards as a school subject</span>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">35%</span><span>Content &amp; Argument Strength</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Rebuttal &amp; Counterpoints</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Clarity, Fluency &amp; Confidence</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Time Management</span></div>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>Strict adherence to time limits; judges may deduct marks for overtime.</li>
+                  <li>No personal remarks; arguments must stay on-topic.</li>
+                  <li>Logical, fact-based arguments — dramatics without content will be marked down.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-debate').checked=true; toggleEventDetails('debate', document.getElementById('ev-debate'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Treasure Hunt -->
-        <div class="event-card clickable-card" onclick="openEventModal('treasure')">
+        <!-- ══ Treasure Hunt ════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-treasure">
           <div class="event-card-glow"></div>
-          <div class="event-visual treasure-bg">
-            <span class="event-emoji"><i data-lucide="map-pin"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('treasure')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('treasure');}">
+            <div class="event-visual treasure-bg">
+              <span class="event-emoji"><i data-lucide="map-pin"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">3:15 – 5:00 PM</div>
+              <h3 class="event-name">Treasure Hunt</h3>
+              <p class="event-desc">Solve standards-themed riddles placed across campus checkpoints. Unique color code per team!</p>
+              <div class="event-meta">
+                <span class="meta-chip team">Team of 6</span>
+                <span class="meta-chip">105 Min Cap</span>
+                <span class="meta-chip prize">₹2,000 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">3:15 – 5:00 PM</div>
-            <h3 class="event-name">Treasure Hunt</h3>
-            <p class="event-desc">Solve standards-themed riddles placed across campus checkpoints. Unique color code per team!</p>
-            <div class="event-meta">
-              <span class="meta-chip team">Team of 6</span>
-              <span class="meta-chip">105 Min Cap</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero treasure-hero">
+              <span class="em-emoji"><i data-lucide="map-pin"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 1 · 9 September</span>
+                <h2 class="em-title">Treasure Hunt</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 3:15 – 5:00 PM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 6</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>All over college</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Time Cap</span><strong>105 Minutes</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹2,000</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Promote teamwork and problem-solving while reinforcing knowledge about standards through fun clues and tasks placed around the campus. Race against time and other teams to find the hidden treasure!</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Each team is assigned a unique color; clues hidden at fixed campus checkpoints.</li>
+                  <li>Teams briefed on rules and released; clues are unique for each team.</li>
+                  <li>Each team must complete 4 rounds of clues (riddles, questions, tasks).</li>
+                  <li>Volunteers at each checkpoint verify clue is solved before handing the next envelope.</li>
+                  <li>Final clue leads to the treasure marker at the finish point.</li>
+                  <li>First team to reach the treasure wins.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">1st</span><span>Fastest Correct Completion</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">Tie</span><span>Number of Checkpoints Cleared</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">+</span><span>Adherence to Rules / Fair Play</span></div>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>Teams must stay together at all times; splitting up leads to disqualification.</li>
+                  <li>No skipping checkpoints or checking other teams' clues.</li>
+                  <li>Out-of-bounds areas will be announced beforehand.</li>
+                  <li>Total time capped at 105 minutes; incomplete teams ranked by checkpoints cleared.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-treasure').checked=true; toggleEventDetails('treasure', document.getElementById('ev-treasure'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
       </div>
 
@@ -245,86 +503,386 @@
         <p class="section-desc">Art, intellect, and performance on the grand finale</p>
       </div>
       <div class="events-grid">
-        <!-- Rangoli -->
-        <div class="event-card clickable-card" onclick="openEventModal('rangoli')">
+        <!-- ══ Rangoli ════════════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-rangoli">
           <div class="event-card-glow"></div>
-          <div class="event-visual rangoli-bg">
-            <span class="event-emoji"><i data-lucide="flower-2"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('rangoli')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('rangoli');}">
+            <div class="event-visual rangoli-bg">
+              <span class="event-emoji"><i data-lucide="flower-2"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">7:00 – 9:00 AM</div>
+              <h3 class="event-name">Rangoli</h3>
+              <p class="event-desc">Create beautiful traditional rangoli art themed around standards and quality symbols.</p>
+              <div class="event-meta">
+                <span class="meta-chip team">Team of max 4</span>
+                <span class="meta-chip prize">₹2,000 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">7:00 – 9:00 AM</div>
-            <h3 class="event-name">Rangoli</h3>
-            <p class="event-desc">Create beautiful traditional rangoli art themed around standards and quality symbols.</p>
-            <div class="event-meta">
-              <span class="meta-chip team">Team of max 4</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero rangoli-hero">
+              <span class="em-emoji"><i data-lucide="flower-2"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 2 · 10 September</span>
+                <h2 class="em-title">Rangoli</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 7:00 – 9:00 AM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of max 4</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Auditorium side</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>2 Hours</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹2,000</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Showcase creativity and teamwork through traditional rangoli art, optionally themed around standards/quality symbols (e.g., ISI mark motifs, Hallmark, colour-coded safety symbols).</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Each team is allotted an equal marked floor space in advance.</li>
+                  <li>Teams bring/collect their own rangoli materials.</li>
+                  <li>2 hours given to complete the design — no pre-drawn outlines allowed.</li>
+                  <li>Judges walk around at the end to evaluate all designs together.</li>
+                  <li>Photographs taken of every entry for record and display.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">30%</span><span>Creativity &amp; Design</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Colour Combination &amp; Neatness</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">20%</span><span>Relevance to Theme</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Teamwork Visible</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">10%</span><span>Completion within Time</span></div>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>Only powder/petals/natural colours — no paint on permanent flooring.</li>
+                  <li>Team must stay within the allotted space.</li>
+                  <li>All members should be seen contributing.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-rangoli').checked=true; toggleEventDetails('rangoli', document.getElementById('ev-rangoli'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Quiz -->
-        <div class="event-card clickable-card" onclick="openEventModal('quiz')">
+        <!-- ══ Quiz ══════════════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-quiz">
           <div class="event-card-glow"></div>
-          <div class="event-visual quiz-bg">
-            <span class="event-emoji"><i data-lucide="lightbulb"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('quiz')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('quiz');}">
+            <div class="event-visual quiz-bg">
+              <span class="event-emoji"><i data-lucide="lightbulb"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">9:00 – 10:30 AM</div>
+              <h3 class="event-name">Quiz</h3>
+              <p class="event-desc">Interactive 2-round quiz: Round 1 digital via Quizizz, Round 2 top finalists via Buzzinlive &amp; PPT!</p>
+              <div class="event-meta">
+                <span class="meta-chip individual">Individual</span>
+                <span class="meta-chip">Quizizz &amp; Buzzinlive</span>
+                <span class="meta-chip prize">₹2,000 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">9:00 – 10:30 AM</div>
-            <h3 class="event-name">Quiz</h3>
-            <p class="event-desc">Interactive 2-round quiz: Round 1 digital via Quizizz, Round 2 top finalists via Buzzinlive & PPT!</p>
-            <div class="event-meta">
-              <span class="meta-chip individual">Individual</span>
-              <span class="meta-chip">Quizizz & Buzzinlive</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero quiz-hero">
+              <span class="em-emoji"><i data-lucide="lightbulb"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 2 · 10 September</span>
+                <h2 class="em-title">Quiz</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 9:00 – 10:30 AM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="user"></i></span><span class="em-info-label">Format</span><strong>Individual</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Forge Lab</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.5 Hours</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹2,000</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Test your knowledge of standards, quality, science, and technology in a two-round competitive quiz. Round 1 uses Quizizz (digital) for mass participation; top scorers advance to a live buzzer Round 2.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li><strong>Round 1 — Digital Quizizz:</strong> All registered participants attempt a timed online quiz on their own device.</li>
+                  <li>Top scorers from Round 1 qualify for Round 2.</li>
+                  <li><strong>Round 2 — Finalist Live Quiz:</strong> Only top selected individuals. Questions displayed via PPT on screen; participants answer using the Buzzinlive platform.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Topics Covered</h3>
+                <div class="em-themes">
+                  <span class="em-theme-tag">BIS &amp; the ISI Mark</span>
+                  <span class="em-theme-tag">Hallmarking of Jewellery</span>
+                  <span class="em-theme-tag">ISO, IEC &amp; International Bodies</span>
+                  <span class="em-theme-tag">General Science &amp; Tech</span>
+                  <span class="em-theme-tag">Consumer Rights &amp; Safety</span>
+                </div>
+</div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <p>Purely score-based — highest cumulative points across rounds determine final rankings.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>No conferring with other participants.</li>
+                  <li>Mobile devices permitted only for official quiz portals (Quizizz / Buzzinlive).</li>
+                  <li>Quizmaster's decision on ambiguous answers is final.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-quiz').checked=true; toggleEventDetails('quiz', document.getElementById('ev-quiz'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Science via Standards — FEATURED FLAGSHIP EVENT -->
-        <div class="event-card clickable-card" onclick="openEventModal('science')" style="position:relative; border: 1.5px solid var(--accent, #7c6af7); box-shadow: 0 0 32px 4px rgba(124,106,247,0.18);">
+        <!-- ══ Science via Standards ═══════════════════════════════════════════ -->
+        <div class="event-card" id="acc-science" style="border: 1.5px solid rgba(139,92,246,0.6); box-shadow: 0 0 32px 4px rgba(124,106,247,0.18);">
           <div class="event-card-glow"></div>
           <!-- Featured badges -->
           <div style="position:absolute; top:12px; right:12px; z-index:5; display:flex; flex-direction:column; gap:5px; align-items:flex-end;">
             <span style="background:linear-gradient(90deg,#f7b731,#f39c12); color:#000; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:20px; letter-spacing:0.04em;">FEATURED PROTOTYPE</span>
-            <span style="background:linear-gradient(90deg,#6c5ce7,#a29bfe); color:#fff; font-size:0.6rem; font-weight:800; padding:2px 8px; border-radius:20px; letter-spacing:0.04em;">₹20,000+ PRIZE POOL</span>
           </div>
-          <div class="event-visual science-bg">
-            <span class="event-emoji"><i data-lucide="flask-conical"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('science')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('science');}">
+            <div class="event-visual science-bg">
+              <span class="event-emoji"><i data-lucide="flask-conical"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">10:45 AM – 12:30 PM</div>
+              <h3 class="event-name">Learning Science via Standards</h3>
+              <p class="event-desc"><strong>LED Bulb — Light &amp; Efficiency.</strong> Build an educational display explaining how an LED bulb works vs. incandescent, and why BIS (IS 16102) certification ensures quality, safety and accuracy.</p>
+              <div class="event-meta">
+                <span class="meta-chip team">Team of 2–4</span>
+                <span class="meta-chip">Prototype + Explanation</span>
+                <span class="meta-chip prize">Best Prototype Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">10:45 AM – 12:30 PM</div>
-            <h3 class="event-name">Learning Science via Standards</h3>
-            <p class="event-desc" style="font-size:0.83rem;"><strong>Pressure Cooker — Science Behind Everyday Safety.</strong> Build an interactive educational prototype based on a BIS Learning Science via Standards topic and explain the scientific principles, engineering design, safety features, and relevant BIS standard behind it.</p>
-            <div class="event-meta">
-              <span class="meta-chip team">Team of 2–4</span>
-              <span class="meta-chip">Prototype + Explanation</span>
-              <span class="meta-chip prize" style="background:linear-gradient(90deg,#6c5ce7,#a29bfe); color:#fff;">₹20,000+ Total Prize Pool</span>
+          <div class="event-card-details">
+            <div class="em-hero science-hero">
+              <span class="em-emoji"><i data-lucide="flask-conical"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 2 · 10 September</span>
+                <h2 class="em-title">Learning Science via Standards</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 10:45 AM – 12:30 PM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 2–4</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Main Auditorium</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.75 Hours</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Award</span><strong>Best Prototype + Best Learner</strong></div>
+              </div>
+
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Based on the official BIS <em>Learning Science via Standards</em> resource. Teams build an educational display on a real product from the BIS topic list, explaining the underlying science, engineering, and the role of the relevant Indian Standard. This year’s assigned topic is <strong>LED Bulbs</strong>.</p>
+              </div>
+
+              <!-- LED Bulb Topic Spotlight -->
+              <div class="em-section" style="background: rgba(139,92,246,0.06); border-radius: 12px; padding: 18px; border: 1px solid rgba(139,92,246,0.25);">
+                <h3 class="em-section-title" style="color: #a78bfa;">&#x1F4A1; Topic Spotlight — LED Bulbs &amp; IS 16102</h3>
+
+                <p style="margin-bottom: 14px;">An LED (Light-Emitting Diode) bulb produces light through <strong>electroluminescence</strong> — when electrons fall across a p-n junction in a semiconductor material (like gallium nitride, GaN), they release energy as photons of visible light. There is no filament, no heat-driven glow. That one difference explains nearly everything about why LEDs are better.</p>
+
+                <!-- Inline SVG diagram of LED structure -->
+                <div style="display:flex; justify-content:center; margin: 16px 0;">
+                  <svg viewBox="0 0 320 200" width="320" height="200" xmlns="http://www.w3.org/2000/svg" aria-label="LED Bulb cross-section showing layers: heat sink, semiconductor die, wire bond, phosphor encapsulant, and plastic lens" style="background:rgba(0,0,0,0.25);border-radius:10px;">
+                    <!-- Heat Sink -->
+                    <rect x="100" y="160" width="120" height="25" rx="4" fill="#475569"/>
+                    <text x="160" y="177" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="monospace">Heat Sink / Substrate</text>
+                    <!-- Semiconductor die -->
+                    <rect x="120" y="130" width="80" height="28" rx="3" fill="#6d28d9"/>
+                    <text x="160" y="148" text-anchor="middle" fill="#ede9fe" font-size="10" font-family="monospace">Semiconductor Die (GaN)</text>
+                    <!-- Wire bond -->
+                    <path d="M145 130 Q130 108 118 112" stroke="#fbbf24" stroke-width="2" fill="none"/>
+                    <text x="110" y="107" fill="#fbbf24" font-size="9" font-family="monospace">Wire Bond</text>
+                    <!-- Phosphor / encapsulant dome -->
+                    <ellipse cx="160" cy="115" rx="52" ry="30" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="1.5"/>
+                    <text x="160" y="118" text-anchor="middle" fill="#c4b5fd" font-size="10" font-family="monospace">Phosphor Encapsulant</text>
+                    <!-- Plastic lens -->
+                    <ellipse cx="160" cy="88" rx="40" ry="20" fill="rgba(255,255,255,0.06)" stroke="#e2e8f0" stroke-width="1"/>
+                    <text x="160" y="91" text-anchor="middle" fill="#e2e8f0" font-size="10" font-family="monospace">Plastic Lens</text>
+                    <!-- Light rays -->
+                    <line x1="160" y1="68" x2="160" y2="42" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <line x1="145" y1="70" x2="130" y2="48" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <line x1="175" y1="70" x2="190" y2="48" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <text x="160" y="30" text-anchor="middle" fill="#fde68a" font-size="10" font-family="monospace">Light Output (Photons)</text>
+                  </svg>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;">
+                  <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:14px;">
+                    <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;color:#a78bfa;">LED vs. Incandescent</div>
+                    <p style="font-size:0.8rem;line-height:1.55;color:var(--text-muted);">An incandescent bulb passes current through a tungsten filament which heats to ~2,700 K and glows. About 90–95% of energy becomes <em>heat</em>, not light. An LED converts electrons directly to photons — efficiency jumps from ~15 lm/W (incandescent) to ~80–120 lm/W (LED), and lifespan from ~1,000 hrs to ~15,000–25,000 hrs.</p>
+                  </div>
+                  <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:14px;">
+                    <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;color:#a78bfa;">What IS 16102 Actually Tests</div>
+                    <p style="font-size:0.8rem;line-height:1.55;color:var(--text-muted);"><strong>IS 16102</strong> (LED Lighting Products) covers: <em>Luminous Efficacy</em> (lumens per watt), <em>Lumen Maintenance</em> (does brightness hold up after 1,000&nbsp;hrs?), <em>Colour Rendering Index (CRI)</em> (does it show true colours?), <em>Colour Temperature</em> (warm vs cool), and <em>Electrical Safety</em> (insulation, earthing, short circuit). Without testing, a bulb could overstate brightness, fail early, or electrocute a user.</p>
+                  </div>
+                </div>
+                <div style="margin-top:12px; font-size:0.8rem; color:var(--text-dim); border-top: 1px solid rgba(139,92,246,0.2); padding-top:10px;">
+                  &#x1F4D6; Source: <a href="https://www.bis.gov.in/learning-science-via-standards/?lang=en" target="_blank" rel="noopener" style="color:#a78bfa;">BIS — Learning Science via Standards</a> | Standard: IS 16102 (LED Lighting Products)
+                </div>
+              </div>
+              <!-- /LED Bulb Topic Spotlight -->
+
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Teams set up their display at assigned stalls before the event starts.</li>
+                  <li>Judges visit each stall; participants give a 5–7 minute explanation.</li>
+                  <li>Judges may ask questions on the science, engineering design, and BIS standard connection.</li>
+                  <li>After all stalls are judged, results are announced at the valedictory.</li>
+                </ol>
+              </div>
+
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="package"></i> Required Display Components</h3>
+                <div class="em-themes">
+                  <span class="em-theme-tag">Working LED bulb demo</span>
+                  <span class="em-theme-tag">Incandescent comparison</span>
+                  <span class="em-theme-tag">Labelled LED anatomy model</span>
+                  <span class="em-theme-tag">Efficiency data chart</span>
+                  <span class="em-theme-tag">IS 16102 standard summary</span>
+                  <span class="em-theme-tag">Visitor Q&amp;A script</span>
+                </div>
+              </div>
+
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Scientific Understanding &amp; Accuracy</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Display / Prototype Quality</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">20%</span><span>BIS Standard Connection (IS 16102)</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Innovation &amp; Creativity</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Presentation &amp; Communication</span></div>
+                </div>
+              </div>
+
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules &amp; Safety</h3>
+                <ul class="em-rules">
+                  <li>Use only low-voltage (safe) demonstration circuits — no mains-voltage open wiring without supervision.</li>
+                  <li>All electrical connections must be insulated and safe for the public to view.</li>
+                  <li>Content must be clearly explained and scientifically accurate.</li>
+                </ul>
+              </div>
+
+              <div class="em-section" style="background:rgba(139,92,246,0.06);border-radius:10px;padding:14px;">
+                <strong style="display:block;margin-bottom:8px;font-size:0.88rem;">&#x1F4CB; Prototype Guide for Stall Teams</strong>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">Download the printable one-page guide for building your LED vs. Incandescent stall demo, parts list, and visitor Q&amp;A script:</p>
+                <a href="led-prototype-guide.html" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;padding:8px 16px;border-radius:8px;font-size:0.83rem;font-weight:700;text-decoration:none;">&#x1F4F2; Download Display Guide (led-prototype-guide.html)</a>
+              </div>
+
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-science').checked=true; toggleEventDetails('science', document.getElementById('ev-science'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
 
-        <!-- Mimes -->
-        <div class="event-card clickable-card" onclick="openEventModal('mimes')">
+        <!-- ══ Mimes ════════════════════════════════════════════════════ -->
+        <div class="event-card" id="acc-mimes">
           <div class="event-card-glow"></div>
-          <div class="event-visual mimes-bg">
-            <span class="event-emoji"><i data-lucide="theater"></i></span>
+          <div class="clickable-card-inner" role="button" tabindex="0" aria-expanded="false"
+               onclick="toggleEventAccordion('mimes')"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleEventAccordion('mimes');}">
+            <div class="event-visual mimes-bg">
+              <span class="event-emoji"><i data-lucide="theater"></i></span>
+            </div>
+            <div class="event-card-body">
+              <div class="event-time-tag">1:30 – 3:00 PM</div>
+              <h3 class="event-name">Mimes</h3>
+              <p class="event-desc">Convey standards-related messages purely through gestures and expressions — no spoken words allowed.</p>
+              <div class="event-meta">
+                <span class="meta-chip team">Team of 4–6</span>
+                <span class="meta-chip">3–5 Min</span>
+                <span class="meta-chip prize">₹1,500 Prize</span>
+              </div>
+            </div>
+            <div class="card-click-hint">Click to explore <span class="hint-chevron">▾</span></div>
           </div>
-          <div class="event-card-body">
-            <div class="event-time-tag">1:30 – 3:00 PM</div>
-            <h3 class="event-name">Mimes</h3>
-            <p class="event-desc">Convey standards-related messages purely through gestures and expressions — no spoken words allowed.</p>
-            <div class="event-meta">
-              <span class="meta-chip team">Team of 4–6</span>
-              <span class="meta-chip">3–5 Min</span>
-              <span class="meta-chip prize">₹1250 Prize</span>
+          <div class="event-card-details">
+            <div class="em-hero mimes-hero">
+              <span class="em-emoji"><i data-lucide="theater"></i></span>
+              <div class="em-overlay">
+                <span class="em-day-tag">Day 2 · 10 September</span>
+                <h2 class="em-title">Mimes</h2>
+                <span class="em-time-badge"><i data-lucide="clock"></i> 1:30 – 3:00 PM</span>
+              </div>
+            </div>
+            <div class="em-body">
+              <div class="em-info-row">
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 4–6</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Seminar Hall / Forge Lab</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Performance</span><strong>3–5 Minutes</strong></div>
+                <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">1st Prize</span><strong>₹1,500</strong></div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title">About the Event</h3>
+                <p>Creatively convey a message related to standards, quality, or safety through silent (non-verbal) performance. No spoken words — only expressions, gestures, and optional background music.</p>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
+                <ol class="em-steps">
+                  <li>Each team registers a topic in advance or draws one on the spot.</li>
+                  <li>Teams get 3–5 minutes for their performance — strictly no dialogue.</li>
+                  <li>Optional: background music/sound effects allowed (no dialogue substitutes).</li>
+                  <li>Performances happen back-to-back with brief set-up gaps between teams.</li>
+                  <li>Judges score immediately after each performance.</li>
+                </ol>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Suggested Themes</h3>
+                <div class="em-themes">
+                  <span class="em-theme-tag">Quality checks before buying</span>
+                  <span class="em-theme-tag">Consequences of substandard goods</span>
+                  <span class="em-theme-tag">Journey of BIS Certification</span>
+                  <span class="em-theme-tag">Safety standards saving a life</span>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
+                <div class="em-criteria">
+                  <div class="em-criterion"><span class="em-c-pct">35%</span><span>Clarity of Message (without words)</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Expression &amp; Body Language</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">25%</span><span>Creativity &amp; Originality</span></div>
+                  <div class="em-criterion"><span class="em-c-pct">15%</span><span>Team Coordination &amp; Timing</span></div>
+                </div>
+              </div>
+              <div class="em-section">
+                <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
+                <ul class="em-rules">
+                  <li>Absolutely no spoken words or sound effects substituting dialogue.</li>
+                  <li>Performance must stay within the time limit.</li>
+                  <li>Content must be appropriate and non-offensive.</li>
+                </ul>
+              </div>
+              <a href="#register" class="em-register-btn" onclick="document.getElementById('ev-mimes').checked=true; toggleEventDetails('mimes', document.getElementById('ev-mimes'));">Register for this Event</a>
             </div>
           </div>
-          <div class="card-click-hint">Click to explore →</div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -373,21 +931,45 @@
         <div class="prize-card gold-card">
           <div class="prize-medal"><i data-lucide="trophy" class="prize-icon-svg gold-svg"></i></div>
           <div class="prize-place">1st Place</div>
-          <div class="prize-amount">₹1,250</div>
-          <div class="prize-detail">Per Event</div>
+          <div class="prize-amount">₹2,000</div>
+          <div class="prize-detail">Per Competitive Event</div>
         </div>
         <div class="prize-card silver-card">
           <div class="prize-medal"><i data-lucide="award" class="prize-icon-svg silver-svg"></i></div>
           <div class="prize-place">2nd Place</div>
-          <div class="prize-amount">₹1,000</div>
-          <div class="prize-detail">Per Event</div>
+          <div class="prize-amount">₹1,500</div>
+          <div class="prize-detail">Per Competitive Event</div>
         </div>
         <div class="prize-card bronze-card">
           <div class="prize-medal"><i data-lucide="medal" class="prize-icon-svg bronze-svg"></i></div>
           <div class="prize-place">3rd Place</div>
-          <div class="prize-amount">₹750</div>
-          <div class="prize-detail">Per Event</div>
+          <div class="prize-amount">₹1,000</div>
+          <div class="prize-detail">Per Competitive Event</div>
         </div>
+      </div>
+      <!-- Prize Breakdown -->
+      <div style="max-width:640px;margin:32px auto 0;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:20px 24px;">
+        <div style="font-weight:800;font-size:0.9rem;color:var(--gold);margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;">Prize Breakdown — ₹20,000+ Total</div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.82rem;color:var(--text-muted);">
+          <thead><tr style="color:var(--text-dim);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;">
+            <th style="text-align:left;padding:6px 0;">Event</th>
+            <th style="text-align:right;padding:6px 4px;">1st</th>
+            <th style="text-align:right;padding:6px 4px;">2nd</th>
+            <th style="text-align:right;padding:6px 4px;">3rd</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:5px 0;">Poster Making</td><td style="text-align:right;">2,000</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="padding:5px 0;">Debate</td><td style="text-align:right;">2,000</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td></tr>
+            <tr><td style="padding:5px 0;">Treasure Hunt</td><td style="text-align:right;">2,000</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="padding:5px 0;">Rangoli</td><td style="text-align:right;">2,000</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td></tr>
+            <tr><td style="padding:5px 0;">Quiz</td><td style="text-align:right;">2,000</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="padding:5px 0;">Mimes</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td><td style="text-align:right;">500</td></tr>
+            <tr><td style="padding:5px 0;">Science — Best Prototype</td><td style="text-align:right;">1,500</td><td style="text-align:right;">1,000</td><td style="text-align:right;">—</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="padding:5px 0;">Best Learner (Science)</td><td colspan="3" style="text-align:right;">500</td></tr>
+            <tr><td style="padding:5px 0;">Overall Champion Bonus</td><td colspan="3" style="text-align:right;">1,000</td></tr>
+            <tr style="border-top:1px solid var(--border);font-weight:800;color:var(--gold);"><td style="padding:8px 0;">Total</td><td colspan="3" style="text-align:right;">&#x20b9;21,000+</td></tr>
+          </tbody>
+        </table>
       </div>
       <div class="special-awards">
         <div class="special-award"><i data-lucide="trophy"></i> Overall Championship Team</div>
@@ -776,677 +1358,7 @@
     </div>
   </section>
 
-  <!-- Success Modal -->
-  <div class="modal-overlay hidden" id="successModal">
-    <div class="modal">
-      <div class="modal-icon"><i data-lucide="check-circle-2" class="modal-icon-svg"></i></div>
-      <h2 class="modal-title">Registration Successful!</h2>
-      <p class="modal-desc">You have been successfully registered for the BIS Club 2-Day Standards Awareness Event.</p>
-      <div class="modal-details" id="modalDetails"></div>
-      <p class="modal-note">Please report 10 minutes before each event and carry your ID / participant tag.</p>
-      <button class="btn-primary" onclick="closeModal()" style="margin-top:24px; width:100%; justify-content:center;">Done</button>
-    </div>
-  </div>
 
-  <!-- Error Modal -->
-  <div class="modal-overlay hidden" id="errorModal">
-    <div class="modal" style="border-color: var(--border-accent);">
-      <div class="modal-icon"><i data-lucide="alert-triangle"></i></div>
-      <h2 class="modal-title" style="color: var(--accent);">Registration Error</h2>
-      <p class="modal-desc" id="errorModalMessage">Registration could not be completed. Please try again.</p>
-      <button class="btn-primary" onclick="closeErrorModal()" style="margin-top:24px; width:100%; justify-content:center; background: var(--accent);">Close</button>
-    </div>
-  </div>
-
-  <!-- ===================================================
-       EVENT DETAIL MODALS
-       =================================================== -->
-
-  <!-- Inauguration Modal -->
-  <div class="event-modal-overlay hidden" id="modal-inauguration">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('inauguration')">✕</button>
-      <div class="em-hero inauguration-hero">
-        <span class="em-emoji"><i data-lucide="flame"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 1 · 9 September</span>
-          <h2 class="em-title">Inauguration</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 9:00 – 10:00 AM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Participants</span><strong>All Participants</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Main Auditorium</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1 Hour</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="award"></i></span><span class="em-info-label">Prize</span><strong>Ceremonial</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>To formally open the 2-day event, set the tone, and introduce the purpose of the BIS Club activities to all participants and guests. Includes lamp lighting, chief guest address, and a welcome ceremony.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>MC welcomes the gathering and introduces the chief guest / dignitaries on stage.</li>
-            <li>Traditional lamp lighting / inaugural ceremony by chief guest and club coordinators.</li>
-            <li>Welcome address by Club President/Teacher-in-charge (3–5 min).</li>
-            <li>Chief Guest Address (10–15 min) — talk on standards/quality in daily life.</li>
-            <li>Brief overview of Day 1 & Day 2 events by the anchor.</li>
-            <li>Vote of thanks by a student representative.</li>
-            <li>Group photograph with all participants and guests.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>All participants must be seated 10 minutes before the scheduled start.</li>
-            <li>Mobile phones on silent during the ceremony.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Poster Making Modal -->
-  <div class="event-modal-overlay hidden" id="modal-poster">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('poster')">✕</button>
-      <div class="em-hero poster-hero">
-        <span class="em-emoji"><i data-lucide="palette"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 1 · 9 September</span>
-          <h2 class="em-title">Poster Making</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 10:30 AM – 12:30 PM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="user"></i></span><span class="em-info-label">Format</span><strong>Individual</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Auditorium (Hand) / Forge Lab (Digital)</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>2 Hours</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Creatively communicate a standards/quality-related message through visual art, in either traditional or digital medium. Create an original poster on a BIS-related theme within 2 hours.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Participants register at the venue and choose (or are allotted) a topic from the list.</li>
-            <li>Hand-drawing participants collect an A3 sheet signed by the in-charge.</li>
-            <li>Digital participants show blank canvas to in-charge before beginning.</li>
-            <li>2 hours given to complete the poster; no mobile phones/internet for content copying.</li>
-            <li>Completed posters are labelled with name & topic and submitted to the collection desk.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Suggested Themes</h3>
-          <div class="em-themes">
-            <span class="em-theme-tag">Why Standards Matter</span>
-            <span class="em-theme-tag">ISI Mark & Consumers</span>
-            <span class="em-theme-tag">Quality & Safety</span>
-            <span class="em-theme-tag">Standards for Sustainability</span>
-            <span class="em-theme-tag">No to Duplicate Products</span>
-            <span class="em-theme-tag">Hallmarking & Trust</span>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">30%</span><span>Relevance to Theme</span></div>
-            <div class="em-criterion"><span class="em-c-pct">30%</span><span>Creativity & Originality</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Visual Appeal & Technique</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Message Clarity</span></div>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>No pre-made/traced artwork; must be original, done on the spot.</li>
-            <li>No obscene or political content.</li>
-            <li>Only BIS/standards-related themes accepted.</li>
-            <li>Strict 2-hour time limit; late submissions are disqualified.</li>
-            <li>Posters copied or taken directly from Google searches will be identified using Google Lens and disqualified.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('poster'); document.getElementById('ev-poster').checked=true; toggleEventDetails('poster', document.getElementById('ev-poster'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Debate Modal -->
-  <div class="event-modal-overlay hidden" id="modal-debate">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('debate')">✕</button>
-      <div class="em-hero debate-hero">
-        <span class="em-emoji"><i data-lucide="mic"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 1 · 9 September</span>
-          <h2 class="em-title">Debate</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 1:30 – 3:00 PM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 4</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Seminar Hall</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.5 Hours</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Develop critical thinking and public speaking skills while discussing real issues connected to standards, quality, and regulation. Teams argue for or against assigned topics in a structured debate format.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Teams register in advance; topics may be shared in advance or drawn on spot.</li>
-            <li>For-team speaks first (3 min), followed by Against-team (3 min).</li>
-            <li>1-minute rebuttal each, then open floor/cross questions (if time allows).</li>
-            <li>Timekeeper signals at 30 seconds remaining (single bell) and time-up (double bell).</li>
-            <li>Judges score each speaker independently, then tally to declare the winning side.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Sample Topics</h3>
-          <div class="em-themes">
-            <span class="em-theme-tag">Mandatory quality certification for all products</span>
-            <span class="em-theme-tag">Voluntary vs Mandatory Standards</span>
-            <span class="em-theme-tag">Self-regulation vs Third-party certification</span>
-            <span class="em-theme-tag">Standards as a school subject</span>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">35%</span><span>Content & Argument Strength</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Rebuttal & Counterpoints</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Clarity, Fluency & Confidence</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Time Management</span></div>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>Strict adherence to time limits; judges may deduct marks for overtime.</li>
-            <li>No personal remarks; arguments must stay on-topic.</li>
-            <li>Logical, fact-based arguments — dramatics without content will be marked down.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('debate'); document.getElementById('ev-debate').checked=true; toggleEventDetails('debate', document.getElementById('ev-debate'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Treasure Hunt Modal -->
-  <div class="event-modal-overlay hidden" id="modal-treasure">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('treasure')">✕</button>
-      <div class="em-hero treasure-hero">
-        <span class="em-emoji"><i data-lucide="map-pin"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 1 · 9 September</span>
-          <h2 class="em-title">Treasure Hunt</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 3:15 – 5:00 PM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 6</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>All over college</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Time Cap</span><strong>105 Minutes</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Promote teamwork and problem-solving while reinforcing knowledge about standards through fun clues and tasks placed around the campus. Race against time and other teams to find the hidden treasure!</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Each team is assigned a unique color; clues hidden at fixed campus checkpoints.</li>
-            <li>Teams briefed on rules and released; clues are unique for each team.</li>
-            <li>Each team must complete 4 rounds of clues (riddles, questions, tasks).</li>
-            <li>Volunteers at each checkpoint verify clue is solved before handing the next envelope.</li>
-            <li>Final clue leads to the treasure marker at the finish point.</li>
-            <li>First team to reach the treasure wins.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">1st</span><span>Fastest Correct Completion</span></div>
-            <div class="em-criterion"><span class="em-c-pct">Tie</span><span>Number of Checkpoints Cleared</span></div>
-            <div class="em-criterion"><span class="em-c-pct">+</span><span>Adherence to Rules / Fair Play</span></div>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>Teams must stay together at all times; splitting up leads to disqualification.</li>
-            <li>No skipping checkpoints or checking other teams' clues.</li>
-            <li>Out-of-bounds areas will be announced beforehand.</li>
-            <li>Total time capped at 105 minutes; incomplete teams ranked by checkpoints cleared.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('treasure'); document.getElementById('ev-treasure').checked=true; toggleEventDetails('treasure', document.getElementById('ev-treasure'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Rangoli Modal -->
-  <div class="event-modal-overlay hidden" id="modal-rangoli">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('rangoli')">✕</button>
-      <div class="em-hero rangoli-hero">
-        <span class="em-emoji"><i data-lucide="flower-2"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 2 · 10 September</span>
-          <h2 class="em-title">Rangoli</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 7:00 – 9:00 AM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of max 4</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Auditorium side</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>2 Hours</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Showcase creativity and teamwork through traditional rangoli art, optionally themed around standards/quality symbols (e.g., ISI mark motifs, Hallmark, colour-coded safety symbols).</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Each team is allotted an equal marked floor space in advance.</li>
-            <li>Teams bring/collect their own rangoli materials.</li>
-            <li>2 hours given to complete the design — no pre-drawn outlines allowed.</li>
-            <li>Judges walk around at the end to evaluate all designs together.</li>
-            <li>Photographs taken of every entry for record and display.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">30%</span><span>Creativity & Design</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Colour Combination & Neatness</span></div>
-            <div class="em-criterion"><span class="em-c-pct">20%</span><span>Relevance to Theme</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Teamwork Visible</span></div>
-            <div class="em-criterion"><span class="em-c-pct">10%</span><span>Completion within Time</span></div>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>Only powder/petals/natural colours — no paint on permanent flooring.</li>
-            <li>Team must stay within the allotted space.</li>
-            <li>All members should be seen contributing.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('rangoli'); document.getElementById('ev-rangoli').checked=true; toggleEventDetails('rangoli', document.getElementById('ev-rangoli'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quiz Modal -->
-  <div class="event-modal-overlay hidden" id="modal-quiz">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('quiz')">✕</button>
-      <div class="em-hero quiz-hero">
-        <span class="em-emoji"><i data-lucide="lightbulb"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 2 · 10 September</span>
-          <h2 class="em-title">Quiz</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 9:00 – 10:30 AM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="user"></i></span><span class="em-info-label">Format</span><strong>Individual</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Forge Lab</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1.5 Hours</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Test participants' knowledge of BIS, standards, general science, and current affairs through a 2-round digital & interactive quiz format.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format (2 Rounds)</h3>
-          <ol class="em-steps">
-            <li><strong>Round 1 — Preliminary Digital Quiz:</strong> Open to all participants, conducted via mobile phones using platforms like Quizizz.</li>
-            <li><strong>Round 2 — Finalist Live Quiz:</strong> Only top selected individuals. Questions displayed via PPT on screen; participants answer using the Buzzinlive platform.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Topics Covered</h3>
-          <div class="em-themes">
-            <span class="em-theme-tag">BIS & the ISI Mark</span>
-            <span class="em-theme-tag">Hallmarking of Jewellery</span>
-            <span class="em-theme-tag">ISO, IEC & International Bodies</span>
-            <span class="em-theme-tag">General Science & Tech</span>
-            <span class="em-theme-tag">Consumer Rights & Safety</span>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <p>Purely score-based — highest cumulative points across rounds determine final rankings.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>No conferring with other participants.</li>
-            <li>Mobile devices permitted only for official quiz portals (Quizizz / Buzzinlive).</li>
-            <li>Quizmaster's decision on ambiguous answers is final.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('quiz'); document.getElementById('ev-quiz').checked=true; toggleEventDetails('quiz', document.getElementById('ev-quiz'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Learning Science via Standards Modal — FLAGSHIP EVENT -->
-  <div class="event-modal-overlay hidden" id="modal-science">
-    <div class="event-modal" style="max-width:760px;">
-      <button class="event-modal-close" onclick="closeEventModal('science')">✕</button>
-      <div class="em-hero science-hero" style="position:relative;">
-        <span class="em-emoji"><i data-lucide="flask-conical"></i></span>
-        <div style="position:absolute;top:14px;left:14px;display:flex;gap:6px;z-index:5;">
-          <span style="background:linear-gradient(90deg,#f7b731,#f39c12);color:#000;font-size:0.6rem;font-weight:800;padding:3px 10px;border-radius:20px;">FEATURED PROTOTYPE EVENT</span>
-          <span style="background:linear-gradient(90deg,#6c5ce7,#a29bfe);color:#fff;font-size:0.6rem;font-weight:800;padding:3px 10px;border-radius:20px;">₹20,000+ PRIZE POOL</span>
-        </div>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 2 · 10 September</span>
-          <h2 class="em-title">Learning Science via Standards</h2>
-          <div style="font-size:0.85rem;opacity:0.9;margin-top:4px;font-weight:600;">Pressure Cooker — Science Behind Everyday Safety</div>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 10:45 AM – 12:30 PM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 2–4</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Main Auditorium</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Duration</span><strong>1 hr 45 min</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong style="color:#a29bfe;">₹20,000+ Total</strong></div>
-        </div>
-
-        <!-- Callout banners -->
-        <div style="background:linear-gradient(135deg,rgba(108,92,231,0.18),rgba(162,155,254,0.08));border:1px solid rgba(162,155,254,0.3);border-radius:12px;padding:16px 20px;margin:18px 0;text-align:center;">
-          <div style="font-size:1rem;font-weight:700;letter-spacing:0.02em;margin-bottom:4px;">&ldquo;Don't just display a product. Explain the science that makes it work.&rdquo;</div>
-          <div style="font-size:0.82rem;opacity:0.75;">Build it. Demonstrate it. Explain the science. Connect it to Standards.</div>
-        </div>
-
-        <!-- About -->
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Participants will build and demonstrate an educational prototype inspired by the official <a href="https://www.bis.gov.in/learning-science-via-standards/?lang=en" target="_blank" rel="noopener" style="color:var(--accent,#a29bfe);">BIS Learning Science via Standards</a> initiative.</p>
-          <p style="margin-top:10px;">For this edition, the selected topic is the <strong>Pressure Cooker</strong>. The objective is not simply to display a pressure cooker — participants must demonstrate how scientific principles influence the <strong>design, operation, efficiency and safety</strong> of the product, and explain how standardisation ensures quality.</p>
-          <p style="margin-top:10px;">The project must connect: <strong>Science → Engineering → Product → Safety → BIS Standard</strong></p>
-        </div>
-
-        <!-- Safety notice -->
-        <div style="background:rgba(231,76,60,0.12);border:1px solid rgba(231,76,60,0.4);border-radius:10px;padding:14px 18px;margin:4px 0 16px;">
-          <div style="font-weight:700;color:#e74c3c;margin-bottom:6px;"><i data-lucide="shield-alert" style="width:14px;height:14px;vertical-align:middle;margin-right:4px;"></i> Safety Requirement</div>
-          <p style="font-size:0.85rem;line-height:1.55;"><strong>For safety, participants must not pressurize a homemade prototype.</strong> The prototype is intended for educational demonstration only. If demonstrating pressure/temperature experimentally, use commercially manufactured laboratory-safe equipment, a low-pressure demonstration setup, simulation, LEDs, gauges, transparent non-pressurized models, or prerecorded/controlled demonstrations.</p>
-        </div>
-
-        <!-- Required Prototype -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="cpu"></i> Required Prototype — Cutaway Pressure Cooker</h3>
-          <p style="margin-bottom:10px;">Build a visually impressive <strong>cutaway pressure cooker model</strong> that clearly shows its internal mechanism. Use transparent/acrylic sections or a cutaway design so judges can see inside.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">① Cooker body &amp; Lid</div>
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">② Sealing gasket &amp; Locking mechanism</div>
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">③ Steam outlet &amp; Steam path</div>
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">④ Pressure regulator / Weight</div>
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">⑤ Safety valve mechanism</div>
-            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 12px;font-size:0.82rem;">⑥ Water/food chamber &amp; Heat source</div>
-          </div>
-        </div>
-
-        <!-- Interactive Demo Simulation -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="play-circle"></i> Interactive Demonstration — Visual Simulation</h3>
-          <p style="font-size:0.84rem;margin-bottom:14px;">The prototype must feature an interactive demonstration. Participants show each stage using LEDs, gauges, or controlled displays. Click below to see a simulation:</p>
-          <div id="sci-demo-area" style="background:rgba(0,0,0,0.25);border:1px solid rgba(162,155,254,0.25);border-radius:12px;padding:20px;">
-            <div id="sci-demo-status" style="font-size:0.88rem;font-weight:600;margin-bottom:12px;text-align:center;color:var(--accent,#a29bfe);">Press START to run the demonstration</div>
-            <!-- Stage indicators -->
-            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-              <div class="sci-stage" id="stage-heat" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
-                <span style="font-size:1.1rem;">🔥</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 1 — Heating:</strong> Heat → Water gains energy → Steam generation</span><span id="ind-heat" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
-              </div>
-              <div class="sci-stage" id="stage-steam" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
-                <span style="font-size:1.1rem;">💨</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 2 — Steam Trapping:</strong> Steam trapped → Pressure increases</span><span id="ind-steam" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
-              </div>
-              <div class="sci-stage" id="stage-bp" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
-                <span style="font-size:1.1rem;">📈</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 3 — Higher Boiling Point:</strong> Pressure ↑ → Boiling Temperature ↑</span><span id="ind-bp" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
-              </div>
-              <div class="sci-stage" id="stage-cook" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
-                <span style="font-size:1.1rem;">🍲</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 4 — Cooking:</strong> Higher temperature + steam + pressure → Faster cooking</span><span id="ind-cook" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
-              </div>
-              <div class="sci-stage" id="stage-safety" style="display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);opacity:0.4;transition:all 0.5s;">
-                <span style="font-size:1.1rem;">🛡️</span><span style="flex:1;font-size:0.83rem;"><strong>Stage 5 — Safety Valve:</strong> Pressure regulator releases excess steam safely</span><span id="ind-safety" style="font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,0.08);">IDLE</span>
-              </div>
-            </div>
-            <!-- Pressure gauge -->
-            <div style="margin-bottom:14px;">
-              <div style="font-size:0.78rem;margin-bottom:4px;font-weight:600;">Pressure Gauge</div>
-              <div style="background:rgba(255,255,255,0.08);border-radius:20px;height:12px;overflow:hidden;">
-                <div id="sci-pressure-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#6c5ce7,#a29bfe);border-radius:20px;transition:width 1.5s ease;"></div>
-              </div>
-              <div id="sci-pressure-label" style="font-size:0.72rem;margin-top:4px;opacity:0.7;">0 kPa — Atmospheric</div>
-            </div>
-            <button id="sci-demo-btn" onclick="runScienceDemo()" style="width:100%;padding:10px;border:none;border-radius:8px;background:linear-gradient(90deg,#6c5ce7,#a29bfe);color:#fff;font-weight:700;font-size:0.88rem;cursor:pointer;letter-spacing:0.04em;">▶ START DEMONSTRATION</button>
-          </div>
-        </div>
-
-        <!-- Science Explanation -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="atom"></i> The Science Behind the Pressure Cooker</h3>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
-              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Pressure &amp; Boiling Point</div>
-              <p style="font-size:0.8rem;line-height:1.55;">Water boils when its vapour pressure equals the surrounding pressure. Inside the cooker, trapped steam raises internal pressure — which raises the boiling point, allowing cooking above 100°C.</p>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
-              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Ideal Gas Law</div>
-              <div style="font-size:1.1rem;font-weight:800;text-align:center;padding:8px 0;color:var(--accent,#a29bfe);">PV = nRT</div>
-              <p style="font-size:0.78rem;line-height:1.5;">P = Pressure · V = Volume · n = Amount of gas · R = Gas constant · T = Temperature (Kelvin)</p>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
-              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Gay-Lussac's Law</div>
-              <div style="font-size:1rem;font-weight:800;text-align:center;padding:6px 0;color:var(--accent,#a29bfe);">P / T = constant</div>
-              <p style="font-size:0.8rem;line-height:1.55;">At constant volume, as temperature increases, pressure increases proportionally — directly explaining what happens inside a sealed pressure cooker.</p>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:14px;">
-              <div style="font-weight:700;font-size:0.88rem;margin-bottom:6px;">Why Cooking is Faster</div>
-              <p style="font-size:0.8rem;line-height:1.55;">Heating → Steam generation → Pressure rise → Higher boiling temperature → Faster cooking. The elevated temperature dramatically accelerates heat transfer to food.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- BIS Connection -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-check"></i> Where BIS Standards Come In</h3>
-          <div style="background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(0,0,0,0.1));border:1px solid rgba(162,155,254,0.3);border-radius:12px;padding:16px 20px;margin-bottom:14px;">
-            <div style="font-size:1rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.02em;">IS 2347 — Domestic Pressure Cookers</div>
-            <div style="font-size:0.8rem;margin-top:4px;opacity:0.75;">Bureau of Indian Standards — the standard governing safety and quality of domestic pressure cookers in India</div>
-          </div>
-          <p style="font-size:0.83rem;margin-bottom:12px;">Participants must explain how standards relate to product quality and safety, connecting each component of the cooker to its engineering purpose and safety requirement.</p>
-          <div style="display:flex;flex-direction:column;gap:4px;align-items:center;">
-            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Scientific Principle</div>
-            <div style="opacity:0.5;font-size:1rem;">↓</div>
-            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Engineering Design</div>
-            <div style="opacity:0.5;font-size:1rem;">↓</div>
-            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Safety Requirement</div>
-            <div style="opacity:0.5;font-size:1rem;">↓</div>
-            <div style="background:rgba(108,92,231,0.15);border-radius:8px;padding:6px 18px;font-size:0.8rem;font-weight:600;">Testing &amp; Certification</div>
-            <div style="opacity:0.5;font-size:1rem;">↓</div>
-            <div style="background:rgba(108,92,231,0.25);border:1px solid rgba(162,155,254,0.4);border-radius:8px;padding:8px 20px;font-size:0.85rem;font-weight:800;color:var(--accent,#a29bfe);">IS 2347 Standard → Quality Product</div>
-          </div>
-          <a href="https://www.bis.gov.in/learning-science-via-standards/?lang=en" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 18px;border-radius:8px;border:1px solid var(--accent,#a29bfe);color:var(--accent,#a29bfe);font-size:0.82rem;font-weight:600;text-decoration:none;">View BIS Learning Resource ↗</a>
-        </div>
-
-        <!-- Required Output -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Required Participant Output</h3>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">A. PHYSICAL PROTOTYPE</div>
-              <div style="font-size:0.8rem;">Working/interactive educational cutaway model of a pressure cooker</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">B. SCIENCE EXPLANATION</div>
-              <div style="font-size:0.8rem;">Explain pressure, boiling point, gas laws and heat transfer principles</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">C. ENGINEERING EXPLANATION</div>
-              <div style="font-size:0.8rem;">Explain why each major component (gasket, valve, regulator) exists</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">D. BIS CONNECTION</div>
-              <div style="font-size:0.8rem;">Identify IS 2347 and explain how it ensures quality &amp; safety</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">E. SAFE DEMONSTRATION</div>
-              <div style="font-size:0.8rem;">Demonstrate the principle safely (non-pressurized educational model)</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 14px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent,#a29bfe);letter-spacing:0.05em;margin-bottom:3px;">F. PRESENTATION</div>
-              <div style="font-size:0.8rem;">Explain the complete system to judges within allotted time</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Judging Criteria -->
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Scientific Understanding — Correct explanation of pressure, boiling point, gas laws &amp; heat transfer</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Prototype Quality — Construction, clarity, completeness &amp; visual demonstration</span></div>
-            <div class="em-criterion"><span class="em-c-pct">20%</span><span>BIS Standard Connection — Connecting IS 2347 to product quality &amp; safety</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Innovation — Creative approach to demonstrating the science</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Presentation — Clarity, teamwork, confidence &amp; ability to answer questions</span></div>
-          </div>
-        </div>
-
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('science'); document.getElementById('ev-science').checked=true; toggleEventDetails('science', document.getElementById('ev-science'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-  function runScienceDemo() {
-    var btn = document.getElementById('sci-demo-btn');
-    var status = document.getElementById('sci-demo-status');
-    btn.disabled = true;
-    btn.textContent = 'Running Demonstration...';
-    var stages = ['heat','steam','bp','cook','safety'];
-    var labels = [
-      '🔥 Heating — Steam generation in progress...',
-      '💨 Steam trapped — Internal pressure rising!',
-      '📈 Boiling point increasing due to higher pressure!',
-      '🍲 Cooking at elevated temperature — faster and efficient!',
-      '🛡️ Safety valve active — Excess pressure released safely!'
-    ];
-    var pressures = ['25%','50%','70%','85%','40%'];
-    var pressureTexts = ['~120 kPa','~150 kPa','~175 kPa','~200 kPa — Safety Valve Threshold','~120 kPa — Pressure Released'];
-    var colours = ['#e17055','#6c5ce7','#a29bfe','#00b894','#00cec9'];
-    stages.forEach(function(s,i) {
-      var el = document.getElementById('stage-'+s);
-      el.style.opacity='0.4';
-      el.style.borderColor='rgba(255,255,255,0.08)';
-      document.getElementById('ind-'+s).textContent='IDLE';
-      document.getElementById('ind-'+s).style.background='rgba(255,255,255,0.08)';
-    });
-    document.getElementById('sci-pressure-bar').style.width='0%';
-    document.getElementById('sci-pressure-label').textContent='0 kPa — Atmospheric';
-    var i = 0;
-    function step() {
-      if(i>=stages.length){status.textContent='✅ Demonstration complete — Pressure cooker operated safely!';btn.disabled=false;btn.textContent='▶ RESTART DEMONSTRATION';return;}
-      status.textContent=labels[i];
-      var el=document.getElementById('stage-'+stages[i]);
-      el.style.opacity='1';
-      el.style.borderColor=colours[i];
-      var ind=document.getElementById('ind-'+stages[i]);
-      ind.textContent='ACTIVE';
-      ind.style.background=colours[i];
-      document.getElementById('sci-pressure-bar').style.width=pressures[i];
-      document.getElementById('sci-pressure-bar').style.background='linear-gradient(90deg,'+colours[i]+','+colours[Math.min(i+1,colours.length-1)]+')';
-      document.getElementById('sci-pressure-label').textContent=pressureTexts[i];
-      i++; setTimeout(step,2000);
-    }
-    setTimeout(step,300);
-  }
-  </script>
-
-  <!-- Mimes Modal -->
-  <div class="event-modal-overlay hidden" id="modal-mimes">
-    <div class="event-modal">
-      <button class="event-modal-close" onclick="closeEventModal('mimes')">✕</button>
-      <div class="em-hero mimes-hero">
-        <span class="em-emoji"><i data-lucide="theater"></i></span>
-        <div class="em-overlay">
-          <span class="em-day-tag">Day 2 · 10 September</span>
-          <h2 class="em-title">Mimes</h2>
-          <span class="em-time-badge"><i data-lucide="clock"></i> 1:30 – 3:00 PM</span>
-        </div>
-      </div>
-      <div class="em-body">
-        <div class="em-info-row">
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="users"></i></span><span class="em-info-label">Format</span><strong>Team of 4–6</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="map-pin"></i></span><span class="em-info-label">Venue</span><strong>Seminar Hall / Forge Lab</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="clock"></i></span><span class="em-info-label">Performance</span><strong>3–5 Minutes</strong></div>
-          <div class="em-info-card"><span class="em-info-icon"><i data-lucide="trophy"></i></span><span class="em-info-label">Prize</span><strong>₹1,250</strong></div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title">About the Event</h3>
-          <p>Creatively convey a message related to standards, quality, or safety through silent (non-verbal) performance. No spoken words — only expressions, gestures, and optional background music.</p>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="clipboard-list"></i> Event Format</h3>
-          <ol class="em-steps">
-            <li>Each team registers a topic in advance or draws one on the spot.</li>
-            <li>Teams get 3–5 minutes for their performance — strictly no dialogue.</li>
-            <li>Optional: background music/sound effects allowed (no dialogue substitutes).</li>
-            <li>Performances happen back-to-back with brief set-up gaps between teams.</li>
-            <li>Judges score immediately after each performance.</li>
-          </ol>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="lightbulb"></i> Suggested Themes</h3>
-          <div class="em-themes">
-            <span class="em-theme-tag">Quality checks before buying</span>
-            <span class="em-theme-tag">Consequences of substandard goods</span>
-            <span class="em-theme-tag">Journey of BIS Certification</span>
-            <span class="em-theme-tag">Safety standards saving a life</span>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="scale"></i> Judging Criteria</h3>
-          <div class="em-criteria">
-            <div class="em-criterion"><span class="em-c-pct">35%</span><span>Clarity of Message (without words)</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Expression & Body Language</span></div>
-            <div class="em-criterion"><span class="em-c-pct">25%</span><span>Creativity & Originality</span></div>
-            <div class="em-criterion"><span class="em-c-pct">15%</span><span>Team Coordination & Timing</span></div>
-          </div>
-        </div>
-        <div class="em-section">
-          <h3 class="em-section-title"><i data-lucide="shield-alert"></i> Rules</h3>
-          <ul class="em-rules">
-            <li>Absolutely no spoken words or sound effects substituting dialogue.</li>
-            <li>Performance must stay within the time limit.</li>
-            <li>Content must be appropriate and non-offensive.</li>
-          </ul>
-        </div>
-        <a href="#register" class="em-register-btn" onclick="closeEventModal('mimes'); document.getElementById('ev-mimes').checked=true; toggleEventDetails('mimes', document.getElementById('ev-mimes'));">Register for this Event</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer">
