@@ -590,6 +590,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.ThemeProvider) {
     window.ThemeProvider.init();
   }
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
   startCountdown();
   initScrollSpy();
   initAnimations();
