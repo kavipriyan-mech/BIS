@@ -40,7 +40,7 @@
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <div class="logo-group">
+      <a href="#" class="logo-group" onclick="scrollToHome(event)" aria-label="BIS Club - Go to Home">
         <div class="logo-badge">
           <img src="logo.svg" alt="BIS Logo" class="topbar-logo-img" />
         </div>
@@ -48,7 +48,7 @@
           <span class="logo-title">BIS Club</span>
           <span class="logo-sub">Bureau of Indian Standards</span>
         </div>
-      </div>
+      </a>
       <nav class="nav">
         <a href="#events" class="nav-link">Events</a>
         <a href="#schedule" class="nav-link">Schedule</a>
@@ -125,14 +125,14 @@
           <span class="isi-tagline">Quality · Safety · Trust</span>
         </div>
 
-        <!-- Floating Event Badges — Real button controls mapped via data-hero-event -->
-        <button type="button" class="float-badge fb-1 orbit-1" data-hero-event="poster" aria-label="Open Poster Making event details"><i data-lucide="palette"></i><span>Poster Making</span></button>
-        <button type="button" class="float-badge fb-2 orbit-2" data-hero-event="debate" aria-label="Open Debate event details"><i data-lucide="mic"></i><span>Debate</span></button>
-        <button type="button" class="float-badge fb-3 orbit-3" data-hero-event="rangoli" aria-label="Open Rangoli event details"><i data-lucide="flower-2"></i><span>Rangoli</span></button>
-        <button type="button" class="float-badge fb-4 orbit-1" data-hero-event="quiz" aria-label="Open Quiz event details"><i data-lucide="lightbulb"></i><span>Quiz</span></button>
-        <button type="button" class="float-badge fb-5 orbit-2" data-hero-event="mimes" aria-label="Open Mimes event details"><i data-lucide="theater"></i><span>Mimes</span></button>
-        <button type="button" class="float-badge fb-6 orbit-3" data-hero-event="science" aria-label="Open Learning Science via Standards event details"><i data-lucide="flask-conical"></i><span>Science</span></button>
-        <button type="button" class="float-badge fb-7 orbit-1" data-hero-event="treasure" aria-label="Open Treasure Hunt event details"><i data-lucide="map-pin"></i><span>Treasure Hunt</span></button>
+        <!-- Floating Event Badges — Mapped via data-hero-event and openHeroEvent() -->
+        <button type="button" class="float-badge fb-1 orbit-1" data-hero-event="poster" onclick="openHeroEvent('poster')" aria-label="Open Poster Making event details"><i data-lucide="palette"></i><span>Poster Making</span></button>
+        <button type="button" class="float-badge fb-2 orbit-2" data-hero-event="debate" onclick="openHeroEvent('debate')" aria-label="Open Debate event details"><i data-lucide="mic"></i><span>Debate</span></button>
+        <button type="button" class="float-badge fb-3 orbit-3" data-hero-event="rangoli" onclick="openHeroEvent('rangoli')" aria-label="Open Rangoli event details"><i data-lucide="flower-2"></i><span>Rangoli</span></button>
+        <button type="button" class="float-badge fb-4 orbit-1" data-hero-event="quiz" onclick="openHeroEvent('quiz')" aria-label="Open Quiz event details"><i data-lucide="lightbulb"></i><span>Quiz</span></button>
+        <button type="button" class="float-badge fb-5 orbit-2" data-hero-event="mimes" onclick="openHeroEvent('mimes')" aria-label="Open Mimes event details"><i data-lucide="theater"></i><span>Mimes</span></button>
+        <button type="button" class="float-badge fb-6 orbit-3" data-hero-event="science" onclick="openHeroEvent('science')" aria-label="Open Learning Science via Standards event details"><i data-lucide="flask-conical"></i><span>Science</span></button>
+        <button type="button" class="float-badge fb-7 orbit-1" data-hero-event="treasure" onclick="openHeroEvent('treasure')" aria-label="Open Treasure Hunt event details"><i data-lucide="map-pin"></i><span>Treasure Hunt</span></button>
       </div>
     </div>
   </section>
@@ -167,7 +167,7 @@
       </div>
       <div class="events-grid">
         <!-- Inauguration -->
-        <div class="event-card clickable-card" onclick="openEventModal('inauguration')">
+        <div class="event-card clickable-card" data-event-id="inauguration" onclick="openEventModal('inauguration', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual inauguration-bg">
             <span class="event-emoji"><i data-lucide="flame"></i></span>
@@ -185,7 +185,7 @@
         </div>
 
         <!-- Poster Making -->
-        <div class="event-card clickable-card" onclick="openEventModal('poster')">
+        <div class="event-card clickable-card" data-event-id="poster" onclick="openEventModal('poster', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual poster-bg">
             <span class="event-emoji"><i data-lucide="palette"></i></span>
@@ -204,7 +204,7 @@
         </div>
 
         <!-- Debate -->
-        <div class="event-card clickable-card" onclick="openEventModal('debate')">
+        <div class="event-card clickable-card" data-event-id="debate" onclick="openEventModal('debate', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual debate-bg">
             <span class="event-emoji"><i data-lucide="mic"></i></span>
@@ -222,7 +222,7 @@
         </div>
 
         <!-- Treasure Hunt -->
-        <div class="event-card clickable-card" onclick="openEventModal('treasure')">
+        <div class="event-card clickable-card" data-event-id="treasure" onclick="openEventModal('treasure', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual treasure-bg">
             <span class="event-emoji"><i data-lucide="map-pin"></i></span>
@@ -248,7 +248,7 @@
       </div>
       <div class="events-grid">
         <!-- Rangoli -->
-        <div class="event-card clickable-card" onclick="openEventModal('rangoli')">
+        <div class="event-card clickable-card" data-event-id="rangoli" onclick="openEventModal('rangoli', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual rangoli-bg">
             <span class="event-emoji"><i data-lucide="flower-2"></i></span>
@@ -266,7 +266,7 @@
         </div>
 
         <!-- Quiz -->
-        <div class="event-card clickable-card" onclick="openEventModal('quiz')">
+        <div class="event-card clickable-card" data-event-id="quiz" onclick="openEventModal('quiz', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual quiz-bg">
             <span class="event-emoji"><i data-lucide="lightbulb"></i></span>
@@ -285,7 +285,7 @@
         </div>
 
         <!-- Science via Standards — FEATURED FLAGSHIP EVENT -->
-        <div class="event-card clickable-card" onclick="openEventModal('science')" style="position:relative; border: 1.5px solid var(--accent, #7c6af7); box-shadow: 0 0 32px 4px rgba(124,106,247,0.18);">
+        <div class="event-card clickable-card" data-event-id="science" onclick="openEventModal('science', event)" style="position:relative; border: 1.5px solid var(--accent, #7c6af7); box-shadow: 0 0 32px 4px rgba(124,106,247,0.18);">
           <div class="event-card-glow"></div>
           <!-- Featured badge -->
           <div style="position:absolute; top:12px; right:12px; z-index:5;">
@@ -308,7 +308,7 @@
         </div>
 
         <!-- Mimes -->
-        <div class="event-card clickable-card" onclick="openEventModal('mimes')">
+        <div class="event-card clickable-card" data-event-id="mimes" onclick="openEventModal('mimes', event)">
           <div class="event-card-glow"></div>
           <div class="event-visual mimes-bg">
             <span class="event-emoji"><i data-lucide="theater"></i></span>
@@ -775,6 +775,13 @@
           </div>
         </form>
       </div>
+    </div><!-- /container -->
+  </section><!-- /form-section #register -->
+
+  <!-- ============================================================
+       ALL MODALS — Direct children of <body> for reliable fixed positioning
+       ============================================================ -->
+
   <!-- Success Modal Overlay -->
   <div class="modal-overlay hidden" id="successModal">
     <div class="modal">
@@ -1149,17 +1156,17 @@
 
   <!-- Learning Science via Standards Modal — FLAGSHIP EVENT -->
   <div class="event-modal-overlay hidden" id="modal-science">
-    <div class="event-modal" style="max-width:760px;">
+    <div class="event-modal">
       <button class="event-modal-close" onclick="closeEventModal('science')">✕</button>
-      <div class="em-hero science-hero" style="position:relative;">
+      <div class="em-hero science-hero">
         <span class="em-emoji"><i data-lucide="flask-conical"></i></span>
-        <div style="position:absolute;top:14px;left:14px;display:flex;gap:6px;z-index:5;">
-          <span style="background:linear-gradient(90deg,#f7b731,#f39c12);color:#000;font-size:0.6rem;font-weight:800;padding:3px 10px;border-radius:20px;">FEATURED PROTOTYPE EVENT</span>
-        </div>
         <div class="em-overlay">
+          <div style="margin-bottom: 6px;">
+            <span style="background: linear-gradient(90deg, #f7b731, #f39c12); color: #000; font-size: 0.65rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.6px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">FEATURED PROTOTYPE EVENT</span>
+          </div>
           <span class="em-day-tag">Day 2 · 10 September</span>
           <h2 class="em-title">Learning Science via Standards</h2>
-          <div style="font-size:0.85rem;opacity:0.9;margin-top:4px;font-weight:600;">Open Topic — Scientific &amp; Engineering Principles via BIS Standards</div>
+          <div style="font-size: 0.84rem; opacity: 0.92; margin-bottom: 6px; font-weight: 600; color: rgba(255,255,255,0.9);">Open Topic — Scientific &amp; Engineering Principles via BIS Standards</div>
           <span class="em-time-badge"><i data-lucide="clock"></i> 10:45 AM – 12:30 PM</span>
         </div>
       </div>

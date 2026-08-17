@@ -51,18 +51,178 @@ function switchTab(day, btn) {
   document.getElementById(day).classList.remove('hidden');
   btn.classList.add('active');
 }
+// ══════════════════════════════════════════════════════════════
+//  HOME BRAND LOGO SCROLL
+// ══════════════════════════════════════════════════════════════
+function scrollToHome(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  // Only scroll up if currently scrolled down below the home/hero area
+  if (window.scrollY > 50) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // Clean URL hash if present
+    if (window.history && window.history.pushState) {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+  }
+  // If already at home page (top of page), do nothing / no change
+}
+
+window.scrollToHome = scrollToHome;
+
+// ══════════════════════════════════════════════════════════════
+//  EVENT DETAIL MODALS — defined below after scroll-lock utilities
+// ══════════════════════════════════════════════════════════════
+
+const heroEventMap = {
+  poster: 'poster',
+  debate: 'debate',
+  rangoli: 'rangoli',
+  quiz: 'quiz',
+  mimes: 'mimes',
+  science: 'science',
+  treasure: 'treasure'
+};
+
+/**
+ * Opens the event detail modal for a hero floating badge click.
+ * Scrolls to the events section and opens the modal immediately.
+ */
+function openHeroEvent(eventId) {
+  if (!eventId) return;
+  const targetEvent = heroEventMap[eventId] || eventId;
+
+  // Find the specific card for this event in the Events section
+  const targetCard = document.querySelector(`.event-card[data-event-id="${targetEvent}"]`);
+
+  if (targetCard) {
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      openEventModal(targetEvent);
+    }, 500);
+  } else {
+    const eventsSection = document.getElementById('events');
+    if (eventsSection) {
+      eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        openEventModal(targetEvent);
+      }, 500);
+    } else {
+      openEventModal(targetEvent);
+    }
+  }
+}
+
+window.openHeroEvent = openHeroEvent;
+
+// NOTE: Hero badge clicks are handled via inline onclick="openHeroEvent(...)" in HTML.
+// Event card clicks are handled via inline onclick="openEventModal(...)" in HTML.
+// No additional delegated listeners needed — avoids double-firing.
+
+// ══════════════════════════════════════════════════════════════
+//  FLOATING BADGE DEPTH TRACKING
+//  Reads each badge's Y position relative to the hero-visual center
+//  and toggles front/back classes for correct z-index layering.
+// ══════════════════════════════════════════════════════════════
+(function initBadgeDepth() {
+  let rafId = null;
+
+  function updateBadgeDepth() {
+    const badges = document.querySelectorAll('.float-badge');
+    if (!badges.length) return;
+
+    // Use the hero-visual container as reference
+    const heroVisual = document.querySelector('.hero-visual');
+    if (!heroVisual) return;
+
+    const heroRect = heroVisual.getBoundingClientRect();
+    const heroCenterY = heroRect.top + heroRect.height / 2;
+
+    badges.forEach(badge => {
+      // Skip hover state — let CSS handle those
+      if (badge.matches(':hover') || badge.matches(':focus-visible')) {
+        badge.classList.remove('badge-back', 'badge-front');
+        return;
+      }
+
+      const rect = badge.getBoundingClientRect();
+      const badgeCenterY = rect.top + rect.height / 2;
+
+      // If badge Y is above hero center → it's in the "back" arc (behind the logo)
+      // If badge Y is at or below hero center → it's in the "front" arc (in front of logo)
+      if (badgeCenterY < heroCenterY - 20) {
+        badge.classList.add('badge-back');
+        badge.classList.remove('badge-front');
+      } else {
+        badge.classList.add('badge-front');
+        badge.classList.remove('badge-back');
+      }
+    });
+
+    rafId = requestAnimationFrame(updateBadgeDepth);
+  }
+
+  function startDepthTracking() {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(updateBadgeDepth);
+  }
+
+  function stopDepthTracking() {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  // Start tracking when page is visible, stop when hidden (performance)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopDepthTracking();
+    } else {
+      startDepthTracking();
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startDepthTracking);
+  } else {
+    startDepthTracking();
+  }
+})();
+
+// ══════════════════════════════════════════════════════════════
+//  SCROLL LOCK / RESTORE UTILITIES
+//  Prevents background scroll without altering scroll position
+// ══════════════════════════════════════════════════════════════
+function lockBodyScroll() {
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function unlockBodyScroll() {
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
 
 // ══════════════════════════════════════════════════════════════
 //  EVENT DETAIL MODALS
 // ══════════════════════════════════════════════════════════════
-
 function openEventModal(id, event) {
   if (event && event.stopPropagation) event.stopPropagation();
   var modal = document.getElementById('modal-' + id);
   if (!modal) return;
+  if (!modal.classList.contains('hidden')) return; // already open
 
+  lockBodyScroll();
   modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+
+  // Scroll the modal content to top
+  var inner = modal.querySelector('.event-modal');
+  if (inner) inner.scrollTop = 0;
 
   if (window.lucide) {
     window.lucide.createIcons({ root: modal });
@@ -73,92 +233,41 @@ function closeEventModal(id) {
   var modal = document.getElementById('modal-' + id);
   if (!modal) return;
   modal.classList.add('hidden');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
-let heroNavigationBusy = false;
+// Make modal functions globally accessible
+window.openEventModal = openEventModal;
+window.closeEventModal = closeEventModal;
 
-/**
- * Central navigation function for Hero event badges.
- * Temporarily pauses animation on click, smoothly scrolls to #events,
- * and opens the existing corresponding event modal.
- */
-function handleHeroEventNavigation(eventId) {
-  if (heroNavigationBusy) return;
-  heroNavigationBusy = true;
-
-  const clickedBadge = document.querySelector(`[data-hero-event="${eventId}"]`);
-  if (clickedBadge) {
-    clickedBadge.classList.add('hero-clicked');
-  }
-
-  const eventsSection = document.getElementById('events');
-  if (!eventsSection) {
-    heroNavigationBusy = false;
-    if (clickedBadge) clickedBadge.classList.remove('hero-clicked');
-    return;
-  }
-
-  if (document.activeElement && document.activeElement.blur) {
-    document.activeElement.blur();
-  }
-
-  eventsSection.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-
-  setTimeout(() => {
-    if (typeof openEventModal === 'function') {
-      openEventModal(eventId);
-    } else {
-      console.error('openEventModal() is not available');
-    }
-
-    if (clickedBadge) {
-      clickedBadge.classList.remove('hero-clicked');
-    }
-
-    heroNavigationBusy = false;
-  }, 700);
-}
-
-function openFromHero(id, event) {
-  if (event) {
-    if (event.preventDefault) event.preventDefault();
-    if (event.stopPropagation) event.stopPropagation();
-  }
-  handleHeroEventNavigation(id);
-}
-
-// Delegated listener for hero event buttons
-document.addEventListener('click', function (event) {
-  const badge = event.target.closest('[data-hero-event]');
-  if (!badge) return;
-
-  event.preventDefault();
-  event.stopPropagation();
-
-  const eventId = badge.dataset.heroEvent;
-  if (!eventId) return;
-
-  handleHeroEventNavigation(eventId);
-});
-
-// Close modal on overlay click or Escape key
+// ══════════════════════════════════════════════════════════════
+//  BACKDROP CLICK — close modal and restore scroll
+// ══════════════════════════════════════════════════════════════
 document.addEventListener('click', function(e) {
+  // Click directly on the overlay backdrop (not on the modal panel inside)
   if (e.target.classList.contains('event-modal-overlay')) {
     e.target.classList.add('hidden');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
+    return;
+  }
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.add('hidden');
+    unlockBodyScroll();
+    return;
   }
 });
 
+// ══════════════════════════════════════════════════════════════
+//  ESCAPE KEY — close any open modal and restore scroll
+// ══════════════════════════════════════════════════════════════
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.event-modal-overlay, .modal-overlay').forEach(function(m) {
+    var anyOpen = false;
+    document.querySelectorAll('.event-modal-overlay:not(.hidden), .modal-overlay:not(.hidden)').forEach(function(m) {
       m.classList.add('hidden');
+      anyOpen = true;
     });
-    document.body.style.overflow = '';
+    if (anyOpen) unlockBodyScroll();
   }
 });
 
@@ -343,6 +452,21 @@ function validateForm() {
 function collectFormData() {
   const events = [...document.querySelectorAll('input[name="events"]:checked')].map(input => input.value);
 
+  const thTeam = document.getElementById("th-team")?.value || "";
+  const thCaptain = document.getElementById("th-captain")?.value || "";
+  const thMembers = document.getElementById("th-members")?.value || "";
+
+  const rangTeam = document.getElementById("rang-team")?.value || "";
+  const rangMembers = document.getElementById("rang-members")?.value || "";
+
+  const mimeTeam = document.getElementById("mime-team")?.value || "";
+  const mimeTheme = document.getElementById("mime-theme")?.value || "";
+  const mimeMembers = document.getElementById("mime-members")?.value || "";
+
+  const sciTeam = document.getElementById("sci-team")?.value || "";
+  const sciMembers = document.getElementById("sci-members")?.value || "";
+  const sciTopic = document.getElementById("sci-topic")?.value || "";
+
   const data = {
     fullName: document.getElementById("fullName").value.trim(),
     rollNo: document.getElementById("rollNo").value.trim(),
@@ -358,20 +482,32 @@ function collectFormData() {
     debateCaptain: document.getElementById("debate-captain")?.value || "",
     debateMembers: document.getElementById("debate-members")?.value || "",
 
-    treasureTeam: document.getElementById("th-team")?.value || "",
-    treasureCaptain: document.getElementById("th-captain")?.value || "",
-    treasureMembers: document.getElementById("th-members")?.value || "",
+    // Keys expected by Google Apps Script backend & proxy
+    thTeam: thTeam,
+    thCaptain: thCaptain,
+    thMembers: thMembers,
+    treasureTeam: thTeam,
+    treasureCaptain: thCaptain,
+    treasureMembers: thMembers,
 
-    rangoliTeam: document.getElementById("rang-team")?.value || "",
-    rangoliMembers: document.getElementById("rang-members")?.value || "",
+    rangTeam: rangTeam,
+    rangMembers: rangMembers,
+    rangoliTeam: rangTeam,
+    rangoliMembers: rangMembers,
 
-    mimesTeam: document.getElementById("mime-team")?.value || "",
-    mimesTheme: document.getElementById("mime-theme")?.value || "",
-    mimesMembers: document.getElementById("mime-members")?.value || "",
+    mimeTeam: mimeTeam,
+    mimeTheme: mimeTheme,
+    mimeMembers: mimeMembers,
+    mimesTeam: mimeTeam,
+    mimesTheme: mimeTheme,
+    mimesMembers: mimeMembers,
 
-    scienceTeam: document.getElementById("sci-team")?.value || "",
-    scienceMembers: document.getElementById("sci-members")?.value || "",
-    scienceTopic: document.getElementById("sci-topic")?.value || "",
+    sciTeam: sciTeam,
+    sciMembers: sciMembers,
+    sciTopic: sciTopic,
+    scienceTeam: sciTeam,
+    scienceMembers: sciMembers,
+    scienceTopic: sciTopic,
     sciencePrototypeType: document.getElementById("sci-prototype-type")?.value || "",
     scienceDescription: document.getElementById("sci-description")?.value || "",
 
@@ -396,12 +532,18 @@ function showSuccessModal(regId, name, rollNo, events) {
       <div><strong>Events:</strong> ${eventsStr}</div>
     </div>
   `;
+
+  // Lock scroll BEFORE showing modal so position is saved at current location
+  lockBodyScroll();
+
   const modalOverlay = document.getElementById('successModal');
   if (modalOverlay) {
-    modalOverlay.scrollTop = 0;
     modalOverlay.classList.remove('hidden');
+    // Scroll modal content to top
+    var inner = modalOverlay.querySelector('.modal');
+    if (inner) inner.scrollTop = 0;
   }
-  document.body.style.overflow = 'hidden';
+
   if (window.lucide) {
     window.lucide.createIcons({ root: modalOverlay });
   }
@@ -414,15 +556,15 @@ function showErrorAlert(message) {
     return;
   }
   document.getElementById('errorModalMessage').textContent = message;
-  errModal.scrollTop = 0;
+
+  lockBodyScroll();
   errModal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeErrorModal() {
   const errModal = document.getElementById('errorModal');
   if (errModal) errModal.classList.add('hidden');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
 function closeModalFormReset() {
@@ -436,7 +578,7 @@ function closeModalFormReset() {
 function closeModal() {
   const modalOverlay = document.getElementById('successModal');
   if (modalOverlay) modalOverlay.classList.add('hidden');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -462,14 +604,30 @@ async function submitForm(e) {
   const formData = collectFormData();
 
   try {
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(formData)
-    });
+    let response;
+    // Prefer relative proxy endpoint if hosted on server, else try direct Google Apps Script
+    if (window.location.protocol.startsWith('http')) {
+      try {
+        response = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      } catch (proxyErr) {
+        console.warn('Proxy submission attempt failed, attempting direct Google Apps Script fallback:', proxyErr);
+      }
+    }
+
+    if (!response || !response.ok) {
+      response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(formData)
+      });
+    }
 
     const responseText = await response.text();
     let result = {};
@@ -480,12 +638,12 @@ async function submitForm(e) {
       result = { success: true };
     }
 
-    if (result.success === true) {
-      const regId = result.registrationId || ('BIS2026-' + Math.floor(1000 + Math.random() * 9000));
+    if (result.success === true || result.status === 'success') {
+      const regId = result.registrationId || result.regId || ('BIS2026-' + Math.floor(1000 + Math.random() * 9000));
       showSuccessModal(regId, formData.fullName, formData.rollNo, formData.events);
       closeModalFormReset();
     } else {
-      const errorMsg = result.message || 'Registration failed. Please check your details and try again.';
+      const errorMsg = result.message || result.error || 'Registration failed. Please check your details and try again.';
       showErrorAlert(errorMsg);
     }
 
@@ -544,6 +702,30 @@ function initAnimations() {
 }
 
 // ══════════════════════════════════════════════════════════════
+//  CLICK BINDING — belt-and-suspenders alongside inline onclick
+// ══════════════════════════════════════════════════════════════
+function bindEventCards() {
+  document.querySelectorAll('.event-card[data-event-id]').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      var eventId = card.getAttribute('data-event-id');
+      if (eventId) {
+        openEventModal(eventId, e);
+      }
+    });
+  });
+}
+
+function bindHeroButtons() {
+  document.querySelectorAll('[data-hero-event]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var eventId = btn.getAttribute('data-hero-event');
+      if (eventId) openHeroEvent(eventId);
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
 //  INIT
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
@@ -556,4 +738,6 @@ document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
   initScrollSpy();
   initAnimations();
+  bindEventCards();
+  bindHeroButtons();
 });
